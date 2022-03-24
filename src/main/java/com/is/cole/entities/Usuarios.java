@@ -11,6 +11,8 @@ import javax.persistence.Table;
 @Table(name = "usuarios")
 public class Usuarios implements BaseBean {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique = true)

@@ -1,4 +1,4 @@
-package com.is.cole.dtos.role;
+package com.is.cole.dtos.Usuarios;
 
 import com.is.cole.dtos.BaseDto;
 
