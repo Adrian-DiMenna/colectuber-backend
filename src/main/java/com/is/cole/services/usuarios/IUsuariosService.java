@@ -3,6 +3,7 @@ package com.is.cole.services.usuarios;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.RoleResult;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
+import com.is.cole.dtos.Usuarios.UsuarioResult;
 
 
 public interface IUsuariosService {
@@ -11,6 +12,7 @@ public interface IUsuariosService {
 	public UsuarioDto saveUsuario(UsuarioDto dto);
 	public void deleteUsuario(Integer id);
 	public UsuarioDto getUsuario(Integer id);
+	public UsuarioResult getAllUsuario();
 	
 	//Roles
 	public RoleDto saveRole(RoleDto dto);

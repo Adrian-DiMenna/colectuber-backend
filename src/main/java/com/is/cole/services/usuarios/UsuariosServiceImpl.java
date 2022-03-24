@@ -2,18 +2,15 @@ package com.is.cole.services.usuarios;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.persistence.EntityNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.is.cole.daos.IRoleDao;
 import com.is.cole.daos.IRolesUsuarioDao;
 import com.is.cole.daos.IUserDao;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.RoleResult;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
+import com.is.cole.dtos.Usuarios.UsuarioResult;
 import com.is.cole.entities.RoleUsuario;
 import com.is.cole.entities.Roles;
 import com.is.cole.entities.Usuarios;
@@ -49,6 +46,16 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	public UsuarioDto getUsuario(Integer id) {
 		Usuarios beanObtenido = usuarioDao.getById(id);
 		return parseBeanToDtoUsuario(beanObtenido);
+	}
+	
+	@Override
+	public UsuarioResult getAllUsuario() {
+		UsuarioResult result = new UsuarioResult();
+		List<UsuarioDto> list = usuarioDao.findAll().stream().map((bean)->{
+			return parseBeanToDtoUsuario(bean);
+		}).collect(Collectors.toList());
+		result.setUsuarios(list);
+		return result;
 	}
 	
 	
@@ -175,4 +182,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		
 		return bean;
 	}
+
+	
 }

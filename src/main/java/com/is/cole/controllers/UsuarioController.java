@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.RoleResult;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
+import com.is.cole.dtos.Usuarios.UsuarioResult;
 import com.is.cole.services.usuarios.IUsuariosService;
 
 @RestController
@@ -40,6 +41,17 @@ public class UsuarioController {
 		try {
 			UsuarioDto dtoObtenido = usuariosService.getUsuario(id);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
+		}catch(Exception e){
+			System.err.print(e);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}
+	}
+	
+	@GetMapping
+	public ResponseEntity<?> getAllUsuario(){
+		try {
+			UsuarioResult dtos = usuariosService.getAllUsuario();
+			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		}catch(Exception e){
 			System.err.print(e);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
