@@ -8,8 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.is.cole.daos.IColectivoDao;
 import com.is.cole.daos.IColectivoUbicacionDao;
+import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
-import com.is.cole.dtos.colectuber.ColectivoUbicacionResult;
 import com.is.cole.dtos.colectuber.PosicionDto;
 import com.is.cole.entities.ColectivoUbicacion;
 
@@ -29,14 +29,14 @@ public class ColectuberServiceImpl implements IColectuberService{
 	}
 	
 	@Override
-	public ColectivoUbicacionResult getColectivosUbicacion() {
-		ColectivoUbicacionResult dtos = new ColectivoUbicacionResult();
+	public Result<ColectivoUbicacionDto> getColectivosUbicacion() {
+		Result<ColectivoUbicacionDto> dtos = new Result<>();
 
 		List<ColectivoUbicacionDto> listaDtos= colectivoUbicacionDao.findAll().stream()
 		.map(colectivoUbicacion->parseBeanToDtoColectivoUbicacion(colectivoUbicacion))
 		.collect(Collectors.toList());
 		
-		dtos.setListaColectivoUbicaciones(listaDtos);
+		dtos.setResult(listaDtos);
 		
 		return dtos;
 	}
