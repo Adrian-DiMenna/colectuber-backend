@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
-import com.is.cole.dtos.Usuarios.RoleResult;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
-import com.is.cole.dtos.Usuarios.UsuarioResult;
 import com.is.cole.services.usuarios.IUsuariosService;
 
 @RestController
@@ -50,7 +50,7 @@ public class UsuarioController {
 	@GetMapping
 	public ResponseEntity<?> getAllUsuario(){
 		try {
-			UsuarioResult dtos = usuariosService.getAllUsuario();
+			Result<UsuarioDto> dtos = usuariosService.getAllUsuario();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		}catch(Exception e){
 			System.err.print(e);
@@ -96,7 +96,7 @@ public class UsuarioController {
 	@GetMapping("/roles")
 	public ResponseEntity<?> getAllRole(){
 		try {
-			RoleResult dtos= usuariosService.getAllRole();
+			Result<RoleDto> dtos= usuariosService.getAllRole();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		}catch(Exception e) {
 			System.err.print(e);
