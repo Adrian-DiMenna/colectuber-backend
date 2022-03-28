@@ -3,6 +3,7 @@ package com.is.cole.services.paradas;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.is.cole.daos.IParadaDao;
 import com.is.cole.dtos.Result;
@@ -11,6 +12,7 @@ import com.is.cole.entities.Parada;
 
 import java.util.List;
 
+@Service
 public class ParadaServiceImpl implements IParadaService {
 
 	@Autowired
