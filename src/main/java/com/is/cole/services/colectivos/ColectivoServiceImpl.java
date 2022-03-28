@@ -1,5 +1,7 @@
 package com.is.cole.services.colectivos;
 
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,26 +27,32 @@ public class ColectivoServiceImpl implements IColectivoService{
 	
 	@Override
 	public ColectivoDto saveColectivo(ColectivoDto dto) {
-		// TODO Auto-generated method stub
-		return null;
+		Colectivo beanGuardado = colectivoDao.save(parseDtoToBeanColectivo(dto));
+		return parseBeanToDtoColectivo(beanGuardado);
 	}
 
 	@Override
 	public ColectivoDto getColectivo(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Colectivo beanObtenido = colectivoDao.getById(id);
+		return parseBeanToDtoColectivo(beanObtenido);
 	}
 
 	@Override
 	public void deleteColectivo(Integer id) {
-		// TODO Auto-generated method stub
+		colectivoDao.deleteById(id);
 		
 	}
 
 	@Override
 	public Result<ColectivoDto> getAllColectivo() {
-		// TODO Auto-generated method stub
-		return null;
+		Result<ColectivoDto> dtosObtenido = new Result<>();
+		
+		dtosObtenido.setResult(
+			colectivoDao.findAll().stream()
+			.map(cole -> parseBeanToDtoColectivo(cole))
+			.collect(Collectors.toList())
+		);
+		return dtosObtenido;
 	}
 	
 	//Parses
@@ -59,6 +67,17 @@ public class ColectivoServiceImpl implements IColectivoService{
 		return dto;
 	}
 	
+	
+	private Colectivo parseDtoToBeanColectivo(ColectivoDto dto) {
+		Colectivo bean = new Colectivo();
+		bean.setEmpresaColectivo(empresaDao.getById(dto.getEmpresaColectivoId()));
+		bean.setLineaColectivo(lineaDao.getById(dto.getLineaColectivoId()));
+		bean.setId(dto.getId());
+		bean.setNumeroColectivo(dto.getNumero());
+		
+		return bean;
+		
+	}
 
 	
 
