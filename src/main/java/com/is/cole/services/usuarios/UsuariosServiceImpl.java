@@ -7,10 +7,9 @@ import org.springframework.stereotype.Service;
 import com.is.cole.daos.IRoleDao;
 import com.is.cole.daos.IRolesUsuarioDao;
 import com.is.cole.daos.IUserDao;
+import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
-import com.is.cole.dtos.Usuarios.RoleResult;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
-import com.is.cole.dtos.Usuarios.UsuarioResult;
 import com.is.cole.entities.RoleUsuario;
 import com.is.cole.entities.Roles;
 import com.is.cole.entities.Usuarios;
@@ -49,12 +48,12 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 	
 	@Override
-	public UsuarioResult getAllUsuario() {
-		UsuarioResult result = new UsuarioResult();
+	public Result<UsuarioDto> getAllUsuario() {
+		Result<UsuarioDto> result = new Result<>();
 		List<UsuarioDto> list = usuarioDao.findAll().stream().map((bean)->{
 			return parseBeanToDtoUsuario(bean);
 		}).collect(Collectors.toList());
-		result.setUsuarios(list);
+		result.setResult(list);
 		return result;
 	}
 	
@@ -80,12 +79,12 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 	
 	@Override
-	public RoleResult getAllRole() {
-		RoleResult result = new RoleResult();
+	public Result<RoleDto> getAllRole() {
+		Result<RoleDto> result = new Result<>();
 		List<RoleDto> list = roleDao.findAll().stream().map((bean)->{
 			return parseBeanToDtoRole(bean);
 		}).collect(Collectors.toList());
-		result.setRoles(list);
+		result.setResult(list);
 		return result;
 	}
 	
@@ -157,6 +156,14 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		dto.setApellido(bean.getApellido());
 		dto.setCorreo_electronico(bean.getCorreo());
 		dto.setPassword(bean.getPassword());
+		
+		dto.setRoleList(
+			roleUserDao.findByUsuarioId(bean.getId()).stream()
+			.map(ru -> roleDao.getById(ru.getRoles().getId()))
+			.map(r -> parseBeanToDtoRole(r))
+			.collect(Collectors.toList())
+		);
+		
 		return dto;
 	}
 	
