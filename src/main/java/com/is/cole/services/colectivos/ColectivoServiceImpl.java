@@ -59,9 +59,9 @@ public class ColectivoServiceImpl implements IColectivoService{
 	
 	private ColectivoDto parseBeanToDtoColectivo(Colectivo bean) {
 		ColectivoDto dto = new ColectivoDto();
-		dto.setEmpresaColectivoId(bean.getEmpresaColectivo().getId());
+		dto.setEmpresaId(bean.getEmpresaColectivo().getId());
 		dto.setId(bean.getId());
-		dto.setLineaColectivoId(bean.getLineaColectivo().getId());
+		dto.setLineaId(bean.getLineaColectivo().getId());
 		dto.setNumero(bean.getNumeroColectivo());
 		
 		return dto;
@@ -70,8 +70,8 @@ public class ColectivoServiceImpl implements IColectivoService{
 	
 	private Colectivo parseDtoToBeanColectivo(ColectivoDto dto) {
 		Colectivo bean = new Colectivo();
-		bean.setEmpresaColectivo(empresaDao.getById(dto.getEmpresaColectivoId()));
-		bean.setLineaColectivo(lineaDao.getById(dto.getLineaColectivoId()));
+		bean.setEmpresaColectivo(empresaDao.getById(dto.getEmpresaId()));
+		bean.setLineaColectivo(lineaDao.getById(dto.getLineaId()));
 		bean.setId(dto.getId());
 		bean.setNumeroColectivo(dto.getNumero());
 		

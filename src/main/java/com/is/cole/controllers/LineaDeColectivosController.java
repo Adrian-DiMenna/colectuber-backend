@@ -15,7 +15,7 @@ import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
 import com.is.cole.services.lineas.ILineaColectivosService;
 
 @RestController
-@RequestMapping("/api/linea_colectivos")
+@RequestMapping("/api/lineas_colectivos")
 public class LineaDeColectivosController {
 
 	@Autowired

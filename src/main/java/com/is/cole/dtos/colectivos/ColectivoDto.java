@@ -7,8 +7,8 @@ public class ColectivoDto extends BaseDto{
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private Integer empresaColectivoId;
-	private Integer lineaColectivoId;
+	private Integer empresaId;
+	private Integer lineaId;
 	private String numero;
 	
 	public Integer getId() {
@@ -17,17 +17,17 @@ public class ColectivoDto extends BaseDto{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getEmpresaColectivoId() {
-		return empresaColectivoId;
+	public Integer getEmpresaId() {
+		return empresaId;
 	}
-	public void setEmpresaColectivoId(Integer empresaColectivoId) {
-		this.empresaColectivoId = empresaColectivoId;
+	public void setEmpresaId(Integer empresaColectivoId) {
+		this.empresaId = empresaColectivoId;
 	}
-	public Integer getLineaColectivoId() {
-		return lineaColectivoId;
+	public Integer getLineaId() {
+		return lineaId;
 	}
-	public void setLineaColectivoId(Integer lineaColectivoId) {
-		this.lineaColectivoId = lineaColectivoId;
+	public void setLineaId(Integer lineaColectivoId) {
+		this.lineaId = lineaColectivoId;
 	}
 	public String getNumero() {
 		return numero;

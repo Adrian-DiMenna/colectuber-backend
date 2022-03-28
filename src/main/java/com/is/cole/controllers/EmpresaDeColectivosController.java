@@ -15,7 +15,7 @@ import com.is.cole.dtos.colectivos.EmpresaDeColectivosDto;
 import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
 
 @RestController
-@RequestMapping("/api/empresa_colectivos")
+@RequestMapping("/api/empresas_colectivos")
 public class EmpresaDeColectivosController {
 
 	@Autowired
