@@ -1,4 +1,4 @@
-package com.is.cole.services.colectivos;
+package com.is.cole.services.lineas;
 
 import java.util.stream.Collectors;
 
@@ -11,13 +11,11 @@ import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
 import com.is.cole.entities.Linea;
 
 @Service
-public class ColectivosServiceImpl implements IColectivosService{
-
+public class LineaColectivosServiceImpl implements ILineaColectivosService{
 	
 	@Autowired
 	private ILineaDao lineaDao;
 	
-	/********************************* Linea de Colectivos *********************************/
 	//Metodos
 	
 	@Override
@@ -65,5 +63,4 @@ public class ColectivosServiceImpl implements IColectivosService{
 		return bean;
 	}
 	
-
 }
