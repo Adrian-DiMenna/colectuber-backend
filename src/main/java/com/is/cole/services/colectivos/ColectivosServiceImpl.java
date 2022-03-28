@@ -5,47 +5,45 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.is.cole.daos.IEmpresaDeColectivosDao;
+import com.is.cole.daos.ILineaDao;
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.colectivos.EmpresaDeColectivosDto;
-import com.is.cole.entities.EmpresaDeColectivos;
+import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
+import com.is.cole.entities.Linea;
 
 @Service
 public class ColectivosServiceImpl implements IColectivosService{
 
+	
 	@Autowired
-	private IEmpresaDeColectivosDao empresaDao;
+	private ILineaDao lineaDao;
 	
-	
-	/********************************* Empresa de Colectivos *********************************/
-	
+	/********************************* Linea de Colectivos *********************************/
 	//Metodos
 	
 	@Override
-	public EmpresaDeColectivosDto saveEmpresaColectivo(EmpresaDeColectivosDto dto) {
-		EmpresaDeColectivos bean = parseDtoToBeanEmpresaColectivo(dto);
-		return parseBeanToDtoEmpresaColectivo(empresaDao.save(bean));
+	public LineaDeColectivosDto saveLineaColectivo(LineaDeColectivosDto dto) {
+		Linea beanGuardado = lineaDao.save(parseDtoToBeanLineaColectivo(dto));
+		return parseBeanToDtoLineaColectivo(beanGuardado);
 	}
 
 	@Override
-	public EmpresaDeColectivosDto getEmpresaColectivo(Integer empresaId) {
-		EmpresaDeColectivos beanObtenido= empresaDao.getById(empresaId);
-		return parseBeanToDtoEmpresaColectivo(beanObtenido);
+	public LineaDeColectivosDto getLineaColectivo(Integer lineaId) {
+		Linea beanObtenido = lineaDao.getById(lineaId);
+		return parseBeanToDtoLineaColectivo(beanObtenido);
 	}
 
 	@Override
-	public void deleteEmpresaColectivo(Integer empresaId) {
-		empresaDao.deleteById(empresaId);
-		
+	public void deleteLineaColectivo(Integer lineaId) {
+		lineaDao.deleteById(lineaId);
 	}
 
 	@Override
-	public Result<EmpresaDeColectivosDto> getAllEmpresaColectivo() {
-		Result<EmpresaDeColectivosDto> dtos = new Result<>();
+	public Result<LineaDeColectivosDto> getAllLineaColectivo() {
+		Result<LineaDeColectivosDto> dtos = new Result<>();
 		
 		dtos.setResult(
-			empresaDao.findAll().stream()
-			.map(ec -> parseBeanToDtoEmpresaColectivo(ec))
+			lineaDao.findAll().stream()
+			.map(lineaBean -> parseBeanToDtoLineaColectivo(lineaBean))
 			.collect(Collectors.toList())
 		);
 		return dtos;
@@ -53,25 +51,17 @@ public class ColectivosServiceImpl implements IColectivosService{
 	
 	//Parses
 	
-	private EmpresaDeColectivosDto parseBeanToDtoEmpresaColectivo(EmpresaDeColectivos bean) {
-		EmpresaDeColectivosDto dto = new EmpresaDeColectivosDto();
-		dto.setCorreo_electronico(bean.getCorreo());
-		dto.setDireccion(bean.getDireccion());
-		dto.setNombre(bean.getNombre());
-		dto.setNumero_telefono(bean.getNum_telefono());
+	private LineaDeColectivosDto parseBeanToDtoLineaColectivo(Linea bean) {
+		LineaDeColectivosDto dto = new LineaDeColectivosDto();
 		dto.setId(bean.getId());
-		
+		dto.setNumero(bean.getNumero());
 		return dto;
 	}
 	
-	private EmpresaDeColectivos parseDtoToBeanEmpresaColectivo(EmpresaDeColectivosDto dto) {
-		EmpresaDeColectivos bean = new EmpresaDeColectivos();
+	private Linea parseDtoToBeanLineaColectivo(LineaDeColectivosDto dto) {
+		Linea bean = new Linea();
 		bean.setId(dto.getId());
-		bean.setCorreo(dto.getCorreo_electronico());
-		bean.setDireccion(dto.getDireccion());
-		bean.setNombre(dto.getNombre());
-		bean.setNum_telefono(dto.getNumero_telefono());
-		
+		bean.setNumero(dto.getNumero());
 		return bean;
 	}
 	

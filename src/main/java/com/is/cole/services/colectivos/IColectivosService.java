@@ -1,15 +1,14 @@
 package com.is.cole.services.colectivos;
 
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.colectivos.EmpresaDeColectivosDto;
+import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
 
 public interface IColectivosService {
 	
-	//Empresas de Colectivo
-	public EmpresaDeColectivosDto saveEmpresaColectivo(EmpresaDeColectivosDto dto);
-	public EmpresaDeColectivosDto getEmpresaColectivo(Integer empresaId);
-	public void deleteEmpresaColectivo(Integer empresaId);
-	public Result<EmpresaDeColectivosDto> getAllEmpresaColectivo();
-	
-	
+
+	//Lineas de Colectivo
+	public LineaDeColectivosDto saveLineaColectivo(LineaDeColectivosDto dto);
+	public LineaDeColectivosDto getLineaColectivo(Integer lineaId);
+	public void deleteLineaColectivo(Integer lineaId);
+	public Result<LineaDeColectivosDto> getAllLineaColectivo();
 }
