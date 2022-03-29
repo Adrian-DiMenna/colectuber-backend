@@ -9,9 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
+import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
-import com.is.cole.dtos.colectuber.ColectivoUbicacionResult;
 import com.is.cole.services.colectuber.IColectuberService;
 
 @RestController
@@ -37,7 +36,7 @@ public class ColectuberController {
 	@CrossOrigin
 	public ResponseEntity<?> getColectivosUbicacion(){
 		try {
-			ColectivoUbicacionResult dtos = colectuberService.getColectivosUbicacion();
+			Result<ColectivoUbicacionDto> dtos = colectuberService.getColectivosUbicacion();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		}catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
