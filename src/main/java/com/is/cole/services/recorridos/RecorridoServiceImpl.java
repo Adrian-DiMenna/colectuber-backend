@@ -51,10 +51,9 @@ public class RecorridoServiceImpl implements IRecorridoService{
 
 	@Override
 	public void deleteRecorrido(Integer id) {
-		// TODO Auto-generated method stub
-		
-	}
-
+		recorridoDao.deleteById(id);
+	} 
+	
 	@Override
 	public Result<RecorridoDto> getAllRecorrido() {
 		// TODO Auto-generated method stub
