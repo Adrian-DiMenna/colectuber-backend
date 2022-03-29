@@ -1,6 +1,4 @@
-package com.is.cole.dtos.colectuber;
-
-import com.is.cole.dtos.BaseDto;
+package com.is.cole.dtos;
 
 public class PosicionDto extends BaseDto{
 	private static final long serialVersionUID = 1L;

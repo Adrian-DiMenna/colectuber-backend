@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.is.cole.daos.IParadaDao;
+import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.paradas.ParadaDto;
 import com.is.cole.entities.Parada;
@@ -49,12 +50,15 @@ public class ParadaServiceImpl implements IParadaService {
 	private ParadaDto parseBeanToDto(Parada bean) {
 		ParadaDto dto = new ParadaDto();
 		
+		PosicionDto posDto= new PosicionDto();
+		posDto.setLatitud(bean.getLatitud());
+		posDto.setLongitud(bean.getLongitud());
+		
 		dto.setId(bean.getId());
 		dto.setNombre(bean.getNombre());
 		dto.setDescripcion(bean.getDescripcion());
 		dto.setImage(bean.getImagen());
-		dto.setLongitud(bean.getLongitud());
-		dto.setLatitud(bean.getLatitud());
+		dto.setPosicion(posDto);
 		
 		return dto;
 	}
@@ -66,8 +70,8 @@ public class ParadaServiceImpl implements IParadaService {
 		bean.setNombre(dto.getNombre());
 		bean.setDescripcion(dto.getDescripcion());
 		bean.setImagen(dto.getImage());
-		bean.setLongitud(dto.getLongitud());
-		bean.setLatitud(dto.getLatitud());
+		bean.setLongitud(dto.getPosicion().getLongitud());
+		bean.setLatitud(dto.getPosicion().getLatitud());
 		
 		return bean;
 	}
