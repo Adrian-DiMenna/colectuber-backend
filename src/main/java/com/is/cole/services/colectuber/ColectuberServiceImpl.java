@@ -8,9 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.is.cole.daos.IColectivoDao;
 import com.is.cole.daos.IColectivoUbicacionDao;
+import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
-import com.is.cole.dtos.colectuber.PosicionDto;
 import com.is.cole.entities.ColectivoUbicacion;
 
 @Service

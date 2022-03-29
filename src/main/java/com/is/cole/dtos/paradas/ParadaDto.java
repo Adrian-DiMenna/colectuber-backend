@@ -1,6 +1,7 @@
 package com.is.cole.dtos.paradas;
 
 import com.is.cole.dtos.BaseDto;
+import com.is.cole.dtos.PosicionDto;
 
 public class ParadaDto extends BaseDto{
 
@@ -14,9 +15,7 @@ public class ParadaDto extends BaseDto{
 	
 	private String image;
 	
-	private double latitud;
-	
-	private double longitud;
+	private PosicionDto posicion;
 
 	
 	public Integer getId() {
@@ -51,20 +50,14 @@ public class ParadaDto extends BaseDto{
 		this.image = image;
 	}
 
-	public double getLatitud() {
-		return latitud;
+	public PosicionDto getPosicion() {
+		return posicion;
 	}
 
-	public void setLatitud(double latitud) {
-		this.latitud = latitud;
+	public void setPosicion(PosicionDto posicion) {
+		this.posicion = posicion;
 	}
 
-	public double getLongitud() {
-		return longitud;
-	}
 
-	public void setLongitud(double longitud) {
-		this.longitud = longitud;
-	}
 	
 }
