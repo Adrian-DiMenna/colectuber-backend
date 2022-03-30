@@ -2,7 +2,6 @@ package com.is.cole.dtos.recorridos;
 
 import com.is.cole.dtos.BaseDto;
 import com.is.cole.dtos.PosicionDto;
-import com.is.cole.dtos.paradas.ParadaDto;
 
 public class PuntoDeRecorridoDto extends BaseDto{
 

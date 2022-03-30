@@ -6,4 +6,5 @@ public interface ITestService {
 	public void insertLineas();
 	public void insertColectivos();
 	public void insertValues();
+	public void deleteUbicacionColectivo(Integer id);
 }

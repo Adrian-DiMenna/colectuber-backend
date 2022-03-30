@@ -21,8 +21,8 @@ public class RecorridoController {
 	@PostMapping
 	public ResponseEntity<?> postRecorrido(@RequestBody RecorridoDto dto){
 		try {
-			RecorridoDto dtoGuardado = recorridoService.saveRecorrido(dto);
-			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
+			recorridoService.saveRecorrido(dto);
+			return ResponseEntity.status(HttpStatus.OK).build();
 		}catch(Exception e){
 			System.err.print(e);
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();

@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.is.cole.daos.IColectivoDao;
+import com.is.cole.daos.IColectivoUbicacionDao;
 import com.is.cole.daos.IEmpresaDeColectivosDao;
 import com.is.cole.daos.ILineaDao;
 import com.is.cole.entities.Colectivo;
@@ -22,6 +23,8 @@ public class TestServiceImpl implements ITestService {
 	@Autowired
 	private IColectivoDao colectivoDao;
 	
+	@Autowired
+	private IColectivoUbicacionDao ubicacionDao;
 	
 	@Override
 	public void insertEmpresas() {
@@ -62,6 +65,13 @@ public class TestServiceImpl implements ITestService {
 		insertEmpresas();
 		insertLineas();
 		insertColectivos();
+	}
+
+
+	@Override
+	public void deleteUbicacionColectivo(Integer id) {
+		ubicacionDao.deleteById(id);
+		
 	}
 	
 	
