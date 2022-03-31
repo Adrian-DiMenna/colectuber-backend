@@ -1,69 +1,95 @@
 package com.is.cole.services.test;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.is.cole.daos.IColectivoDao;
-import com.is.cole.daos.IEmpresaDeColectivosDao;
-import com.is.cole.daos.ILineaDao;
-import com.is.cole.entities.Colectivo;
-import com.is.cole.entities.EmpresaDeColectivos;
-import com.is.cole.entities.Linea;
+import com.is.cole.dtos.Usuarios.RoleDto;
+import com.is.cole.dtos.Usuarios.UsuarioDto;
+import com.is.cole.dtos.colectivos.ColectivoDto;
+import com.is.cole.dtos.colectivos.EmpresaDeColectivosDto;
+import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
+import com.is.cole.dtos.paradas.ParadaDto;
+import com.is.cole.services.colectivos.IColectivoService;
+import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
+import com.is.cole.services.lineas.ILineaColectivosService;
+import com.is.cole.services.paradas.IParadaService;
+import com.is.cole.services.usuarios.IUsuariosService;
 
 @Service
 public class TestServiceImpl implements ITestService {
-
-	@Autowired
-	private IEmpresaDeColectivosDao empresaColectivoDao;
 	
 	@Autowired
-	private ILineaDao lineaDao;
+	private IColectivoService colectivoService;
 	
 	@Autowired
-	private IColectivoDao colectivoDao;
+	private IEmpresaColectivosService empresaService;
 	
+	@Autowired
+	private ILineaColectivosService lineaService;
+	
+	@Autowired
+	private IParadaService paradaService;
+	
+	@Autowired
+	private IUsuariosService usuarioService;
 	
 	@Override
-	public void insertEmpresas() {
-		EmpresaDeColectivos empresaColectivo = new EmpresaDeColectivos();
-		empresaColectivo.setId(1);
-		empresaColectivo.setNombre("La yuteña");
-		empresaColectivo.setDireccion("Tajy/Mburucuya");
-		empresaColectivo.setCorreo("yuteña.encarnacion@gmail.com");
-		empresaColectivo.setNum_telefono("0985635898");
-		empresaColectivoDao.save(empresaColectivo);
+	public void insertTestValues() {
+		
+		LineaDeColectivosDto dtoLinea = new LineaDeColectivosDto();
+		
+		dtoLinea.setNumero("Linea 1");
+		
+		dtoLinea = lineaService.saveLineaColectivo(dtoLinea);
+		
+		
+		EmpresaDeColectivosDto dtoEmpresa = new EmpresaDeColectivosDto();
+		
+		dtoEmpresa.setNombre("Urbano");
+		dtoEmpresa.setCorreo_electronico("urbano@gmail.com");
+		dtoEmpresa.setDireccion("Ruta 6");
+		dtoEmpresa.setNumero_telefono("098756485");
+		
+		dtoEmpresa = empresaService.saveEmpresaColectivo(dtoEmpresa);
+		
+		ColectivoDto dtoColectivo = new ColectivoDto();
+		
+		dtoColectivo.setLineaId(dtoLinea.getId());
+		dtoColectivo.setEmpresaId(dtoEmpresa.getId());
+		dtoColectivo.setNumero("23");
+		
+		colectivoService.saveColectivo(dtoColectivo);
+		
+		ParadaDto dtoParada = new ParadaDto();
+		
+		dtoParada.setNombre("Zona UNI");
+		dtoParada.setDescripcion("Es la parada de zona uni");
+		dtoParada.setLatitud(25.15515);
+		dtoParada.setLongitud(25.848945);
+		dtoParada.setImage(null);
+		
+		
+		paradaService.saveParada(dtoParada);
+		
+		UsuarioDto dtoUsuario = new UsuarioDto();
+		RoleDto dtoRole = new RoleDto();
+		
+		dtoUsuario.setNombre("Angel");
+		dtoUsuario.setApellido("David");
+		dtoUsuario.setCorreo_electronico("angel.david@gmail.com");
+		dtoUsuario.setPassword("muysecreto");
+		
+		dtoRole.setNombre("Administrador");
+		dtoRole.setDescripcion("Es admin");
+		
+		dtoRole = usuarioService.saveRole(dtoRole);
+		dtoUsuario = usuarioService.saveUsuario(dtoUsuario);
+		usuarioService.agregarRoleAUsuario(dtoUsuario.getId(), dtoRole.getId());
+		
 		
 	}
-	
-	
-	@Override
-	public void insertLineas() {
 
-		Linea linea = new Linea();
-		linea.setId(2);
-		linea.setNumero("12");
-		lineaDao.save(linea);
-	}
-
-	@Override
-	public void insertColectivos() {
-		Colectivo colectivo = new Colectivo();
-		colectivo.setId(3);
-		colectivo.setEmpresaColectivo(empresaColectivoDao.getById(1));
-		colectivo.setLineaColectivo(lineaDao.getById(2));
-		colectivo.setNumeroColectivo("12");
-		colectivoDao.save(colectivo);
-		
-	}
-
-
-	@Override
-	public void insertValues() {
-		insertEmpresas();
-		insertLineas();
-		insertColectivos();
-	}
-	
-	
 
 }
