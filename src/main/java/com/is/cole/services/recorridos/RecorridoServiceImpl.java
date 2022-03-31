@@ -147,18 +147,17 @@ public class RecorridoServiceImpl implements IRecorridoService {
 			return null;
 		}
 		PuntoDeRecorridoDto dto = new PuntoDeRecorridoDto();
-
-		PosicionDto puntoDto = new PosicionDto();
-		puntoDto.setLatitud(bean.getLatitud());
-		puntoDto.setLongitud(bean.getLongitud());
-		dto.setPuntoPosicion(puntoDto);
-		
 		dto.setId(bean.getId());
 		
 		if(bean.getParada() != null) {
 			dto.setParadaId(bean.getParada().getId());
 		}else{
 			dto.setParadaId(null);
+
+			PosicionDto puntoDto = new PosicionDto();
+			puntoDto.setLatitud(bean.getLatitud());
+			puntoDto.setLongitud(bean.getLongitud());
+			dto.setPuntoPosicion(puntoDto);
 		}
 
 		return dto;
