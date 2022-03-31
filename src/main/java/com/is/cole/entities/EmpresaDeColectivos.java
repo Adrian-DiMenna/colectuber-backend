@@ -16,9 +16,16 @@ public class EmpresaDeColectivos implements BaseBean{
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(nullable = false, unique= true)
 	private Integer id;
+	
+	@Column(unique= true)
 	private String nombre;
+	
 	private String direccion;
+	
+	@Column(unique= true)
 	private String num_telefono;
+	
+	@Column(unique= true)
 	private String correo;
 	
 	

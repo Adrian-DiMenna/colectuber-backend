@@ -28,11 +28,10 @@ public class Colectivo implements BaseBean{
 	@JoinColumn(name="linea_id",referencedColumnName="id")
 	private Linea lineaColectivo;
 	
-	
+	@Column(unique= true)
 	private String numeroColectivo;
-	//Falta relacionar con usuario
-
-
+	
+	
 	public Integer getId() {
 		return id;
 	}

@@ -18,6 +18,7 @@ public class Linea implements BaseBean{
 	@Column(nullable = false, unique= true)
 	private Integer id;
 
+	@Column(unique= true)
 	private String numero;
 	
 
