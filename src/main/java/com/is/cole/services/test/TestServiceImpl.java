@@ -1,11 +1,9 @@
 package com.is.cole.services.test;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
@@ -67,8 +65,11 @@ public class TestServiceImpl implements ITestService {
 		
 		dtoParada.setNombre("Zona UNI");
 		dtoParada.setDescripcion("Es la parada de zona uni");
-		dtoParada.setLatitud(25.15515);
-		dtoParada.setLongitud(25.848945);
+		
+		dtoParada.setPosicion(new PosicionDto());
+		dtoParada.getPosicion().setLatitud(25.15515);
+		dtoParada.getPosicion().setLongitud(25.848945);
+
 		dtoParada.setImage(null);
 		
 		
