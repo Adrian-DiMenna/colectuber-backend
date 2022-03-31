@@ -21,7 +21,7 @@ public class TestController {
 	@PostMapping("/values")
 	public ResponseEntity<?> postTestValues(){
 		try {
-			testService.insertValues();
+			testService.insertTestValues();
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}catch(Exception e) {
 			System.err.println(e);
