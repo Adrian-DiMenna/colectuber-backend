@@ -1,11 +1,13 @@
 package com.is.cole.services.recorridos;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.is.cole.daos.IParadaDao;
 import com.is.cole.daos.IPuntoDeRecorridoDao;
@@ -28,21 +30,32 @@ public class RecorridoServiceImpl implements IRecorridoService {
 	private IRecorridoDao recorridoDao;
 
 	@Override
+	@Transactional
 	public void saveRecorrido(RecorridoDto dto) {
-		List<PuntoDeRecorrido> puntosBean = parseDtosToBeanPuntosDeRecorrido(dto.getPuntos());
-		List<PuntoDeRecorrido> puntosBeanSaved = puntoRecorridoDao.saveAll(puntosBean);
-		
+	
+		if (dto.getId() != null) {
+			Recorrido recorridoBeanAntiguo = recorridoDao.getById(dto.getId());
+			deletePuntosDeRecorrido(recorridoBeanAntiguo.getPunto_inicial());
+		}
 		Recorrido recorridoBean = parseDtoToBeanRecorrido(dto);
-		recorridoBean.setPunto_inicial(puntosBeanSaved.get(0));
+		List<PuntoDeRecorrido> beansSaved = saveListPuntoDeRecorridoDto(dto.getPuntos());
+		
+
+		if (!beansSaved.isEmpty()) {
+			recorridoBean.setPunto_inicial(beansSaved.get(0));
+		} else {
+			recorridoBean.setPunto_inicial(null);
+		}
 
 		recorridoDao.save(recorridoBean);
-	
+
 	}
 
 	@Override
 	public RecorridoDto getRecorrido(Integer id) {
 		Recorrido recorridoBeanObtenido = recorridoDao.getById(id);
-		List<PuntoDeRecorrido> puntosRecorridoRecuperado = recuperarPuntosDeRecorrido(recorridoBeanObtenido.getPunto_inicial());
+		List<PuntoDeRecorrido> puntosRecorridoRecuperado = recuperarPuntosDeRecorrido(
+				recorridoBeanObtenido.getPunto_inicial());
 
 		RecorridoDto dtoObtenido = parseBeanToDtoRecorrido(recorridoBeanObtenido);
 		dtoObtenido.setPuntos(parseBeansToDtosPuntosDeRecorrido(puntosRecorridoRecuperado));
@@ -51,7 +64,10 @@ public class RecorridoServiceImpl implements IRecorridoService {
 
 	@Override
 	public void deleteRecorrido(Integer id) {
+		Recorrido beanRecorrido = recorridoDao.getById(id);
 		recorridoDao.deleteById(id);
+
+		deletePuntosDeRecorrido(beanRecorrido.getPunto_inicial());
 	}
 
 	@Override
@@ -59,59 +75,57 @@ public class RecorridoServiceImpl implements IRecorridoService {
 		Result<RecorridoDto> dtos = new Result<>();
 		List<RecorridoDto> dtosObtenidos = new ArrayList<>();
 
-		recorridoDao.findAll().stream()
-			.map(recorridoBean -> dtosObtenidos.add(getRecorrido(recorridoBean.getId())))
-			.collect(Collectors.toList());
-		
+		recorridoDao.findAll().stream().map(recorridoBean -> dtosObtenidos.add(getRecorrido(recorridoBean.getId())))
+				.collect(Collectors.toList());
+
 		dtos.setResult(dtosObtenidos);
-		
+
 		return dtos;
 	}
 
-	
-
 	// Metodos Auxiliares
+
+	// Guardar lista de puntos de recorridos
+	private List<PuntoDeRecorrido> saveListPuntoDeRecorridoDto(List<PuntoDeRecorridoDto> dtos) {
+		List<PuntoDeRecorrido> beans = new ArrayList<>();
+
+		PuntoDeRecorrido beanPrevious = null;
+
+		for (int i = dtos.size() - 1; i >= 0; i--) {
+
+			PuntoDeRecorrido bean = parseDtoToBeanPuntoRecorrido(dtos.get(i));
+			bean.setSig_punto(beanPrevious);
+
+			PuntoDeRecorrido beanSaved = puntoRecorridoDao.save(bean);
+			beans.add(beanSaved);
+
+			beanPrevious = beanSaved;
+
+		}
+		Collections.reverse(beans);
+		return beans;
+	}
 
 	// Recuperar puntos de recorrido
 	private List<PuntoDeRecorrido> recuperarPuntosDeRecorrido(PuntoDeRecorrido cabeza) {
-		List<PuntoDeRecorrido> beansObtenido = new ArrayList<PuntoDeRecorrido>();
-		beansObtenido.add(cabeza);
-		PuntoDeRecorrido sig = cabeza.getSig_punto();
 
-		while (sig != null) {
-			beansObtenido.add(sig);
-			sig = sig.getSig_punto();
+		List<PuntoDeRecorrido> beansObtenido = new ArrayList<PuntoDeRecorrido>();
+		PuntoDeRecorrido current = cabeza;
+
+		while (current != null) {
+			beansObtenido.add(current);
+			current = current.getSig_punto();
 		}
 		return beansObtenido;
 	}
+	// Borrar puntos de recorridos
 
-	// Parses Lista de puntos de Recorrido
-
-	private List<PuntoDeRecorrido> parseDtosToBeanPuntosDeRecorrido(List<PuntoDeRecorridoDto> dtos) {
-
-		List<PuntoDeRecorrido> beans = new ArrayList<PuntoDeRecorrido>();
-
-		System.out.println("Longitud:" + dtos.size());
-		
-		for (int i = 0; i < dtos.size(); i++) {
-			
-			PuntoDeRecorridoDto dto = dtos.get(i);
-			PuntoDeRecorrido beanNuevo = parseDtoToBeanPuntoRecorrido(dto);
-			
-			PuntoDeRecorridoDto dtoSig= null;
-			
-			if(dtos.size() > (i+1)) {
-				 dtoSig = dtos.get(i + 1);
-				 beanNuevo.setSig_punto(parseDtoToBeanPuntoRecorrido(dtoSig));
-			}else {
-				beanNuevo.setSig_punto(null);
-			}
-			System.out.println("Se parseo un recorrido dto");
-			beans.add(beanNuevo);
-		}
-
-		return beans;
+	private void deletePuntosDeRecorrido(PuntoDeRecorrido cabeza) {
+		List<PuntoDeRecorrido> beansPuntos = recuperarPuntosDeRecorrido(cabeza);
+		puntoRecorridoDao.deleteAll(beansPuntos);
 	}
+
+	// Parses Lista de puntos de Recorrido de beans a dtos
 
 	private List<PuntoDeRecorridoDto> parseBeansToDtosPuntosDeRecorrido(List<PuntoDeRecorrido> beans) {
 
@@ -121,7 +135,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 		return dtos;
 	}
 
-	// Parses PuntoRecorrido
+	// Parses Puntos de recorrido de dto to bean
 
 	private PuntoDeRecorrido parseDtoToBeanPuntoRecorrido(PuntoDeRecorridoDto dto) {
 		if (dto == null) {
@@ -129,14 +143,13 @@ public class RecorridoServiceImpl implements IRecorridoService {
 		}
 		PuntoDeRecorrido bean = new PuntoDeRecorrido();
 		bean.setId(dto.getId());
-		
+		bean.setLatitud(dto.getPuntoPosicion().getLatitud());
+		bean.setLongitud(dto.getPuntoPosicion().getLongitud());
+
 		if (dto.getParadaId() != null) {
 			bean.setParada(paradaDao.getById(dto.getParadaId()));
-			bean.setLatitud(null);
-			bean.setLongitud(null);
 		} else {
-			bean.setLatitud(dto.getPuntoPosicion().getLatitud());
-			bean.setLongitud(dto.getPuntoPosicion().getLongitud());
+			bean.setParada(null);
 		}
 
 		return bean;
@@ -148,16 +161,16 @@ public class RecorridoServiceImpl implements IRecorridoService {
 		}
 		PuntoDeRecorridoDto dto = new PuntoDeRecorridoDto();
 		dto.setId(bean.getId());
-		
-		if(bean.getParada() != null) {
-			dto.setParadaId(bean.getParada().getId());
-		}else{
-			dto.setParadaId(null);
 
-			PosicionDto puntoDto = new PosicionDto();
-			puntoDto.setLatitud(bean.getLatitud());
-			puntoDto.setLongitud(bean.getLongitud());
-			dto.setPuntoPosicion(puntoDto);
+		PosicionDto puntoDto = new PosicionDto();
+		puntoDto.setLatitud(bean.getLatitud());
+		puntoDto.setLongitud(bean.getLongitud());
+		dto.setPuntoPosicion(puntoDto);
+
+		if (bean.getParada() != null) {
+			dto.setParadaId(bean.getParada().getId());
+		} else {
+			dto.setParadaId(null);
 		}
 
 		return dto;
