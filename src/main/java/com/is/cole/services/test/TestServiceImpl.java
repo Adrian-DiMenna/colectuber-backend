@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
@@ -28,7 +29,7 @@ public class TestServiceImpl implements ITestService {
 	
 	@Autowired
 	private ILineaColectivosService lineaService;
-	
+
 	@Autowired
 	private IParadaService paradaService;
 	
@@ -90,6 +91,4 @@ public class TestServiceImpl implements ITestService {
 		
 		
 	}
-
-
 }
