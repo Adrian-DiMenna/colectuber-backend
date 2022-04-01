@@ -1,5 +1,8 @@
 package com.is.cole.services.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +13,13 @@ import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.colectivos.EmpresaDeColectivosDto;
 import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
 import com.is.cole.dtos.paradas.ParadaDto;
+import com.is.cole.dtos.recorridos.PuntoDeRecorridoDto;
+import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.services.colectivos.IColectivoService;
 import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
 import com.is.cole.services.lineas.ILineaColectivosService;
 import com.is.cole.services.paradas.IParadaService;
+import com.is.cole.services.recorridos.IRecorridoService;
 import com.is.cole.services.usuarios.IUsuariosService;
 
 @Service
@@ -33,6 +39,9 @@ public class TestServiceImpl implements ITestService {
 	
 	@Autowired
 	private IUsuariosService usuarioService;
+	
+	@Autowired
+	private IRecorridoService recorridoService;
 	
 	@Override
 	public void insertTestValues() {
@@ -89,6 +98,45 @@ public class TestServiceImpl implements ITestService {
 		dtoRole = usuarioService.saveRole(dtoRole);
 		dtoUsuario = usuarioService.saveUsuario(dtoUsuario);
 		usuarioService.agregarRoleAUsuario(dtoUsuario.getId(), dtoRole.getId());
+		
+		
+		RecorridoDto dtoRecorrido = new RecorridoDto();
+		dtoRecorrido.setDescripcion("Recorrido desde la uni hasta el circuito");
+		dtoRecorrido.setNombre("Principal A");
+		
+		List<PuntoDeRecorridoDto> puntos = new ArrayList<>();
+		
+		PuntoDeRecorridoDto punto1 = new PuntoDeRecorridoDto();
+		punto1.setPuntoPosicion(new PosicionDto());
+		punto1.getPuntoPosicion().setLatitud(4.5);
+		punto1.getPuntoPosicion().setLongitud(5.5);
+		
+		PuntoDeRecorridoDto punto2 = new PuntoDeRecorridoDto();
+		punto2.setPuntoPosicion(new PosicionDto());
+		punto2.getPuntoPosicion().setLatitud(5.5);
+		punto2.getPuntoPosicion().setLongitud(6.5);
+		
+		PuntoDeRecorridoDto punto3 = new PuntoDeRecorridoDto();
+		punto3.setPuntoPosicion(new PosicionDto());
+		punto3.getPuntoPosicion().setLatitud(6.5);
+		punto3.getPuntoPosicion().setLongitud(7.5);
+		
+		PuntoDeRecorridoDto punto4 = new PuntoDeRecorridoDto();
+		punto4.setPuntoPosicion(new PosicionDto());
+		punto4.getPuntoPosicion().setLatitud(7.5);
+		punto4.getPuntoPosicion().setLongitud(8.5);
+		
+		puntos.add(punto1);
+		puntos.add(punto2);
+		puntos.add(punto3);
+		puntos.add(punto4);
+		
+		dtoRecorrido.setPuntos(puntos);
+		
+		recorridoService.saveRecorrido(dtoRecorrido);
+		
+		
+		
 		
 		
 	}
