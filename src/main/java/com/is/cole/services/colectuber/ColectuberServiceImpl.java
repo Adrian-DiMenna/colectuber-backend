@@ -11,7 +11,11 @@ import com.is.cole.daos.IColectivoUbicacionDao;
 import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
+import com.is.cole.dtos.colectuber.InitialDataDto;
 import com.is.cole.entities.ColectivoUbicacion;
+import com.is.cole.services.colectivos.IColectivoService;
+import com.is.cole.services.paradas.IParadaService;
+import com.is.cole.services.recorridos.IRecorridoService;
 
 @Service
 public class ColectuberServiceImpl implements IColectuberService{
@@ -21,6 +25,32 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	@Autowired
 	private IColectivoDao colectivoDao;
+	
+	@Autowired
+	private IColectivoService colectivoService;
+	
+	@Autowired
+	private IParadaService paradaService;
+	
+	@Autowired
+	private IRecorridoService recorridoService;
+	
+	
+	
+	@Override
+	public InitialDataDto getInitialData() {
+		
+		InitialDataDto dto = new InitialDataDto();
+		
+		dto.setColectivos(colectivoService.getAllColectivo().getResult());
+		
+		dto.setParadas(paradaService.getAllParadas().getResult());
+		
+		dto.setRecorridos(recorridoService.getAllRecorrido().getResult());
+		
+		return dto;
+	}
+	
 	
 	@Override
 	public void postColectivoUbicacion(ColectivoUbicacionDto dto) {
@@ -71,6 +101,8 @@ public class ColectuberServiceImpl implements IColectuberService{
 		return dto;
 		
 	}
+
+	
 
 	
 

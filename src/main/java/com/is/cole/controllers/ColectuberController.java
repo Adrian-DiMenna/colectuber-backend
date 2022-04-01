@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
+import com.is.cole.dtos.colectuber.InitialDataDto;
 import com.is.cole.services.colectuber.IColectuberService;
 
 @RestController
@@ -37,6 +38,17 @@ public class ColectuberController {
 	public ResponseEntity<?> getColectivosUbicacion(){
 		try {
 			Result<ColectivoUbicacionDto> dtos = colectuberService.getColectivosUbicacion();
+			return ResponseEntity.status(HttpStatus.OK).body(dtos);
+		}catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	
+	@GetMapping("/getData")
+	public ResponseEntity<?> getInitialData(){
+		try {
+			InitialDataDto dtos = colectuberService.getInitialData();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		}catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
