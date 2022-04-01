@@ -6,9 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="empresas_colectivos")
+@Table(name="empresas_colectivos",uniqueConstraints=@UniqueConstraint(name="uk_nombre_correo",
+columnNames = {"nombre","correo"}))
 public class EmpresaDeColectivos implements BaseBean{
 	private static final long serialVersionUID = 1L;
 	
@@ -17,17 +19,15 @@ public class EmpresaDeColectivos implements BaseBean{
 	@Column(nullable = false, unique= true)
 	private Integer id;
 	
-	@Column(unique= true)
+	@Column(name="correo")
+	private String correo;
+	
+	@Column(name="nombre")
 	private String nombre;
 	
 	private String direccion;
 	
-	@Column(unique= true)
 	private String num_telefono;
-	
-	@Column(unique= true)
-	private String correo;
-	
 	
 	public Integer getId() {
 		return id;
