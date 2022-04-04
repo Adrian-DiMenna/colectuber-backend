@@ -14,7 +14,10 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
-@Table(name="viajes",uniqueConstraints=@UniqueConstraint(name="uk_usuario_id_colectivo_id", columnNames = {"colectivo_id","usuario_id"}))
+@Table(name="viajes",uniqueConstraints= {
+		@UniqueConstraint(name="uk_usuario",columnNames = {"usuario_id"}),
+		@UniqueConstraint(name="uk_colectivo",columnNames = {"colectivo_id"})
+})
 public class Viaje implements BaseBean{
 	private static final long serialVersionUID = 1L;
 	
