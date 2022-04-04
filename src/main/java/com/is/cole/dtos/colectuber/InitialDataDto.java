@@ -11,22 +11,22 @@ public class InitialDataDto extends BaseDto{
 
 	private static final long serialVersionUID = 1L;
 
-	private List<ColectivoDto> colectivos;
+	private List<ColectuberColectivoDto> colectivos;
 	
 	private List<ParadaDto> paradas;
 	
 	private List<RecorridoDto> recorridos;
 	
 	private List<ColectivoUbicacionDto> colectivoUbicacion;
-
-	public List<ColectivoDto> getColectivos() {
+	
+	public List<ColectuberColectivoDto> getColectivos() {
 		return colectivos;
 	}
 
-	public void setColectivos(List<ColectivoDto> colectivos) {
+	public void setColectivos(List<ColectuberColectivoDto> colectivos) {
 		this.colectivos = colectivos;
 	}
-	
+
 	public List<ParadaDto> getParadas() {
 		return paradas;
 	}
