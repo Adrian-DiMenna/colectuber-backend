@@ -14,4 +14,6 @@ public interface IRolesUsuarioDao extends JpaRepository<RoleUsuario, Integer> {
 	
 	@Query("SELECT u FROM RoleUsuario u WHERE u.usuarios.id = ?1")
 	public List<RoleUsuario> findByUsuarioId(Integer usuarioId);
+	
+	
 }
