@@ -45,7 +45,7 @@ public class ColectuberController {
 	}
 	
 	
-	@GetMapping("/getData")
+	@GetMapping("/get-data")
 	public ResponseEntity<?> getInitialData(){
 		try {
 			InitialDataDto dtos = colectuberService.getInitialData();

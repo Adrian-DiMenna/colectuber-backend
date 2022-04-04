@@ -36,7 +36,6 @@ public class ColectuberServiceImpl implements IColectuberService{
 	private IRecorridoService recorridoService;
 	
 	
-	
 	@Override
 	public InitialDataDto getInitialData() {
 		
@@ -47,6 +46,8 @@ public class ColectuberServiceImpl implements IColectuberService{
 		dto.setParadas(paradaService.getAllParadas().getResult());
 		
 		dto.setRecorridos(recorridoService.getAllRecorrido().getResult());
+		
+		dto.setColectivoUbicacion(getColectivosUbicacion().getResult());
 		
 		return dto;
 	}

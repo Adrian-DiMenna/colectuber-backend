@@ -16,6 +16,8 @@ public class InitialDataDto extends BaseDto{
 	private List<ParadaDto> paradas;
 	
 	private List<RecorridoDto> recorridos;
+	
+	private List<ColectivoUbicacionDto> colectivoUbicacion;
 
 	public List<ColectivoDto> getColectivos() {
 		return colectivos;
@@ -40,6 +42,16 @@ public class InitialDataDto extends BaseDto{
 	public void setRecorridos(List<RecorridoDto> recorridos) {
 		this.recorridos = recorridos;
 	}
+
+	public List<ColectivoUbicacionDto> getColectivoUbicacion() {
+		return colectivoUbicacion;
+	}
+
+	public void setColectivoUbicacion(List<ColectivoUbicacionDto> colectivoUbicacion) {
+		this.colectivoUbicacion = colectivoUbicacion;
+	}
+	
+	
 
 	
 }
