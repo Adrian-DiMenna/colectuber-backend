@@ -8,24 +8,24 @@ public class ColectivoUbicacionDto extends BaseDto{
 	
 	private PosicionDto posicionColectivo;
 	private Integer colectivoId;
-	private Integer indice;
-	private Double porcentaje;
+	private Double indicePorcentaje;
 	private Integer recorrido_id;
-
-	public Integer getIndice() {
-		return indice;
+	private Integer chofer_id;
+	
+	public Integer getChofer_id() {
+		return chofer_id;
 	}
 
-	public void setIndice(Integer indice) {
-		this.indice = indice;
+	public void setChofer_id(Integer chofer_id) {
+		this.chofer_id = chofer_id;
 	}
 
-	public Double getPorcentaje() {
-		return porcentaje;
+	public Double getIndicePorcentaje() {
+		return indicePorcentaje;
 	}
 
-	public void setPorcentaje(Double porcentaje) {
-		this.porcentaje = porcentaje;
+	public void setIndicePorcentaje(Double indicePorcentaje) {
+		this.indicePorcentaje = indicePorcentaje;
 	}
 
 	public Integer getRecorrido_id() {

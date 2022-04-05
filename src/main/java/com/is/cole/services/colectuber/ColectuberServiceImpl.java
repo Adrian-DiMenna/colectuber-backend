@@ -1,27 +1,22 @@
 package com.is.cole.services.colectuber;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.is.cole.daos.IColectivoDao;
 import com.is.cole.daos.IColectivoUbicacionDao;
 import com.is.cole.daos.IRecorridoDao;
 import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
+import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
-import com.is.cole.dtos.recorridos.PuntoDeRecorridoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.entities.ColectivoUbicacion;
-import com.is.cole.entities.Recorrido;
-import com.is.cole.services.ayuda.Deg2UTM;
 import com.is.cole.services.colectivos.IColectivoService;
 import com.is.cole.services.paradas.IParadaService;
 import com.is.cole.services.recorridos.IRecorridoService;
+import com.is.cole.services.viajes.IViajesService;
 
 @Service
 public class ColectuberServiceImpl implements IColectuberService{
@@ -38,6 +33,8 @@ public class ColectuberServiceImpl implements IColectuberService{
 	private IRecorridoService recorridoService;
 	@Autowired
 	private IRecorridoDao recorridoDao;
+	@Autowired
+	private IViajesService viajeService;
 	
 	@Override
 	public InitialDataDto getInitialData() {
@@ -55,7 +52,18 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	@Override
 	public void postColectivoUbicacion(ColectivoUbicacionDto dto) {
-		ColectivoUbicacion ubi = parseDtoToBeanColectivoUbicacion(dto);
+		
+		ViajeDto viaje = viajeService.getByChoferIdViaje(dto.getChofer_id());
+		double indicePorcentaje = getIndicePorcentajeFromPoint(recorridoService.getRecorrido(viaje.getRecorrido_id()), dto.getPosicionColectivo());
+		
+		ColectivoUbicacionDto dtoNuevo= new ColectivoUbicacionDto();
+		dtoNuevo.setColectivoId(viaje.getColectivo_id());
+		dtoNuevo.setChofer_id(viaje.getChofer_id());
+		dtoNuevo.setIndicePorcentaje(indicePorcentaje);
+		dtoNuevo.setPosicionColectivo(dto.getPosicionColectivo());
+		dtoNuevo.setRecorrido_id(viaje.getRecorrido_id());
+		
+		ColectivoUbicacion ubi = parseDtoToBeanColectivoUbicacion(dtoNuevo);
 		colectivoUbicacionDao.save(ubi);
 	}
 	
@@ -74,65 +82,109 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	/******************* Special Functions *******************/
 	
-	@Override
-	public void getDistanciasPrueba(ColectivoUbicacionDto dto) {
-		setIndiceAndPorcentaje(dto);
-	}
-	
-	private ColectivoUbicacionDto setIndiceAndPorcentaje(ColectivoUbicacionDto dto) {
+	private Double getIndicePorcentajeFromPoint(RecorridoDto recorrido, PosicionDto punto) {
 		
-		List<Double> distancias = getDistancias(dto);
+		//Calcular la linea mas cercana al punto
+		Integer indice = null;
+		PosicionDto puntoR = null;
 		
-		for(int i =0; i< distancias.size(); i++) {
-			System.out.println("Al indice"+i+" distancia:"+distancias.get(i));
-		}
-		
-		
-		return null;
-	}
-	
-	private List<Double> getDistancias(ColectivoUbicacionDto dto){
-		RecorridoDto recorridoDto = recorridoService.getRecorrido(dto.getRecorrido_id());
-		List<PuntoDeRecorridoDto> lista = recorridoDto.getPuntos();
-		List<Double> distancias = new ArrayList<>();
-		
-		//Obtenemos el punto
-		
-		double puntoX= dto.getPosicionColectivo().getLongitud();
-		double puntoY= dto.getPosicionColectivo().getLatitud();
-		
-		
-		System.out.println("principal x:"+puntoX + "principal y:"+puntoY);
-		
-		for(int i=0; i< lista.size(); i++) {
+		for(int i=0; i< recorrido.getPuntos().size() - 1; i++) {
+			PosicionDto posActual = recorrido.getPuntos().get(i).getPuntoPosicion();
+			PosicionDto posSig= recorrido.getPuntos().get(i+1).getPuntoPosicion();
 			
-			if((i+1) < lista.size() ) {
+			PosicionDto posInter= intersectionPointToLine(punto, posActual, posSig);
+			
+			if( indice == null) {
+				indice = i;
+				puntoR= posInter;
+			}else {
+				double distanceRP= distancePointToPoint(punto, puntoR);
+				double distanceIP= distancePointToPoint(punto, posInter);
 				
-				//Obtenemos los dos puntos de la recta
-				
-				//Primer punto
-				double  x1= lista.get(i).getPuntoPosicion().getLongitud();
-				double  y1= lista.get(i).getPuntoPosicion().getLatitud(); 				
-				
-				//Segundo punto
-				double  x2= lista.get(i+1).getPuntoPosicion().getLongitud();
-				double  y2= lista.get(i+1).getPuntoPosicion().getLatitud(); 
-				
-				//Calculamos la pendiente
-				double m= (y2 - y1)/(x2 - x1);
-				
-				//Calculamos A B y C de la ecuacion y - y1 = m (x - x1)
-				double A= -m;
-				double B=1;
-				double C= -(y1 - m*x1);
-				
-				//Se calcula la distancia con el punto
-				double distancia = (Math.abs(A*puntoX + B*puntoY + C))/(Math.sqrt((A*A) + (B*B)))
-				distancias.add(distancia);
+				if(distanceIP < distanceRP) {
+					indice = i;
+					puntoR = posInter;
+				}	
 			}
 		}
-		return distancias;
+		
+		//Pasar a indece porcentaje
+		
+		PosicionDto posIndice= recorrido.getPuntos().get(indice).getPuntoPosicion();
+		PosicionDto posIndiceSig= recorrido.getPuntos().get(indice+1).getPuntoPosicion();
+		
+		double distanceIR= distancePointToPoint(posIndice, puntoR);
+		double distanceIS= distancePointToPoint(posIndice, posIndiceSig);
+		
+		double porcentaje = distanceIR / distanceIS;
+		
+		double indicePorcentaje = indice + porcentaje;
+		
+		return indicePorcentaje;
 	}
+
+	
+	private Double distancePointToPoint(PosicionDto punto1, PosicionDto punto2) {
+		double resultado;
+		double x1,y1,x2,y2;
+		
+		x1= punto1.getLongitud();
+		y1= punto1.getLatitud();
+		
+		x2= punto2.getLongitud();
+		y2= punto2.getLatitud();
+		
+		double dx = x2 - x1;
+		double dy = y2 - y1;
+		
+		resultado = Math.sqrt(dx*dx + dy*dy);
+		return resultado;
+	}
+	
+	
+	//Quitamos la formula de este post https://stackoverflow.com/questions/849211/shortest-distance-between-a-point-and-a-line-segment
+	private PosicionDto intersectionPointToLine(PosicionDto punto, PosicionDto rectaPunto1, PosicionDto rectaPunto2) {
+		
+		double x,y,x1,y1,x2,y2;
+		x= punto.getLongitud();
+		y= punto.getLatitud();
+		x1= rectaPunto1.getLongitud();
+		y1= rectaPunto1.getLatitud();
+		x2= rectaPunto2.getLongitud();
+		y2= rectaPunto2.getLatitud();
+		
+		double A= x - x1;
+		double B= y - y1;
+		double C= x2 - x1;
+		double D= y2 - y1;
+		
+		double dot= A * C + B * D;
+		double len_sq= C * C + D * D;
+		double param = -1;
+		
+		if(len_sq != 0) {
+			param = dot / len_sq;
+		}
+		
+		double xx,yy;
+		
+		if(param < 0) {
+			xx= x1;
+			yy= y1;
+		}else if( param > 1) {
+			xx = x2;
+			yy = y2;
+		}else {
+			xx = x1 + param * C;
+			yy = y1 + param * D;
+		}
+		
+		PosicionDto resultado = new PosicionDto();
+		resultado.setLongitud(xx);
+		resultado.setLatitud(yy);
+		return resultado;
+	}
+	
 	
 	
 	/*Parses*/
@@ -146,6 +198,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 		ubi.setTime(System.currentTimeMillis());
 	
 		ubi.setRecorrido(recorridoDao.getById(dto.getRecorrido_id()));
+		ubi.setIndicePorcentaje(dto.getIndicePorcentaje());
 		return ubi;
 	}
 	
@@ -160,8 +213,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 		dto.setColectivoId(bean.getColectivo().getId());
 		dto.setPosicionColectivo(posDto);
 		
-		dto.setIndice(bean.getIndice());
-		dto.setPorcentaje(bean.getPorcentaje());
+		dto.setIndicePorcentaje(bean.getIndicePorcentaje());
 		dto.setRecorrido_id(bean.getRecorrido().getId());
 		return dto;
 	}

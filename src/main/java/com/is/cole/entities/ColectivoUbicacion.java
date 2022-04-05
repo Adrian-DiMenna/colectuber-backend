@@ -34,27 +34,19 @@ public class ColectivoUbicacion implements BaseBean{
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Recorrido recorrido;
 	
-	private Integer indice;
-	private Double porcentaje;
-	
-	
+	private double indicePorcentaje;
+
+	public double getIndicePorcentaje() {
+		return indicePorcentaje;
+	}
+	public void setIndicePorcentaje(double indicePorcentaje) {
+		this.indicePorcentaje = indicePorcentaje;
+	}
 	public Recorrido getRecorrido() {
 		return recorrido;
 	}
 	public void setRecorrido(Recorrido recorrido) {
 		this.recorrido = recorrido;
-	}
-	public Integer getIndice() {
-		return indice;
-	}
-	public void setIndice(Integer indice) {
-		this.indice = indice;
-	}
-	public Double getPorcentaje() {
-		return porcentaje;
-	}
-	public void setPorcentaje(Double porcentaje) {
-		this.porcentaje = porcentaje;
 	}
 	public Colectivo getColectivo() {
 		return colectivo;
