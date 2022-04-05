@@ -9,11 +9,15 @@ import com.is.cole.daos.IRecorridoDao;
 import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Viajes.ViajeDto;
+import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
+import com.is.cole.dtos.colectuber.ColectuberColectivoDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.entities.ColectivoUbicacion;
 import com.is.cole.services.colectivos.IColectivoService;
+import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
+import com.is.cole.services.lineas.ILineaColectivosService;
 import com.is.cole.services.paradas.IParadaService;
 import com.is.cole.services.recorridos.IRecorridoService;
 import com.is.cole.services.viajes.IViajesService;
@@ -35,19 +39,29 @@ public class ColectuberServiceImpl implements IColectuberService{
 	private IRecorridoDao recorridoDao;
 	@Autowired
 	private IViajesService viajeService;
+	@Autowired
+	private IEmpresaColectivosService empresaService;
+	@Autowired
+	private ILineaColectivosService lineaService;
+	
 	
 	@Override
 	public InitialDataDto getInitialData() {
-		
+
 		InitialDataDto dto = new InitialDataDto();
-		
-		dto.setColectivos(colectivoService.getAllColectivo().getResult());
+
+		dto.setColectivos(colectivoService.getAllColectivo().getResult().stream()
+				.map(c -> parseColectivoDtoToDtoColectuberDto(c)).collect(Collectors.toList()));
+
 		dto.setParadas(paradaService.getAllParadas().getResult());
+
 		dto.setRecorridos(recorridoService.getAllRecorrido().getResult());
+
 		dto.setColectivoUbicacion(getColectivosUbicacion().getResult());
-		
+
 		return dto;
 	}
+
 	
 	
 	@Override
@@ -218,7 +232,18 @@ public class ColectuberServiceImpl implements IColectuberService{
 		return dto;
 	}
 
+	private ColectuberColectivoDto parseColectivoDtoToDtoColectuberDto(ColectivoDto dto) {
 
+		ColectuberColectivoDto newDto = new ColectuberColectivoDto();
+
+		newDto.setId(dto.getId());
+		newDto.setEmpresa(empresaService.getEmpresaColectivo(dto.getEmpresaId()).getNombre());
+		newDto.setLinea(lineaService.getLineaColectivo(dto.getLineaId()).getNumero());
+		newDto.setNumero(dto.getNumero());
+
+		return newDto;
+
+	}
 	
 	
 
