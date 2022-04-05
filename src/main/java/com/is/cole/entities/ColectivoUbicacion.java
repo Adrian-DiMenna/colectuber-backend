@@ -4,8 +4,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "ubicaciones")
@@ -25,7 +29,25 @@ public class ColectivoUbicacion implements BaseBean{
 	private Double longitud;
 	private Long tiempo;
 	
+	@ManyToOne
+	@JoinColumn(name="recorrido_id",referencedColumnName="id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Recorrido recorrido;
 	
+	private double indicePorcentaje;
+
+	public double getIndicePorcentaje() {
+		return indicePorcentaje;
+	}
+	public void setIndicePorcentaje(double indicePorcentaje) {
+		this.indicePorcentaje = indicePorcentaje;
+	}
+	public Recorrido getRecorrido() {
+		return recorrido;
+	}
+	public void setRecorrido(Recorrido recorrido) {
+		this.recorrido = recorrido;
+	}
 	public Colectivo getColectivo() {
 		return colectivo;
 	}
