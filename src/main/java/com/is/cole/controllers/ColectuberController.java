@@ -55,6 +55,17 @@ public class ColectuberController {
 		}
 	}
 	
+	@GetMapping("/distancias")
+	public ResponseEntity<?> getDistancias(@RequestBody ColectivoUbicacionDto dto){
+		try {
+			colectuberService.getDistanciasPrueba(dto);
+			return ResponseEntity.status(HttpStatus.OK).build();
+		}catch(Exception e) {
+			System.err.print(e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
 	
 
 }
