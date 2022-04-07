@@ -197,5 +197,58 @@ public class TestServiceImpl implements ITestService {
 		viaje.setRecorrido_id(recorridoService.getAllRecorrido().getResult().get(0).getId());
 		viajeService.saveViaje(viaje);
 		
+		//Agregamos el recorrido Zona centro a UNI
+		
+		RecorridoDto dtoRecorridoUni = new RecorridoDto();
+		dtoRecorrido.setDescripcion("Recorrido Zona Centro a UNI ");
+		dtoRecorrido.setNombre("Principal UNI");
+		
+		List<PuntoDeRecorridoDto> puntosUni = new ArrayList<>();
+		
+		PuntoDeRecorridoDto puntoUni1 = new PuntoDeRecorridoDto();
+		puntoUni1.setPuntoPosicion(new PosicionDto());
+		puntoUni1.getPuntoPosicion().setLatitud(-27.309675906048817);
+		puntoUni1.getPuntoPosicion().setLongitud(-55.8866588781164);
+		
+		PuntoDeRecorridoDto puntoUni2 = new PuntoDeRecorridoDto();
+		puntoUni2.setPuntoPosicion(new PosicionDto());
+		puntoUni2.getPuntoPosicion().setLatitud(-27.30855247497118);
+		puntoUni2.getPuntoPosicion().setLongitud(-55.88844384308095);
+		
+		PuntoDeRecorridoDto puntoUni3 = new PuntoDeRecorridoDto();
+		puntoUni3.setPuntoPosicion(new PosicionDto());
+		puntoUni3.getPuntoPosicion().setLatitud(-27.307803514569393);
+		puntoUni3.getPuntoPosicion().setLongitud(-55.88771250328124);
+		
+		PuntoDeRecorridoDto puntoUni4 = new PuntoDeRecorridoDto();
+		puntoUni4.setPuntoPosicion(new PosicionDto());
+		puntoUni4.getPuntoPosicion().setLatitud(-27.306602964630766);
+		puntoUni4.getPuntoPosicion().setLongitud(-55.88678283402331);
+		
+		PuntoDeRecorridoDto puntoUni5 = new PuntoDeRecorridoDto();
+		puntoUni5.setPuntoPosicion(new PosicionDto());
+		puntoUni5.getPuntoPosicion().setLatitud(-27.30583196240876);
+		puntoUni5.getPuntoPosicion().setLongitud(-55.88615065892791);
+		
+		PuntoDeRecorridoDto puntoUni6 = new PuntoDeRecorridoDto();
+		puntoUni6.setPuntoPosicion(new PosicionDto());
+		puntoUni6.getPuntoPosicion().setLatitud(-27.30519312793853);
+		puntoUni6.getPuntoPosicion().setLongitud(-55.887452195889026);
+		
+		puntosUni.add(puntoUni1);
+		puntosUni.add(puntoUni2);
+		puntosUni.add(puntoUni3);
+		puntosUni.add(puntoUni4);
+		puntosUni.add(puntoUni5);
+		puntosUni.add(puntoUni6);
+		
+		dtoRecorridoUni.setPuntos(puntosUni);
+		
+		recorridoService.saveRecorrido(dtoRecorridoUni);
+		
+		//Un update del viaje del chofer Antonio
+		viaje.setRecorrido_id(recorridoService.getAllRecorrido().getResult().get(1).getId());
+		viajeService.saveViaje(viaje);
+		
 	}
 }
