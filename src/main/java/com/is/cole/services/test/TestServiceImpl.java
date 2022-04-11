@@ -3,6 +3,8 @@ package com.is.cole.services.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +50,7 @@ public class TestServiceImpl implements ITestService {
 	@Autowired
 	private IViajesService viajeService;
 	@Override
+	@Transactional
 	public void insertTestValues() {
 		
 		LineaDeColectivosDto dtoLinea = new LineaDeColectivosDto();

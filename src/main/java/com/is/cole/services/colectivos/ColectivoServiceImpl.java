@@ -2,8 +2,11 @@ package com.is.cole.services.colectivos;
 
 import java.util.stream.Collectors;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.is.cole.daos.IColectivoDao;
 import com.is.cole.daos.IEmpresaDeColectivosDao;
@@ -26,24 +29,28 @@ public class ColectivoServiceImpl implements IColectivoService{
 	//Metodos
 	
 	@Override
+	@Transactional
 	public ColectivoDto saveColectivo(ColectivoDto dto) {
 		Colectivo beanGuardado = colectivoDao.save(parseDtoToBeanColectivo(dto));
 		return parseBeanToDtoColectivo(beanGuardado);
 	}
 
 	@Override
+	@Transactional
 	public ColectivoDto getColectivo(Integer id) {
 		Colectivo beanObtenido = colectivoDao.getById(id);
 		return parseBeanToDtoColectivo(beanObtenido);
 	}
 
 	@Override
+	@Transactional
 	public void deleteColectivo(Integer id) {
 		colectivoDao.deleteById(id);
 		
 	}
 
 	@Override
+	@Transactional
 	public Result<ColectivoDto> getAllColectivo() {
 		Result<ColectivoDto> dtosObtenido = new Result<>();
 		

@@ -1,6 +1,9 @@
 package com.is.cole.services.colectuber;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IColectivoDao;
@@ -46,6 +49,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	
 	@Override
+	@Transactional
 	public InitialDataDto getInitialData() {
 
 		InitialDataDto dto = new InitialDataDto();
@@ -65,6 +69,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	
 	@Override
+	@Transactional
 	public void postColectivoUbicacion(ColectivoUbicacionDto dto) {
 		
 		ViajeDto viaje = viajeService.getByChoferIdViaje(dto.getChofer_id());
@@ -82,6 +87,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 	}
 	
 	@Override
+	@Transactional
 	public Result<ColectivoUbicacionDto> getColectivosUbicacion() {
 		Result<ColectivoUbicacionDto> dtos = new Result<>();
 

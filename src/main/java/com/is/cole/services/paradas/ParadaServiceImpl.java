@@ -2,6 +2,7 @@ package com.is.cole.services.paradas;
 
 import java.util.stream.Collectors;
 
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public class ParadaServiceImpl implements IParadaService {
 	private IParadaDao paradaDao;
 	
 	@Override
+	@Transactional
 	public ParadaDto saveParada(ParadaDto dto) {
 		Parada bean = parseDtotoBean(dto);
 		Parada beanGuardado = paradaDao.save(bean);
@@ -27,6 +29,7 @@ public class ParadaServiceImpl implements IParadaService {
 	}
 
 	@Override
+	@Transactional
 	public Result<ParadaDto> getAllParadas() {
 		Result<ParadaDto> result = new Result<>();
 		List<ParadaDto> list = paradaDao.findAll().stream().map((bean)->{
@@ -37,12 +40,14 @@ public class ParadaServiceImpl implements IParadaService {
 	}
 
 	@Override
+	@Transactional
 	public ParadaDto getParadaById(Integer id) {
 		Parada beanObtenido = paradaDao.getById(id);
 		return parseBeanToDto(beanObtenido);
 	}
 
 	@Override
+	@Transactional
 	public void deleteById(Integer id) {
 		paradaDao.deleteById(id);
 	}

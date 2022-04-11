@@ -1,6 +1,9 @@
 package com.is.cole.services.empresaColectivos;
 
 import java.util.stream.Collectors;
+
+import org.springframework.transaction.annotation.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IEmpresaDeColectivosDao;
@@ -19,24 +22,28 @@ public class EmpresaColectivosImpl implements IEmpresaColectivosService{
 	//Metodos
 	
 	@Override
+	@Transactional
 	public EmpresaDeColectivosDto saveEmpresaColectivo(EmpresaDeColectivosDto dto) {
 		EmpresaDeColectivos bean = parseDtoToBeanEmpresaColectivo(dto);
 		return parseBeanToDtoEmpresaColectivo(empresaDao.save(bean));
 	}
 
 	@Override
+	@Transactional
 	public EmpresaDeColectivosDto getEmpresaColectivo(Integer empresaId) {
 		EmpresaDeColectivos beanObtenido= empresaDao.getById(empresaId);
 		return parseBeanToDtoEmpresaColectivo(beanObtenido);
 	}
 
 	@Override
+	@Transactional
 	public void deleteEmpresaColectivo(Integer empresaId) {
 		empresaDao.deleteById(empresaId);
 		
 	}
 
 	@Override
+	@Transactional
 	public Result<EmpresaDeColectivosDto> getAllEmpresaColectivo() {
 		Result<EmpresaDeColectivosDto> dtos = new Result<>();
 		
