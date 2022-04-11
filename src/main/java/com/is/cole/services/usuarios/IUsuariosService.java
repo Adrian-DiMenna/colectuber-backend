@@ -1,5 +1,8 @@
 package com.is.cole.services.usuarios;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
@@ -26,4 +29,8 @@ public interface IUsuariosService {
 	
 	public Boolean isUsuarioRole(Integer userId,Integer roleId);
 	public Boolean isUsuarioRole(Integer userId,String roleName);
+	
+	//Security
+	public UserDetails loadUserByUserName(String username) 
+		throws UsernameNotFoundException;
 }
