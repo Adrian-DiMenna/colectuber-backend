@@ -2,6 +2,8 @@ package com.is.cole.services.lineas;
 
 import java.util.stream.Collectors;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,7 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 	// Metodos
 
 	@Override
+	@Transactional
 	public LineaDeColectivosDto saveLineaColectivo(LineaDeColectivosDto dto) {
 
 		Linea beanGuardado = lineaDao.save(parseDtoToBeanLineaColectivo(dto));
@@ -28,17 +31,20 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 	}
 
 	@Override
+	@Transactional
 	public LineaDeColectivosDto getLineaColectivo(Integer lineaId) {
 		Linea beanObtenido = lineaDao.getById(lineaId);
 		return parseBeanToDtoLineaColectivo(beanObtenido);
 	}
 
 	@Override
+	@Transactional
 	public void deleteLineaColectivo(Integer lineaId) {
 		lineaDao.deleteById(lineaId);
 	}
 
 	@Override
+	@Transactional
 	public Result<LineaDeColectivosDto> getAllLineaColectivo() {
 		Result<LineaDeColectivosDto> dtos = new Result<>();
 

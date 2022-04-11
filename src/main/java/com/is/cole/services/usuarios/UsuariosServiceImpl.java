@@ -2,6 +2,9 @@ package com.is.cole.services.usuarios;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IRoleDao;
@@ -30,6 +33,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	/********************************* Usuarios *******************************/
 	
 	@Override
+	@Transactional
 	public UsuarioDto saveUsuario(UsuarioDto dto) {
 		Usuarios bean = parseDtoToBeanUsuario(dto);
 		Usuarios beanGuardado= usuarioDao.save(bean);
@@ -37,17 +41,20 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 
 	@Override
+	@Transactional
 	public void deleteUsuario(Integer id) {
 		usuarioDao.deleteById(id);
 	}
 
 	@Override
+	@Transactional
 	public UsuarioDto getUsuario(Integer id) {
 		Usuarios beanObtenido = usuarioDao.getById(id);
 		return parseBeanToDtoUsuario(beanObtenido);
 	}
 	
 	@Override
+	@Transactional
 	public Result<UsuarioDto> getAllUsuario() {
 		Result<UsuarioDto> result = new Result<>();
 		List<UsuarioDto> list = usuarioDao.findAll().stream().map((bean)->{
@@ -61,6 +68,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	/***************************** Roles ****************************************/
 	
 	@Override
+	@Transactional
 	public RoleDto saveRole(RoleDto dto) {
 		Roles role = parseDtoToBeanRole(dto);
 		Roles guardarRole = roleDao.save(role);
@@ -68,17 +76,20 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 
 	@Override
+	@Transactional
 	public RoleDto getRole(Integer id) {
 		Roles bean = roleDao.getById(id);
 		return parseBeanToDtoRole(bean);
 	}
 	
 	@Override
+	@Transactional
 	public void deleteRole(Integer id) {
 		roleDao.deleteById(id);
 	}
 	
 	@Override
+	@Transactional
 	public Result<RoleDto> getAllRole() {
 		Result<RoleDto> result = new Result<>();
 		List<RoleDto> list = roleDao.findAll().stream().map((bean)->{
@@ -91,6 +102,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	
 	
 	@Override
+	@Transactional
 	public void agregarRoleAUsuario(Integer userId, Integer roleId) {
 		if (isUsuarioRole(userId, roleId)) return;
 		
@@ -102,12 +114,14 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 
 	@Override
+	@Transactional
 	public void agregarRoleAUsuario(Integer userId, String roleName) {
 		Roles role = roleDao.findByName(roleName);
 		agregarRoleAUsuario(userId, role.getId());
 	}
 
 	@Override
+	@Transactional
 	public void quitarRoleAUsuario(Integer userId, Integer roleId) {
 		if (!isUsuarioRole(userId, roleId)) return;
 		
@@ -116,6 +130,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 
 	@Override
+	@Transactional
 	public void quitarRoleAUsuario(Integer userId, String roleName) {
 		Roles role = roleDao.findByName(roleName);
 		quitarRoleAUsuario(userId, role.getId());
@@ -123,6 +138,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	
 
 	@Override
+	@Transactional
 	public Boolean isUsuarioRole(Integer userId, Integer roleId) {
 		RoleUsuario roleUsuario = roleUserDao.findByUsuarioIdRoleId(userId, roleId);
 		System.out.println(roleUsuario);
@@ -131,6 +147,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 
 	@Override
+	@Transactional
 	public Boolean isUsuarioRole(Integer userId, String roleName) {
 		Roles role = roleDao.findByName(roleName);
 		return isUsuarioRole(userId, role.getId());

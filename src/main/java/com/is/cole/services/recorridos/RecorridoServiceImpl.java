@@ -52,6 +52,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 	}
 
 	@Override
+	@Transactional
 	public RecorridoDto getRecorrido(Integer id) {
 		Recorrido recorridoBeanObtenido = recorridoDao.getById(id);
 		List<PuntoDeRecorrido> puntosRecorridoRecuperado = recuperarPuntosDeRecorrido(
@@ -63,6 +64,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 	}
 
 	@Override
+	@Transactional
 	public void deleteRecorrido(Integer id) {
 		Recorrido beanRecorrido = recorridoDao.getById(id);
 		recorridoDao.deleteById(id);
@@ -71,6 +73,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 	}
 
 	@Override
+	@Transactional
 	public Result<RecorridoDto> getAllRecorrido() {
 		Result<RecorridoDto> dtos = new Result<>();
 		List<RecorridoDto> dtosObtenidos = new ArrayList<>();

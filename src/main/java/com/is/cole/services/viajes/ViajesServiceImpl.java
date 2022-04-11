@@ -2,6 +2,9 @@ package com.is.cole.services.viajes;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IColectivoDao;
@@ -27,23 +30,27 @@ public class ViajesServiceImpl implements IViajesService {
 	/********************** Normal CRUDs **********************/
 
 	@Override
+	@Transactional
 	public ViajeDto saveViaje(ViajeDto dto) {
 		Viaje beanGuardado= viajeDao.save(parseDtoToBeanViaje(dto));
 		return parseBeanToDtoViaje(beanGuardado);
 	}
 
 	@Override
+	@Transactional
 	public void deleteViaje(Integer id) {
 		viajeDao.deleteById(id);
 	}
 
 	@Override
+	@Transactional
 	public ViajeDto getViaje(Integer id) {
 		Viaje beanObtenido= viajeDao.getById(id);
 		return parseBeanToDtoViaje(beanObtenido);
 	}
 
 	@Override
+	@Transactional
 	public Result<ViajeDto> getAllViaje() {
 		Result<ViajeDto> resultViaje= new Result<>();
 		
@@ -57,6 +64,7 @@ public class ViajesServiceImpl implements IViajesService {
 	/********************** Special functions **********************/
 
 	@Override
+	@Transactional
 	public ViajeDto getByChoferIdViaje(Integer id) {
 		Viaje beanObtenido = viajeDao.findByUsuarioId(id);
 		return parseBeanToDtoViaje(beanObtenido);
