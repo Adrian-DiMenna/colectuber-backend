@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.is.cole.daos.IUserDao;
-import com.is.cole.entities.Usuarios;
+import com.is.cole.entities.Users;
 
 @Service
 public class CustomUserDetailsService implements UserDetailsService{
@@ -19,7 +19,7 @@ public class CustomUserDetailsService implements UserDetailsService{
 	private IUserDao userDao;
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuarios user= userDao.findByCorreo(username);
+		Users user= userDao.findByCorreo(username);
 		return new User(user.getCorreo(),user.getPassword(),new ArrayList<>());
 	}
 

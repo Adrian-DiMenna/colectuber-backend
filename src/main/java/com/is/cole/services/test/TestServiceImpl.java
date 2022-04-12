@@ -99,7 +99,7 @@ public class TestServiceImpl implements ITestService {
 		dtoUsuario.setCorreo_electronico("angel.david@gmail.com");
 		dtoUsuario.setPassword("muysecreto");
 		
-		dtoRole.setNombre("Administrador");
+		dtoRole.setNombre("USER_ADMIN");
 		dtoRole.setDescripcion("Es admin");
 		
 		dtoRole = usuarioService.saveRole(dtoRole);
@@ -184,7 +184,7 @@ public class TestServiceImpl implements ITestService {
 		dtoUsuarioAntonio.setCorreo_electronico("antonio@gmail.com");
 		dtoUsuarioAntonio.setPassword("muysecreto");
 		
-		dtoRoleChofer.setNombre("Chofer");
+		dtoRoleChofer.setNombre("USER_CHOFER");
 		dtoRoleChofer.setDescripcion("Maneja los colectivos");
 		
 		dtoRoleChofer = usuarioService.saveRole(dtoRoleChofer);

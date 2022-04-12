@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuarios implements BaseBean {
+public class Users implements BaseBean {
 	
 	private static final long serialVersionUID = 1L;
 
