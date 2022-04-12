@@ -52,9 +52,8 @@ public class LineaDeColectivosController {
 		try {
 			Result<LineaDeColectivosDto> dtos = lineaService.getAllLineaColectivo();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
-		} catch (Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 

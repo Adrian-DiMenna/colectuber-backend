@@ -15,20 +15,18 @@ public class TestController {
 
 	@Autowired
 	private ITestService testService;
-	
+
 	@PostMapping("/values")
-	public ResponseEntity<?> postTestValues(){
+	public ResponseEntity<?> postTestValues() {
 		try {
 			testService.insertTestValues();
 			return ResponseEntity.status(HttpStatus.OK).build();
-		}catch(Exception e) {
-			System.err.println(e);
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
-	
+
 	}
-	
-	
-	
-	
+
 }
