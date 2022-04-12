@@ -1,5 +1,7 @@
 package com.is.cole.controllers;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,54 +22,51 @@ public class LineaDeColectivosController {
 
 	@Autowired
 	private ILineaColectivosService lineaService;
-	
-	
+
 	@PostMapping
-	public ResponseEntity<?> saveLineaColectivo(@RequestBody LineaDeColectivosDto dto){
+	public ResponseEntity<?> saveLineaColectivo(@RequestBody LineaDeColectivosDto dto) {
 		try {
 			LineaDeColectivosDto dtoGuardado = lineaService.saveLineaColectivo(dto);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
-			
-		}catch(Exception e) {
-			System.err.print(e);
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getLineaColectivo(@PathVariable("id") Integer lineaId){
+	public ResponseEntity<?> getLineaColectivo(@PathVariable("id") Integer lineaId) {
 		try {
-			LineaDeColectivosDto dtoObtenido= lineaService.getLineaColectivo(lineaId);
+			LineaDeColectivosDto dtoObtenido = lineaService.getLineaColectivo(lineaId);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
-			
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<?> getAllLineaColectivo(){
+	public ResponseEntity<?> getAllLineaColectivo() {
 		try {
-			Result<LineaDeColectivosDto> dtos= lineaService.getAllLineaColectivo();
+			Result<LineaDeColectivosDto> dtos = lineaService.getAllLineaColectivo();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
-			
 		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteLineaColectivo(@PathVariable("id") Integer lineaId){
+	public ResponseEntity<?> deleteLineaColectivo(@PathVariable("id") Integer lineaId) {
 		try {
 			lineaService.deleteLineaColectivo(lineaId);
 			return ResponseEntity.status(HttpStatus.OK).build();
-			
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 }
