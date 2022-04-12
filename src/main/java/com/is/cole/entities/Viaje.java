@@ -28,7 +28,7 @@ public class Viaje implements BaseBean{
 	@OneToOne
 	@JoinColumn(name="usuario_id",referencedColumnName="id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Users usuario;
+	private Usuarios usuario;
 	
 	@OneToOne
 	@JoinColumn(name="colectivo_id",referencedColumnName="id")
@@ -54,11 +54,11 @@ public class Viaje implements BaseBean{
 		this.id = id;
 	}
 
-	public Users getUsuario() {
+	public Usuarios getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Users usuario) {
+	public void setUsuario(Usuarios usuario) {
 		this.usuario = usuario;
 	}
 

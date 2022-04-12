@@ -3,11 +3,11 @@ package com.is.cole.daos;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;
-import com.is.cole.entities.Role;
+import com.is.cole.entities.Roles;
 
 @Repository
-public interface IRoleDao extends JpaRepository<Role, Integer> {
-	@Query("SELECT u FROM Role u WHERE u.name = ?1")
-	public Role findByName(String key);
+public interface IRoleDao extends JpaRepository<Roles, Integer> {
+	@Query("SELECT u FROM Roles u WHERE u.nombre = ?1")
+	public Roles findByName(String key);
 	
 }

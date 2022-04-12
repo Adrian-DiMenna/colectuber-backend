@@ -11,8 +11,8 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "users_roles")
-public class UsersRoles implements BaseBean {
+@Table(name = "rolesUsuario")
+public class RoleUsuario implements BaseBean {
 	
 	private static final long serialVersionUID = 1L;
 
@@ -22,12 +22,12 @@ public class UsersRoles implements BaseBean {
 	private Integer id;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "id")
-	private Users usuarios;
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuarios usuarios;
 	
 	@ManyToOne
 	@JoinColumn(name = "role_id", referencedColumnName = "id")
-	private Role roles;
+	private Roles roles;
 
 	
 	
@@ -39,19 +39,19 @@ public class UsersRoles implements BaseBean {
 		this.id = id;
 	}
 
-	public Users getUsuarios() {
+	public Usuarios getUsuarios() {
 		return usuarios;
 	}
 
-	public void setUsuarios(Users usuarios) {
+	public void setUsuarios(Usuarios usuarios) {
 		this.usuarios = usuarios;
 	}
 
-	public Role getRoles() {
+	public Roles getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Role roles) {
+	public void setRoles(Roles roles) {
 		this.roles = roles;
 	}
 	

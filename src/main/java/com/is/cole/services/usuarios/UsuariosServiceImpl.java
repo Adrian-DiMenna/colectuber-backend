@@ -11,9 +11,9 @@ import com.is.cole.daos.IUserDao;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
-import com.is.cole.entities.UsersRoles;
-import com.is.cole.entities.Role;
-import com.is.cole.entities.Users;
+import com.is.cole.entities.RoleUsuario;
+import com.is.cole.entities.Roles;
+import com.is.cole.entities.Usuarios;
 
 
 @Service
@@ -34,8 +34,8 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Override
 	@Transactional
 	public UsuarioDto saveUsuario(UsuarioDto dto) {
-		Users bean = parseDtoToBeanUsuario(dto);
-		Users beanGuardado= usuarioDao.save(bean);
+		Usuarios bean = parseDtoToBeanUsuario(dto);
+		Usuarios beanGuardado= usuarioDao.save(bean);
 		return parseBeanToDtoUsuario(beanGuardado);
 	}
 
@@ -48,7 +48,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Override
 	@Transactional
 	public UsuarioDto getUsuario(Integer id) {
-		Users beanObtenido = usuarioDao.getById(id);
+		Usuarios beanObtenido = usuarioDao.getById(id);
 		return parseBeanToDtoUsuario(beanObtenido);
 	}
 	
@@ -69,15 +69,15 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Override
 	@Transactional
 	public RoleDto saveRole(RoleDto dto) {
-		Role role = parseDtoToBeanRole(dto);
-		Role guardarRole = roleDao.save(role);
+		Roles role = parseDtoToBeanRole(dto);
+		Roles guardarRole = roleDao.save(role);
 		return parseBeanToDtoRole(guardarRole);
 	}
 
 	@Override
 	@Transactional
 	public RoleDto getRole(Integer id) {
-		Role bean = roleDao.getById(id);
+		Roles bean = roleDao.getById(id);
 		return parseBeanToDtoRole(bean);
 	}
 	
@@ -105,7 +105,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	public void agregarRoleAUsuario(Integer userId, Integer roleId) {
 		if (isUsuarioRole(userId, roleId)) return;
 		
-		UsersRoles ru = new UsersRoles();
+		RoleUsuario ru = new RoleUsuario();
 		ru.setUsuarios(userDao.getById(userId));
 		ru.setRoles(roleDao.getById(roleId));
 		
@@ -115,7 +115,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Override
 	@Transactional
 	public void agregarRoleAUsuario(Integer userId, String roleName) {
-		Role role = roleDao.findByName(roleName);
+		Roles role = roleDao.findByName(roleName);
 		agregarRoleAUsuario(userId, role.getId());
 	}
 
@@ -124,14 +124,14 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	public void quitarRoleAUsuario(Integer userId, Integer roleId) {
 		if (!isUsuarioRole(userId, roleId)) return;
 		
-		UsersRoles ru = roleUserDao.findByUsuarioIdRoleId(userId, roleId);
+		RoleUsuario ru = roleUserDao.findByUsuarioIdRoleId(userId, roleId);
 		roleUserDao.deleteById(ru.getId());
 	}
 
 	@Override
 	@Transactional
 	public void quitarRoleAUsuario(Integer userId, String roleName) {
-		Role role = roleDao.findByName(roleName);
+		Roles role = roleDao.findByName(roleName);
 		quitarRoleAUsuario(userId, role.getId());
 	}
 	
@@ -139,7 +139,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Override
 	@Transactional
 	public Boolean isUsuarioRole(Integer userId, Integer roleId) {
-		UsersRoles roleUsuario = roleUserDao.findByUsuarioIdRoleId(userId, roleId);
+		RoleUsuario roleUsuario = roleUserDao.findByUsuarioIdRoleId(userId, roleId);
 		System.out.println(roleUsuario);
 		if (roleUsuario == null) return false;
 		return true;
@@ -148,15 +148,15 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Override
 	@Transactional
 	public Boolean isUsuarioRole(Integer userId, String roleName) {
-		Role role = roleDao.findByName(roleName);
+		Roles role = roleDao.findByName(roleName);
 		return isUsuarioRole(userId, role.getId());
 	}
 	
 	
 	/************************* Usuarios parses ***********************************/
 	
-	private Users parseDtoToBeanUsuario(UsuarioDto dto) {
-		Users bean = new Users();
+	private Usuarios parseDtoToBeanUsuario(UsuarioDto dto) {
+		Usuarios bean = new Usuarios();
 		bean.setId(dto.getId());
 		bean.setNombre(dto.getNombre());
 		bean.setApellido(dto.getApellido());
@@ -165,7 +165,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return bean;
 	}
 	
-	private UsuarioDto parseBeanToDtoUsuario(Users bean) {
+	private UsuarioDto parseBeanToDtoUsuario(Usuarios bean) {
 		UsuarioDto dto = new UsuarioDto();
 		dto.setId(bean.getId());
 		dto.setNombre(bean.getNombre());
@@ -185,7 +185,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	
 	/**************************** Roles parses ************************************/
 	
-	private RoleDto parseBeanToDtoRole(Role bean) {
+	private RoleDto parseBeanToDtoRole(Roles bean) {
 		RoleDto dto = new RoleDto();
 		
 		dto.setId(bean.getId());
@@ -196,8 +196,8 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 	
 	
-	private Role parseDtoToBeanRole(RoleDto dto) {
-		Role bean = new Role();
+	private Roles parseDtoToBeanRole(RoleDto dto) {
+		Roles bean = new Roles();
 		
 		bean.setId(dto.getId());
 		bean.setNombre(dto.getNombre());

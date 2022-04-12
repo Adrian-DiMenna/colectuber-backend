@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "roles")
-public class Role implements BaseBean {
+public class Roles implements BaseBean{
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -18,7 +18,7 @@ public class Role implements BaseBean {
 	private Integer id;
 	
 	@Column(nullable = false, unique = true)
-	private String name;
+	private String nombre;
 	
 	private String description;
 
@@ -32,11 +32,11 @@ public class Role implements BaseBean {
 	}
 
 	public String getNombre() {
-		return name;
+		return nombre;
 	}
 
 	public void setNombre(String nombre) {
-		this.name = nombre;
+		this.nombre = nombre;
 	}
 
 	public String getDescription() {
@@ -46,7 +46,5 @@ public class Role implements BaseBean {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
 	
 }
