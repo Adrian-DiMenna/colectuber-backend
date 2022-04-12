@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.services.recorridos.IRecorridoService;
 

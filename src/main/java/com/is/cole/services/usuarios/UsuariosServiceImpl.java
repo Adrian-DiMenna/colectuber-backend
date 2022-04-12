@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IRoleDao;
 import com.is.cole.daos.IRolesUsuarioDao;
@@ -16,7 +14,7 @@ import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.entities.RoleUsuario;
 import com.is.cole.entities.Roles;
 import com.is.cole.entities.Usuarios;
-import static java.lang.String.format;
+
 
 @Service
 public class UsuariosServiceImpl implements IUsuariosService{
@@ -63,15 +61,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		}).collect(Collectors.toList());
 		result.setResult(list);
 		return result;
-	}
-	
-	@Override
-	@Transactional
-	public UserDetails loadUserByUserName(String username) throws UsernameNotFoundException {
-		 return userDao
-			      .findByUserName(username)
-			      .orElseThrow(
-			      () -> new UsernameNotFoundException(format("User with username - %s, not found", username)));
 	}
 	
 	
