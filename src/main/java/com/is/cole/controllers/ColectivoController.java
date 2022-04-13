@@ -1,5 +1,7 @@
 package com.is.cole.controllers;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,10 +32,10 @@ public class ColectivoController {
 		try {
 			ColectivoDto dtoGuardado = colectivoService.saveColectivo(dto);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
-			
-		}catch(Exception e) {
-			System.err.print(e);
+		} catch(IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		}catch(Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
@@ -42,10 +44,10 @@ public class ColectivoController {
 		try {
 			ColectivoDto dtoObtenido= colectivoService.getColectivo(colectivoId);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
-			
+		}catch(EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
@@ -53,11 +55,9 @@ public class ColectivoController {
 	public ResponseEntity<?> getAllColectivo(){
 		try {
 			Result<ColectivoDto> dtos= colectivoService.getAllColectivo();
-			return ResponseEntity.status(HttpStatus.OK).body(dtos);
-			
+			return ResponseEntity.status(HttpStatus.OK).body(dtos);	
 		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
@@ -66,10 +66,10 @@ public class ColectivoController {
 		try {
 			colectivoService.deleteColectivo(colectivoId);
 			return ResponseEntity.status(HttpStatus.OK).build();
-			
+		}catch(EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	

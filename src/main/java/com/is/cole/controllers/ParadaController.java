@@ -1,5 +1,7 @@
 package com.is.cole.controllers;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,53 +22,54 @@ import com.is.cole.services.paradas.IParadaService;
 @RequestMapping("/api/paradas")
 @Secured("ROLE_ADMIN")
 public class ParadaController {
-	
+
 	@Autowired
 	private IParadaService paradaService;
-	
+
 	@PostMapping
-	public ResponseEntity<?> postParada(@RequestBody ParadaDto dto){
+	public ResponseEntity<?> postParada(@RequestBody ParadaDto dto) {
 		try {
 			ParadaDto dtoGuardado = paradaService.saveParada(dto);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
-		}catch(Exception e) {
-			System.err.print(e);
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getParada(@PathVariable(value = "id")Integer id){
+	public ResponseEntity<?> getParada(@PathVariable(value = "id") Integer id) {
 		try {
 			ParadaDto dtoObtenido = paradaService.getParadaById(id);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<?> getAllParadas(){
+	public ResponseEntity<?> getAllParadas() {
 		try {
 			Result<ParadaDto> dtos = paradaService.getAllParadas();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteParada(@PathVariable(value = "id")Integer id){
+	public ResponseEntity<?> deleteParada(@PathVariable(value = "id") Integer id) {
 		try {
 			paradaService.deleteById(id);
 			return ResponseEntity.status(HttpStatus.OK).build();
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
-	
+
 }

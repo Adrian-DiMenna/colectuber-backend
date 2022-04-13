@@ -1,5 +1,7 @@
 package com.is.cole.controllers;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,53 +21,54 @@ import com.is.cole.services.recorridos.IRecorridoService;
 @RequestMapping("/api/recorridos")
 @Secured("ROLE_ADMIN")
 public class RecorridoController {
-	
+
 	@Autowired
 	private IRecorridoService recorridoService;
-	
+
 	@PostMapping
-	public ResponseEntity<?> postRecorrido(@RequestBody RecorridoDto dto){
+	public ResponseEntity<?> postRecorrido(@RequestBody RecorridoDto dto) {
 		try {
 			recorridoService.saveRecorrido(dto);
 			return ResponseEntity.status(HttpStatus.OK).build();
-		}catch(Exception e){
-			System.err.print(e);
+		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getRecorrido(@PathVariable("id") Integer id){
+	public ResponseEntity<?> getRecorrido(@PathVariable("id") Integer id) {
 		try {
 			RecorridoDto dto = recorridoService.getRecorrido(id);
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	@GetMapping
-	public ResponseEntity<?> getAllRecorridos(){
+	public ResponseEntity<?> getAllRecorridos() {
 		try {
-			Result<RecorridoDto> dtos= recorridoService.getAllRecorrido();
+			Result<RecorridoDto> dtos = recorridoService.getAllRecorrido();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteRecorrido(@PathVariable("id") Integer id){
+	public ResponseEntity<?> deleteRecorrido(@PathVariable("id") Integer id) {
 		try {
 			recorridoService.deleteRecorrido(id);
 			return ResponseEntity.status(HttpStatus.OK).build();
-			
-		}catch(Exception e) {
-			System.err.print(e);
-			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+		} catch (EntityNotFoundException e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 }
