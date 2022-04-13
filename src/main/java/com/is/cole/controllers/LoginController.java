@@ -1,6 +1,8 @@
 package com.is.cole.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,25 +14,24 @@ import com.is.cole.util.JwtUtil;
 
 @RestController
 public class LoginController {
-	
+
 	@Autowired
 	private JwtUtil jwUtil;
 	@Autowired
-	private AuthenticationManager authenticationManager; 
-	
+	private AuthenticationManager authenticationManager;
+
 	@PostMapping("/authenticate")
-	public String generateToken(@RequestBody AuthRequest authRequest) throws Exception {
-		
+	public ResponseEntity<?> generateToken(@RequestBody AuthRequest authRequest) throws Exception {
+
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
-		}catch(Exception ex) {
-			throw new Exception("Inavalid username/password");
+		} catch (Exception ex) {
+			System.err.print(ex);
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Inavalid username/password");
 		}
-		
-		return jwUtil.generateToken(authRequest.getUserName());
+
+		return ResponseEntity.status(HttpStatus.OK).body(jwUtil.generateToken(authRequest.getUserName()));
 	}
-	
-	
-		
+
 }
