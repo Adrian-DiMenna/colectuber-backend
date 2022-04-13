@@ -1,9 +1,7 @@
 package com.is.cole.dtos.colectuber;
 
 import java.util.List;
-
 import com.is.cole.dtos.BaseDto;
-import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.paradas.ParadaDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 

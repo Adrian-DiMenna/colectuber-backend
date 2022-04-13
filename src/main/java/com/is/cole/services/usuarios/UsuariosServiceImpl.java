@@ -2,10 +2,9 @@ package com.is.cole.services.usuarios;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IRoleDao;
 import com.is.cole.daos.IRolesUsuarioDao;
@@ -16,6 +15,7 @@ import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.entities.RoleUsuario;
 import com.is.cole.entities.Roles;
 import com.is.cole.entities.Usuarios;
+
 
 @Service
 public class UsuariosServiceImpl implements IUsuariosService{
@@ -28,6 +28,9 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	private IRolesUsuarioDao roleUserDao;
 	@Autowired
 	private IUserDao userDao;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	
 	
 	/********************************* Usuarios *******************************/
@@ -36,6 +39,7 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	@Transactional
 	public UsuarioDto saveUsuario(UsuarioDto dto) {
 		Usuarios bean = parseDtoToBeanUsuario(dto);
+		bean.setPassword(passwordEncoder.encode(dto.getPassword()));
 		Usuarios beanGuardado= usuarioDao.save(bean);
 		return parseBeanToDtoUsuario(beanGuardado);
 	}
@@ -205,7 +209,5 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		bean.setDescription(dto.getDescripcion());
 		
 		return bean;
-	}
-
-	
+	}	
 }
