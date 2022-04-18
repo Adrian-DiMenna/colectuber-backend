@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.is.cole.dtos.Result;
+import com.is.cole.dtos.Viajes.ViajeChoferDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
 import com.is.cole.services.colectuber.IColectuberService;
@@ -60,4 +62,18 @@ public class ColectuberController {
 		}
 	}
 
+	@Secured("ROLE_CHOFER")
+	@GetMapping("/viaje_chofer")
+	public ResponseEntity<?> getViajeChofer(){
+		try {
+			String username = SecurityContextHolder.getContext().getAuthentication().getName();
+			ViajeChoferDto dto = colectuberService.getViajeChofer(username);
+			return ResponseEntity.status(HttpStatus.OK).body(dto);
+		} catch (Exception e) {
+			System.err.print(e);
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	
 }
