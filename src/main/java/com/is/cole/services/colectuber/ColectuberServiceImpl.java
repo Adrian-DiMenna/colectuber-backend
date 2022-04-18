@@ -11,6 +11,7 @@ import com.is.cole.daos.IColectivoUbicacionDao;
 import com.is.cole.daos.IRecorridoDao;
 import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
+import com.is.cole.dtos.Viajes.ViajeChoferDto;
 import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
@@ -98,6 +99,13 @@ public class ColectuberServiceImpl implements IColectuberService{
 		dtos.setResult(listaDtos);
 		
 		return dtos;
+	}
+	
+	
+	@Override
+	@Transactional
+	public ViajeChoferDto getViajeChofer(String choferUsername) {
+		return viajeService.getByChoferUsernameViaje(choferUsername);
 	}
 	
 	/******************* Special Functions *******************/
@@ -250,7 +258,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 		return newDto;
 
 	}
-	
+
 	
 
 	

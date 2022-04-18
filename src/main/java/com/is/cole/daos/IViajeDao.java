@@ -11,4 +11,7 @@ public interface IViajeDao extends JpaRepository<Viaje,Integer>{
 
 	@Query("SELECT u FROM Viaje u WHERE u.usuario.id = ?1")
 	public Viaje findByUsuarioId(Integer usuarioId);
+	
+	@Query("SELECT u FROM Viaje u WHERE u.usuario.correo = ?1")
+	public Viaje findByUsername(String choferUsername);
 }

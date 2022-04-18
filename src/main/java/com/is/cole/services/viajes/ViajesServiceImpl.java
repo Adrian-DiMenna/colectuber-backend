@@ -2,9 +2,7 @@ package com.is.cole.services.viajes;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IColectivoDao;
@@ -12,8 +10,11 @@ import com.is.cole.daos.IRecorridoDao;
 import com.is.cole.daos.IUserDao;
 import com.is.cole.daos.IViajeDao;
 import com.is.cole.dtos.Result;
+import com.is.cole.dtos.Viajes.ViajeChoferDto;
 import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.entities.Viaje;
+import com.is.cole.services.colectivos.IColectivoService;
+import com.is.cole.services.recorridos.IRecorridoService;
 
 @Service
 public class ViajesServiceImpl implements IViajesService {
@@ -26,6 +27,10 @@ public class ViajesServiceImpl implements IViajesService {
 	private IColectivoDao colectivoDao;
 	@Autowired
 	private IRecorridoDao recorridoDao;
+	@Autowired
+	private IRecorridoService recorridoService;
+	@Autowired
+	private IColectivoService colectivoService;
 	
 	/********************** Normal CRUDs **********************/
 
@@ -69,6 +74,20 @@ public class ViajesServiceImpl implements IViajesService {
 		Viaje beanObtenido = viajeDao.findByUsuarioId(id);
 		return parseBeanToDtoViaje(beanObtenido);
 	}
+	
+	@Override
+	@Transactional
+	public ViajeChoferDto getByChoferUsernameViaje(String username) {
+		Viaje beanObtenido = viajeDao.findByUsername(username);
+		
+		ViajeChoferDto dto = new ViajeChoferDto();
+		dto.setColectivo(colectivoService.getColectivo(beanObtenido.getColectivo().getId()));
+		dto.setId(beanObtenido.getId());
+		dto.setRecorrido(recorridoService.getRecorrido(beanObtenido.getRecorrido().getId()));
+		
+		return dto;
+	}
+	
 
 	/********************** Parses **********************/
 
@@ -93,4 +112,5 @@ public class ViajesServiceImpl implements IViajesService {
 		bean.setUsuario(usuarioDao.getById(dto.getChofer_id()));
 		return bean;	
 	}
+
 }
