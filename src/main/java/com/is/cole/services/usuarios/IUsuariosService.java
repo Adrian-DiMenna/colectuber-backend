@@ -12,6 +12,7 @@ public interface IUsuariosService {
 	public void deleteUsuario(Integer id);
 	public UsuarioDto getUsuario(Integer id);
 	public Result<UsuarioDto> getAllUsuario();
+	public UsuarioDto getUsuarioByCorreo(String correo);
 	
 	//Roles
 	public RoleDto saveRole(RoleDto dto);
@@ -27,5 +28,7 @@ public interface IUsuariosService {
 	
 	public Boolean isUsuarioRole(Integer userId,Integer roleId);
 	public Boolean isUsuarioRole(Integer userId,String roleName);
+	
+	
 	
 }

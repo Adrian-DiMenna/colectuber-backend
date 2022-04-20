@@ -1,7 +1,6 @@
 package com.is.cole.services.viajes;
 
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.Viajes.ViajeChoferDto;
 import com.is.cole.dtos.Viajes.ViajeDto;
 
 public interface IViajesService{
@@ -14,7 +13,7 @@ public interface IViajesService{
 	
 	//Funciones especificas
 	public ViajeDto getByChoferIdViaje(Integer id);
-	public ViajeChoferDto getByChoferUsernameViaje(String username);
+	
 	
 	
 }

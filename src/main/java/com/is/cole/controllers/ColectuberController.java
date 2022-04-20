@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.Viajes.ViajeChoferDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
+import com.is.cole.dtos.colectuber.ViajeChoferDto;
 import com.is.cole.services.colectuber.IColectuberService;
 
 @RestController

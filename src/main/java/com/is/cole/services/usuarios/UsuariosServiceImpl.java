@@ -58,6 +58,12 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 	
 	@Override
+	public UsuarioDto getUsuarioByCorreo(String correo) {
+		Usuarios bean = userDao.findByCorreo(correo);
+		return parseBeanToDtoUsuario(bean);
+	}
+	
+	@Override
 	@Transactional
 	public Result<UsuarioDto> getAllUsuario() {
 		Result<UsuarioDto> result = new Result<>();
@@ -67,7 +73,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		result.setResult(list);
 		return result;
 	}
-	
 	
 	/***************************** Roles ****************************************/
 	
@@ -157,7 +162,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return isUsuarioRole(userId, role.getId());
 	}
 	
-	
 	/************************* Usuarios parses ***********************************/
 	
 	private Usuarios parseDtoToBeanUsuario(UsuarioDto dto) {
@@ -209,5 +213,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		bean.setDescription(dto.getDescripcion());
 		
 		return bean;
-	}	
+	}
+
 }

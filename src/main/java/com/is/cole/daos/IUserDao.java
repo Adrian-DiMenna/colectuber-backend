@@ -8,3 +8,4 @@ import com.is.cole.entities.Usuarios;
 public interface IUserDao extends JpaRepository<Usuarios, Integer> {
 	public Usuarios findByCorreo(String username);
 }
+
