@@ -3,7 +3,6 @@ package com.is.cole.services.usuarios;
 
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
-import com.is.cole.dtos.Usuarios.UsuarioChoferDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
 
 public interface IUsuariosService {
@@ -13,7 +12,7 @@ public interface IUsuariosService {
 	public void deleteUsuario(Integer id);
 	public UsuarioDto getUsuario(Integer id);
 	public Result<UsuarioDto> getAllUsuario();
-	public UsuarioChoferDto getUsuarioChofer(Integer id);
+	public UsuarioDto getUsuarioByCorreo(String correo);
 	
 	//Roles
 	public RoleDto saveRole(RoleDto dto);

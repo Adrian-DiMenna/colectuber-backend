@@ -11,7 +11,6 @@ import com.is.cole.daos.IRolesUsuarioDao;
 import com.is.cole.daos.IUserDao;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
-import com.is.cole.dtos.Usuarios.UsuarioChoferDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.entities.RoleUsuario;
 import com.is.cole.entities.Roles;
@@ -59,6 +58,12 @@ public class UsuariosServiceImpl implements IUsuariosService{
 	}
 	
 	@Override
+	public UsuarioDto getUsuarioByCorreo(String correo) {
+		Usuarios bean = userDao.findByCorreo(correo);
+		return parseBeanToDtoUsuario(bean);
+	}
+	
+	@Override
 	@Transactional
 	public Result<UsuarioDto> getAllUsuario() {
 		Result<UsuarioDto> result = new Result<>();
@@ -68,15 +73,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		result.setResult(list);
 		return result;
 	}
-	
-	
-	@Override
-	@Transactional
-	public UsuarioChoferDto getUsuarioChofer(Integer id) {
-		Usuarios beanObtenido = usuarioDao.getById(id);
-		return parseBeanToDtoUsuarioChofer(beanObtenido);
-	}	
-	
 	
 	/***************************** Roles ****************************************/
 	
@@ -166,7 +162,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return isUsuarioRole(userId, role.getId());
 	}
 	
-	
 	/************************* Usuarios parses ***********************************/
 	
 	private Usuarios parseDtoToBeanUsuario(UsuarioDto dto) {
@@ -197,15 +192,6 @@ public class UsuariosServiceImpl implements IUsuariosService{
 		return dto;
 	}
 	
-	private UsuarioChoferDto parseBeanToDtoUsuarioChofer(Usuarios bean) {
-		UsuarioChoferDto dto = new UsuarioChoferDto();
-		dto.setId(bean.getId());
-		dto.setApellido(bean.getApellido());
-		dto.setCorreo_electronico(bean.getCorreo());
-		dto.setNombre(bean.getNombre());
-		
-		return dto;
-	}
 	/**************************** Roles parses ************************************/
 	
 	private RoleDto parseBeanToDtoRole(Roles bean) {

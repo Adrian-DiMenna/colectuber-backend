@@ -1,9 +1,7 @@
 package com.is.cole.services.colectuber;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.springframework.transaction.annotation.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.is.cole.daos.IColectivoDao;
@@ -11,12 +9,14 @@ import com.is.cole.daos.IColectivoUbicacionDao;
 import com.is.cole.daos.IRecorridoDao;
 import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.Viajes.ViajeChoferDto;
+import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.ColectuberColectivoDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
+import com.is.cole.dtos.colectuber.UsuarioChoferDto;
+import com.is.cole.dtos.colectuber.ViajeChoferDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.entities.ColectivoUbicacion;
 import com.is.cole.services.colectivos.IColectivoService;
@@ -24,6 +24,7 @@ import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
 import com.is.cole.services.lineas.ILineaColectivosService;
 import com.is.cole.services.paradas.IParadaService;
 import com.is.cole.services.recorridos.IRecorridoService;
+import com.is.cole.services.usuarios.IUsuariosService;
 import com.is.cole.services.viajes.IViajesService;
 
 @Service
@@ -47,7 +48,8 @@ public class ColectuberServiceImpl implements IColectuberService{
 	private IEmpresaColectivosService empresaService;
 	@Autowired
 	private ILineaColectivosService lineaService;
-	
+	@Autowired
+	private IUsuariosService usuarioService;
 	
 	@Override
 	@Transactional
@@ -102,10 +104,20 @@ public class ColectuberServiceImpl implements IColectuberService{
 	}
 	
 	
+	
 	@Override
 	@Transactional
 	public ViajeChoferDto getViajeChofer(String choferUsername) {
-		return viajeService.getByChoferUsernameViaje(choferUsername);
+		UsuarioDto userDto = usuarioService.getUsuarioByCorreo(choferUsername);
+		
+		ViajeDto viajeDto = viajeService.getByChoferIdViaje(userDto.getId());
+		
+		ViajeChoferDto dto = new ViajeChoferDto();
+		dto.setChofer(parseDtoToDtoUsuarioChofer(userDto));
+		dto.setColectivo(colectivoService.getColectivo(viajeDto.getColectivo_id()));
+		dto.setRecorrido(recorridoService.getRecorrido(viajeDto.getRecorrido_id()));
+		
+		return dto;
 	}
 	
 	/******************* Special Functions *******************/
@@ -257,6 +269,16 @@ public class ColectuberServiceImpl implements IColectuberService{
 
 		return newDto;
 
+	}
+	
+	private UsuarioChoferDto parseDtoToDtoUsuarioChofer(UsuarioDto usuarioDto) {
+		UsuarioChoferDto dto = new UsuarioChoferDto();
+		dto.setId(usuarioDto.getId());
+		dto.setApellido(usuarioDto.getApellido());
+		dto.setCorreo_electronico(usuarioDto.getCorreo_electronico());
+		dto.setNombre(usuarioDto.getNombre());
+		
+		return dto;
 	}
 
 	

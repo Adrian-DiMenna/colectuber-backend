@@ -10,12 +10,8 @@ import com.is.cole.daos.IRecorridoDao;
 import com.is.cole.daos.IUserDao;
 import com.is.cole.daos.IViajeDao;
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.Viajes.ViajeChoferDto;
 import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.entities.Viaje;
-import com.is.cole.services.colectivos.IColectivoService;
-import com.is.cole.services.recorridos.IRecorridoService;
-import com.is.cole.services.usuarios.IUsuariosService;
 
 @Service
 public class ViajesServiceImpl implements IViajesService {
@@ -28,12 +24,6 @@ public class ViajesServiceImpl implements IViajesService {
 	private IColectivoDao colectivoDao;
 	@Autowired
 	private IRecorridoDao recorridoDao;
-	@Autowired
-	private IRecorridoService recorridoService;
-	@Autowired
-	private IColectivoService colectivoService;
-	@Autowired
-	private IUsuariosService usuarioService;
 	
 	/********************** Normal CRUDs **********************/
 
@@ -77,21 +67,6 @@ public class ViajesServiceImpl implements IViajesService {
 		Viaje beanObtenido = viajeDao.findByUsuarioId(id);
 		return parseBeanToDtoViaje(beanObtenido);
 	}
-	
-	@Override
-	@Transactional
-	public ViajeChoferDto getByChoferUsernameViaje(String username) {
-		Viaje beanObtenido = viajeDao.findByUsername(username);
-		
-		ViajeChoferDto dto = new ViajeChoferDto();
-		dto.setChofer(usuarioService.getUsuarioChofer(beanObtenido.getUsuario().getId()));
-		dto.setColectivo(colectivoService.getColectivo(beanObtenido.getColectivo().getId()));
-		dto.setRecorrido(recorridoService.getRecorrido(beanObtenido.getRecorrido().getId()));
-		
-		return dto;
-	}
-	
-
 	/********************** Parses **********************/
 
 	//No esta seteado el state todavia

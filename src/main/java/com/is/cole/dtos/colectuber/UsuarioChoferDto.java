@@ -1,4 +1,4 @@
-package com.is.cole.dtos.Usuarios;
+package com.is.cole.dtos.colectuber;
 
 import com.is.cole.dtos.BaseDto;
 

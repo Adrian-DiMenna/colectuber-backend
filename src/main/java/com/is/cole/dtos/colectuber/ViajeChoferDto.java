@@ -1,7 +1,6 @@
-package com.is.cole.dtos.Viajes;
+package com.is.cole.dtos.colectuber;
 
 import com.is.cole.dtos.BaseDto;
-import com.is.cole.dtos.Usuarios.UsuarioChoferDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 
