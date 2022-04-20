@@ -3,6 +3,7 @@ package com.is.cole.services.usuarios;
 
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
+import com.is.cole.dtos.Usuarios.UsuarioChoferDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
 
 public interface IUsuariosService {
@@ -12,6 +13,7 @@ public interface IUsuariosService {
 	public void deleteUsuario(Integer id);
 	public UsuarioDto getUsuario(Integer id);
 	public Result<UsuarioDto> getAllUsuario();
+	public UsuarioChoferDto getUsuarioChofer(Integer id);
 	
 	//Roles
 	public RoleDto saveRole(RoleDto dto);
@@ -27,5 +29,7 @@ public interface IUsuariosService {
 	
 	public Boolean isUsuarioRole(Integer userId,Integer roleId);
 	public Boolean isUsuarioRole(Integer userId,String roleName);
+	
+	
 	
 }

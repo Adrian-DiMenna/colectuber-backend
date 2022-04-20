@@ -1,10 +1,8 @@
 package com.is.cole.dtos.Usuarios;
 
-import java.util.List;
-
 import com.is.cole.dtos.BaseDto;
 
-public class UsuarioDto extends BaseDto{
+public class UsuarioChoferDto extends BaseDto{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -12,15 +10,7 @@ public class UsuarioDto extends BaseDto{
 	private String nombre;
 	private String apellido;
 	private String correo_electronico;
-	private String password;
-	private List<RoleDto> roleList;
 	
-	public List<RoleDto> getRoleList() {
-		return roleList;
-	}
-	public void setRoleList(List<RoleDto> roleList) {
-		this.roleList = roleList;
-	}
 	public Integer getId() {
 		return id;
 	}
@@ -45,15 +35,5 @@ public class UsuarioDto extends BaseDto{
 	public void setCorreo_electronico(String correo_electronico) {
 		this.correo_electronico = correo_electronico;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	
-	
-	
-	
+
 }

@@ -1,6 +1,7 @@
 package com.is.cole.dtos.Viajes;
 
 import com.is.cole.dtos.BaseDto;
+import com.is.cole.dtos.Usuarios.UsuarioChoferDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 
@@ -8,15 +9,15 @@ public class ViajeChoferDto extends BaseDto{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private UsuarioChoferDto chofer;
 	private ColectivoDto colectivo;
 	private RecorridoDto recorrido;
 	
-	public Integer getId() {
-		return id;
+	public UsuarioChoferDto getChofer() {
+		return chofer;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setChofer(UsuarioChoferDto chofer) {
+		this.chofer = chofer;
 	}
 	public ColectivoDto getColectivo() {
 		return colectivo;
