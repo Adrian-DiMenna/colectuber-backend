@@ -4,20 +4,13 @@ import com.is.cole.dtos.BaseDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 
-public class ViajeChoferDto extends BaseDto{
+public class InitialViajeDto extends BaseDto{
 
 	private static final long serialVersionUID = 1L;
 	
-	private UsuarioChoferDto chofer;
 	private ColectivoDto colectivo;
 	private RecorridoDto recorrido;
 	
-	public UsuarioChoferDto getChofer() {
-		return chofer;
-	}
-	public void setChofer(UsuarioChoferDto chofer) {
-		this.chofer = chofer;
-	}
 	public ColectivoDto getColectivo() {
 		return colectivo;
 	}
