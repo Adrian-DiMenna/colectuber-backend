@@ -28,6 +28,7 @@ public class ColectivoUbicacion implements BaseBean{
 	private Double latitud;
 	private Double longitud;
 	private Long tiempo;
+	private String destino;
 	
 	@ManyToOne
 	@JoinColumn(name="recorrido_id",referencedColumnName="id")
@@ -78,6 +79,13 @@ public class ColectivoUbicacion implements BaseBean{
 	public void setTime(Long time) {
 		this.tiempo = time;
 	}
+	public String getDestino() {
+		return destino;
+	}
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+	
 	
 	
 
