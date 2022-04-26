@@ -26,11 +26,12 @@ public class ColectuberController {
 	@Autowired
 	private IColectuberService colectuberService;
 
-	//@Secured({"ROLE_CHOFER","ROLE_ADMIN"})
+	@Secured("ROLE_CHOFER")
 	@PostMapping("/ubicacion")
 	public ResponseEntity<?> postColectivoUbicacion(@RequestBody ColectivoUbicacionDto dto) {
 		try {
-			colectuberService.postColectivoUbicacion(dto);
+			String username = SecurityContextHolder.getContext().getAuthentication().getName();
+			colectuberService.postColectivoUbicacion(dto,username);
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
