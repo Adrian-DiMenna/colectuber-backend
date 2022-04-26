@@ -17,6 +17,7 @@ import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
 import com.is.cole.dtos.colectuber.InitialViajeDto;
+import com.is.cole.dtos.colectuber.UsuarioChoferDto;
 import com.is.cole.services.colectuber.IColectuberService;
 
 @RestController
@@ -62,14 +63,26 @@ public class ColectuberController {
 		}
 	}
 
+//	@Secured("ROLE_CHOFER")
+//	@GetMapping("/viaje_chofer")
+//	public ResponseEntity<?> getViajeChofer(){
+//		try {
+//			String username = SecurityContextHolder.getContext().getAuthentication().getName();
+//			InitialViajeDto dto = colectuberService.getViajeChofer(username);
+//			return ResponseEntity.status(HttpStatus.OK).body(dto);
+//		} catch (Exception e) {
+//			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+//		}
+//	}
+	
 	@Secured("ROLE_CHOFER")
-	@GetMapping("/viaje_chofer")
-	public ResponseEntity<?> getViajeChofer(){
+	@GetMapping("/get-chofer")
+	public ResponseEntity<?> getChofer(){
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
-			InitialViajeDto dto = colectuberService.getViajeChofer(username);
+			UsuarioChoferDto dto = colectuberService.getChofer(username);
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
-		} catch (Exception e) {
+		}catch(Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
