@@ -16,7 +16,7 @@ import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.ColectuberColectivoDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
 import com.is.cole.dtos.colectuber.UsuarioChoferDto;
-import com.is.cole.dtos.colectuber.ViajeChoferDto;
+import com.is.cole.dtos.colectuber.InitialViajeDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.entities.ColectivoUbicacion;
 import com.is.cole.services.colectivos.IColectivoService;
@@ -70,7 +70,6 @@ public class ColectuberServiceImpl implements IColectuberService{
 	}
 
 	
-	
 	@Override
 	@Transactional
 	public void postColectivoUbicacion(ColectivoUbicacionDto dto) {
@@ -107,13 +106,13 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	@Override
 	@Transactional
-	public ViajeChoferDto getViajeChofer(String choferUsername) {
+	public InitialViajeDto getViajeChofer(String choferUsername) {
 		UsuarioDto userDto = usuarioService.getUsuarioByCorreo(choferUsername);
 		
-		ViajeDto viajeDto = viajeService.getByChoferIdViaje(userDto.getId());
-		
-		ViajeChoferDto dto = new ViajeChoferDto();
+		InitialViajeDto dto = new InitialViajeDto();
 		dto.setChofer(parseDtoToDtoUsuarioChofer(userDto));
+		
+		ViajeDto viajeDto = viajeService.getByChoferIdViaje(userDto.getId());
 		dto.setColectivo(colectivoService.getColectivo(viajeDto.getColectivo_id()));
 		dto.setRecorrido(recorridoService.getRecorrido(viajeDto.getRecorrido_id()));
 		

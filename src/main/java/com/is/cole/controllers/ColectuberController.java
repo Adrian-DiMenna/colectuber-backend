@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.dtos.colectuber.InitialDataDto;
-import com.is.cole.dtos.colectuber.ViajeChoferDto;
+import com.is.cole.dtos.colectuber.InitialViajeDto;
 import com.is.cole.services.colectuber.IColectuberService;
 
 @RestController
@@ -67,7 +67,7 @@ public class ColectuberController {
 	public ResponseEntity<?> getViajeChofer(){
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
-			ViajeChoferDto dto = colectuberService.getViajeChofer(username);
+			InitialViajeDto dto = colectuberService.getViajeChofer(username);
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
