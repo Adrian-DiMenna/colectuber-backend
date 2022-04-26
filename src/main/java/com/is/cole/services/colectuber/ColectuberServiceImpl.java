@@ -72,15 +72,16 @@ public class ColectuberServiceImpl implements IColectuberService {
 
 	@Override
 	@Transactional
-	public void postColectivoUbicacion(ColectivoUbicacionDto dto) {
-
-		ViajeDto viaje = viajeService.getByChoferIdViaje(dto.getChofer_id());
-		double indicePorcentaje = getIndicePorcentajeFromPoint(recorridoService.getRecorrido(viaje.getRecorrido_id()),
-				dto.getPosicionColectivo());
-
-		ColectivoUbicacionDto dtoNuevo = new ColectivoUbicacionDto();
+	public void postColectivoUbicacion(ColectivoUbicacionDto dto,String username) {
+		
+		UsuarioDto user= usuarioService.getUsuarioByCorreo(username);
+		ViajeDto viaje = viajeService.getByChoferIdViaje(user.getId());
+	
+		double indicePorcentaje = getIndicePorcentajeFromPoint(recorridoService.getRecorrido(viaje.getRecorrido_id()), dto.getPosicionColectivo());
+		
+		ColectivoUbicacionDto dtoNuevo= new ColectivoUbicacionDto();
 		dtoNuevo.setColectivoId(viaje.getColectivo_id());
-		dtoNuevo.setChofer_id(viaje.getChofer_id());
+		dtoNuevo.setChofer_id(user.getId());
 		dtoNuevo.setIndicePorcentaje(indicePorcentaje);
 		dtoNuevo.setPosicionColectivo(dto.getPosicionColectivo());
 		dtoNuevo.setRecorrido_id(viaje.getRecorrido_id());

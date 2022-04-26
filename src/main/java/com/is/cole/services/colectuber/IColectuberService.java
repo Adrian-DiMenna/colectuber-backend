@@ -7,7 +7,7 @@ import com.is.cole.dtos.colectuber.InitialViajeDto;
 import com.is.cole.dtos.colectuber.UsuarioChoferDto;
 
 public interface IColectuberService {
-	public void postColectivoUbicacion(ColectivoUbicacionDto dto);
+	public void postColectivoUbicacion(ColectivoUbicacionDto dto,String choferUsername);
 	public Result<ColectivoUbicacionDto> getColectivosUbicacion(); 
 	public InitialDataDto getInitialData();	
 	public UsuarioChoferDto getChofer(String choferUsername);
