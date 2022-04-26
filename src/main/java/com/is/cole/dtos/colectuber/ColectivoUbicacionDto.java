@@ -11,7 +11,16 @@ public class ColectivoUbicacionDto extends BaseDto{
 	private Double indicePorcentaje;
 	private Integer recorrido_id;
 	private Integer chofer_id;
+	private String destino;
 	
+	public String getDestino() {
+		return destino;
+	}
+
+	public void setDestino(String destino) {
+		this.destino = destino;
+	}
+
 	public Integer getChofer_id() {
 		return chofer_id;
 	}

@@ -86,6 +86,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 		dtoNuevo.setIndicePorcentaje(indicePorcentaje);
 		dtoNuevo.setPosicionColectivo(dto.getPosicionColectivo());
 		dtoNuevo.setRecorrido_id(viaje.getRecorrido_id());
+		dtoNuevo.setDestino(viaje.getDestino());
 		
 		ColectivoUbicacion ubi = parseDtoToBeanColectivoUbicacion(dtoNuevo);
 		colectivoUbicacionDao.save(ubi);
@@ -122,7 +123,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 		return dto;
 	}
 	
-	/******************* Special Functions *******************/
+	/****************************** Special Functions *************************************/
 	
 	private Double getIndicePorcentajeFromPoint(RecorridoDto recorrido, PosicionDto punto) {
 		
@@ -229,7 +230,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 	
 	
 	
-	/*Parses*/
+	/********************************Parses**************************************************/
 	
 	private ColectivoUbicacion parseDtoToBeanColectivoUbicacion(ColectivoUbicacionDto dto) {
 		ColectivoUbicacion ubi= new ColectivoUbicacion();
@@ -238,7 +239,8 @@ public class ColectuberServiceImpl implements IColectuberService{
 		ubi.setLat(dto.getPosicionColectivo().getLatitud());
 		ubi.setLng(dto.getPosicionColectivo().getLongitud());
 		ubi.setTime(System.currentTimeMillis());
-	
+		ubi.setDestino(dto.getDestino());
+		
 		ubi.setRecorrido(recorridoDao.getById(dto.getRecorrido_id()));
 		ubi.setIndicePorcentaje(dto.getIndicePorcentaje());
 		return ubi;
@@ -254,6 +256,7 @@ public class ColectuberServiceImpl implements IColectuberService{
 		
 		dto.setColectivoId(bean.getColectivo().getId());
 		dto.setPosicionColectivo(posDto);
+		dto.setDestino(bean.getDestino());
 		
 		dto.setIndicePorcentaje(bean.getIndicePorcentaje());
 		dto.setRecorrido_id(bean.getRecorrido().getId());
