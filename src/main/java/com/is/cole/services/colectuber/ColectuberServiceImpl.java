@@ -118,6 +118,7 @@ public class ColectuberServiceImpl implements IColectuberService {
 	}
 
 	@Override
+	@Transactional
 	public InitialViajeDto getViaje(String choferUsername) {
 		UsuarioDto userDto = usuarioService.getUsuarioByCorreo(choferUsername);
 
@@ -126,7 +127,8 @@ public class ColectuberServiceImpl implements IColectuberService {
 		ViajeDto viajeDto = viajeService.getByChoferIdViaje(userDto.getId());
 		dto.setColectivo(colectivoService.getColectivo(viajeDto.getColectivo_id()));
 		dto.setRecorrido(recorridoService.getRecorrido(viajeDto.getRecorrido_id()));
-		return null;
+		
+		return dto;
 	}
 
 	/******************* Special Functions *******************/

@@ -27,7 +27,7 @@ public class ColectuberController {
 	@Autowired
 	private IColectuberService colectuberService;
 
-	//@Secured({"ROLE_CHOFER","ROLE_ADMIN"})
+	// @Secured({"ROLE_CHOFER","ROLE_ADMIN"})
 	@PostMapping("/ubicacion")
 	public ResponseEntity<?> postColectivoUbicacion(@RequestBody ColectivoUbicacionDto dto) {
 		try {
@@ -74,18 +74,29 @@ public class ColectuberController {
 //			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 //		}
 //	}
-	
+
 	@Secured("ROLE_CHOFER")
 	@GetMapping("/get-chofer")
-	public ResponseEntity<?> getChofer(){
+	public ResponseEntity<?> getChofer() {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			UsuarioChoferDto dto = colectuberService.getChofer(username);
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
-		}catch(Exception e) {
+		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
-	
+
+	@Secured("ROLE_CHOFER")
+	@GetMapping("/get-viaje")
+	public ResponseEntity<?> getViaje() {
+		try {
+			String username = SecurityContextHolder.getContext().getAuthentication().getName();
+			InitialViajeDto dto = colectuberService.getViaje(username);
+			return ResponseEntity.status(HttpStatus.OK).body(dto);
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+		}
+	}
+
 }
