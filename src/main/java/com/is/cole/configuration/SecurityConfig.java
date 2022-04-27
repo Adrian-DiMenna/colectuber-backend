@@ -77,9 +77,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.referrerPolicy(ReferrerPolicy.STRICT_ORIGIN)
 			.and()
 			.permissionsPolicy(permissions -> permissions
-					.policy("fullscreen=(); "
-							+ "geolocation=();"
-							+ "camera=();"));
+					.policy("fullscreen=(), "
+							+ "geolocation=(),"
+							+ "camera=()"));
 	}
 
 }
