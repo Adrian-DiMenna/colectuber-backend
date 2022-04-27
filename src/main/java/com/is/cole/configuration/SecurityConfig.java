@@ -53,6 +53,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/authenticate").permitAll();
 
 		http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
+		
+		http
+			.headers()
+			.xssProtection()
+			.and()
+			.contentSecurityPolicy("default-src 'self';"
+					+ "script-src 'report-sample' 'self';"
+					+ "style-src 'report-sample' 'self';"
+					+ "object-src 'none';"
+					+ "base-uri 'self';"
+					+ "connect-src 'self';"
+					+ "font-src 'self';"
+					+ "frame-src 'self';"
+					+ "img-src 'self';"
+					+ "manifest-src 'self';"
+					+ "media-src 'self';"
+					+ "report-uri https://626941b31e8c404e5a8b9dc6.endpoint.csper.io/?v=3;"
+					+ "worker-src 'none';");
 	}
 
 }
