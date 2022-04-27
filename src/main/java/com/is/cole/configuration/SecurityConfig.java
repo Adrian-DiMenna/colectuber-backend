@@ -78,8 +78,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.permissionsPolicy(permissions -> permissions
 					.policy("fullscreen=(); "
-							+ "geolocation=()"
-							+ "camera=()"));
+							+ "geolocation=();"
+							+ "camera=();"));
 	}
 
 }
