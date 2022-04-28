@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.transaction.annotation.Transactional;
 
+import com.is.cole.daos.IColorDao;
 import com.is.cole.daos.IParadaDao;
 import com.is.cole.daos.IPuntoDeRecorridoDao;
 import com.is.cole.daos.IRecorridoDao;
@@ -29,6 +30,8 @@ public class RecorridoServiceImpl implements IRecorridoService {
 	private IPuntoDeRecorridoDao puntoRecorridoDao;
 	@Autowired
 	private IRecorridoDao recorridoDao;
+	@Autowired
+	private IColorDao colorDao;
 
 	@Override
 	@Transactional
@@ -188,6 +191,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 		bean.setDescripcion(dto.getDescripcion());
 		bean.setId(dto.getId());
 		bean.setNombre(dto.getNombre());
+		bean.setColor(colorDao.findByNombre(dto.getColor()));
 		return bean;
 	}
 
@@ -196,6 +200,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 		dto.setDescripcion(bean.getDescripcion());
 		dto.setId(bean.getId());
 		dto.setNombre(bean.getNombre());
+		dto.setColor(bean.getColor().getNombre());
 		return dto;
 	}
 
