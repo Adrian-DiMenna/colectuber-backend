@@ -17,10 +17,12 @@ import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.dtos.colectivos.EmpresaDeColectivosDto;
 import com.is.cole.dtos.colectivos.LineaDeColectivosDto;
+import com.is.cole.dtos.colores.ColorDto;
 import com.is.cole.dtos.paradas.ParadaDto;
 import com.is.cole.dtos.recorridos.PuntoDeRecorridoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.services.colectivos.IColectivoService;
+import com.is.cole.services.colores.IColorService;
 import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
 import com.is.cole.services.lineas.ILineaColectivosService;
 import com.is.cole.services.paradas.IParadaService;
@@ -224,6 +226,23 @@ public class TestServiceImpl implements ITestService {
 		return map;
 	}
 	
+	private Map<String, ColorDto> insertColor() {
+
+		Map<String, ColorDto> resultMap = new HashMap<>();
+
+		String[] arreglo = { "red", "orange", "yellow", "green", "cyan", "blue", "purple", "gray" };
+
+		for (String nombre : arreglo) {
+			ColorDto newDto = new ColorDto();
+			newDto.setNombre(nombre);
+			newDto = colorService.saveColor(newDto);
+			resultMap.put(newDto.getNombre(), newDto);
+		}
+		
+		return resultMap;
+
+	}
+	
 	@Autowired
 	private IColectivoService colectivoService;
 	
@@ -245,4 +264,6 @@ public class TestServiceImpl implements ITestService {
 	@Autowired
 	private IViajesService viajeService;
 
+	@Autowired
+	private IColorService colorService;
 }
