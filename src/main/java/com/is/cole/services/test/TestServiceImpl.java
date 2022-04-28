@@ -78,18 +78,14 @@ public class TestServiceImpl implements ITestService {
 		dtoColectivo= colectivoService.saveColectivo(dtoColectivo);
 		
 		ParadaDto dtoParada = new ParadaDto();
-		
 		dtoParada.setNombre("Zona UNI");
 		dtoParada.setDescripcion("Es la parada de zona uni");
-		
 		dtoParada.setPosicion(new PosicionDto());
-		dtoParada.getPosicion().setLatitud(-27.339012150883054);
-		dtoParada.getPosicion().setLongitud(-55.86876702613541);
-
+		dtoParada.getPosicion().setLatitud(-27.308016);
+		dtoParada.getPosicion().setLongitud(-55.887896);
 		dtoParada.setImage(null);
+		dtoParada = paradaService.saveParada(dtoParada);
 		
-		
-		paradaService.saveParada(dtoParada);
 		
 		UsuarioDto dtoUsuario = new UsuarioDto();
 		RoleDto dtoRole = new RoleDto();
@@ -218,6 +214,12 @@ public class TestServiceImpl implements ITestService {
 		puntoUni2.getPuntoPosicion().setLatitud(-27.30855247497118);
 		puntoUni2.getPuntoPosicion().setLongitud(-55.88844384308095);
 		
+		PuntoDeRecorridoDto puntoParada= new PuntoDeRecorridoDto();
+		puntoParada.setParadaId(dtoParada.getId());
+		puntoParada.setPuntoPosicion(new PosicionDto());
+		puntoParada.getPuntoPosicion().setLatitud(dtoParada.getPosicion().getLatitud());
+		puntoParada.getPuntoPosicion().setLongitud(dtoParada.getPosicion().getLongitud());
+		
 		PuntoDeRecorridoDto puntoUni3 = new PuntoDeRecorridoDto();
 		puntoUni3.setPuntoPosicion(new PosicionDto());
 		puntoUni3.getPuntoPosicion().setLatitud(-27.307803514569393);
@@ -240,6 +242,7 @@ public class TestServiceImpl implements ITestService {
 		
 		puntosUni.add(puntoUni1);
 		puntosUni.add(puntoUni2);
+		puntosUni.add(puntoParada);
 		puntosUni.add(puntoUni3);
 		puntosUni.add(puntoUni4);
 		puntosUni.add(puntoUni5);
@@ -250,7 +253,9 @@ public class TestServiceImpl implements ITestService {
 		recorridoService.saveRecorrido(dtoRecorridoUni);
 		
 		//Un update del viaje del chofer Antonio
+		ViajeDto viajeChoferAntonio= viajeService.getAllViaje().getResult().get(0);
 		viaje.setRecorrido_id(recorridoService.getAllRecorrido().getResult().get(1).getId());
+		viaje.setId(viajeChoferAntonio.getId());
 		viajeService.saveViaje(viaje);
 		
 	}

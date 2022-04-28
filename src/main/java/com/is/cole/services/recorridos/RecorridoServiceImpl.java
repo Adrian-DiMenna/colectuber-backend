@@ -52,6 +52,9 @@ public class RecorridoServiceImpl implements IRecorridoService {
 
 	}
 
+	/**
+	 * 
+	 */
 	@Override
 	@Transactional
 	public RecorridoDto getRecorrido(Integer id) {
@@ -90,6 +93,11 @@ public class RecorridoServiceImpl implements IRecorridoService {
 	// Metodos Auxiliares
 
 	// Guardar lista de puntos de recorridos
+	/**
+	 * 
+	 * @param dtos
+	 * @return
+	 */
 	private List<PuntoDeRecorrido> saveListPuntoDeRecorridoDto(List<PuntoDeRecorridoDto> dtos) {
 		List<PuntoDeRecorrido> beans = new ArrayList<>();
 
