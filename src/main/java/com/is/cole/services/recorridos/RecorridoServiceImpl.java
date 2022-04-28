@@ -32,7 +32,7 @@ public class RecorridoServiceImpl implements IRecorridoService {
 
 	@Override
 	@Transactional
-	public void saveRecorrido(RecorridoDto dto) {
+	public RecorridoDto saveRecorrido(RecorridoDto dto) {
 	
 		if (dto.getId() != null) {
 			Recorrido recorridoBeanAntiguo = recorridoDao.getById(dto.getId());
@@ -48,7 +48,8 @@ public class RecorridoServiceImpl implements IRecorridoService {
 			recorridoBean.setPunto_inicial(null);
 		}
 
-		recorridoDao.save(recorridoBean);
+		Recorrido beanGuardado=recorridoDao.save(recorridoBean);
+		return parseBeanToDtoRecorrido(beanGuardado);
 
 	}
 

@@ -1,7 +1,9 @@
 package com.is.cole.services.test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -27,184 +29,53 @@ import com.is.cole.services.usuarios.IUsuariosService;
 import com.is.cole.services.viajes.IViajesService;
 
 @Service
+/**
+ * Servicio para añadir datos iniciales de prueba
+ * @author COLECTUBER
+ *
+ */
 public class TestServiceImpl implements ITestService {
 	
-	@Autowired
-	private IColectivoService colectivoService;
-	
-	@Autowired
-	private IEmpresaColectivosService empresaService;
-	
-	@Autowired
-	private ILineaColectivosService lineaService;
-
-	@Autowired
-	private IParadaService paradaService;
-	
-	@Autowired
-	private IUsuariosService usuarioService;
-	
-	@Autowired
-	private IRecorridoService recorridoService;
-	
-	@Autowired
-	private IViajesService viajeService;
 	@Override
 	@Transactional
 	public void insertTestValues() {
+		insertViaje(
+			insertRecorrido(insertParadas()),
+			insertColectivo(insertEmpresaColectivo(), insertLinea()),
+			insertUsuarios(insertRoles())
+		);
 		
-		LineaDeColectivosDto dtoLinea = new LineaDeColectivosDto();
+	}
+	
+	private Map<String, ViajeDto> insertViaje(
+		Map<String, RecorridoDto>recorridoMap,
+		Map<String, ColectivoDto>colectivoMap,
+		Map<String, UsuarioDto>usuarioMap
+	){
+		Map<String, ViajeDto> viajeMap= new HashMap<>();
 		
-		dtoLinea.setNumero("Linea 1");
+		ViajeDto viajeUNI = new ViajeDto();
+		viajeUNI.setDestino("Quiteria");
+		viajeUNI.setRecorrido_id(recorridoMap.get("Recorrido UNI").getId());
+		viajeUNI.setChofer_id(usuarioMap.get("antonio").getId());
+		viajeUNI.setColectivo_id(colectivoMap.get("Colectivo23").getId());
 		
-		dtoLinea = lineaService.saveLineaColectivo(dtoLinea);
+		viajeUNI = viajeService.saveViaje(viajeUNI);
 		
+		viajeMap.put("Viaje UNI", viajeUNI);
 		
-		EmpresaDeColectivosDto dtoEmpresa = new EmpresaDeColectivosDto();
+		return viajeMap;
+	}
+	
+	private Map<String, RecorridoDto> insertRecorrido(
+			Map<String, ParadaDto>paradaMap){
 		
-		dtoEmpresa.setNombre("Urbano");
-		dtoEmpresa.setCorreo_electronico("urbano@gmail.com");
-		dtoEmpresa.setDireccion("Ruta 6");
-		dtoEmpresa.setNumero_telefono("098756485");
+		Map<String, RecorridoDto> map= new HashMap<>();
 		
-		dtoEmpresa = empresaService.saveEmpresaColectivo(dtoEmpresa);
-		
-		ColectivoDto dtoColectivo = new ColectivoDto();
-		
-		dtoColectivo.setLineaId(dtoLinea.getId());
-		dtoColectivo.setEmpresaId(dtoEmpresa.getId());
-		dtoColectivo.setNumero("23");
-		
-		dtoColectivo= colectivoService.saveColectivo(dtoColectivo);
-		
-		ParadaDto dtoParada = new ParadaDto();
-		
-		dtoParada.setNombre("Zona UNI");
-		dtoParada.setDescripcion("Es la parada de zona uni");
-		
-		dtoParada.setPosicion(new PosicionDto());
-		dtoParada.getPosicion().setLatitud(-27.339012150883054);
-		dtoParada.getPosicion().setLongitud(-55.86876702613541);
-
-		dtoParada.setImage(null);
-		
-		
-		paradaService.saveParada(dtoParada);
-		
-		UsuarioDto dtoUsuario = new UsuarioDto();
-		RoleDto dtoRole = new RoleDto();
-		
-		dtoUsuario.setNombre("Admin");
-		dtoUsuario.setApellido("Master");
-		dtoUsuario.setCorreo_electronico("admin");
-		dtoUsuario.setPassword("muysecreto");
-		
-		dtoRole.setNombre("ROLE_ADMIN");
-		dtoRole.setDescripcion("Es admin");
-		
-		dtoRole = usuarioService.saveRole(dtoRole);
-		dtoUsuario = usuarioService.saveUsuario(dtoUsuario);
-		usuarioService.agregarRoleAUsuario(dtoUsuario.getId(), dtoRole.getId());
-		
-		
-		RecorridoDto dtoRecorrido = new RecorridoDto();
-		dtoRecorrido.setDescripcion("Recorrido principal ");
-		dtoRecorrido.setNombre("Principal A");
-		
-		List<PuntoDeRecorridoDto> puntos = new ArrayList<>();
-		
-		PuntoDeRecorridoDto punto1 = new PuntoDeRecorridoDto();
-		punto1.setPuntoPosicion(new PosicionDto());
-		punto1.getPuntoPosicion().setLatitud(-27.32553598706966);
-		punto1.getPuntoPosicion().setLongitud(-55.87323965294769);
-		
-		PuntoDeRecorridoDto punto2 = new PuntoDeRecorridoDto();
-		punto2.setPuntoPosicion(new PosicionDto());
-		punto2.getPuntoPosicion().setLatitud(-27.32681193023178);
-		punto2.getPuntoPosicion().setLongitud(-55.873084804357816);
-		
-		PuntoDeRecorridoDto punto3 = new PuntoDeRecorridoDto();
-		punto3.setPuntoPosicion(new PosicionDto());
-		punto3.getPuntoPosicion().setLatitud(-27.326738698790326);
-		punto3.getPuntoPosicion().setLongitud(-55.87183201109447);
-		
-		PuntoDeRecorridoDto punto4 = new PuntoDeRecorridoDto();
-		punto4.setPuntoPosicion(new PosicionDto());
-		punto4.getPuntoPosicion().setLatitud(-27.326706638662156);
-		punto4.getPuntoPosicion().setLongitud(-55.87157488864356);
-		
-		PuntoDeRecorridoDto punto5 = new PuntoDeRecorridoDto();
-		punto5.setPuntoPosicion(new PosicionDto());
-		punto5.getPuntoPosicion().setLatitud(-27.32811194846384);
-		punto5.getPuntoPosicion().setLongitud(-55.87149364827277);
-		
-		PuntoDeRecorridoDto punto6 = new PuntoDeRecorridoDto();
-		punto6.setPuntoPosicion(new PosicionDto());
-		punto6.getPuntoPosicion().setLatitud(-27.329523170657676);
-		punto6.getPuntoPosicion().setLongitud(-55.87135405356195);
-		
-		PuntoDeRecorridoDto punto7 = new PuntoDeRecorridoDto();
-		punto7.setPuntoPosicion(new PosicionDto());
-		punto7.getPuntoPosicion().setLatitud(-27.329393815116873);
-		punto7.getPuntoPosicion().setLongitud(-55.869855702624186);
-		
-		PuntoDeRecorridoDto punto8 = new PuntoDeRecorridoDto();
-		punto8.setPuntoPosicion(new PosicionDto());
-		punto8.getPuntoPosicion().setLatitud(-27.329256116154863);
-		punto8.getPuntoPosicion().setLongitud(-55.868354647830834);
-		
-		PuntoDeRecorridoDto punto9 = new PuntoDeRecorridoDto();
-		punto9.setPuntoPosicion(new PosicionDto());
-		punto9.getPuntoPosicion().setLatitud(-27.330586227003);
-		punto9.getPuntoPosicion().setLongitud(-55.86822514830496);
-		
-		puntos.add(punto1);
-		puntos.add(punto2);
-		puntos.add(punto3);
-		puntos.add(punto4);
-		puntos.add(punto5);
-		puntos.add(punto6);
-		puntos.add(punto7);
-		puntos.add(punto8);
-		puntos.add(punto9);
-		
-		dtoRecorrido.setPuntos(puntos);
-		
-		recorridoService.saveRecorrido(dtoRecorrido);
-		
-		//Para agregar un viaje
-		
-		//Primero un chofer y su rol
-		
-		UsuarioDto dtoUsuarioAntonio = new UsuarioDto();
-		RoleDto dtoRoleChofer = new RoleDto();
-		
-		dtoUsuarioAntonio.setNombre("Antonio");
-		dtoUsuarioAntonio.setApellido("Villas");
-		dtoUsuarioAntonio.setCorreo_electronico("antonio@gmail.com");
-		dtoUsuarioAntonio.setPassword("muysecreto");
-		
-		dtoRoleChofer.setNombre("ROLE_CHOFER");
-		dtoRoleChofer.setDescripcion("Maneja los colectivos");
-		
-		dtoRoleChofer = usuarioService.saveRole(dtoRoleChofer);
-		dtoUsuarioAntonio= usuarioService.saveUsuario(dtoUsuarioAntonio);
-		usuarioService.agregarRoleAUsuario(dtoUsuarioAntonio.getId(), dtoRoleChofer.getId());
-		
-		//Agregamos el viaje 
-		
-		ViajeDto viaje = new ViajeDto();
-		viaje.setChofer_id(dtoUsuarioAntonio.getId());
-		viaje.setColectivo_id(dtoColectivo.getId());
-		viaje.setDestino("Circuito");
-		viaje.setRecorrido_id(recorridoService.getAllRecorrido().getResult().get(0).getId());
-		viajeService.saveViaje(viaje);
-		
-		//Agregamos el recorrido Zona centro a UNI
 		
 		RecorridoDto dtoRecorridoUni = new RecorridoDto();
-		dtoRecorrido.setDescripcion("Recorrido Zona Centro a UNI ");
-		dtoRecorrido.setNombre("Principal UNI");
+		dtoRecorridoUni.setDescripcion("Recorrido Zona Centro a UNI ");
+		dtoRecorridoUni.setNombre("Principal UNI");
 		
 		List<PuntoDeRecorridoDto> puntosUni = new ArrayList<>();
 		
@@ -213,10 +84,10 @@ public class TestServiceImpl implements ITestService {
 		puntoUni1.getPuntoPosicion().setLatitud(-27.309675906048817);
 		puntoUni1.getPuntoPosicion().setLongitud(-55.8866588781164);
 		
-		PuntoDeRecorridoDto puntoUni2 = new PuntoDeRecorridoDto();
-		puntoUni2.setPuntoPosicion(new PosicionDto());
-		puntoUni2.getPuntoPosicion().setLatitud(-27.30855247497118);
-		puntoUni2.getPuntoPosicion().setLongitud(-55.88844384308095);
+		PuntoDeRecorridoDto puntoParadaUni2 = new PuntoDeRecorridoDto();
+		ParadaDto paradaDto= paradaMap.get("Parada UNI");
+		puntoParadaUni2.setParadaId(paradaDto.getId());
+		puntoParadaUni2.setPuntoPosicion(paradaDto.getPosicion());
 		
 		PuntoDeRecorridoDto puntoUni3 = new PuntoDeRecorridoDto();
 		puntoUni3.setPuntoPosicion(new PosicionDto());
@@ -239,7 +110,7 @@ public class TestServiceImpl implements ITestService {
 		puntoUni6.getPuntoPosicion().setLongitud(-55.887452195889026);
 		
 		puntosUni.add(puntoUni1);
-		puntosUni.add(puntoUni2);
+		puntosUni.add(puntoParadaUni2);
 		puntosUni.add(puntoUni3);
 		puntosUni.add(puntoUni4);
 		puntosUni.add(puntoUni5);
@@ -247,11 +118,131 @@ public class TestServiceImpl implements ITestService {
 		
 		dtoRecorridoUni.setPuntos(puntosUni);
 		
-		recorridoService.saveRecorrido(dtoRecorridoUni);
+		dtoRecorridoUni= recorridoService.saveRecorrido(dtoRecorridoUni);
 		
-		//Un update del viaje del chofer Antonio
-		viaje.setRecorrido_id(recorridoService.getAllRecorrido().getResult().get(1).getId());
-		viajeService.saveViaje(viaje);
+		map.put("Recorrido UNI", dtoRecorridoUni);
 		
+		
+		return map;
 	}
+	
+	
+	
+	private Map<String, RoleDto> insertRoles(){
+		Map<String, RoleDto> map = new HashMap<String, RoleDto>();
+		
+		RoleDto rolAdmin = new RoleDto();
+		rolAdmin.setNombre("ROLE_ADMIN");
+		rolAdmin.setDescripcion("El usuario con rol administrador tiene acceso a todo el sistema.");
+		map.put("admin", usuarioService.saveRole(rolAdmin));
+		
+		RoleDto rolChofer = new RoleDto();
+		rolChofer.setNombre("ROLE_CHOFER");
+		rolChofer.setDescripcion("El usuario con rol chofer representa la persona que maneja un colectivo");
+		map.put("chofer", usuarioService.saveRole(rolChofer));
+		
+		return map;
+	}
+	
+	private Map<String, UsuarioDto> insertUsuarios(Map<String, RoleDto> rolMap){
+		Map<String, UsuarioDto> map = new HashMap<String, UsuarioDto>();
+		
+		UsuarioDto admin = new UsuarioDto();
+		admin.setNombre("Administrador");
+		admin.setApellido("Purete");
+		admin.setCorreo_electronico("admin");
+		admin.setPassword("muysecreto");
+		map.put("admin", usuarioService.saveUsuario(admin));
+		usuarioService.agregarRoleAUsuario(map.get("admin").getId(), rolMap.get("admin").getId());
+		
+		
+		UsuarioDto chofer = new UsuarioDto();
+		chofer.setNombre("Antonio");
+		chofer.setApellido("Villas");
+		chofer.setCorreo_electronico("antonio@gmail.com");
+		chofer.setPassword("muysecreto");
+		map.put("antonio", usuarioService.saveUsuario(chofer));
+		usuarioService.agregarRoleAUsuario(map.get("antonio").getId(), rolMap.get("chofer").getId());
+		
+		return map;
+	}
+	
+	private Map<String, ParadaDto> insertParadas(){
+		Map<String, ParadaDto> map = new HashMap<String, ParadaDto>();
+		
+		ParadaDto paradaZonaUNI = new ParadaDto();
+		paradaZonaUNI.setNombre("Zona UNI");
+		paradaZonaUNI.setDescripcion("Es la parada de zona uni");
+		paradaZonaUNI.setPosicion(new PosicionDto());
+		paradaZonaUNI.getPosicion().setLatitud(-27.30855247497118);
+		paradaZonaUNI.getPosicion().setLongitud(-55.88844384308095);
+		paradaZonaUNI.setImage(null);
+		map.put("Parada UNI", paradaService.saveParada(paradaZonaUNI));
+		
+		return map;
+	}
+	
+
+	private Map<String, ColectivoDto> insertColectivo(Map<String, EmpresaDeColectivosDto> empresaMap,
+			Map<String, LineaDeColectivosDto> lineaMap) {
+
+		Map<String, ColectivoDto> map = new HashMap<>();
+
+		ColectivoDto dto = new ColectivoDto();
+		dto.setEmpresaId(empresaMap.get("urbano").getId());
+		dto.setLineaId(lineaMap.get("Linea").getId());
+		dto.setNumero("23");
+
+		dto = colectivoService.saveColectivo(dto);
+		map.put("Colectivo23", dto);
+
+		return map;
+	}
+	
+	private Map<String, LineaDeColectivosDto> insertLinea() {
+		Map<String, LineaDeColectivosDto> map = new HashMap<>();
+
+		LineaDeColectivosDto lineaDto = new LineaDeColectivosDto();
+		lineaDto.setNumero("16");
+		lineaDto = lineaService.saveLineaColectivo(lineaDto);
+		map.put("Linea", lineaDto);
+
+		return map;
+	}
+	
+	private Map<String, EmpresaDeColectivosDto> insertEmpresaColectivo(){
+		Map<String, EmpresaDeColectivosDto> map = new HashMap<>();
+		
+		EmpresaDeColectivosDto empresaUrbano = new EmpresaDeColectivosDto();
+		empresaUrbano.setNombre("Empresa Urbano");
+		empresaUrbano.setCorreo_electronico("empresa@gmail.com");
+		empresaUrbano.setDireccion("Algun lugar");
+		empresaUrbano.setNumero_telefono("0987654321");
+		empresaUrbano = empresaService.saveEmpresaColectivo(empresaUrbano);
+		map.put("urbano", empresaUrbano);
+		
+		return map;
+	}
+	
+	@Autowired
+	private IColectivoService colectivoService;
+	
+	@Autowired
+	private IEmpresaColectivosService empresaService;
+	
+	@Autowired
+	private ILineaColectivosService lineaService;
+
+	@Autowired
+	private IParadaService paradaService;
+	
+	@Autowired
+	private IUsuariosService usuarioService;
+	
+	@Autowired
+	private IRecorridoService recorridoService;
+	
+	@Autowired
+	private IViajesService viajeService;
+
 }
