@@ -61,6 +61,11 @@ public class ColectivoServiceImpl implements IColectivoService{
 	
 	//Parses
 	
+	/**
+	 * Convierte de Bean a Dto la Colectivo
+	 * @param bean
+	 * @return
+	 */
 	private ColectivoDto parseBeanToDtoColectivo(Colectivo bean) {
 		ColectivoDto dto = new ColectivoDto();
 		dto.setEmpresaId(bean.getEmpresaColectivo().getId());
@@ -71,7 +76,11 @@ public class ColectivoServiceImpl implements IColectivoService{
 		return dto;
 	}
 	
-	
+	/**
+	 * Convierte de Dto a Bean la entidad Colectivo
+	 * @param dto
+	 * @return
+	 */
 	private Colectivo parseDtoToBeanColectivo(ColectivoDto dto) {
 		Colectivo bean = new Colectivo();
 		bean.setEmpresaColectivo(empresaDao.getById(dto.getEmpresaId()));

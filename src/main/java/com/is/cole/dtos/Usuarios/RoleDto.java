@@ -5,14 +5,13 @@ import com.is.cole.dtos.BaseDto;
 public class RoleDto extends BaseDto {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private Integer id;
-	
+
 	private String nombre;
-	
+
 	private String descripcion;
 
-	
 	public Integer getId() {
 		return id;
 	}
@@ -36,7 +35,5 @@ public class RoleDto extends BaseDto {
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-	
-	
-	
+
 }

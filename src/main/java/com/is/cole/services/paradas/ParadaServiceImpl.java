@@ -52,6 +52,11 @@ public class ParadaServiceImpl implements IParadaService {
 		paradaDao.deleteById(id);
 	}
 	
+	/**
+	 * Convierte un Bean a Dto de la entidad Parada
+	 * @param bean
+	 * @return
+	 */
 	private ParadaDto parseBeanToDto(Parada bean) {
 		ParadaDto dto = new ParadaDto();
 		
@@ -68,6 +73,11 @@ public class ParadaServiceImpl implements IParadaService {
 		return dto;
 	}
 	
+	/**
+	 * Converte un Dto a Bean de la entidad Parada
+	 * @param dto
+	 * @return
+	 */
 	private Parada parseDtotoBean(ParadaDto dto) {
 		Parada bean = new Parada();
 		

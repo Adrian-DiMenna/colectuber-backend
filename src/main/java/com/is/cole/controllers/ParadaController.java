@@ -26,6 +26,11 @@ public class ParadaController {
 	@Autowired
 	private IParadaService paradaService;
 
+	/**
+	 * Agrega una parada
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping
 	public ResponseEntity<?> postParada(@RequestBody ParadaDto dto) {
 		try {
@@ -38,6 +43,11 @@ public class ParadaController {
 		}
 	}
 
+	/**
+	 * Obtiene una parada por medio de un identificador
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getParada(@PathVariable(value = "id") Integer id) {
 		try {
@@ -50,6 +60,10 @@ public class ParadaController {
 		}
 	}
 
+	/**
+	 * Obtener todas las paradas
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<?> getAllParadas() {
 		try {
@@ -60,6 +74,11 @@ public class ParadaController {
 		}
 	}
 
+	/**
+	 * Eliminar una parada por medio de su identificador
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteParada(@PathVariable(value = "id") Integer id) {
 		try {

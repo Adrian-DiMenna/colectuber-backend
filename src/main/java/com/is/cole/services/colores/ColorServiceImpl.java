@@ -61,6 +61,11 @@ public class ColorServiceImpl implements IColorService {
 
 	// Parses
 
+	/**
+	 * Convierte de bean a dto la entidad color
+	 * @param bean
+	 * @return
+	 */
 	private ColorDto parseBeanToDto(Color bean) {
 		ColorDto dto = new ColorDto();
 
@@ -70,6 +75,11 @@ public class ColorServiceImpl implements IColorService {
 		return dto;
 	}
 
+	/**
+	 * Convierte de Dto a Bean la entidad ColorDto
+	 * @param dto
+	 * @return
+	 */
 	private Color parseDtoToBean(ColorDto dto) {
 		Color bean = new Color();
 

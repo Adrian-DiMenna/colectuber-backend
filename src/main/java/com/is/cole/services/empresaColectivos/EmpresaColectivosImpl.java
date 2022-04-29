@@ -57,6 +57,11 @@ public class EmpresaColectivosImpl implements IEmpresaColectivosService{
 	
 	//Parses
 	
+	/**
+	 * Convierte de Bean a dto la entidad Empresa de Colectivo
+	 * @param bean
+	 * @return
+	 */
 	private EmpresaDeColectivosDto parseBeanToDtoEmpresaColectivo(EmpresaDeColectivos bean) {
 		EmpresaDeColectivosDto dto = new EmpresaDeColectivosDto();
 		dto.setCorreo_electronico(bean.getCorreo());
@@ -68,6 +73,11 @@ public class EmpresaColectivosImpl implements IEmpresaColectivosService{
 		return dto;
 	}
 	
+	/**
+	 * Convierte de Dto a Bean la entidad empresa de colectivo
+	 * @param dto
+	 * @return
+	 */
 	private EmpresaDeColectivos parseDtoToBeanEmpresaColectivo(EmpresaDeColectivosDto dto) {
 		EmpresaDeColectivos bean = new EmpresaDeColectivos();
 		bean.setId(dto.getId());

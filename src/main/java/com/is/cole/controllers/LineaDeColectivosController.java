@@ -25,6 +25,11 @@ public class LineaDeColectivosController {
 	@Autowired
 	private ILineaColectivosService lineaService;
 
+	/**
+	 * Agrega una nueva linea de colectivo
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping
 	public ResponseEntity<?> saveLineaColectivo(@RequestBody LineaDeColectivosDto dto) {
 		try {
@@ -37,6 +42,11 @@ public class LineaDeColectivosController {
 		}
 	}
 
+	/**
+	 * Obtiene una linea de colectivo por medio de un identificador
+	 * @param lineaId
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getLineaColectivo(@PathVariable("id") Integer lineaId) {
 		try {
@@ -49,6 +59,10 @@ public class LineaDeColectivosController {
 		}
 	}
 
+	/**
+	 * Obitnene todas las lineas de colectivo
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<?> getAllLineaColectivo() {
 		try {
@@ -59,6 +73,11 @@ public class LineaDeColectivosController {
 		}
 	}
 
+	/**
+	 * Eliminar la linea de colectivo por medio de un identificador
+	 * @param lineaId
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteLineaColectivo(@PathVariable("id") Integer lineaId) {
 		try {
