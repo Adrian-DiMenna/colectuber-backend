@@ -17,6 +17,11 @@ import com.is.cole.dtos.Result;
 import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.services.recorridos.IRecorridoService;
 
+/**
+ * Controlador para el servicio de recorrido de un colectivo
+ * @author Colectuber
+ *
+ */
 @RestController
 @RequestMapping("/api/recorridos")
 @Secured("ROLE_ADMIN")

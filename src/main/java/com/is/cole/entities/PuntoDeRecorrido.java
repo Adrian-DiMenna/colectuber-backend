@@ -17,7 +17,6 @@ import org.hibernate.annotations.OnDeleteAction;
  * Entidad para referenciar un punto de un recorrido con el siguiente punto
  * del recorrido
  * @author Colectuber
- *
  */
 @Entity
 @Table(name="puntos_recorrido")

@@ -17,6 +17,11 @@ import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Viajes.ViajeDto;
 import com.is.cole.services.viajes.IViajesService;
 
+/**
+ * Controlador para el servicio de los viajes
+ * @author Colectuber
+ *
+ */
 @RestController
 @RequestMapping("api/viajes")
 @Secured("ROLE_ADMIN")

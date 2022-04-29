@@ -15,7 +15,6 @@ import org.hibernate.annotations.OnDeleteAction;
 /**
  * Entidad que define los atributos basicos de un recorrido
  * @author Colectuber
- *
  */
 @Entity
 @Table(name = "recorridos")

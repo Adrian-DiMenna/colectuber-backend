@@ -6,7 +6,6 @@ import com.is.cole.dtos.PosicionDto;
 /**
  * Dto que representa un punto de un recorrido
  * @author Colectuber
- *
  */
 public class PuntoDeRecorridoDto extends BaseDto{
 

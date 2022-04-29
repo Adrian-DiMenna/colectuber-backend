@@ -21,6 +21,10 @@ import com.is.cole.dtos.recorridos.RecorridoDto;
 import com.is.cole.entities.PuntoDeRecorrido;
 import com.is.cole.entities.Recorrido;
 
+/**
+ * Servicio para la manipulacion de los recorridos de un viaje
+ * @author Colectuber
+ */
 @Service
 public class RecorridoServiceImpl implements IRecorridoService {
 	

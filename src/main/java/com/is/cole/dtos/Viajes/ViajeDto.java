@@ -3,7 +3,7 @@ package com.is.cole.dtos.Viajes;
 import com.is.cole.dtos.BaseDto;
 
 /**
- * 
+ * Dto que representa un viaje de un colectivo
  * @author Colectuber
  *
  */

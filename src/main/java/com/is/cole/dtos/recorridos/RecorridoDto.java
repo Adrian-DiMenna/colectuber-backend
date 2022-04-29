@@ -7,7 +7,6 @@ import com.is.cole.dtos.BaseDto;
 /**
  * Dto que representa un recorrido de colectivo
  * @author Colectuber
- *
  */
 public class RecorridoDto extends BaseDto {
 	private static final long serialVersionUID = 1L;

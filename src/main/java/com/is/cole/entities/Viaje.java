@@ -16,7 +16,6 @@ import org.hibernate.annotations.OnDeleteAction;
 /**
  * Entidad que se utiliza para asignar a un chofer un colectivo y un recorrido
  * @author Colectuber
- *
  */
 @Entity
 @Table(name="viajes",uniqueConstraints= {

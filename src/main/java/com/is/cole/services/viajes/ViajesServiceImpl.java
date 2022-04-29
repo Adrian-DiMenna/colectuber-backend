@@ -16,7 +16,6 @@ import com.is.cole.entities.Viaje;
 /**
  * Servicio para manipular los viajes de colectivos de algun chofer
  * @author Colectuber
- *
  */
 @Service
 public class ViajesServiceImpl implements IViajesService {
