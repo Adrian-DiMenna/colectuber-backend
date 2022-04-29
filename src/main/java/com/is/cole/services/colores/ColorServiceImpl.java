@@ -16,9 +16,6 @@ import com.is.cole.entities.Color;
 @Service
 public class ColorServiceImpl implements IColorService {
 
-	@Autowired
-	private IColorDao colorDao;
-
 	@Override
 	@Transactional
 	public ColorDto saveColor(ColorDto dto) {
@@ -63,6 +60,7 @@ public class ColorServiceImpl implements IColorService {
 
 	/**
 	 * Convierte de bean a dto la entidad color
+	 * 
 	 * @param bean
 	 * @return
 	 */
@@ -77,6 +75,7 @@ public class ColorServiceImpl implements IColorService {
 
 	/**
 	 * Convierte de Dto a Bean la entidad ColorDto
+	 * 
 	 * @param dto
 	 * @return
 	 */
@@ -88,4 +87,7 @@ public class ColorServiceImpl implements IColorService {
 
 		return bean;
 	}
+
+	@Autowired
+	private IColorDao colorDao;
 }

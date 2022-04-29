@@ -13,9 +13,6 @@ import com.is.cole.entities.Linea;
 @Service
 public class LineaColectivosServiceImpl implements ILineaColectivosService {
 
-	@Autowired
-	private ILineaDao lineaDao;
-
 	// Metodos
 
 	@Override
@@ -54,6 +51,7 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 
 	/**
 	 * Convierte de Bean a Dto la entidad LineaDeColectivo
+	 * 
 	 * @param bean
 	 * @return
 	 */
@@ -66,6 +64,7 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 
 	/**
 	 * Convierte de Dto a Bean la entidad LineaDeColectivo
+	 * 
 	 * @param dto
 	 * @return
 	 */
@@ -75,5 +74,8 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 		bean.setNumero(dto.getNumero());
 		return bean;
 	}
+
+	@Autowired
+	private ILineaDao lineaDao;
 
 }

@@ -19,17 +19,6 @@ import com.is.cole.entities.Usuarios;
 @Service
 public class UsuariosServiceImpl implements IUsuariosService {
 
-	@Autowired
-	private IUserDao usuarioDao;
-	@Autowired
-	private IRoleDao roleDao;
-	@Autowired
-	private IRolesUsuarioDao roleUserDao;
-	@Autowired
-	private IUserDao userDao;
-	@Autowired
-	private PasswordEncoder passwordEncoder;
-
 	/********************************* Usuarios *******************************/
 
 	/**
@@ -256,4 +245,14 @@ public class UsuariosServiceImpl implements IUsuariosService {
 		return bean;
 	}
 
+	@Autowired
+	private IUserDao usuarioDao;
+	@Autowired
+	private IRoleDao roleDao;
+	@Autowired
+	private IRolesUsuarioDao roleUserDao;
+	@Autowired
+	private IUserDao userDao;
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 }

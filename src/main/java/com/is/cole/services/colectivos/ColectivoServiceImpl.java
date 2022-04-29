@@ -13,18 +13,10 @@ import com.is.cole.dtos.colectivos.ColectivoDto;
 import com.is.cole.entities.Colectivo;
 
 @Service
-public class ColectivoServiceImpl implements IColectivoService{
+public class ColectivoServiceImpl implements IColectivoService {
 
-	@Autowired
-	private IColectivoDao colectivoDao;
-	@Autowired
-	private ILineaDao lineaDao;
-	@Autowired
-	private IEmpresaDeColectivosDao empresaDao;
-	
-	
-	//Metodos
-	
+	// Metodos
+
 	@Override
 	@Transactional
 	public ColectivoDto saveColectivo(ColectivoDto dto) {
@@ -43,26 +35,24 @@ public class ColectivoServiceImpl implements IColectivoService{
 	@Transactional
 	public void deleteColectivo(Integer id) {
 		colectivoDao.deleteById(id);
-		
+
 	}
 
 	@Override
 	@Transactional
 	public Result<ColectivoDto> getAllColectivo() {
 		Result<ColectivoDto> dtosObtenido = new Result<>();
-		
-		dtosObtenido.setResult(
-			colectivoDao.findAll().stream()
-			.map(cole -> parseBeanToDtoColectivo(cole))
-			.collect(Collectors.toList())
-		);
+
+		dtosObtenido.setResult(colectivoDao.findAll().stream().map(cole -> parseBeanToDtoColectivo(cole))
+				.collect(Collectors.toList()));
 		return dtosObtenido;
 	}
-	
-	//Parses
-	
+
+	// Parses
+
 	/**
 	 * Convierte de Bean a Dto la Colectivo
+	 * 
 	 * @param bean
 	 * @return
 	 */
@@ -72,12 +62,13 @@ public class ColectivoServiceImpl implements IColectivoService{
 		dto.setId(bean.getId());
 		dto.setLineaId(bean.getLineaColectivo().getId());
 		dto.setNumero(bean.getNumeroColectivo());
-		
+
 		return dto;
 	}
-	
+
 	/**
 	 * Convierte de Dto a Bean la entidad Colectivo
+	 * 
 	 * @param dto
 	 * @return
 	 */
@@ -87,12 +78,16 @@ public class ColectivoServiceImpl implements IColectivoService{
 		bean.setLineaColectivo(lineaDao.getById(dto.getLineaId()));
 		bean.setId(dto.getId());
 		bean.setNumeroColectivo(dto.getNumero());
-		
+
 		return bean;
-		
+
 	}
 
-	
-
+	@Autowired
+	private IColectivoDao colectivoDao;
+	@Autowired
+	private ILineaDao lineaDao;
+	@Autowired
+	private IEmpresaDeColectivosDao empresaDao;
 
 }
