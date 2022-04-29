@@ -3,8 +3,12 @@ package com.is.cole.dtos.recorridos;
 import java.util.List;
 
 import com.is.cole.dtos.BaseDto;
-import com.is.cole.dtos.colores.ColorDto;
 
+/**
+ * Dto que representa un recorrido de colectivo
+ * @author Colectuber
+ *
+ */
 public class RecorridoDto extends BaseDto {
 	private static final long serialVersionUID = 1L;
 

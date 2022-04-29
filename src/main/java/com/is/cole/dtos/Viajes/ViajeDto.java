@@ -2,6 +2,11 @@ package com.is.cole.dtos.Viajes;
 
 import com.is.cole.dtos.BaseDto;
 
+/**
+ * 
+ * @author Colectuber
+ *
+ */
 public class ViajeDto extends BaseDto{
 
 	private static final long serialVersionUID = 1L;

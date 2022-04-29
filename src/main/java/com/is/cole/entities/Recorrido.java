@@ -12,9 +12,15 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+/**
+ * Entidad que define los atributos basicos de un recorrido
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name = "recorridos")
 public class Recorrido implements BaseBean {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -34,7 +40,7 @@ public class Recorrido implements BaseBean {
 
 	private String nombre;
 	private String descripcion;
-
+	
 	public Integer getId() {
 		return id;
 	}
