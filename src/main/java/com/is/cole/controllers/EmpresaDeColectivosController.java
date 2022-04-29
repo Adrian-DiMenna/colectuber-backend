@@ -25,6 +25,11 @@ public class EmpresaDeColectivosController {
 	@Autowired
 	private IEmpresaColectivosService empresaService;
 
+	/**
+	 * Agrega una nueva empresa de Colectivo
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping
 	public ResponseEntity<?> saveEmpresaColectivo(@RequestBody EmpresaDeColectivosDto dto) {
 		try {
@@ -37,6 +42,11 @@ public class EmpresaDeColectivosController {
 		}
 	}
 
+	/**
+	 * Obtiene una nueva empresa de colectivo por medio de un identificador
+	 * @param empresaId
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getEmpresaColectivo(@PathVariable("id") Integer empresaId) {
 		try {
@@ -49,6 +59,10 @@ public class EmpresaDeColectivosController {
 		}
 	}
 
+	/**
+	 * Obtiene todas las empresas de colectivo
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<?> getAllEmpresaColectivo() {
 		try {
@@ -59,6 +73,11 @@ public class EmpresaDeColectivosController {
 		}
 	}
 
+	/**
+	 * Elimina una empresa de colectivo por medio de un identificador
+	 * @param empresaId
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteEmpresaColectivo(@PathVariable("id") Integer empresaId) {
 		try {

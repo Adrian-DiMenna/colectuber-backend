@@ -52,6 +52,11 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 
 	// Parses
 
+	/**
+	 * Convierte de Bean a Dto la entidad LineaDeColectivo
+	 * @param bean
+	 * @return
+	 */
 	private LineaDeColectivosDto parseBeanToDtoLineaColectivo(Linea bean) {
 		LineaDeColectivosDto dto = new LineaDeColectivosDto();
 		dto.setId(bean.getId());
@@ -59,6 +64,11 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 		return dto;
 	}
 
+	/**
+	 * Convierte de Dto a Bean la entidad LineaDeColectivo
+	 * @param dto
+	 * @return
+	 */
 	private Linea parseDtoToBeanLineaColectivo(LineaDeColectivosDto dto) {
 		Linea bean = new Linea();
 		bean.setId(dto.getId());

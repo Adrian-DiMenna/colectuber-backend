@@ -27,7 +27,7 @@ public class ColectivoController {
 	private IColectivoService colectivoService;
 	
 	/**
-	 * Agregar un Colectivo nuevo
+	 * Agrega un Colectivo nuevo
 	 * @param dto
 	 * @return
 	 */
