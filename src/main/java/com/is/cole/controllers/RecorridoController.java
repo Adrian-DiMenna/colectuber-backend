@@ -20,7 +20,6 @@ import com.is.cole.services.recorridos.IRecorridoService;
 /**
  * Controlador para el servicio de recorrido de un colectivo
  * @author Colectuber
- *
  */
 @RestController
 @RequestMapping("/api/recorridos")

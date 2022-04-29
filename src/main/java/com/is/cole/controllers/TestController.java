@@ -12,7 +12,6 @@ import com.is.cole.services.test.ITestService;
 /**
  * Controller para la inserccion de datos de prueba a la base de datos
  * @author Colectuber
- *
  */
 @RestController
 @RequestMapping("/api/test")

@@ -20,7 +20,6 @@ import com.is.cole.services.viajes.IViajesService;
 /**
  * Controlador para el servicio de los viajes
  * @author Colectuber
- *
  */
 @RestController
 @RequestMapping("api/viajes")

@@ -15,7 +15,6 @@ import com.is.cole.util.JwtUtil;
 /**
  * Controlador para la autenticacion
  * @author Colectuber
- *
  */
 @RestController
 public class LoginController {

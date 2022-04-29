@@ -150,7 +150,7 @@ public class ColectuberServiceImpl implements IColectuberService {
 	 */
 	private Double getIndicePorcentajeFromPoint(RecorridoDto recorrido, PosicionDto punto) {
 
-		// Calcular la linea mas cercana al punto
+		// Calcula la linea mas cercana al punto
 		Integer indice = null;
 		PosicionDto puntoR = null;
 
@@ -174,7 +174,7 @@ public class ColectuberServiceImpl implements IColectuberService {
 			}
 		}
 
-		// Pasar a indice porcentaje
+		// Pasa a indice porcentaje
 
 		PosicionDto posIndice = recorrido.getPuntos().get(indice).getPuntoPosicion();
 		PosicionDto posIndiceSig = recorrido.getPuntos().get(indice + 1).getPuntoPosicion();
@@ -264,8 +264,6 @@ public class ColectuberServiceImpl implements IColectuberService {
 	}
 
 	
-	
-	
 	/********************************Parses**************************************************/
   
 	private ColectivoUbicacion parseDtoToBeanColectivoUbicacion(ColectivoUbicacionDto dto) {
@@ -312,16 +310,6 @@ public class ColectuberServiceImpl implements IColectuberService {
 
 	}
 
-	private UsuarioChoferDto parseDtoToDtoUsuarioChofer(UsuarioDto usuarioDto) {
-		UsuarioChoferDto dto = new UsuarioChoferDto();
-		dto.setId(usuarioDto.getId());
-		dto.setApellido(usuarioDto.getApellido());
-		dto.setCorreo_electronico(usuarioDto.getCorreo_electronico());
-		dto.setNombre(usuarioDto.getNombre());
-
-		return dto;
-	}
-	
 	/******************************** Variable Privadas **************************************************/
 	@Autowired
 	private IColectivoUbicacionDao colectivoUbicacionDao;
