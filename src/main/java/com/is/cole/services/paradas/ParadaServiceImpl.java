@@ -17,9 +17,6 @@ import java.util.List;
 @Service
 public class ParadaServiceImpl implements IParadaService {
 
-	@Autowired
-	private IParadaDao paradaDao;
-	
 	@Override
 	@Transactional
 	public ParadaDto saveParada(ParadaDto dto) {
@@ -32,7 +29,7 @@ public class ParadaServiceImpl implements IParadaService {
 	@Transactional
 	public Result<ParadaDto> getAllParadas() {
 		Result<ParadaDto> result = new Result<>();
-		List<ParadaDto> list = paradaDao.findAll().stream().map((bean)->{
+		List<ParadaDto> list = paradaDao.findAll().stream().map((bean) -> {
 			return parseBeanToDto(bean);
 		}).collect(Collectors.toList());
 		result.setResult(list);
@@ -51,34 +48,48 @@ public class ParadaServiceImpl implements IParadaService {
 	public void deleteById(Integer id) {
 		paradaDao.deleteById(id);
 	}
-	
+
+	/**
+	 * Convierte un Bean a Dto de la entidad Parada
+	 * 
+	 * @param bean
+	 * @return
+	 */
 	private ParadaDto parseBeanToDto(Parada bean) {
 		ParadaDto dto = new ParadaDto();
-		
-		PosicionDto posDto= new PosicionDto();
+
+		PosicionDto posDto = new PosicionDto();
 		posDto.setLatitud(bean.getLatitud());
 		posDto.setLongitud(bean.getLongitud());
-		
+
 		dto.setId(bean.getId());
 		dto.setNombre(bean.getNombre());
 		dto.setDescripcion(bean.getDescripcion());
 		dto.setImage(bean.getImagen());
 		dto.setPosicion(posDto);
-		
+
 		return dto;
 	}
-	
+
+	/**
+	 * Converte un Dto a Bean de la entidad Parada
+	 * 
+	 * @param dto
+	 * @return
+	 */
 	private Parada parseDtotoBean(ParadaDto dto) {
 		Parada bean = new Parada();
-		
+
 		bean.setId(dto.getId());
 		bean.setNombre(dto.getNombre());
 		bean.setDescripcion(dto.getDescripcion());
 		bean.setImagen(dto.getImage());
 		bean.setLongitud(dto.getPosicion().getLongitud());
 		bean.setLatitud(dto.getPosicion().getLatitud());
-		
+
 		return bean;
 	}
 
+	@Autowired
+	private IParadaDao paradaDao;
 }

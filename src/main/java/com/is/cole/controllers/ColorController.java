@@ -26,6 +26,11 @@ public class ColorController {
 	@Autowired
 	private IColorService colorService;
 
+	/**
+	 * Agrega un color nuevo
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping
 	public ResponseEntity<?> postColor(@RequestBody ColorDto dto) {
 		try {
@@ -38,6 +43,11 @@ public class ColorController {
 		}
 	}
 	
+	/**
+	 * Obtiene un color por medio de un identificador
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/{id}")
 	public ResponseEntity<?> getColor(@PathVariable(value = "id") Integer id){
 		try {
@@ -50,6 +60,10 @@ public class ColorController {
 		}
 	}
 	
+	/**
+	 * Obtiene todos los colores
+	 * @return
+	 */
 	@GetMapping
 	public ResponseEntity<?> getAllColores(){
 		try {
@@ -60,6 +74,11 @@ public class ColorController {
 		}
 	}
 	
+	/**
+	 * Elimina un color por medio de un identificador
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity<?> deleteColor(@PathVariable(value = "id") Integer id){
 		try {

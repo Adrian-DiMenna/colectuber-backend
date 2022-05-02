@@ -33,9 +33,7 @@ import com.is.cole.services.viajes.IViajesService;
 @Service
 /**
  * Servicio para añadir datos iniciales de prueba
- * 
- * @author COLECTUBER
- *
+ * @author Colectuber
  */
 public class TestServiceImpl implements ITestService {
 
@@ -232,7 +230,8 @@ public class TestServiceImpl implements ITestService {
 		return resultMap;
 
 	}
-
+	
+	/********************** Variables Privadas **********************/
 	@Autowired
 	private IColectivoService colectivoService;
 
