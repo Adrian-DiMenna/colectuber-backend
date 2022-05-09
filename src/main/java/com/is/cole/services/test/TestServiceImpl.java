@@ -349,6 +349,81 @@ public class TestServiceImpl implements ITestService {
 		puntoCircuito32.getPuntoPosicion().setLatitud(-27.34374657000926);
 		puntoCircuito32.getPuntoPosicion().setLongitud(-55.85921048596473);
 		
+		PuntoDeRecorridoDto puntoParadaSgtoReverchon = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Gobernacion");
+		puntoParadaSgtoReverchon.setParadaId(paradaDto.getId());
+		puntoParadaSgtoReverchon.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito33 = new PuntoDeRecorridoDto();
+		puntoCircuito33.setPuntoPosicion(new PosicionDto());
+		puntoCircuito33.getPuntoPosicion().setLatitud(-27.344304906492386);
+		puntoCircuito33.getPuntoPosicion().setLongitud(-55.85786726061542);
+	
+		PuntoDeRecorridoDto puntoCircuito34 = new PuntoDeRecorridoDto();
+		puntoCircuito34.setPuntoPosicion(new PosicionDto());
+		puntoCircuito34.getPuntoPosicion().setLatitud(-27.347349383456507);
+		puntoCircuito34.getPuntoPosicion().setLongitud(-55.85843987998082);
+		
+		PuntoDeRecorridoDto puntoCircuito35 = new PuntoDeRecorridoDto();
+		puntoCircuito35.setPuntoPosicion(new PosicionDto());
+		puntoCircuito35.getPuntoPosicion().setLatitud(-27.347604274815417);
+		puntoCircuito35.getPuntoPosicion().setLongitud(-55.85861404143631);
+		
+		PuntoDeRecorridoDto puntoCircuito36 = new PuntoDeRecorridoDto();
+		puntoCircuito36.setPuntoPosicion(new PosicionDto());
+		puntoCircuito36.getPuntoPosicion().setLatitud(-27.348567705161834);
+		puntoCircuito36.getPuntoPosicion().setLongitud(-55.858730098715824);
+	
+		PuntoDeRecorridoDto puntoCircuito37 = new PuntoDeRecorridoDto();
+		puntoCircuito37.setPuntoPosicion(new PosicionDto());
+		puntoCircuito37.getPuntoPosicion().setLatitud(-27.348616256695458);
+		puntoCircuito37.getPuntoPosicion().setLongitud(-55.85837480140368);
+	
+		PuntoDeRecorridoDto puntoParadaZonaCircuito_1 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada La Placita");
+		puntoParadaZonaCircuito_1.setParadaId(paradaDto.getId());
+		puntoParadaZonaCircuito_1.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito38 = new PuntoDeRecorridoDto();
+		puntoCircuito38.setPuntoPosicion(new PosicionDto());
+		puntoCircuito38.getPuntoPosicion().setLatitud(-27.35068661320478);
+		puntoCircuito38.getPuntoPosicion().setLongitud(-55.85550118797898);
+		
+		PuntoDeRecorridoDto puntoParadaZonaCircuito_2 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Plaza de la amistad");
+		puntoParadaZonaCircuito_2.setParadaId(paradaDto.getId());
+		puntoParadaZonaCircuito_2.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito39 = new PuntoDeRecorridoDto();
+		puntoCircuito39.setPuntoPosicion(new PosicionDto());
+		puntoCircuito39.getPuntoPosicion().setLatitud(-27.350745567514448);
+		puntoCircuito39.getPuntoPosicion().setLongitud(-55.84906288833752);
+	
+		PuntoDeRecorridoDto puntoCircuito40 = new PuntoDeRecorridoDto();
+		puntoCircuito40.setPuntoPosicion(new PosicionDto());
+		puntoCircuito40.getPuntoPosicion().setLatitud(-27.35369192228204);
+		puntoCircuito40.getPuntoPosicion().setLongitud(-55.84913628714226);
+		
+		PuntoDeRecorridoDto puntoCircuito41 = new PuntoDeRecorridoDto();
+		puntoCircuito41.setPuntoPosicion(new PosicionDto());
+		puntoCircuito41.getPuntoPosicion().setLatitud(-27.354091943856798);
+		puntoCircuito41.getPuntoPosicion().setLongitud(-55.84897377864633);
+		
+		PuntoDeRecorridoDto puntoCircuito42 = new PuntoDeRecorridoDto();
+		puntoCircuito42.setPuntoPosicion(new PosicionDto());
+		puntoCircuito42.getPuntoPosicion().setLatitud(-27.355160035605508);
+		puntoCircuito42.getPuntoPosicion().setLongitud(-55.8477154985702);
+	
+		PuntoDeRecorridoDto puntoCircuito43 = new PuntoDeRecorridoDto();
+		puntoCircuito43.setPuntoPosicion(new PosicionDto());
+		puntoCircuito43.getPuntoPosicion().setLatitud(-27.35548994604027);
+		puntoCircuito43.getPuntoPosicion().setLongitud(-55.84749727287559);
+		
+		PuntoDeRecorridoDto puntoParadaZonaCircuito_3 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Circuito");
+		puntoParadaZonaCircuito_3.setParadaId(paradaDto.getId());
+		puntoParadaZonaCircuito_3.setPuntoPosicion(paradaDto.getPosicion());
+		
 		
 		return map;
 	}
@@ -532,7 +607,38 @@ public class TestServiceImpl implements ITestService {
 		paradaSgtoRevenchon.getPosicion().setLongitud(-55.85817132115115);
 		paradaSgtoRevenchon.setImage(null);
 		
-		map.put("Parada Terminal", paradaService.saveParada(paradaSgtoRevenchon));
+		map.put("Parada Gobernacion", paradaService.saveParada(paradaSgtoRevenchon));
+		
+		ParadaDto paradaZonaCircuito_1 = new ParadaDto();
+		paradaZonaCircuito_1.setNombre("Parada La Placita");
+		paradaZonaCircuito_1.setDescripcion("Parada La placita, feria municipal");
+		paradaZonaCircuito_1.setPosicion(new PosicionDto());
+		paradaZonaCircuito_1.getPosicion().setLatitud(-27.349722532412244);
+		paradaZonaCircuito_1.getPosicion().setLongitud(-55.856859907370364);
+		paradaZonaCircuito_1.setImage(null);
+		
+		map.put("Parada La Placita", paradaService.saveParada(paradaZonaCircuito_1));
+		
+		ParadaDto paradaZonaCircuito_2 = new ParadaDto();
+		paradaZonaCircuito_2.setNombre("Parada Plaza de la amistad");
+		paradaZonaCircuito_2.setDescripcion("Parada que queda en la esquina de la plaza de la amistad");
+		paradaZonaCircuito_2.setPosicion(new PosicionDto());
+		paradaZonaCircuito_2.getPosicion().setLatitud(-27.350697016910487);
+		paradaZonaCircuito_2.getPosicion().setLongitud(-55.85243626062093);
+		paradaZonaCircuito_2.setImage(null);
+		
+		map.put("Parada Plaza de la amistad", paradaService.saveParada(paradaZonaCircuito_2));
+	
+		ParadaDto paradaZonaCircuito_3 = new ParadaDto();
+		paradaZonaCircuito_3.setNombre("Parada Circuito");
+		paradaZonaCircuito_3.setDescripcion("Parada que queda a lado de la rotonda del circuito");
+		paradaZonaCircuito_3.setPosicion(new PosicionDto());
+		paradaZonaCircuito_3.getPosicion().setLatitud(-27.357819910452204);
+		paradaZonaCircuito_3.getPosicion().setLongitud(-55.84988382623049);
+		paradaZonaCircuito_3.setImage(null);
+		
+		map.put("Parada Circuito", paradaService.saveParada(paradaZonaCircuito_3));
+		
 		return map;
 	}
 
