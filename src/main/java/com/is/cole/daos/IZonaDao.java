@@ -8,4 +8,5 @@ import com.is.cole.entities.Zona;
 @Repository
 public interface IZonaDao extends JpaRepository<Zona, Integer>{
 
+	public Zona findByNombre(String nombre);
 }

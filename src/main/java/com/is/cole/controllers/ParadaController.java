@@ -70,6 +70,7 @@ public class ParadaController {
 			Result<ParadaDto> dtos = paradaService.getAllParadas();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			System.err.print(e);
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
