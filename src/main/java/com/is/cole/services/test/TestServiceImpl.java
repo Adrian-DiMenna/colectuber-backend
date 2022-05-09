@@ -269,6 +269,51 @@ public class TestServiceImpl implements ITestService {
 		puntoParadaRuta1_6.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_6.setPuntoPosicion(paradaDto.getPosicion());
 
+		PuntoDeRecorridoDto puntoCircuito24 = new PuntoDeRecorridoDto();
+		puntoCircuito24.setPuntoPosicion(new PosicionDto());
+		puntoCircuito24.getPuntoPosicion().setLatitud(-27.326914443343984);
+		puntoCircuito24.getPuntoPosicion().setLongitud(-55.873217270546064);
+
+		PuntoDeRecorridoDto puntoParadaAvCaballero_1 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Hotel Real");
+		puntoParadaAvCaballero_1.setParadaId(paradaDto.getId());
+		puntoParadaAvCaballero_1.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito25 = new PuntoDeRecorridoDto();
+		puntoCircuito25.setPuntoPosicion(new PosicionDto());
+		puntoCircuito25.getPuntoPosicion().setLatitud(-27.326640286418417);
+		puntoCircuito25.getPuntoPosicion().setLongitud(-55.870054699268124);
+
+		PuntoDeRecorridoDto puntoCircuito26 = new PuntoDeRecorridoDto();
+		puntoCircuito26.setPuntoPosicion(new PosicionDto());
+		puntoCircuito26.getPuntoPosicion().setLatitud(-27.326691848255166);
+		puntoCircuito26.getPuntoPosicion().setLongitud(-55.86946038247785);
+
+		PuntoDeRecorridoDto puntoParadaAvCaballero_2 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Mundo Mania");
+		puntoParadaAvCaballero_2.setParadaId(paradaDto.getId());
+		puntoParadaAvCaballero_2.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito27 = new PuntoDeRecorridoDto();
+		puntoCircuito27.setPuntoPosicion(new PosicionDto());
+		puntoCircuito27.getPuntoPosicion().setLatitud(-27.32651241295923);
+		puntoCircuito27.getPuntoPosicion().setLongitud(-55.86694382233417);
+		
+		PuntoDeRecorridoDto puntoCircuito28 = new PuntoDeRecorridoDto();
+		puntoCircuito28.setPuntoPosicion(new PosicionDto());
+		puntoCircuito28.getPuntoPosicion().setLatitud(-27.32630113110705);
+		puntoCircuito28.getPuntoPosicion().setLongitud(-55.8653410969685);
+	
+		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_1 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Esquina Doña Reina");
+		puntoParadaCarlosAntLopez_1.setParadaId(paradaDto.getId());
+		puntoParadaCarlosAntLopez_1.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_2 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Hierro Center");
+		puntoParadaCarlosAntLopez_2.setParadaId(paradaDto.getId());
+		puntoParadaCarlosAntLopez_2.setPuntoPosicion(paradaDto.getPosicion());
+		
 		
 		return map;
 	}
@@ -374,6 +419,75 @@ public class TestServiceImpl implements ITestService {
 		
 		map.put("Parada Super 6 Costanera", paradaService.saveParada(paradaRuta1_6));
 	
+		ParadaDto paradaAvCaballero_1 = new ParadaDto();
+		paradaAvCaballero_1.setNombre("Parada Hotel Real");
+		paradaAvCaballero_1.setDescripcion("Parada Avenida Caballero, frente hotel real");
+		paradaAvCaballero_1.setPosicion(new PosicionDto());
+		paradaAvCaballero_1.getPosicion().setLatitud(-27.32670628556545);
+		paradaAvCaballero_1.getPosicion().setLongitud(-55.87047722135734);
+		paradaAvCaballero_1.setImage(null);
+		
+		map.put("Parada Hotel Real", paradaService.saveParada(paradaAvCaballero_1));
+		
+		ParadaDto paradaAvCaballero_2 = new ParadaDto();
+		paradaAvCaballero_2.setNombre("Parada Mundo Mania");
+		paradaAvCaballero_2.setDescripcion("Parada Avenida Caballero, frente a mundo mania");
+		paradaAvCaballero_2.setPosicion(new PosicionDto());
+		paradaAvCaballero_2.getPosicion().setLatitud(-27.32654541257507);
+		paradaAvCaballero_2.getPosicion().setLongitud(-55.867412775419176);
+		paradaAvCaballero_2.setImage(null);
+		
+		map.put("Parada Mundo Mania", paradaService.saveParada(paradaAvCaballero_2));
+	
+		ParadaDto paradaCarlosAntLopez_1 = new ParadaDto();
+		paradaCarlosAntLopez_1.setNombre("Parada Esquina Doña Reina");
+		paradaCarlosAntLopez_1.setDescripcion("Parada Carlos A. Lopez, esquina doña reina");
+		paradaCarlosAntLopez_1.setPosicion(new PosicionDto());
+		paradaCarlosAntLopez_1.getPosicion().setLatitud(-27.32751327416177);
+		paradaCarlosAntLopez_1.getPosicion().setLongitud(-55.86524488183438);
+		paradaCarlosAntLopez_1.setImage(null);
+		
+		map.put("Parada Esquina Doña Reina", paradaService.saveParada(paradaCarlosAntLopez_1));
+		
+		ParadaDto paradaCarlosAntLopez_2 = new ParadaDto();
+		paradaCarlosAntLopez_2.setNombre("Parada Hierro Center");
+		paradaCarlosAntLopez_2.setDescripcion("Parada Carlos A. Lopez, esquina hierro center");
+		paradaCarlosAntLopez_2.setPosicion(new PosicionDto());
+		paradaCarlosAntLopez_2.getPosicion().setLatitud(-27.328896067206827);
+		paradaCarlosAntLopez_2.getPosicion().setLongitud(-55.86509726431732);
+		paradaCarlosAntLopez_2.setImage(null);
+		
+		map.put("Parada Hierro Center", paradaService.saveParada(paradaCarlosAntLopez_2));
+		
+		ParadaDto paradaCarlosAntLopez_3 = new ParadaDto();
+		paradaCarlosAntLopez_3.setNombre("Parada Banco Atlas");
+		paradaCarlosAntLopez_3.setDescripcion("Parada Carlos A. Lopez, esquina banco atlas");
+		paradaCarlosAntLopez_3.setPosicion(new PosicionDto());
+		paradaCarlosAntLopez_3.getPosicion().setLatitud(-27.33151247100019);
+		paradaCarlosAntLopez_3.getPosicion().setLongitud(-55.86479042955511);
+		paradaCarlosAntLopez_3.setImage(null);
+		
+		map.put("Parada Banco Atlas", paradaService.saveParada(paradaCarlosAntLopez_3));
+	
+		ParadaDto paradaCarlosAntLopez_4 = new ParadaDto();
+		paradaCarlosAntLopez_4.setNombre("Parada Colegio Centro");
+		paradaCarlosAntLopez_4.setDescripcion("Parada Carlos A. Lopez, esquina stargol");
+		paradaCarlosAntLopez_4.setPosicion(new PosicionDto());
+		paradaCarlosAntLopez_4.getPosicion().setLatitud(-27.333958604879);
+		paradaCarlosAntLopez_4.getPosicion().setLongitud(-55.864521921736795);
+		paradaCarlosAntLopez_4.setImage(null);
+		
+		map.put("Parada Colegio Centro", paradaService.saveParada(paradaCarlosAntLopez_4));
+
+		ParadaDto paradaCarlosAntLopez_5 = new ParadaDto();
+		paradaCarlosAntLopez_5.setNombre("Parada Terminal");
+		paradaCarlosAntLopez_5.setDescripcion("Parada Carlos A. Lopez, costado de la terminal de bus");
+		paradaCarlosAntLopez_5.setPosicion(new PosicionDto());
+		paradaCarlosAntLopez_5.getPosicion().setLatitud(-27.3404180233383);
+		paradaCarlosAntLopez_5.getPosicion().setLongitud(-55.86382006960933);
+		paradaCarlosAntLopez_5.setImage(null);
+		
+		map.put("Parada Terminal", paradaService.saveParada(paradaCarlosAntLopez_5));
 		return map;
 	}
 
