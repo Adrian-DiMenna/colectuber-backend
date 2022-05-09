@@ -49,15 +49,15 @@ public class TestServiceImpl implements ITestService {
 			Map<String, ColectivoDto> colectivoMap, Map<String, UsuarioDto> usuarioMap) {
 		Map<String, ViajeDto> viajeMap = new HashMap<>();
 
-		ViajeDto viajeUNI = new ViajeDto();
-		viajeUNI.setDestino("Circuito");
-		viajeUNI.setRecorrido_id(recorridoMap.get("Recorrido UNI").getId());
-		viajeUNI.setChofer_id(usuarioMap.get("antonio").getId());
-		viajeUNI.setColectivo_id(colectivoMap.get("Colectivo23").getId());
+		ViajeDto viajeCircuito = new ViajeDto();
+		viajeCircuito.setDestino("Circuito");
+		viajeCircuito.setRecorrido_id(recorridoMap.get("Recorrido Circuito").getId());
+		viajeCircuito.setChofer_id(usuarioMap.get("antonio").getId());
+		viajeCircuito.setColectivo_id(colectivoMap.get("Colectivo23").getId());
 
-		viajeUNI = viajeService.saveViaje(viajeUNI);
+		viajeCircuito = viajeService.saveViaje(viajeCircuito);
 
-		viajeMap.put("Viaje UNI", viajeUNI);
+		viajeMap.put("Viaje Circuito", viajeCircuito);
 
 		return viajeMap;
 	}
