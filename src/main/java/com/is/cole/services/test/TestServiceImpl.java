@@ -314,6 +314,41 @@ public class TestServiceImpl implements ITestService {
 		puntoParadaCarlosAntLopez_2.setParadaId(paradaDto.getId());
 		puntoParadaCarlosAntLopez_2.setPuntoPosicion(paradaDto.getPosicion());
 		
+		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_3 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Banco Atlas");
+		puntoParadaCarlosAntLopez_3.setParadaId(paradaDto.getId());
+		puntoParadaCarlosAntLopez_3.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_4 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Colegio Centro");
+		puntoParadaCarlosAntLopez_4.setParadaId(paradaDto.getId());
+		puntoParadaCarlosAntLopez_4.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_5 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Terminal");
+		puntoParadaCarlosAntLopez_5.setParadaId(paradaDto.getId());
+		puntoParadaCarlosAntLopez_5.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito29 = new PuntoDeRecorridoDto();
+		puntoCircuito29.setPuntoPosicion(new PosicionDto());
+		puntoCircuito29.getPuntoPosicion().setLatitud(-27.340895094890367);
+		puntoCircuito29.getPuntoPosicion().setLongitud(-55.86373487761778);
+		
+		PuntoDeRecorridoDto puntoCircuito30 = new PuntoDeRecorridoDto();
+		puntoCircuito30.setPuntoPosicion(new PosicionDto());
+		puntoCircuito30.getPuntoPosicion().setLatitud(-27.34154946300029);
+		puntoCircuito30.getPuntoPosicion().setLongitud(-55.86406703624476);
+		
+		PuntoDeRecorridoDto puntoCircuito31 = new PuntoDeRecorridoDto();
+		puntoCircuito31.setPuntoPosicion(new PosicionDto());
+		puntoCircuito31.getPuntoPosicion().setLatitud(-27.343572046007036);
+		puntoCircuito31.getPuntoPosicion().setLongitud(-55.859460480730995);
+		
+		PuntoDeRecorridoDto puntoCircuito32 = new PuntoDeRecorridoDto();
+		puntoCircuito32.setPuntoPosicion(new PosicionDto());
+		puntoCircuito32.getPuntoPosicion().setLatitud(-27.34374657000926);
+		puntoCircuito32.getPuntoPosicion().setLongitud(-55.85921048596473);
+		
 		
 		return map;
 	}
@@ -488,6 +523,16 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_5.setImage(null);
 		
 		map.put("Parada Terminal", paradaService.saveParada(paradaCarlosAntLopez_5));
+		
+		ParadaDto paradaSgtoRevenchon = new ParadaDto();
+		paradaSgtoRevenchon.setNombre("Parada Gobernacion");
+		paradaSgtoRevenchon.setDescripcion("Parada Sgto.Revenchon, costado de la gobernacion");
+		paradaSgtoRevenchon.setPosicion(new PosicionDto());
+		paradaSgtoRevenchon.getPosicion().setLatitud(-27.344185592805495);
+		paradaSgtoRevenchon.getPosicion().setLongitud(-55.85817132115115);
+		paradaSgtoRevenchon.setImage(null);
+		
+		map.put("Parada Terminal", paradaService.saveParada(paradaSgtoRevenchon));
 		return map;
 	}
 
