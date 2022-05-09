@@ -24,9 +24,6 @@ import com.is.cole.services.usuarios.IUsuariosService;
 @Secured("ROLE_ADMIN")
 public class UsuarioController {
 
-	@Autowired
-	private IUsuariosService usuariosService;
-
 	/****************************** Usuarios *************************************/
 
 	/**
@@ -208,5 +205,8 @@ public class UsuarioController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	@Autowired
+	private IUsuariosService usuariosService;
 
 }

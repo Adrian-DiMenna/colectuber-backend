@@ -23,9 +23,6 @@ import com.is.cole.services.colores.IColorService;
 @Secured("ROLE_ADMIN")
 public class ColorController {
 
-	@Autowired
-	private IColorService colorService;
-
 	/**
 	 * Agrega un color nuevo
 	 * @param dto
@@ -90,6 +87,9 @@ public class ColorController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	@Autowired
+	private IColorService colorService;
 	
 	
 }

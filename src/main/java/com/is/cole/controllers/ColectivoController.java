@@ -23,9 +23,6 @@ import com.is.cole.services.colectivos.IColectivoService;
 @Secured("ROLE_ADMIN")
 public class ColectivoController {
 	
-	@Autowired
-	private IColectivoService colectivoService;
-	
 	/**
 	 * Agrega un Colectivo nuevo
 	 * @param dto
@@ -90,5 +87,9 @@ public class ColectivoController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	@Autowired
+	private IColectivoService colectivoService;
+	
 	
 }
