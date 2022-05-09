@@ -186,11 +186,90 @@ public class TestServiceImpl implements ITestService {
 		puntoCircuito13.getPuntoPosicion().setLatitud(-27.291596199144017);
 		puntoCircuito13.getPuntoPosicion().setLongitud(-55.91641809238406);
 
+		//Puente Ruta 1 Quiteria
 		PuntoDeRecorridoDto puntoCircuito14 = new PuntoDeRecorridoDto();
 		puntoCircuito14.setPuntoPosicion(new PosicionDto());
 		puntoCircuito14.getPuntoPosicion().setLatitud(-27.29197758048552);
 		puntoCircuito14.getPuntoPosicion().setLongitud(-55.91429378287496);
 
+		PuntoDeRecorridoDto puntoCircuito15 = new PuntoDeRecorridoDto();
+		puntoCircuito15.setPuntoPosicion(new PosicionDto());
+		puntoCircuito15.getPuntoPosicion().setLatitud(-27.296690944851655);
+		puntoCircuito15.getPuntoPosicion().setLongitud(-55.90573004662675);
+		
+		PuntoDeRecorridoDto puntoCircuito16 = new PuntoDeRecorridoDto();
+		puntoCircuito16.setPuntoPosicion(new PosicionDto());
+		puntoCircuito16.getPuntoPosicion().setLatitud(-27.30208712147181);
+		puntoCircuito16.getPuntoPosicion().setLongitud(-55.89740446981006);
+		
+		PuntoDeRecorridoDto puntoCircuito17 = new PuntoDeRecorridoDto();
+		puntoCircuito17.setPuntoPosicion(new PosicionDto());
+		puntoCircuito17.getPuntoPosicion().setLatitud(-27.30490390675379);
+		puntoCircuito17.getPuntoPosicion().setLongitud(-55.894311124265414);
+		
+		PuntoDeRecorridoDto puntoParadaRuta1_1 = new PuntoDeRecorridoDto();
+		ParadaDto paradaDto = paradaMap.get("Parada Petrobras");
+		puntoParadaRuta1_1.setParadaId(paradaDto.getId());
+		puntoParadaRuta1_1.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoParadaRuta1_2 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Hotel City");
+		puntoParadaRuta1_2.setParadaId(paradaDto.getId());
+		puntoParadaRuta1_2.setPuntoPosicion(paradaDto.getPosicion());
+
+		PuntoDeRecorridoDto puntoParadaRuta1_3 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Zona Uni");
+		puntoParadaRuta1_3.setParadaId(paradaDto.getId());
+		puntoParadaRuta1_3.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoParadaRuta1_4 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Supermercado La Familia");
+		puntoParadaRuta1_4.setParadaId(paradaDto.getId());
+		puntoParadaRuta1_4.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoParadaRuta1_5 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Colegio Kennedy");
+		puntoParadaRuta1_5.setParadaId(paradaDto.getId());
+		puntoParadaRuta1_5.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoCircuito18 = new PuntoDeRecorridoDto();
+		puntoCircuito18.setPuntoPosicion(new PosicionDto());
+		puntoCircuito18.getPuntoPosicion().setLatitud(-27.31366580260424);
+		puntoCircuito18.getPuntoPosicion().setLongitud(-55.87762052625255);
+		
+		PuntoDeRecorridoDto puntoCircuito19 = new PuntoDeRecorridoDto();
+		puntoCircuito19.setPuntoPosicion(new PosicionDto());
+		puntoCircuito19.getPuntoPosicion().setLatitud(-27.314833422390926);
+		puntoCircuito19.getPuntoPosicion().setLongitud(-55.87607447616899);
+		
+		//Puente Costanera
+		PuntoDeRecorridoDto puntoCircuito20 = new PuntoDeRecorridoDto();
+		puntoCircuito20.setPuntoPosicion(new PosicionDto());
+		puntoCircuito20.getPuntoPosicion().setLatitud(-27.316187453488972);
+		puntoCircuito20.getPuntoPosicion().setLongitud(-55.87528488630374);
+
+		PuntoDeRecorridoDto puntoCircuito21 = new PuntoDeRecorridoDto();
+		puntoCircuito21.setPuntoPosicion(new PosicionDto());
+		puntoCircuito21.getPuntoPosicion().setLatitud(-27.321210960696177);
+		puntoCircuito21.getPuntoPosicion().setLongitud(-55.87404252463375);
+		
+		//Rotonda
+		PuntoDeRecorridoDto puntoCircuito22 = new PuntoDeRecorridoDto();
+		puntoCircuito22.setPuntoPosicion(new PosicionDto());
+		puntoCircuito22.getPuntoPosicion().setLatitud(-27.32161322388676);
+		puntoCircuito22.getPuntoPosicion().setLongitud(-55.87420817285771);
+		
+		PuntoDeRecorridoDto puntoCircuito23 = new PuntoDeRecorridoDto();
+		puntoCircuito23.setPuntoPosicion(new PosicionDto());
+		puntoCircuito23.getPuntoPosicion().setLatitud(-27.322143031734818);
+		puntoCircuito23.getPuntoPosicion().setLongitud(-55.87388791962573);
+		
+		PuntoDeRecorridoDto puntoParadaRuta1_6 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Super 6 Costanera");
+		puntoParadaRuta1_6.setParadaId(paradaDto.getId());
+		puntoParadaRuta1_6.setPuntoPosicion(paradaDto.getPosicion());
+
+		
 		return map;
 	}
 
@@ -235,15 +314,66 @@ public class TestServiceImpl implements ITestService {
 	private Map<String, ParadaDto> insertParadas() {
 		Map<String, ParadaDto> map = new HashMap<String, ParadaDto>();
 
-		ParadaDto paradaZonaUNI = new ParadaDto();
-		paradaZonaUNI.setNombre("Zona UNI");
-		paradaZonaUNI.setDescripcion("Es la parada de zona uni");
-		paradaZonaUNI.setPosicion(new PosicionDto());
-		paradaZonaUNI.getPosicion().setLatitud(-27.30855247497118);
-		paradaZonaUNI.getPosicion().setLongitud(-55.88844384308095);
-		paradaZonaUNI.setImage(null);
-		map.put("Parada UNI", paradaService.saveParada(paradaZonaUNI));
+		ParadaDto paradaRuta1_1 = new ParadaDto();
+		paradaRuta1_1.setNombre("Parada Petrobras");
+		paradaRuta1_1.setDescripcion("Parada ruta 1 frente Av. 4");
+		paradaRuta1_1.setPosicion(new PosicionDto());
+		paradaRuta1_1.getPosicion().setLatitud(-27.30610661477075);
+		paradaRuta1_1.getPosicion().setLongitud(-55.89254610085299);
+		paradaRuta1_1.setImage(null);
+		
+		map.put("Parada Petrobras", paradaService.saveParada(paradaRuta1_1));
+		
+		ParadaDto paradaRuta1_2 = new ParadaDto();
+		paradaRuta1_2.setNombre("Parada Hotel City");
+		paradaRuta1_2.setDescripcion("Parada ruta 1 frente al hotel City");
+		paradaRuta1_2.setPosicion(new PosicionDto());
+		paradaRuta1_2.getPosicion().setLatitud(-27.306981212223608);
+		paradaRuta1_2.getPosicion().setLongitud(-55.891181000556216);
+		paradaRuta1_2.setImage(null);
+		
+		map.put("Parada Hotel City", paradaService.saveParada(paradaRuta1_2));
+		
+		ParadaDto paradaRuta1_3 = new ParadaDto();
+		paradaRuta1_3.setNombre("Parada Zona Uni");
+		paradaRuta1_3.setDescripcion("Parada ruta 1 UNI");
+		paradaRuta1_3.setPosicion(new PosicionDto());
+		paradaRuta1_3.getPosicion().setLatitud(-27.308664364353458);
+		paradaRuta1_3.getPosicion().setLongitud(-55.88851370435971);
+		paradaRuta1_3.setImage(null);
+		
+		map.put("Parada Zona Uni", paradaService.saveParada(paradaRuta1_3));
 
+		ParadaDto paradaRuta1_4 = new ParadaDto();
+		paradaRuta1_4.setNombre("Parada Supermercado La Familia");
+		paradaRuta1_4.setDescripcion("Parada ruta 1, frente al supermercado la familia");
+		paradaRuta1_4.setPosicion(new PosicionDto());
+		paradaRuta1_4.getPosicion().setLatitud(-27.3114841856797);
+		paradaRuta1_4.getPosicion().setLongitud(-55.88390687216109);
+		paradaRuta1_4.setImage(null);
+		
+		map.put("Parada Supermercado La Familia", paradaService.saveParada(paradaRuta1_4));
+		
+		ParadaDto paradaRuta1_5 = new ParadaDto();
+		paradaRuta1_5.setNombre("Parada Colegio Kennedy");
+		paradaRuta1_5.setDescripcion("Parada ruta 1, frente al colegio John F. Kennedy");
+		paradaRuta1_5.setPosicion(new PosicionDto());
+		paradaRuta1_5.getPosicion().setLatitud(-27.312631684828208);
+		paradaRuta1_5.getPosicion().setLongitud(-55.88072449336672);
+		paradaRuta1_5.setImage(null);
+		
+		map.put("Parada Colegio Kennedy", paradaService.saveParada(paradaRuta1_5));
+
+		ParadaDto paradaRuta1_6 = new ParadaDto();
+		paradaRuta1_6.setNombre("Parada Super 6 Costanera");
+		paradaRuta1_6.setDescripcion("Parada ruta 1, frente super 6 costanera");
+		paradaRuta1_6.setPosicion(new PosicionDto());
+		paradaRuta1_6.getPosicion().setLatitud(-27.32357055692744);
+		paradaRuta1_6.getPosicion().setLongitud(-55.873611839255304);
+		paradaRuta1_6.setImage(null);
+		
+		map.put("Parada Super 6 Costanera", paradaService.saveParada(paradaRuta1_6));
+	
 		return map;
 	}
 
