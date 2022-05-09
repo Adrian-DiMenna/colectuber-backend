@@ -50,7 +50,7 @@ public class TestServiceImpl implements ITestService {
 		Map<String, ViajeDto> viajeMap = new HashMap<>();
 
 		ViajeDto viajeUNI = new ViajeDto();
-		viajeUNI.setDestino("Quiteria");
+		viajeUNI.setDestino("Circuito");
 		viajeUNI.setRecorrido_id(recorridoMap.get("Recorrido UNI").getId());
 		viajeUNI.setChofer_id(usuarioMap.get("antonio").getId());
 		viajeUNI.setColectivo_id(colectivoMap.get("Colectivo23").getId());
@@ -68,54 +68,128 @@ public class TestServiceImpl implements ITestService {
 		Map<String, RecorridoDto> map = new HashMap<>();
 
 		RecorridoDto dtoRecorridoUni = new RecorridoDto();
-		dtoRecorridoUni.setDescripcion("Recorrido Zona Centro a UNI ");
-		dtoRecorridoUni.setNombre("Principal UNI");
+		dtoRecorridoUni.setDescripcion("Recorrido Ruta 1, San Juan del Paraná a Circuito");
+		dtoRecorridoUni.setNombre("Principal Ruta 1 Circuito");
 		dtoRecorridoUni.setColor(colorMap.get("red").getNombre());
 
-		List<PuntoDeRecorridoDto> puntosUni = new ArrayList<>();
+//		List<PuntoDeRecorridoDto> puntosUni = new ArrayList<>();
+//
+//		PuntoDeRecorridoDto puntoUni1 = new PuntoDeRecorridoDto();
+//		puntoUni1.setPuntoPosicion(new PosicionDto());
+//		puntoUni1.getPuntoPosicion().setLatitud(-27.25497891238917);
+//		puntoUni1.getPuntoPosicion().setLongitud(-55.985275337417804);
+//		
+//		PuntoDeRecorridoDto puntoParadaUni2 = new PuntoDeRecorridoDto();
+//		ParadaDto paradaDto = paradaMap.get("Parada UNI");
+//		puntoParadaUni2.setParadaId(paradaDto.getId());
+//		puntoParadaUni2.setPuntoPosicion(paradaDto.getPosicion());
+//
+//		PuntoDeRecorridoDto puntoUni3 = new PuntoDeRecorridoDto();
+//		puntoUni3.setPuntoPosicion(new PosicionDto());
+//		puntoUni3.getPuntoPosicion().setLatitud(-27.307803514569393);
+//		puntoUni3.getPuntoPosicion().setLongitud(-55.88771250328124);
+//
+//		PuntoDeRecorridoDto puntoUni4 = new PuntoDeRecorridoDto();
+//		puntoUni4.setPuntoPosicion(new PosicionDto());
+//		puntoUni4.getPuntoPosicion().setLatitud(-27.306602964630766);
+//		puntoUni4.getPuntoPosicion().setLongitud(-55.88678283402331);
+//
+//		PuntoDeRecorridoDto puntoUni5 = new PuntoDeRecorridoDto();
+//		puntoUni5.setPuntoPosicion(new PosicionDto());
+//		puntoUni5.getPuntoPosicion().setLatitud(-27.30583196240876);
+//		puntoUni5.getPuntoPosicion().setLongitud(-55.88615065892791);
+//
+//		PuntoDeRecorridoDto puntoUni6 = new PuntoDeRecorridoDto();
+//		puntoUni6.setPuntoPosicion(new PosicionDto());
+//		puntoUni6.getPuntoPosicion().setLatitud(-27.30519312793853);
+//		puntoUni6.getPuntoPosicion().setLongitud(-55.887452195889026);
+//
+//		puntosUni.add(puntoUni1);
+//		puntosUni.add(puntoParadaUni2);
+//		puntosUni.add(puntoUni3);
+//		puntosUni.add(puntoUni4);
+//		puntosUni.add(puntoUni5);
+//		puntosUni.add(puntoUni6);
+//
+//		dtoRecorridoUni.setPuntos(puntosUni);
 
-		PuntoDeRecorridoDto puntoUni1 = new PuntoDeRecorridoDto();
-		puntoUni1.setPuntoPosicion(new PosicionDto());
-		puntoUni1.getPuntoPosicion().setLatitud(-27.309675906048817);
-		puntoUni1.getPuntoPosicion().setLongitud(-55.8866588781164);
+//		dtoRecorridoUni = recorridoService.saveRecorrido(dtoRecorridoUni);
+//
+//		map.put("Recorrido UNI", dtoRecorridoUni);
 
-		PuntoDeRecorridoDto puntoParadaUni2 = new PuntoDeRecorridoDto();
-		ParadaDto paradaDto = paradaMap.get("Parada UNI");
-		puntoParadaUni2.setParadaId(paradaDto.getId());
-		puntoParadaUni2.setPuntoPosicion(paradaDto.getPosicion());
+		
+		List<PuntoDeRecorridoDto> puntosCircuito = new ArrayList<>();
+		
+		PuntoDeRecorridoDto puntoCircuito1 = new PuntoDeRecorridoDto();
+		puntoCircuito1.setPuntoPosicion(new PosicionDto());
+		puntoCircuito1.getPuntoPosicion().setLatitud(-27.255055213899475);
+		puntoCircuito1.getPuntoPosicion().setLongitud(-55.98523242207336);
+		
+		PuntoDeRecorridoDto puntoCircuito2 = new PuntoDeRecorridoDto();
+		puntoCircuito2.setPuntoPosicion(new PosicionDto());
+		puntoCircuito2.getPuntoPosicion().setLatitud(-27.26003377430376);
+		puntoCircuito2.getPuntoPosicion().setLongitud(-55.97991091936177);
+		
+		PuntoDeRecorridoDto puntoCircuito3 = new PuntoDeRecorridoDto();
+		puntoCircuito3.setPuntoPosicion(new PosicionDto());
+		puntoCircuito3.getPuntoPosicion().setLatitud(-27.26039618953818);
+		puntoCircuito3.getPuntoPosicion().setLongitud(-55.978666374372764);
 
-		PuntoDeRecorridoDto puntoUni3 = new PuntoDeRecorridoDto();
-		puntoUni3.setPuntoPosicion(new PosicionDto());
-		puntoUni3.getPuntoPosicion().setLatitud(-27.307803514569393);
-		puntoUni3.getPuntoPosicion().setLongitud(-55.88771250328124);
+		PuntoDeRecorridoDto puntoCircuito4 = new PuntoDeRecorridoDto();
+		puntoCircuito4.setPuntoPosicion(new PosicionDto());
+		puntoCircuito4.getPuntoPosicion().setLatitud(-27.26039618953818);
+		puntoCircuito4.getPuntoPosicion().setLongitud(-55.978666374372764);
+		
+		PuntoDeRecorridoDto puntoCircuito5 = new PuntoDeRecorridoDto();
+		puntoCircuito5.setPuntoPosicion(new PosicionDto());
+		puntoCircuito5.getPuntoPosicion().setLatitud(-27.26031449215873);
+		puntoCircuito5.getPuntoPosicion().setLongitud(-55.97690938024482);
+		
+		PuntoDeRecorridoDto puntoCircuito6 = new PuntoDeRecorridoDto();
+		puntoCircuito6.setPuntoPosicion(new PosicionDto());
+		puntoCircuito6.getPuntoPosicion().setLatitud(-27.260201074629936);
+		puntoCircuito6.getPuntoPosicion().setLongitud(-55.976411786723446);
 
-		PuntoDeRecorridoDto puntoUni4 = new PuntoDeRecorridoDto();
-		puntoUni4.setPuntoPosicion(new PosicionDto());
-		puntoUni4.getPuntoPosicion().setLatitud(-27.306602964630766);
-		puntoUni4.getPuntoPosicion().setLongitud(-55.88678283402331);
+		PuntoDeRecorridoDto puntoCircuito7 = new PuntoDeRecorridoDto();
+		puntoCircuito7.setPuntoPosicion(new PosicionDto());
+		puntoCircuito7.getPuntoPosicion().setLatitud(-27.25801209367452);
+		puntoCircuito7.getPuntoPosicion().setLongitud(-55.970453423293115);
 
-		PuntoDeRecorridoDto puntoUni5 = new PuntoDeRecorridoDto();
-		puntoUni5.setPuntoPosicion(new PosicionDto());
-		puntoUni5.getPuntoPosicion().setLatitud(-27.30583196240876);
-		puntoUni5.getPuntoPosicion().setLongitud(-55.88615065892791);
+		PuntoDeRecorridoDto puntoCircuito8 = new PuntoDeRecorridoDto();
+		puntoCircuito8.setPuntoPosicion(new PosicionDto());
+		puntoCircuito8.getPuntoPosicion().setLatitud(-27.257944041762155);
+		puntoCircuito8.getPuntoPosicion().setLongitud(-55.969751688839914);
 
-		PuntoDeRecorridoDto puntoUni6 = new PuntoDeRecorridoDto();
-		puntoUni6.setPuntoPosicion(new PosicionDto());
-		puntoUni6.getPuntoPosicion().setLatitud(-27.30519312793853);
-		puntoUni6.getPuntoPosicion().setLongitud(-55.887452195889026);
+		PuntoDeRecorridoDto puntoCircuito9 = new PuntoDeRecorridoDto();
+		puntoCircuito9.setPuntoPosicion(new PosicionDto());
+		puntoCircuito9.getPuntoPosicion().setLatitud(-27.257966725725538);
+		puntoCircuito9.getPuntoPosicion().setLongitud(-55.969292371771616);
+		
+		
+		PuntoDeRecorridoDto puntoCircuito10 = new PuntoDeRecorridoDto();
+		puntoCircuito10.setPuntoPosicion(new PosicionDto());
+		puntoCircuito10.getPuntoPosicion().setLatitud(-27.25859053324217);
+		puntoCircuito10.getPuntoPosicion().setLongitud(-55.96760820909109);
 
-		puntosUni.add(puntoUni1);
-		puntosUni.add(puntoParadaUni2);
-		puntosUni.add(puntoUni3);
-		puntosUni.add(puntoUni4);
-		puntosUni.add(puntoUni5);
-		puntosUni.add(puntoUni6);
+		PuntoDeRecorridoDto puntoCircuito11 = new PuntoDeRecorridoDto();
+		puntoCircuito11.setPuntoPosicion(new PosicionDto());
+		puntoCircuito11.getPuntoPosicion().setLatitud(-27.29211732521895);
+		puntoCircuito11.getPuntoPosicion().setLongitud(-55.93365369426801);
+		
+		PuntoDeRecorridoDto puntoCircuito12 = new PuntoDeRecorridoDto();
+		puntoCircuito12.setPuntoPosicion(new PosicionDto());
+		puntoCircuito12.getPuntoPosicion().setLatitud(-27.293007303588755);
+		puntoCircuito12.getPuntoPosicion().setLongitud(-55.93158866664654);
 
-		dtoRecorridoUni.setPuntos(puntosUni);
+		PuntoDeRecorridoDto puntoCircuito13 = new PuntoDeRecorridoDto();
+		puntoCircuito13.setPuntoPosicion(new PosicionDto());
+		puntoCircuito13.getPuntoPosicion().setLatitud(-27.291596199144017);
+		puntoCircuito13.getPuntoPosicion().setLongitud(-55.91641809238406);
 
-		dtoRecorridoUni = recorridoService.saveRecorrido(dtoRecorridoUni);
-
-		map.put("Recorrido UNI", dtoRecorridoUni);
+		PuntoDeRecorridoDto puntoCircuito14 = new PuntoDeRecorridoDto();
+		puntoCircuito14.setPuntoPosicion(new PosicionDto());
+		puntoCircuito14.getPuntoPosicion().setLatitud(-27.29197758048552);
+		puntoCircuito14.getPuntoPosicion().setLongitud(-55.91429378287496);
 
 		return map;
 	}
