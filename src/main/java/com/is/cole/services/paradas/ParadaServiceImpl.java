@@ -90,7 +90,7 @@ public class ParadaServiceImpl implements IParadaService {
 		bean.setImagen(dto.getImage());
 		bean.setLongitud(dto.getPosicion().getLongitud());
 		bean.setLatitud(dto.getPosicion().getLatitud());
-		bean.setZona(zonaDao.findByNombre(dto.getNombre()));
+		bean.setZona(zonaDao.findByNombre(dto.getZona()));
 
 		return bean;
 	}
