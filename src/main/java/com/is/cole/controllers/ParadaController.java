@@ -23,9 +23,6 @@ import com.is.cole.services.paradas.IParadaService;
 @Secured("ROLE_ADMIN")
 public class ParadaController {
 
-	@Autowired
-	private IParadaService paradaService;
-
 	/**
 	 * Agrega una parada
 	 * @param dto
@@ -90,5 +87,8 @@ public class ParadaController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	@Autowired
+	private IParadaService paradaService;
 
 }
