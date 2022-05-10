@@ -517,9 +517,9 @@ public class TestServiceImpl implements ITestService {
 		
 
 		RecorridoDto dtoRecorridoCapitanMiranda = new RecorridoDto();
-		dtoRecorridoCircuito.setDescripcion("Recorrido desde la terminal hasta capitan miranda");
-		dtoRecorridoCircuito.setNombre("Ruta 6 Capitan Miranda");
-		dtoRecorridoCircuito.setColor(colorMap.get("azul").getNombre());
+		dtoRecorridoCapitanMiranda.setDescripcion("Recorrido desde la terminal hasta capitan miranda");
+		dtoRecorridoCapitanMiranda.setNombre("Ruta 6 Capitan Miranda");
+		dtoRecorridoCapitanMiranda.setColor(colorMap.get("blue").getNombre());
 		
 		List<PuntoDeRecorridoDto> puntosRuta6 = new ArrayList<>();
 		
