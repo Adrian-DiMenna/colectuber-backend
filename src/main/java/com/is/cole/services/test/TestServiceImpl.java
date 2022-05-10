@@ -502,6 +502,46 @@ public class TestServiceImpl implements ITestService {
 		dtoRecorridoCircuito = recorridoService.saveRecorrido(dtoRecorridoCircuito);
 
 		map.put("Recorrido Circuito", dtoRecorridoCircuito);
+		
+		
+		
+
+		RecorridoDto dtoRecorridoCapitanMiranda = new RecorridoDto();
+		dtoRecorridoCircuito.setDescripcion("Recorrido desde la terminal hasta capitan miranda");
+		dtoRecorridoCircuito.setNombre("Ruta 6 Capitan Miranda");
+		dtoRecorridoCircuito.setColor(colorMap.get("azul").getNombre());
+		
+		List<PuntoDeRecorridoDto> puntosRuta6 = new ArrayList<>();
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_1 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_1.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_1.getPuntoPosicion().setLatitud(-27.34026563342671);
+		puntoCapitanMiranda_1.getPuntoPosicion().setLongitud(-55.864703605825);
+		
+		puntosRuta6.add(puntoCapitanMiranda_1);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_2 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_2.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_2.getPuntoPosicion().setLatitud(-27.340840325054867);
+		puntoCapitanMiranda_2.getPuntoPosicion().setLongitud(-55.86463981178381);
+	
+		puntosRuta6.add(puntoCapitanMiranda_2);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_3 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_3.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_3.getPuntoPosicion().setLatitud(-27.34118885178881);
+		puntoCapitanMiranda_3.getPuntoPosicion().setLongitud(-55.868260240381986);
+	
+		puntosRuta6.add(puntoCapitanMiranda_3);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_4 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_4.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_4.getPuntoPosicion().setLatitud(-27.340976575239125);
+		puntoCapitanMiranda_4.getPuntoPosicion().setLongitud(-55.86870404669897);
+	
+		puntosRuta6.add(puntoCapitanMiranda_4);
+		
+		
 		return map;
 	}
 
