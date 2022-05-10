@@ -536,10 +536,80 @@ public class TestServiceImpl implements ITestService {
 		
 		PuntoDeRecorridoDto puntoCapitanMiranda_4 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_4.setPuntoPosicion(new PosicionDto());
-		puntoCapitanMiranda_4.getPuntoPosicion().setLatitud(-27.340976575239125);
-		puntoCapitanMiranda_4.getPuntoPosicion().setLongitud(-55.86870404669897);
+		puntoCapitanMiranda_4.getPuntoPosicion().setLatitud(-27.340973205771377);
+		puntoCapitanMiranda_4.getPuntoPosicion().setLongitud(-55.86870025348229);
 	
 		puntosRuta6.add(puntoCapitanMiranda_4);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_5 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_5.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_5.getPuntoPosicion().setLatitud(-27.34069016973115);
+		puntoCapitanMiranda_5.getPuntoPosicion().setLongitud(-55.86858266377303);
+	
+		puntosRuta6.add(puntoCapitanMiranda_5);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_6 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_6.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_6.getPuntoPosicion().setLatitud(-27.34069016973115);
+		puntoCapitanMiranda_6.getPuntoPosicion().setLongitud(-55.86858266377303);
+	
+		puntosRuta6.add(puntoCapitanMiranda_6);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_1 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada La Junta");
+		puntoParadaGralArtigas_1.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_1.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_1);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_7 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_7.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_7.getPuntoPosicion().setLatitud(-27.33847986407693);
+		puntoCapitanMiranda_7.getPuntoPosicion().setLongitud(-55.868902638987464);
+		
+		puntosRuta6.add(puntoCapitanMiranda_7);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_2 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Esquina Innovadent");
+		puntoParadaGralArtigas_2.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_2.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_2);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_3 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Subida Upap Encarnacion");
+		puntoParadaGralArtigas_3.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_3.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_3);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_8 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_8.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_8.getPuntoPosicion().setLatitud(-27.334271218407018);
+		puntoCapitanMiranda_8.getPuntoPosicion().setLongitud(-55.869289547057214);
+		
+		puntosRuta6.add(puntoCapitanMiranda_8);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_4 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Al Natural");
+		puntoParadaGralArtigas_4.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_4.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_4);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_5 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada BENGELATO");
+		puntoParadaGralArtigas_5.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_5.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_5);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_6 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Optica Gamon");
+		puntoParadaGralArtigas_6.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_6.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_6);
 		
 		
 		return map;
@@ -756,6 +826,67 @@ public class TestServiceImpl implements ITestService {
 		
 		map.put("Parada Circuito", paradaService.saveParada(paradaZonaCircuito_3));
 		
+		
+		ParadaDto paradaGralArtigas_1 = new ParadaDto();
+		paradaGralArtigas_1.setNombre("Parada La Junta");
+		paradaGralArtigas_1.setDescripcion("Parada que queda frente la junta (cancha deportiva)");
+		paradaGralArtigas_1.setPosicion(new PosicionDto());
+		paradaGralArtigas_1.getPosicion().setLatitud(-27.338968447507323);
+		paradaGralArtigas_1.getPosicion().setLongitud(-55.868826774661265);
+		paradaGralArtigas_1.setImage(null);
+		
+		map.put("Parada La Junta", paradaService.saveParada(paradaGralArtigas_1));
+		
+		ParadaDto paradaGralArtigas_2 = new ParadaDto();
+		paradaGralArtigas_2.setNombre("Parada Esquina Innovadent");
+		paradaGralArtigas_2.setDescripcion("Parada queda enfrente de Innovadent");
+		paradaGralArtigas_2.setPosicion(new PosicionDto());
+		paradaGralArtigas_2.getPosicion().setLatitud(-27.33724323298178);
+		paradaGralArtigas_2.getPosicion().setLongitud(-55.86898229653133);
+		paradaGralArtigas_2.setImage(null);
+		
+		map.put("Parada Esquina Innovadent", paradaService.saveParada(paradaGralArtigas_2));
+		
+		ParadaDto paradaGralArtigas_3 = new ParadaDto();
+		paradaGralArtigas_3.setNombre("Parada Subida Upap Encarnacion");
+		paradaGralArtigas_3.setDescripcion("Parada queda subiendo la calle Mor. Wiessen");
+		paradaGralArtigas_3.setPosicion(new PosicionDto());
+		paradaGralArtigas_3.getPosicion().setLatitud(-27.33575386602624);
+		paradaGralArtigas_3.getPosicion().setLongitud(-55.869160577699766);
+		paradaGralArtigas_3.setImage(null);
+		
+		map.put("Parada Subida Upap Encarnacion", paradaService.saveParada(paradaGralArtigas_3));
+		
+	
+		ParadaDto paradaGralArtigas_4 = new ParadaDto();
+		paradaGralArtigas_4.setNombre("Parada Al Natural");
+		paradaGralArtigas_4.setDescripcion("Parada entre 14 de mayo y Gral. Artigas");
+		paradaGralArtigas_4.setPosicion(new PosicionDto());
+		paradaGralArtigas_4.getPosicion().setLatitud(-27.333292170790983);
+		paradaGralArtigas_4.getPosicion().setLongitud(-55.86942069214396);
+		paradaGralArtigas_4.setImage(null);
+		
+		map.put("Parada Al Natural", paradaService.saveParada(paradaGralArtigas_4));
+		
+		ParadaDto paradaGralArtigas_5 = new ParadaDto();
+		paradaGralArtigas_5.setNombre("Parada BENGELATO");
+		paradaGralArtigas_5.setDescripcion("Parada entre Villarica y Gral. Artigas");
+		paradaGralArtigas_5.setPosicion(new PosicionDto());
+		paradaGralArtigas_5.getPosicion().setLatitud(-27.331097115425248);
+		paradaGralArtigas_5.getPosicion().setLongitud(-55.86966204962195);
+		paradaGralArtigas_5.setImage(null);
+		
+		map.put("Parada BENGELATO", paradaService.saveParada(paradaGralArtigas_5));
+		
+		ParadaDto paradaGralArtigas_6 = new ParadaDto();
+		paradaGralArtigas_6.setNombre("Parada Optica Gamon");
+		paradaGralArtigas_6.setDescripcion("Parada entre Constitucion Nacional y Gral. Artigas");
+		paradaGralArtigas_6.setPosicion(new PosicionDto());
+		paradaGralArtigas_6.getPosicion().setLatitud(-27.328156918730016);
+		paradaGralArtigas_6.getPosicion().setLongitud(-55.869968126783625);
+		paradaGralArtigas_6.setImage(null);
+		
+		map.put("Parada Optica Gamon", paradaService.saveParada(paradaGralArtigas_6));
 		return map;
 	}
 
