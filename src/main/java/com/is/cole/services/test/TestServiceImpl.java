@@ -661,6 +661,84 @@ public class TestServiceImpl implements ITestService {
 		puntosRuta6.add(puntoParadaGralArtigas_9);
 		
 		
+		PuntoDeRecorridoDto puntoCapitanMiranda_13 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_13.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_13.getPuntoPosicion().setLatitud(-27.325936481346805);
+		puntoCapitanMiranda_13.getPuntoPosicion().setLongitud(-55.86096368657);
+		
+		puntosRuta6.add(puntoCapitanMiranda_13);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_14 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_14.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_14.getPuntoPosicion().setLatitud(-27.325779209833083);
+		puntoCapitanMiranda_14.getPuntoPosicion().setLongitud(-55.859343632321426);
+		
+		puntosRuta6.add(puntoCapitanMiranda_14);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_15 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_15.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_15.getPuntoPosicion().setLatitud(-27.323469343234258);
+		puntoCapitanMiranda_15.getPuntoPosicion().setLongitud(-55.85701410808214);
+		
+		puntosRuta6.add(puntoCapitanMiranda_15);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_16 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_16.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_16.getPuntoPosicion().setLatitud(-27.320655039980767);
+		puntoCapitanMiranda_16.getPuntoPosicion().setLongitud(-55.8554450158088);
+		
+		puntosRuta6.add(puntoCapitanMiranda_16);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_17 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_17.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_17.getPuntoPosicion().setLatitud(-27.320180819286822);
+		puntoCapitanMiranda_17.getPuntoPosicion().setLongitud(-55.85513656177058);
+		
+		puntosRuta6.add(puntoCapitanMiranda_17);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_18 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_18.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_18.getPuntoPosicion().setLatitud(-27.315972521738363);
+		puntoCapitanMiranda_18.getPuntoPosicion().setLongitud(-55.852780894630186);
+		
+		puntosRuta6.add(puntoCapitanMiranda_18);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_19 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_19.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_19.getPuntoPosicion().setLatitud(-27.31534728691316);
+		puntoCapitanMiranda_19.getPuntoPosicion().setLongitud(-55.852126811246);
+		
+		puntosRuta6.add(puntoCapitanMiranda_19);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_20 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_20.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_20.getPuntoPosicion().setLatitud(-27.31502665230044);
+		puntoCapitanMiranda_20.getPuntoPosicion().setLongitud(-55.85159903362103);
+		
+		puntosRuta6.add(puntoCapitanMiranda_20);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_21 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_21.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_21.getPuntoPosicion().setLatitud(-27.314148910315634);
+		puntoCapitanMiranda_21.getPuntoPosicion().setLongitud(-55.84907291847541);
+		
+		puntosRuta6.add(puntoCapitanMiranda_21);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_22 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_22.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_22.getPuntoPosicion().setLatitud(-27.309875635840218);
+		puntoCapitanMiranda_22.getPuntoPosicion().setLongitud(-55.84158874597306);
+		
+		puntosRuta6.add(puntoCapitanMiranda_22);
+
+		PuntoDeRecorridoDto puntoCapitanMiranda_23 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_23.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_23.getPuntoPosicion().setLatitud(-27.30508390281704);
+		puntoCapitanMiranda_23.getPuntoPosicion().setLongitud(-55.83723450962046);
+		
+		puntosRuta6.add(puntoCapitanMiranda_23);
+		
+		
 		return map;
 		
 	}
