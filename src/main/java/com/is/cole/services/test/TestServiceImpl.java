@@ -58,6 +58,16 @@ public class TestServiceImpl implements ITestService {
 		viajeCircuito = viajeService.saveViaje(viajeCircuito);
 
 		viajeMap.put("Viaje Circuito", viajeCircuito);
+		
+		ViajeDto viajeRuta6 = new ViajeDto();
+		viajeRuta6.setDestino("Capitan Miranda");
+		viajeRuta6.setRecorrido_id(recorridoMap.get("Recorrido Ruta 6").getId());
+		viajeRuta6.setChofer_id(usuarioMap.get("mariano").getId());
+		viajeRuta6.setColectivo_id(colectivoMap.get("Colectivo11").getId());
+
+		viajeRuta6 = viajeService.saveViaje(viajeRuta6);
+
+		viajeMap.put("Viaje Capitan Miranda", viajeRuta6);
 
 		return viajeMap;
 	}
@@ -738,6 +748,11 @@ public class TestServiceImpl implements ITestService {
 		
 		puntosRuta6.add(puntoCapitanMiranda_23);
 		
+		dtoRecorridoCapitanMiranda.setPuntos(puntosRuta6);
+
+		dtoRecorridoCapitanMiranda = recorridoService.saveRecorrido(dtoRecorridoCapitanMiranda);
+
+		map.put("Recorrido Ruta 6", dtoRecorridoCapitanMiranda);
 		
 		return map;
 		
@@ -778,6 +793,13 @@ public class TestServiceImpl implements ITestService {
 		map.put("antonio", usuarioService.saveUsuario(chofer));
 		usuarioService.agregarRoleAUsuario(map.get("antonio").getId(), rolMap.get("chofer").getId());
 
+		UsuarioDto chofer_2 = new UsuarioDto();
+		chofer_2.setNombre("Mariano");
+		chofer_2.setApellido("Roque Alonso");
+		chofer_2.setCorreo_electronico("mariano@gmail.com");
+		chofer_2.setPassword("muysecreto");
+		map.put("mariano", usuarioService.saveUsuario(chofer_2));
+		usuarioService.agregarRoleAUsuario(map.get("mariano").getId(), rolMap.get("chofer").getId());
 		return map;
 	}
 
@@ -1052,6 +1074,14 @@ public class TestServiceImpl implements ITestService {
 		dto = colectivoService.saveColectivo(dto);
 		map.put("Colectivo23", dto);
 
+		ColectivoDto colectivo_2 = new ColectivoDto();
+		colectivo_2.setEmpresaId(empresaMap.get("la encarnacena").getId());
+		colectivo_2.setLineaId(lineaMap.get("Linea").getId());
+		colectivo_2.setNumero("11");
+
+		colectivo_2 = colectivoService.saveColectivo(colectivo_2);
+		map.put("Colectivo11", colectivo_2);
+		
 		return map;
 	}
 
@@ -1063,6 +1093,11 @@ public class TestServiceImpl implements ITestService {
 		lineaDto = lineaService.saveLineaColectivo(lineaDto);
 		map.put("Linea", lineaDto);
 
+		LineaDeColectivosDto lineaDto_2 = new LineaDeColectivosDto();
+		lineaDto_2.setNumero("11");
+		lineaDto_2 = lineaService.saveLineaColectivo(lineaDto_2);
+		map.put("Linea11", lineaDto_2);
+		
 		return map;
 	}
 
@@ -1076,6 +1111,14 @@ public class TestServiceImpl implements ITestService {
 		empresaUrbano.setNumero_telefono("0987654321");
 		empresaUrbano = empresaService.saveEmpresaColectivo(empresaUrbano);
 		map.put("urbano", empresaUrbano);
+		
+		EmpresaDeColectivosDto empresaLaEncarnacena = new EmpresaDeColectivosDto();
+		empresaLaEncarnacena.setNombre("Empresa La Encarnacena");
+		empresaLaEncarnacena.setCorreo_electronico("encarnacena@gmail.com");
+		empresaLaEncarnacena.setDireccion("Algun lugar");
+		empresaLaEncarnacena.setNumero_telefono("0987689713");
+		empresaLaEncarnacena = empresaService.saveEmpresaColectivo(empresaLaEncarnacena);
+		map.put("la encarnacena", empresaLaEncarnacena);
 
 		return map;
 	}
