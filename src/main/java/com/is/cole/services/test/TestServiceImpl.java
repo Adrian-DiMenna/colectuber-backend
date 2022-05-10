@@ -611,8 +611,58 @@ public class TestServiceImpl implements ITestService {
 		
 		puntosRuta6.add(puntoParadaGralArtigas_6);
 		
+		PuntoDeRecorridoDto puntoCapitanMiranda_9 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_9.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_9.getPuntoPosicion().setLatitud(-27.326636941800903);
+		puntoCapitanMiranda_9.getPuntoPosicion().setLongitud(-55.87010770753962);
+		
+		puntosRuta6.add(puntoCapitanMiranda_9);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_10 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_10.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_10.getPuntoPosicion().setLatitud(-27.326698816004);
+		puntoCapitanMiranda_10.getPuntoPosicion().setLongitud(-55.869473924399976);
+		
+		puntosRuta6.add(puntoCapitanMiranda_10);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_11 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_11.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_11.getPuntoPosicion().setLatitud(-27.32660736050076);
+		puntoCapitanMiranda_11.getPuntoPosicion().setLongitud(-55.86858796598658);
+		
+		puntosRuta6.add(puntoCapitanMiranda_11);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_7 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Mundo Mania");
+		puntoParadaGralArtigas_7.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_7.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_7);
+		
+		PuntoDeRecorridoDto puntoCapitanMiranda_12 = new PuntoDeRecorridoDto();
+		puntoCapitanMiranda_12.setPuntoPosicion(new PosicionDto());
+		puntoCapitanMiranda_12.getPuntoPosicion().setLatitud(-27.32651867405479);
+		puntoCapitanMiranda_12.getPuntoPosicion().setLongitud(-55.86710217402087);
+		
+		puntosRuta6.add(puntoCapitanMiranda_12);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_8 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Chiperia Aaron");
+		puntoParadaGralArtigas_8.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_8.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_8);
+		
+		PuntoDeRecorridoDto puntoParadaGralArtigas_9 = new PuntoDeRecorridoDto();
+		paradaDto = paradaMap.get("Parada Carsuplay");
+		puntoParadaGralArtigas_9.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_9.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosRuta6.add(puntoParadaGralArtigas_9);
+		
 		
 		return map;
+		
 	}
 
 	private Map<String, RoleDto> insertRoles() {
@@ -887,6 +937,27 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_6.setImage(null);
 		
 		map.put("Parada Optica Gamon", paradaService.saveParada(paradaGralArtigas_6));
+		
+		ParadaDto paradaAvCaballero_3 = new ParadaDto();
+		paradaAvCaballero_3.setNombre("Parada Chiperia Aaron");
+		paradaAvCaballero_3.setDescripcion("Parada Avenida Caballero, frente Chiperia Aaron");
+		paradaAvCaballero_3.setPosicion(new PosicionDto());
+		paradaAvCaballero_3.getPosicion().setLatitud(-27.326353393093402);
+		paradaAvCaballero_3.getPosicion().setLongitud(-55.86570601749689);
+		paradaAvCaballero_3.setImage(null);
+		
+		map.put("Parada Chiperia Aaron", paradaService.saveParada(paradaAvCaballero_3));
+		
+		ParadaDto paradaAvCaballero_4 = new ParadaDto();
+		paradaAvCaballero_4.setNombre("Parada Carsuplay");
+		paradaAvCaballero_4.setDescripcion("Parada Avenida Caballero, frente carsuplay");
+		paradaAvCaballero_4.setPosicion(new PosicionDto());
+		paradaAvCaballero_4.getPosicion().setLatitud(-27.326081838152955);
+		paradaAvCaballero_4.getPosicion().setLongitud(-55.862803681953004);
+		paradaAvCaballero_4.setImage(null);
+		
+		map.put("Parada Carsuplay", paradaService.saveParada(paradaAvCaballero_4));
+		
 		return map;
 	}
 
