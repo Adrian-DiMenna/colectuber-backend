@@ -13,25 +13,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.is.cole.dtos.Result;
-import com.is.cole.dtos.colores.ColorDto;
-import com.is.cole.services.colores.IColorService;
+import com.is.cole.dtos.zonas.ZonaDto;
+import com.is.cole.services.zonas.IZonaService;
 
+/**
+ * Controlador para la zona de parada de colectivos
+ * @author Colectuber
+ */
 @RestController
-@RequestMapping("/api/colores")
+@RequestMapping("api/zonas")
 @Secured("ROLE_ADMIN")
-public class ColorController {
-
+public class ZonaController {
+	
 	/**
-	 * Agrega un color nuevo
+	 * Agrega una nueva zona
 	 * @param dto
 	 * @return
 	 */
 	@PostMapping
-	public ResponseEntity<?> postColor(@RequestBody ColorDto dto) {
+	public ResponseEntity<?> saveZona(@RequestBody ZonaDto dto) {
 		try {
-			ColorDto dtoGuardado = colorService.saveColor(dto);
+			ZonaDto dtoGuardado = zonaService.saveZona(dto);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -39,57 +42,57 @@ public class ColorController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	/**
-	 * Obtiene un color por medio de un identificador
-	 * @param id
+	 * Obtiene una zona por medio de su id
+	 * @param zonaId
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public ResponseEntity<?> getColor(@PathVariable(value = "id") Integer id){
+	public ResponseEntity<?> getByIdZona(@PathVariable("id") Integer zonaId) {
 		try {
-			ColorDto dtoObtenido = colorService.getColorById(id);
+			ZonaDto dtoObtenido = zonaService.getByIdZona(zonaId);
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
-		}catch (EntityNotFoundException e) {
+		} catch (EntityNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	/**
-	 * Obtiene todos los colores
+	 * Obtiene todas las zonas 
 	 * @return
 	 */
 	@GetMapping
-	public ResponseEntity<?> getAllColores(){
+	public ResponseEntity<?> getAllZonas() {
 		try {
-			Result<ColorDto> dtos = colorService.getAllColors();
+			Result<ZonaDto> dtos = zonaService.getAllZonas();
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
-	
+
 	/**
-	 * Elimina un color por medio de un identificador
-	 * @param id
+	 * Elimina una zona por medio de su id
+	 * @param zonaId
 	 * @return
 	 */
 	@DeleteMapping("/{id}")
-	public ResponseEntity<?> deleteColor(@PathVariable(value = "id") Integer id){
+	public ResponseEntity<?> deleteZona(@PathVariable("id") Integer zonaId) {
 		try {
-			colorService.deleteById(id);
+			zonaService.deleteZona(zonaId);
 			return ResponseEntity.status(HttpStatus.OK).build();
-		}catch (EntityNotFoundException e) {
+		} catch (EntityNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
+	/********************** Variables Privadas **********************/
+	
 	@Autowired
-	private IColorService colorService;
-	
-	
+	private IZonaService zonaService;
 }

@@ -22,9 +22,6 @@ import com.is.cole.services.lineas.ILineaColectivosService;
 @Secured("ROLE_ADMIN")
 public class LineaDeColectivosController {
 
-	@Autowired
-	private ILineaColectivosService lineaService;
-
 	/**
 	 * Agrega una nueva linea de colectivo
 	 * @param dto
@@ -89,5 +86,9 @@ public class LineaDeColectivosController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+
+	@Autowired
+	private ILineaColectivosService lineaService;
 
 }

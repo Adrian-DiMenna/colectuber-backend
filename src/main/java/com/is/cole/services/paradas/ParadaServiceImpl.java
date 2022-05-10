@@ -1,17 +1,15 @@
 package com.is.cole.services.paradas;
 
 import java.util.stream.Collectors;
-
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.is.cole.daos.IParadaDao;
+import com.is.cole.daos.IZonaDao;
 import com.is.cole.dtos.PosicionDto;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.paradas.ParadaDto;
 import com.is.cole.entities.Parada;
-
 import java.util.List;
 
 @Service
@@ -67,7 +65,13 @@ public class ParadaServiceImpl implements IParadaService {
 		dto.setDescripcion(bean.getDescripcion());
 		dto.setImage(bean.getImagen());
 		dto.setPosicion(posDto);
-
+		
+		if(bean.getZona() != null) {
+			dto.setZona(bean.getZona().getNombre());
+		}else {
+			dto.setZona("");
+		}
+	
 		return dto;
 	}
 
@@ -86,10 +90,13 @@ public class ParadaServiceImpl implements IParadaService {
 		bean.setImagen(dto.getImage());
 		bean.setLongitud(dto.getPosicion().getLongitud());
 		bean.setLatitud(dto.getPosicion().getLatitud());
+		bean.setZona(zonaDao.findByNombre(dto.getZona()));
 
 		return bean;
 	}
 
 	@Autowired
 	private IParadaDao paradaDao;
+	@Autowired
+	private IZonaDao zonaDao;
 }

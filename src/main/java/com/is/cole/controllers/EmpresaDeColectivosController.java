@@ -22,9 +22,6 @@ import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
 @Secured("ROLE_ADMIN")
 public class EmpresaDeColectivosController {
 
-	@Autowired
-	private IEmpresaColectivosService empresaService;
-
 	/**
 	 * Agrega una nueva empresa de Colectivo
 	 * @param dto
@@ -89,5 +86,8 @@ public class EmpresaDeColectivosController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
+	
+	@Autowired
+	private IEmpresaColectivosService empresaService;
 
 }
