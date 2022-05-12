@@ -80,13 +80,13 @@ public class TestServiceImpl implements ITestService {
 		Map<String, RecorridoDto> map = new HashMap<>();
 
 		RecorridoDto dtoRecorridoCircuito = new RecorridoDto();
-		dtoRecorridoCircuito.setDescripcion("Recorrido Ruta 1, San Juan del Paraná a Circuito:"
-				+ "De San Juan del Parada -> Parada Petrobras -> Parada Hotel City -> Parada Zona Uni "
+		dtoRecorridoCircuito.setDescripcion("Recorrido desde Ruta 1, San Juan del Paraná hasta Circuito: "
+				+ "De San Juan del Paraná -> Parada Petrobras -> Parada Hotel City -> Parada Zona Uni "
 				+ "-> Parada Supermercado La Familia -> Parada Colegio Kennedy -> Parada Super 6 Costanera "
 				+ "-> Parada Hotel Real -> Parada Mundo Mania -> Parada Esquina Doña Reina "
 				+ "-> Parada Hierro Center -> Parada Banco Atlas -> Parada Colegio Centro "
 				+ "-> Parada Terminal -> Parada Gobernación -> Parada La Placita "
-				+ "-> Parada Plaza de la Amistad -> Parada Circuito");
+				+ "-> Parada Plaza de la Amistad -> Parada Circuito.");
 		
 		dtoRecorridoCircuito.setNombre("Principal Ruta 1 Circuito");
 		dtoRecorridoCircuito.setColor(colorMap.get("red").getNombre());
@@ -526,7 +526,11 @@ public class TestServiceImpl implements ITestService {
 		
 
 		RecorridoDto dtoRecorridoCapitanMiranda = new RecorridoDto();
-		dtoRecorridoCapitanMiranda.setDescripcion("Recorrido desde la terminal hasta capitan miranda");
+		dtoRecorridoCapitanMiranda.setDescripcion("Recorrido desde la terminal hasta Capitan Miranda: "
+				+ "De La Terminal -> Parada La Junta -> Parada Esquina Innovadent -> "
+				+ "-> Parada Subida UPAP Encarnación -> Parada Al Natural -> Parada BENGELATO "
+				+ "-> Parada Optica Gamon -> Parada Mundo Mania -> Parada Chiperia Aaron "
+				+ "-> Parada Carsuplay -> Capitan Miranda.");
 		dtoRecorridoCapitanMiranda.setNombre("Ruta 6 Capitan Miranda");
 		dtoRecorridoCapitanMiranda.setColor(colorMap.get("blue").getNombre());
 		
