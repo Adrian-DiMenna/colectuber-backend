@@ -21,6 +21,7 @@ import com.is.cole.dtos.colores.ColorDto;
 import com.is.cole.dtos.paradas.ParadaDto;
 import com.is.cole.dtos.recorridos.PuntoDeRecorridoDto;
 import com.is.cole.dtos.recorridos.RecorridoDto;
+import com.is.cole.dtos.zonas.ZonaDto;
 import com.is.cole.services.colectivos.IColectivoService;
 import com.is.cole.services.colores.IColorService;
 import com.is.cole.services.empresaColectivos.IEmpresaColectivosService;
@@ -29,6 +30,7 @@ import com.is.cole.services.paradas.IParadaService;
 import com.is.cole.services.recorridos.IRecorridoService;
 import com.is.cole.services.usuarios.IUsuariosService;
 import com.is.cole.services.viajes.IViajesService;
+import com.is.cole.services.zonas.IZonaService;
 
 @Service
 /**
@@ -40,7 +42,7 @@ public class TestServiceImpl implements ITestService {
 	@Override
 	@Transactional
 	public void insertTestValues() {
-		insertViaje(insertRecorrido(insertParadas(),insertColor()), insertColectivo(insertEmpresaColectivo(), insertLinea()),
+		insertViaje(insertRecorrido(insertParadas(insertZonas()),insertColor()), insertColectivo(insertEmpresaColectivo(), insertLinea()),
 				insertUsuarios(insertRoles()));
 
 	}
@@ -803,7 +805,7 @@ public class TestServiceImpl implements ITestService {
 		return map;
 	}
 
-	private Map<String, ParadaDto> insertParadas() {
+	private Map<String, ParadaDto> insertParadas(Map<String,ZonaDto> mapZonas) {
 		Map<String, ParadaDto> map = new HashMap<String, ParadaDto>();
 
 		ParadaDto paradaRuta1_1 = new ParadaDto();
@@ -813,6 +815,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_1.getPosicion().setLatitud(-27.30610661477075);
 		paradaRuta1_1.getPosicion().setLongitud(-55.89254610085299);
 		paradaRuta1_1.setImage(null);
+		paradaRuta1_1.setZona(mapZonas.get("Zona Ruta 1").getNombre());
 		
 		map.put("Parada Petrobras", paradaService.saveParada(paradaRuta1_1));
 		
@@ -823,7 +826,8 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_2.getPosicion().setLatitud(-27.306981212223608);
 		paradaRuta1_2.getPosicion().setLongitud(-55.891181000556216);
 		paradaRuta1_2.setImage(null);
-		
+		paradaRuta1_2.setZona(mapZonas.get("Zona Ruta 1").getNombre());
+
 		map.put("Parada Hotel City", paradaService.saveParada(paradaRuta1_2));
 		
 		ParadaDto paradaRuta1_3 = new ParadaDto();
@@ -833,6 +837,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_3.getPosicion().setLatitud(-27.308664364353458);
 		paradaRuta1_3.getPosicion().setLongitud(-55.88851370435971);
 		paradaRuta1_3.setImage(null);
+		paradaRuta1_3.setZona(mapZonas.get("Zona Ruta 1").getNombre());
 		
 		map.put("Parada Zona Uni", paradaService.saveParada(paradaRuta1_3));
 
@@ -843,6 +848,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_4.getPosicion().setLatitud(-27.3114841856797);
 		paradaRuta1_4.getPosicion().setLongitud(-55.88390687216109);
 		paradaRuta1_4.setImage(null);
+		paradaRuta1_4.setZona(mapZonas.get("Zona Ruta 1").getNombre());
 		
 		map.put("Parada Supermercado La Familia", paradaService.saveParada(paradaRuta1_4));
 		
@@ -853,6 +859,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_5.getPosicion().setLatitud(-27.312631684828208);
 		paradaRuta1_5.getPosicion().setLongitud(-55.88072449336672);
 		paradaRuta1_5.setImage(null);
+		paradaRuta1_5.setZona(mapZonas.get("Zona Ruta 1").getNombre());
 		
 		map.put("Parada Colegio Kennedy", paradaService.saveParada(paradaRuta1_5));
 
@@ -863,6 +870,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_6.getPosicion().setLatitud(-27.32357055692744);
 		paradaRuta1_6.getPosicion().setLongitud(-55.873611839255304);
 		paradaRuta1_6.setImage(null);
+		paradaRuta1_6.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Super 6 Costanera", paradaService.saveParada(paradaRuta1_6));
 	
@@ -873,6 +881,7 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_1.getPosicion().setLatitud(-27.32670628556545);
 		paradaAvCaballero_1.getPosicion().setLongitud(-55.87047722135734);
 		paradaAvCaballero_1.setImage(null);
+		paradaAvCaballero_1.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Hotel Real", paradaService.saveParada(paradaAvCaballero_1));
 		
@@ -883,6 +892,7 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_2.getPosicion().setLatitud(-27.32654541257507);
 		paradaAvCaballero_2.getPosicion().setLongitud(-55.867412775419176);
 		paradaAvCaballero_2.setImage(null);
+		paradaAvCaballero_2.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Mundo Mania", paradaService.saveParada(paradaAvCaballero_2));
 	
@@ -893,6 +903,7 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_1.getPosicion().setLatitud(-27.32751327416177);
 		paradaCarlosAntLopez_1.getPosicion().setLongitud(-55.86524488183438);
 		paradaCarlosAntLopez_1.setImage(null);
+		paradaCarlosAntLopez_1.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Esquina Doña Reina", paradaService.saveParada(paradaCarlosAntLopez_1));
 		
@@ -903,6 +914,7 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_2.getPosicion().setLatitud(-27.328896067206827);
 		paradaCarlosAntLopez_2.getPosicion().setLongitud(-55.86509726431732);
 		paradaCarlosAntLopez_2.setImage(null);
+		paradaCarlosAntLopez_2.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Hierro Center", paradaService.saveParada(paradaCarlosAntLopez_2));
 		
@@ -913,6 +925,7 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_3.getPosicion().setLatitud(-27.33151247100019);
 		paradaCarlosAntLopez_3.getPosicion().setLongitud(-55.86479042955511);
 		paradaCarlosAntLopez_3.setImage(null);
+		paradaCarlosAntLopez_3.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Banco Atlas", paradaService.saveParada(paradaCarlosAntLopez_3));
 	
@@ -923,6 +936,7 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_4.getPosicion().setLatitud(-27.333958604879);
 		paradaCarlosAntLopez_4.getPosicion().setLongitud(-55.864521921736795);
 		paradaCarlosAntLopez_4.setImage(null);
+		paradaCarlosAntLopez_4.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Colegio Centro", paradaService.saveParada(paradaCarlosAntLopez_4));
 
@@ -933,6 +947,7 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_5.getPosicion().setLatitud(-27.3404180233383);
 		paradaCarlosAntLopez_5.getPosicion().setLongitud(-55.86382006960933);
 		paradaCarlosAntLopez_5.setImage(null);
+		paradaCarlosAntLopez_5.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Terminal", paradaService.saveParada(paradaCarlosAntLopez_5));
 		
@@ -943,6 +958,7 @@ public class TestServiceImpl implements ITestService {
 		paradaSgtoRevenchon.getPosicion().setLatitud(-27.344185592805495);
 		paradaSgtoRevenchon.getPosicion().setLongitud(-55.85817132115115);
 		paradaSgtoRevenchon.setImage(null);
+		paradaSgtoRevenchon.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Gobernacion", paradaService.saveParada(paradaSgtoRevenchon));
 		
@@ -953,6 +969,7 @@ public class TestServiceImpl implements ITestService {
 		paradaZonaCircuito_1.getPosicion().setLatitud(-27.349722532412244);
 		paradaZonaCircuito_1.getPosicion().setLongitud(-55.856859907370364);
 		paradaZonaCircuito_1.setImage(null);
+		paradaZonaCircuito_1.setZona(mapZonas.get("Zona Circuito").getNombre());
 		
 		map.put("Parada La Placita", paradaService.saveParada(paradaZonaCircuito_1));
 		
@@ -963,6 +980,7 @@ public class TestServiceImpl implements ITestService {
 		paradaZonaCircuito_2.getPosicion().setLatitud(-27.350697016910487);
 		paradaZonaCircuito_2.getPosicion().setLongitud(-55.85243626062093);
 		paradaZonaCircuito_2.setImage(null);
+		paradaZonaCircuito_2.setZona(mapZonas.get("Zona Circuito").getNombre());
 		
 		map.put("Parada Plaza de la amistad", paradaService.saveParada(paradaZonaCircuito_2));
 	
@@ -973,6 +991,7 @@ public class TestServiceImpl implements ITestService {
 		paradaZonaCircuito_3.getPosicion().setLatitud(-27.357819910452204);
 		paradaZonaCircuito_3.getPosicion().setLongitud(-55.84988382623049);
 		paradaZonaCircuito_3.setImage(null);
+		paradaZonaCircuito_3.setZona(mapZonas.get("Zona Circuito").getNombre());
 		
 		map.put("Parada Circuito", paradaService.saveParada(paradaZonaCircuito_3));
 		
@@ -984,6 +1003,7 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_1.getPosicion().setLatitud(-27.338968447507323);
 		paradaGralArtigas_1.getPosicion().setLongitud(-55.868826774661265);
 		paradaGralArtigas_1.setImage(null);
+		paradaGralArtigas_1.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada La Junta", paradaService.saveParada(paradaGralArtigas_1));
 		
@@ -994,6 +1014,7 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_2.getPosicion().setLatitud(-27.33724323298178);
 		paradaGralArtigas_2.getPosicion().setLongitud(-55.86898229653133);
 		paradaGralArtigas_2.setImage(null);
+		paradaGralArtigas_2.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Esquina Innovadent", paradaService.saveParada(paradaGralArtigas_2));
 		
@@ -1004,6 +1025,7 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_3.getPosicion().setLatitud(-27.33575386602624);
 		paradaGralArtigas_3.getPosicion().setLongitud(-55.869160577699766);
 		paradaGralArtigas_3.setImage(null);
+		paradaGralArtigas_3.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Subida Upap Encarnacion", paradaService.saveParada(paradaGralArtigas_3));
 		
@@ -1015,6 +1037,7 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_4.getPosicion().setLatitud(-27.333292170790983);
 		paradaGralArtigas_4.getPosicion().setLongitud(-55.86942069214396);
 		paradaGralArtigas_4.setImage(null);
+		paradaGralArtigas_4.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Al Natural", paradaService.saveParada(paradaGralArtigas_4));
 		
@@ -1025,6 +1048,7 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_5.getPosicion().setLatitud(-27.331097115425248);
 		paradaGralArtigas_5.getPosicion().setLongitud(-55.86966204962195);
 		paradaGralArtigas_5.setImage(null);
+		paradaGralArtigas_5.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada BENGELATO", paradaService.saveParada(paradaGralArtigas_5));
 		
@@ -1035,6 +1059,7 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_6.getPosicion().setLatitud(-27.328156918730016);
 		paradaGralArtigas_6.getPosicion().setLongitud(-55.869968126783625);
 		paradaGralArtigas_6.setImage(null);
+		paradaGralArtigas_6.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Optica Gamon", paradaService.saveParada(paradaGralArtigas_6));
 		
@@ -1045,6 +1070,7 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_3.getPosicion().setLatitud(-27.326353393093402);
 		paradaAvCaballero_3.getPosicion().setLongitud(-55.86570601749689);
 		paradaAvCaballero_3.setImage(null);
+		paradaAvCaballero_3.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Chiperia Aaron", paradaService.saveParada(paradaAvCaballero_3));
 		
@@ -1055,6 +1081,7 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_4.getPosicion().setLatitud(-27.326081838152955);
 		paradaAvCaballero_4.getPosicion().setLongitud(-55.862803681953004);
 		paradaAvCaballero_4.setImage(null);
+		paradaAvCaballero_4.setZona(mapZonas.get("Zona Centro").getNombre());
 		
 		map.put("Parada Carsuplay", paradaService.saveParada(paradaAvCaballero_4));
 		
@@ -1140,6 +1167,30 @@ public class TestServiceImpl implements ITestService {
 
 	}
 	
+	private Map<String, ZonaDto> insertZonas(){
+		Map<String, ZonaDto> resultMap = new HashMap<>();
+		ZonaDto zonaCentro= new ZonaDto();
+		zonaCentro.setNombre("Zona Centro");
+		zonaCentro.setDescripcion("Ubicacion de la zona centro de Encarnacion");
+		zonaCentro = zonaService.saveZona(zonaCentro);
+		resultMap.put("Zona Centro", zonaCentro);
+		
+		ZonaDto zonaRuta1= new ZonaDto();
+		zonaRuta1.setNombre("Zona Ruta 1");
+		zonaRuta1.setDescripcion("Ubicacion sobre la Ruta 1 de Encarnacion");
+		zonaRuta1= zonaService.saveZona(zonaRuta1);
+		resultMap.put("Zona Ruta 1", zonaRuta1);
+		
+		ZonaDto zonaCircuito= new ZonaDto();
+		zonaCircuito.setNombre("Zona Circuito");
+		zonaCircuito.setDescripcion("Ubicacion de la zona circuito y alrededores");
+		zonaCircuito = zonaService.saveZona(zonaCircuito);
+		resultMap.put("Zona Circuito", zonaCircuito);
+		
+		
+		return resultMap;
+	}
+	
 	/********************** Variables Privadas **********************/
 	@Autowired
 	private IColectivoService colectivoService;
@@ -1164,4 +1215,7 @@ public class TestServiceImpl implements ITestService {
 
 	@Autowired
 	private IColorService colorService;
+	
+	@Autowired
+	private IZonaService zonaService;
 }
