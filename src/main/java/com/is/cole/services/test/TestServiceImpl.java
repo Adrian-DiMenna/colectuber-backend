@@ -80,13 +80,10 @@ public class TestServiceImpl implements ITestService {
 		Map<String, RecorridoDto> map = new HashMap<>();
 
 		RecorridoDto dtoRecorridoCircuito = new RecorridoDto();
-		dtoRecorridoCircuito.setDescripcion("Recorrido desde Ruta 1, San Juan del Paraná hasta Circuito: "
-				+ "De San Juan del Paraná -> Parada Petrobras -> Parada Hotel City -> Parada Zona Uni "
-				+ "-> Parada Supermercado La Familia -> Parada Colegio Kennedy -> Parada Super 6 Costanera "
-				+ "-> Parada Hotel Real -> Parada Mundo Mania -> Parada Esquina Doña Reina "
-				+ "-> Parada Hierro Center -> Parada Banco Atlas -> Parada Colegio Centro "
-				+ "-> Parada Terminal -> Parada Gobernación -> Parada La Placita "
-				+ "-> Parada Plaza de la Amistad -> Parada Circuito.");
+		dtoRecorridoCircuito.setDescripcion("Recorrido San Juan del Paraná hasta Circuito: "
+				+ "De San Juan del Paraná -> P. Petrobras -> P. Colegio Kennedy -> P. Super 6 Costanera "
+				+ "-> P. Hotel Real -> P. Doña Reina -> P. Terminal -> P. Gobernación "
+				+ "-> P. La Placita -> P. Plaza de la Amistad -> Circuito.");
 		
 		dtoRecorridoCircuito.setNombre("Principal Ruta 1 Circuito");
 		dtoRecorridoCircuito.setColor(colorMap.get("red").getNombre());
@@ -527,10 +524,9 @@ public class TestServiceImpl implements ITestService {
 
 		RecorridoDto dtoRecorridoCapitanMiranda = new RecorridoDto();
 		dtoRecorridoCapitanMiranda.setDescripcion("Recorrido desde la terminal hasta Capitan Miranda: "
-				+ "De La Terminal -> Parada La Junta -> Parada Esquina Innovadent -> "
-				+ "-> Parada Subida UPAP Encarnación -> Parada Al Natural -> Parada BENGELATO "
-				+ "-> Parada Optica Gamon -> Parada Mundo Mania -> Parada Chiperia Aaron "
-				+ "-> Parada Carsuplay -> Capitan Miranda.");
+				+ "De La Terminal -> P. La Junta -> P. Al Natural "
+				+ "-> P. Optica Gamon -> P. Mundo Mania"
+				+ "-> P. Carsuplay -> Capitan Miranda.");
 		dtoRecorridoCapitanMiranda.setNombre("Ruta 6 Capitan Miranda");
 		dtoRecorridoCapitanMiranda.setColor(colorMap.get("blue").getNombre());
 		
