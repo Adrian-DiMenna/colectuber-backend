@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,6 +41,7 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			colectuberService.postColectivoUbicacion(dto,username);
+			
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (IllegalArgumentException e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
@@ -55,10 +58,13 @@ public class ColectuberController {
 	public ResponseEntity<?> getColectivosUbicacion() {
 		try {
 			Result<ColectivoUbicacionDto> dtos = colectuberService.getColectivosUbicacion();
+			logger.info("Colectuber: Get Ubicaciones: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (EntityNotFoundException e) {
+			logger.error("Colectuber: Get Ubicaciones "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Ubicaciones "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -115,5 +121,6 @@ public class ColectuberController {
 	
 	@Autowired
 	private IColectuberService colectuberService;
+	private Logger logger = LogManager.getLogger(ColectuberController.class.getClass());
 
 }

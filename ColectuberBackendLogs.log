@@ -1,0 +1,30 @@
+2022-05-23 10:55:26,729 restartedMain INFO com.is.cole.ColectuberApplication Starting ColectuberApplication using Java 17.0.2 on DanielMatsuuraNotebook with PID 3024 (C:\Users\Acer\Documents\GitHub\colectuber-backend\target\classes started by Acer in C:\Users\Acer\Documents\GitHub\colectuber-backend) 
+2022-05-23 10:55:26,735 restartedMain INFO com.is.cole.ColectuberApplication No active profile set, falling back to 1 default profile: "default" 
+2022-05-23 10:55:26,765 restartedMain INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-05-23 10:55:26,765 restartedMain INFO org.springframework.boot.devtools.env.DevToolsPropertyDefaultsPostProcessor For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-05-23 10:55:27,165 restartedMain INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-05-23 10:55:27,227 restartedMain INFO org.springframework.data.repository.config.RepositoryConfigurationDelegate Finished Spring Data repository scanning in 57 ms. Found 14 JPA repository interfaces. 
+2022-05-23 10:55:27,602 restartedMain INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat initialized with port(s): 8080 (http) 
+2022-05-23 10:55:27,608 restartedMain INFO org.apache.coyote.http11.Http11NioProtocol Initializing ProtocolHandler ["http-nio-8080"] 
+2022-05-23 10:55:27,609 restartedMain INFO org.apache.catalina.core.StandardService Starting service [Tomcat] 
+2022-05-23 10:55:27,609 restartedMain INFO org.apache.catalina.core.StandardEngine Starting Servlet engine: [Apache Tomcat/9.0.58] 
+2022-05-23 10:55:27,652 restartedMain INFO org.apache.catalina.core.ContainerBase.[Tomcat].[localhost].[/] Initializing Spring embedded WebApplicationContext 
+2022-05-23 10:55:27,652 restartedMain INFO org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext Root WebApplicationContext: initialization completed in 885 ms 
+2022-05-23 10:55:27,755 restartedMain INFO org.hibernate.jpa.internal.util.LogHelper HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-05-23 10:55:27,786 restartedMain INFO org.hibernate.Version HHH000412: Hibernate ORM core version 5.6.5.Final 
+2022-05-23 10:55:27,882 restartedMain INFO org.hibernate.annotations.common.Version HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-05-23 10:55:27,946 restartedMain INFO com.zaxxer.hikari.HikariDataSource HikariPool-1 - Starting... 
+2022-05-23 10:55:28,840 restartedMain INFO com.zaxxer.hikari.HikariDataSource HikariPool-1 - Start completed. 
+2022-05-23 10:55:28,856 restartedMain INFO org.hibernate.dialect.Dialect HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-05-23 10:55:31,613 restartedMain INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-05-23 10:55:31,619 restartedMain INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-05-23 10:55:31,932 restartedMain WARN org.springframework.boot.autoconfigure.orm.jpa.JpaBaseConfiguration$JpaWebConfiguration spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-05-23 10:55:32,254 restartedMain INFO org.springframework.security.web.DefaultSecurityFilterChain Will not secure any request 
+2022-05-23 10:55:32,490 restartedMain INFO org.springframework.boot.devtools.autoconfigure.OptionalLiveReloadServer LiveReload server is running on port 35729 
+2022-05-23 10:55:32,505 restartedMain INFO org.apache.coyote.http11.Http11NioProtocol Starting ProtocolHandler ["http-nio-8080"] 
+2022-05-23 10:55:32,520 restartedMain INFO org.springframework.boot.web.embedded.tomcat.TomcatWebServer Tomcat started on port(s): 8080 (http) with context path '' 
+2022-05-23 10:55:32,527 restartedMain INFO com.is.cole.ColectuberApplication Started ColectuberApplication in 6.006 seconds (JVM running for 6.658) 
+2022-05-23 10:55:44,744 RMI TCP Connection(2)-127.0.0.1 INFO org.springframework.boot.admin.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin Application shutdown requested. 
+2022-05-23 10:55:44,769 RMI TCP Connection(2)-127.0.0.1 INFO org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-05-23 10:55:44,771 RMI TCP Connection(2)-127.0.0.1 INFO com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown initiated... 
+2022-05-23 10:55:44,774 RMI TCP Connection(2)-127.0.0.1 INFO com.zaxxer.hikari.HikariDataSource HikariPool-1 - Shutdown completed. 
