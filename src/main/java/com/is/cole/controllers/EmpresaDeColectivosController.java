@@ -92,6 +92,7 @@ public class EmpresaDeColectivosController {
 			logger.info("Empresa Colectivo: Delete Empresa: exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Empresa Colectivo: Delete Empresa "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
 			logger.error("Empresa Colectivo: Delete Empresa "+e.getMessage());
