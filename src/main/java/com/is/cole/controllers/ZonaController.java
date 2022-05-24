@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +37,13 @@ public class ZonaController {
 	public ResponseEntity<?> saveZona(@RequestBody ZonaDto dto) {
 		try {
 			ZonaDto dtoGuardado = zonaService.saveZona(dto);
+			logger.info("Zona: Post Zona: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch (IllegalArgumentException e) {
+			logger.error("Zona: Post Zona "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Zona: Post Zona "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -52,10 +57,13 @@ public class ZonaController {
 	public ResponseEntity<?> getByIdZona(@PathVariable("id") Integer zonaId) {
 		try {
 			ZonaDto dtoObtenido = zonaService.getByIdZona(zonaId);
+			logger.info("Zona: Get Zona: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
 		} catch (EntityNotFoundException e) {
+			logger.error("Zona: Get Zona "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Zona: Get Zona "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -68,8 +76,10 @@ public class ZonaController {
 	public ResponseEntity<?> getAllZonas() {
 		try {
 			Result<ZonaDto> dtos = zonaService.getAllZonas();
+			logger.info("Zona: Get All Zonas: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Zona: Get All Zonas "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -83,10 +93,13 @@ public class ZonaController {
 	public ResponseEntity<?> deleteZona(@PathVariable("id") Integer zonaId) {
 		try {
 			zonaService.deleteZona(zonaId);
+			logger.info("Zona: Delete Zona: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Zona: Delete Zona "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Zona: Delete Zona "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -95,4 +108,5 @@ public class ZonaController {
 	
 	@Autowired
 	private IZonaService zonaService;
+	private Logger logger = LogManager.getLogger(ZonaController.class.getClass());
 }

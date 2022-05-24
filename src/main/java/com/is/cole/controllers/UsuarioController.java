@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +37,13 @@ public class UsuarioController {
 	public ResponseEntity<?> postUsuario(@RequestBody UsuarioDto dto) {
 		try {
 			UsuarioDto dtoGuardado = usuariosService.saveUsuario(dto);
+			logger.info("Usuario: Post Usuario: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch (IllegalArgumentException e) {
+			logger.error("Usuario: Post Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Usuario: Post Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -52,10 +57,13 @@ public class UsuarioController {
 	public ResponseEntity<?> getUsuario(@PathVariable(value = "id") Integer id) {
 		try {
 			UsuarioDto dtoObtenido = usuariosService.getUsuario(id);
+			logger.info("Usuario: Get Usuario: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
 		} catch (EntityNotFoundException e) {
+			logger.error("Usuario: Get Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Usuario: Get Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -68,8 +76,10 @@ public class UsuarioController {
 	public ResponseEntity<?> getAllUsuario() {
 		try {
 			Result<UsuarioDto> dtos = usuariosService.getAllUsuario();
+			logger.info("Usuario: Get All Usuarios: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Usuario: Get All Usuarios "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -83,10 +93,13 @@ public class UsuarioController {
 	public ResponseEntity<?> deleteUsuario(@PathVariable(value = "id") Integer id) {
 		try {
 			usuariosService.deleteUsuario(id);
+			logger.info("Usuario: Delete Usuario: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Usuario: Delete Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Usuario: Delete Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -102,10 +115,13 @@ public class UsuarioController {
 	public ResponseEntity<?> create(@RequestBody RoleDto role) {
 		try {
 			RoleDto dto = usuariosService.saveRole(role);
+			logger.info("Role: Post Role: Exito");
 			return ResponseEntity.status(HttpStatus.CREATED).body(dto);
 		} catch (IllegalArgumentException e) {
+			logger.error("Role: Post Role "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Role: Post Role "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -119,10 +135,13 @@ public class UsuarioController {
 	public ResponseEntity<?> getRole(@PathVariable("id") Integer id) {
 		try {
 			RoleDto dto = usuariosService.getRole(id);
+			logger.info("Role: Get Role: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (EntityNotFoundException e) {
+			logger.error("Role: Get Role "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Role: Get Role "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -135,8 +154,10 @@ public class UsuarioController {
 	public ResponseEntity<?> getAllRole() {
 		try {
 			Result<RoleDto> dtos = usuariosService.getAllRole();
+			logger.info("Role: Get All Roles: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Role: Get All Roles "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -150,10 +171,13 @@ public class UsuarioController {
 	public ResponseEntity<?> delete(@PathVariable("id") Integer id) {
 		try {
 			usuariosService.deleteRole(id);
+			logger.info("Role: Delete Role: Exito");
 			return ResponseEntity.status(HttpStatus.ACCEPTED).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Role: Delete Role "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Role: Delete Role "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -169,15 +193,20 @@ public class UsuarioController {
 		try {
 			if (dto.getId() != null) {
 				usuariosService.agregarRoleAUsuario(userId, dto.getId());
+				logger.info("Role Usuario: Post Role Usuario: Exito");
 				return ResponseEntity.status(HttpStatus.OK).build();
 			} else if (dto.getNombre() != null) {
 				usuariosService.agregarRoleAUsuario(userId, dto.getNombre());
+				logger.info("Role Usuario: Post Role Usuario: Exito");
 				return ResponseEntity.status(HttpStatus.OK).build();
 			}
+			logger.error("Rol Usuario: Post Rol Usuario: Bad Request");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (IllegalArgumentException e) {
+			logger.error("Rol Usuario: Post Rol Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Rol Usuario: Post Rol Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -193,20 +222,26 @@ public class UsuarioController {
 		try {
 			if (dto.getId() != null) {
 				usuariosService.quitarRoleAUsuario(userId, dto.getId());
+				logger.info("Role Usuario: Delete Role Usuario: Exito");
 				return ResponseEntity.status(HttpStatus.OK).build();
 			} else if (dto.getNombre() != null) {
 				usuariosService.quitarRoleAUsuario(userId, dto.getNombre());
+				logger.info("Role Usuario: Delete Role Usuario: Exito");
 				return ResponseEntity.status(HttpStatus.OK).build();
 			}
+			logger.error("Rol Usuario: Delete Rol Usuario: Bad Request");
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Rol Usuario: Delete Rol Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Rol Usuario: Delete Rol Usuario "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IUsuariosService usuariosService;
+	private Logger logger = LogManager.getLogger(UsuarioController.class.getClass());
 
 }

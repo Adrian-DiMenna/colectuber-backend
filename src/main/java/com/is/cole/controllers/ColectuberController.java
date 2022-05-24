@@ -41,11 +41,13 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			colectuberService.postColectivoUbicacion(dto,username);
-			
+			logger.info("Colectuber: Post Ubicacion: exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (IllegalArgumentException e) {
+			logger.error("Colectuber: Post Ubicacion "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Post Ubicacion "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -77,8 +79,10 @@ public class ColectuberController {
 	public ResponseEntity<?> getInitialData() {
 		try {
 			InitialDataDto dtos = colectuberService.getInitialData();
+			logger.info("Colectuber: Get Data: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Data "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -93,10 +97,13 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			UsuarioChoferDto dto = colectuberService.getChofer(username);
+			logger.info("Colectuber: Get Chofer: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		}catch (EntityNotFoundException e) {
+			logger.error("Colectuber: Get Chofer "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Chofer "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -111,10 +118,13 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			InitialViajeDto dto = colectuberService.getViaje(username);
+			logger.info("Colectuber: Get Viaje}: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (EntityNotFoundException e) {
+			logger.error("Colectuber: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}

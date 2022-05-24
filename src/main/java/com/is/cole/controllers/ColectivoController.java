@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,10 +34,13 @@ public class ColectivoController {
 	public ResponseEntity<?> saveColectivo(@RequestBody ColectivoDto dto){
 		try {
 			ColectivoDto dtoGuardado = colectivoService.saveColectivo(dto);
+			logger.info("Colectivo: Post Colectivo: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch(IllegalArgumentException e) {
+			logger.error("Colectivo: Post Colectivo "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		}catch(Exception e) {
+			logger.error("Colectivo: Post Colectivo "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -49,10 +54,13 @@ public class ColectivoController {
 	public ResponseEntity<?> getColectivo(@PathVariable("id") Integer colectivoId){
 		try {
 			ColectivoDto dtoObtenido= colectivoService.getColectivo(colectivoId);
+			logger.info("Colectivo: Get Colectivo: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
 		}catch(EntityNotFoundException e) {
+			logger.error("Colectivo: Get Colectivo "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}catch(Exception e) {
+			logger.error("Colectivo: Get Colectivo "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -65,8 +73,10 @@ public class ColectivoController {
 	public ResponseEntity<?> getAllColectivo(){
 		try {
 			Result<ColectivoDto> dtos= colectivoService.getAllColectivo();
+			logger.info("Colectivo: Get All Colectivos: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);	
 		}catch(Exception e) {
+			logger.error("Colectivo: Get All Colectivos "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -80,16 +90,19 @@ public class ColectivoController {
 	public ResponseEntity<?> deleteColectivo(@PathVariable("id") Integer colectivoId){
 		try {
 			colectivoService.deleteColectivo(colectivoId);
+			logger.info("Colectivo: Delete Colectivo: exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		}catch(EntityNotFoundException e) {
+			logger.error("Colectivo: Delete Colectivo "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		}catch(Exception e) {
+			logger.error("Colectivo: Delete Colectivo "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IColectivoService colectivoService;
-	
+	private Logger logger = LogManager.getLogger(ColectivoController.class.getClass());
 	
 }

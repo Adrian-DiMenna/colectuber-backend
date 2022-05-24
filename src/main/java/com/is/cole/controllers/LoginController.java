@@ -1,5 +1,7 @@
 package com.is.cole.controllers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,8 +33,9 @@ public class LoginController {
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(authRequest.getUserName(), authRequest.getPassword()));
+			logger.info("Autenticacion: exito");
 		} catch (Exception ex) {
-			System.err.print(ex);
+			logger.error("Autenticacion: "+ex.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Inavalid username/password");
 		}
 
@@ -43,6 +46,6 @@ public class LoginController {
 	private JwtUtil jwUtil;
 	@Autowired
 	private AuthenticationManager authenticationManager;
-
+	private Logger logger = LogManager.getLogger(LoginController.class.getClass());
 
 }

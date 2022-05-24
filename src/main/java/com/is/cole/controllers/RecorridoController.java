@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +37,13 @@ public class RecorridoController {
 	public ResponseEntity<?> postRecorrido(@RequestBody RecorridoDto dto) {
 		try {
 			recorridoService.saveRecorrido(dto);
+			logger.info("Recorrido: Post Recorrido: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (IllegalArgumentException e) {
+			logger.error("Recorrido: Post Recorrido "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Recorrido: Post Recorrido "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -52,10 +57,13 @@ public class RecorridoController {
 	public ResponseEntity<?> getRecorrido(@PathVariable("id") Integer id) {
 		try {
 			RecorridoDto dto = recorridoService.getRecorrido(id);
+			logger.info("Recorrido: Get Recorrido: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (EntityNotFoundException e) {
+			logger.error("Recorrido: Get Recorrido "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Recorrido: Get Recorrido "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -68,8 +76,10 @@ public class RecorridoController {
 	public ResponseEntity<?> getAllRecorridos() {
 		try {
 			Result<RecorridoDto> dtos = recorridoService.getAllRecorrido();
+			logger.info("Recorrido: Get All Recorridos: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Recorrido: Get All Recorridos "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -83,15 +93,19 @@ public class RecorridoController {
 	public ResponseEntity<?> deleteRecorrido(@PathVariable("id") Integer id) {
 		try {
 			recorridoService.deleteRecorrido(id);
+			logger.info("Recorrido: Delete Recorrido: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Recorrido: Delete Recorrido "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Recorrido: Delete Recorrido "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IRecorridoService recorridoService;
+	private Logger logger = LogManager.getLogger(RecorridoController.class.getClass());
 
 }

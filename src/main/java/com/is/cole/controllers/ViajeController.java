@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,10 +37,13 @@ public class ViajeController {
 	public ResponseEntity<?> postViaje(@RequestBody ViajeDto dto) {
 		try {
 			viajeService.saveViaje(dto);
+			logger.info("Viaje: Post Viaje: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (IllegalArgumentException e) {
+			logger.error("Viaje: Post Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Viaje: Post Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -52,10 +57,13 @@ public class ViajeController {
 	public ResponseEntity<?> getViaje(@PathVariable("id") Integer id) {
 		try {
 			ViajeDto dto = viajeService.getViaje(id);
+			logger.info("Viaje: Get Viaje: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (EntityNotFoundException e) {
+			logger.error("Viaje: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Viaje: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -69,10 +77,13 @@ public class ViajeController {
 	public ResponseEntity<?> getChoferViaje(@PathVariable("id") Integer choferId) {
 		try {
 			ViajeDto dto = viajeService.getByChoferIdViaje(choferId);
+			logger.info("Viaje: Get Viaje: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (EntityNotFoundException e) {
+			logger.error("Viaje: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Viaje: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -85,8 +96,10 @@ public class ViajeController {
 	public ResponseEntity<?> getAllViajes() {
 		try {
 			Result<ViajeDto> dtos = viajeService.getAllViajes();
+			logger.info("Viaje: Get All Viajes: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Viaje: Get All Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -100,15 +113,19 @@ public class ViajeController {
 	public ResponseEntity<?> deleteViaje(@PathVariable("id") Integer id) {
 		try {
 			viajeService.deleteViaje(id);
+			logger.info("Viaje: Delete Viaje: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Viaje: Delete Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Viaje: Delete Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IViajesService viajeService;
+	private Logger logger = LogManager.getLogger(ViajeController.class.getClass());
 
 }

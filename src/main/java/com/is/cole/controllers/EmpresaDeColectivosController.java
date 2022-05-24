@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +33,13 @@ public class EmpresaDeColectivosController {
 	public ResponseEntity<?> saveEmpresaColectivo(@RequestBody EmpresaDeColectivosDto dto) {
 		try {
 			EmpresaDeColectivosDto dtoGuardado = empresaService.saveEmpresaColectivo(dto);
+			logger.info("Empresa Colectivo: Post Empresa: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch (IllegalArgumentException e) {
+			logger.error("Empresa Colectivo: Post Empresa "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Empresa Colectivo: Post Empresa "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -48,10 +53,13 @@ public class EmpresaDeColectivosController {
 	public ResponseEntity<?> getEmpresaColectivo(@PathVariable("id") Integer empresaId) {
 		try {
 			EmpresaDeColectivosDto dtoObtenido = empresaService.getEmpresaColectivo(empresaId);
+			logger.info("Empresa Colectivo: Get Empresa: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
 		} catch (EntityNotFoundException e) {
+			logger.error("Empresa Colectivo: Get Empresa "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Empresa Colectivo: Get Empresa "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -64,8 +72,10 @@ public class EmpresaDeColectivosController {
 	public ResponseEntity<?> getAllEmpresaColectivo() {
 		try {
 			Result<EmpresaDeColectivosDto> dtos = empresaService.getAllEmpresaColectivo();
+			logger.info("Empresa Colectivo: Get All Empresas: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Empresa Colectivo: Get All Empresas "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -79,15 +89,17 @@ public class EmpresaDeColectivosController {
 	public ResponseEntity<?> deleteEmpresaColectivo(@PathVariable("id") Integer empresaId) {
 		try {
 			empresaService.deleteEmpresaColectivo(empresaId);
+			logger.info("Empresa Colectivo: Delete Empresa: exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Empresa Colectivo: Delete Empresa "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IEmpresaColectivosService empresaService;
-
+	private Logger logger = LogManager.getLogger(EmpresaDeColectivosController.class.getClass());
 }
