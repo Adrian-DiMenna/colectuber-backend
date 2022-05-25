@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,10 +34,13 @@ public class ParadaController {
 	public ResponseEntity<?> postParada(@RequestBody ParadaDto dto) {
 		try {
 			ParadaDto dtoGuardado = paradaService.saveParada(dto);
+			logger.info("Parada: Post Parada: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch (IllegalArgumentException e) {
+			logger.error("Parada: Post Parada"+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Parada: Post Parada"+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -49,10 +54,13 @@ public class ParadaController {
 	public ResponseEntity<?> getParada(@PathVariable(value = "id") Integer id) {
 		try {
 			ParadaDto dtoObtenido = paradaService.getParadaById(id);
+			logger.info("Parada: Get Parada: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
 		} catch (EntityNotFoundException e) {
+			logger.error("Parada: Get Parada "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Parada: Get Parada "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -65,8 +73,10 @@ public class ParadaController {
 	public ResponseEntity<?> getAllParadas() {
 		try {
 			Result<ParadaDto> dtos = paradaService.getAllParadas();
+			logger.info("Parada: Get All Paradas: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Parada: Get All Paradas "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -80,15 +90,18 @@ public class ParadaController {
 	public ResponseEntity<?> deleteParada(@PathVariable(value = "id") Integer id) {
 		try {
 			paradaService.deleteById(id);
+			logger.info("Parada: Delete Parada: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Parada: Delete Parada "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Parada: Delete Parada "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IParadaService paradaService;
-
+	private Logger logger = LogManager.getLogger(ParadaController.class.getClass());
 }

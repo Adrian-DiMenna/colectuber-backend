@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,10 +33,13 @@ public class LineaDeColectivosController {
 	public ResponseEntity<?> saveLineaColectivo(@RequestBody LineaDeColectivosDto dto) {
 		try {
 			LineaDeColectivosDto dtoGuardado = lineaService.saveLineaColectivo(dto);
+			logger.info("Linea Colectivo: Post Linea: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoGuardado);
 		} catch (IllegalArgumentException e) {
+			logger.error("Linea Colectivo: Post Linea "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Linea Colectivo: Post Linea "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -48,10 +53,13 @@ public class LineaDeColectivosController {
 	public ResponseEntity<?> getLineaColectivo(@PathVariable("id") Integer lineaId) {
 		try {
 			LineaDeColectivosDto dtoObtenido = lineaService.getLineaColectivo(lineaId);
+			logger.info("Linea Colectivo: Get Linea: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtoObtenido);
 		} catch (EntityNotFoundException e) {
+			logger.error("Linea Colectivo: Get Linea "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Linea Colectivo: Get Linea "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -64,8 +72,10 @@ public class LineaDeColectivosController {
 	public ResponseEntity<?> getAllLineaColectivo() {
 		try {
 			Result<LineaDeColectivosDto> dtos = lineaService.getAllLineaColectivo();
+			logger.info("Linea Colectivo: Get All Lineas: Exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		}catch(Exception e) {
+			logger.error("Linea Colectivo: Get All Lineas "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -79,10 +89,13 @@ public class LineaDeColectivosController {
 	public ResponseEntity<?> deleteLineaColectivo(@PathVariable("id") Integer lineaId) {
 		try {
 			lineaService.deleteLineaColectivo(lineaId);
+			logger.info("Linea Colectivo: Delete Linea: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (EntityNotFoundException e) {
+			logger.error("Linea Colectivo: Delete Linea "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Linea Colectivo: Delete Linea "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -90,5 +103,5 @@ public class LineaDeColectivosController {
 
 	@Autowired
 	private ILineaColectivosService lineaService;
-
+	private Logger logger = LogManager.getLogger(LineaDeColectivosController.class.getClass());
 }

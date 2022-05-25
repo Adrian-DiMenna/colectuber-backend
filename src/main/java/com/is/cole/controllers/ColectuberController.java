@@ -2,6 +2,8 @@ package com.is.cole.controllers;
 
 import javax.persistence.EntityNotFoundException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,10 +41,13 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			colectuberService.postColectivoUbicacion(dto,username);
+			logger.info("Colectuber: Post Ubicacion: exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
 		} catch (IllegalArgumentException e) {
+			logger.error("Colectuber: Post Ubicacion "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Post Ubicacion "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -55,10 +60,13 @@ public class ColectuberController {
 	public ResponseEntity<?> getColectivosUbicacion() {
 		try {
 			Result<ColectivoUbicacionDto> dtos = colectuberService.getColectivosUbicacion();
+			logger.info("Colectuber: Get Ubicaciones: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (EntityNotFoundException e) {
+			logger.error("Colectuber: Get Ubicaciones "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Ubicaciones "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -71,8 +79,10 @@ public class ColectuberController {
 	public ResponseEntity<?> getInitialData() {
 		try {
 			InitialDataDto dtos = colectuberService.getInitialData();
+			logger.info("Colectuber: Get Data: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dtos);
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Data "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -87,10 +97,13 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			UsuarioChoferDto dto = colectuberService.getChofer(username);
+			logger.info("Colectuber: Get Chofer: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		}catch (EntityNotFoundException e) {
+			logger.error("Colectuber: Get Chofer "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Chofer "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
@@ -105,15 +118,19 @@ public class ColectuberController {
 		try {
 			String username = SecurityContextHolder.getContext().getAuthentication().getName();
 			InitialViajeDto dto = colectuberService.getViaje(username);
+			logger.info("Colectuber: Get Viaje}: exito");
 			return ResponseEntity.status(HttpStatus.OK).body(dto);
 		} catch (EntityNotFoundException e) {
+			logger.error("Colectuber: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
 		} catch (Exception e) {
+			logger.error("Colectuber: Get Viaje "+e.getMessage());
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
 		}
 	}
 	
 	@Autowired
 	private IColectuberService colectuberService;
+	private Logger logger = LogManager.getLogger(ColectuberController.class.getClass());
 
 }
