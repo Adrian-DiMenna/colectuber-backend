@@ -35,6 +35,7 @@ import com.is.cole.services.zonas.IZonaService;
 @Service
 /**
  * Servicio para añadir datos iniciales de prueba
+ * 
  * @author Colectuber
  */
 public class TestServiceImpl implements ITestService {
@@ -42,8 +43,8 @@ public class TestServiceImpl implements ITestService {
 	@Override
 	@Transactional
 	public void insertTestValues() {
-		insertViaje(insertRecorrido(insertParadas(insertZonas()),insertColor()), insertColectivo(insertEmpresaColectivo(), insertLinea()),
-				insertUsuarios(insertRoles()));
+		insertViaje(insertRecorrido(insertParadas(insertZonas()), insertColor()),
+				insertColectivo(insertEmpresaColectivo(), insertLinea()), insertUsuarios(insertRoles()));
 
 	}
 
@@ -60,7 +61,7 @@ public class TestServiceImpl implements ITestService {
 		viajeCircuito = viajeService.saveViaje(viajeCircuito);
 
 		viajeMap.put("Viaje Circuito", viajeCircuito);
-		
+
 		ViajeDto viajeRuta6 = new ViajeDto();
 		viajeRuta6.setDestino("Capitan Miranda");
 		viajeRuta6.setRecorrido_id(recorridoMap.get("Recorrido Ruta 6").getId());
@@ -84,705 +85,688 @@ public class TestServiceImpl implements ITestService {
 				+ "De San Juan del Paraná -> P. Petrobras -> P. Colegio Kennedy -> P. Super 6 Costanera "
 				+ "-> P. Hotel Real -> P. Doña Reina -> P. Terminal -> P. Gobernación "
 				+ "-> P. La Placita -> P. Plaza de la Amistad -> Circuito.");
-		
+
 		dtoRecorridoCircuito.setNombre("Principal Ruta 1 Circuito");
 		dtoRecorridoCircuito.setColor(colorMap.get("red").getNombre());
-		
+
 		List<PuntoDeRecorridoDto> puntosCircuito = new ArrayList<>();
-		
+
 		PuntoDeRecorridoDto puntoCircuito1 = new PuntoDeRecorridoDto();
 		puntoCircuito1.setPuntoPosicion(new PosicionDto());
 		puntoCircuito1.getPuntoPosicion().setLatitud(-27.255055213899475);
 		puntoCircuito1.getPuntoPosicion().setLongitud(-55.98523242207336);
-		
+
 		puntosCircuito.add(puntoCircuito1);
-		
+
 		PuntoDeRecorridoDto puntoCircuito2 = new PuntoDeRecorridoDto();
 		puntoCircuito2.setPuntoPosicion(new PosicionDto());
 		puntoCircuito2.getPuntoPosicion().setLatitud(-27.26003377430376);
 		puntoCircuito2.getPuntoPosicion().setLongitud(-55.97991091936177);
-		
+
 		puntosCircuito.add(puntoCircuito2);
-		
+
 		PuntoDeRecorridoDto puntoCircuito3 = new PuntoDeRecorridoDto();
 		puntoCircuito3.setPuntoPosicion(new PosicionDto());
 		puntoCircuito3.getPuntoPosicion().setLatitud(-27.26039618953818);
 		puntoCircuito3.getPuntoPosicion().setLongitud(-55.978666374372764);
 
 		puntosCircuito.add(puntoCircuito3);
-		
+
 		PuntoDeRecorridoDto puntoCircuito4 = new PuntoDeRecorridoDto();
 		puntoCircuito4.setPuntoPosicion(new PosicionDto());
 		puntoCircuito4.getPuntoPosicion().setLatitud(-27.26039618953818);
 		puntoCircuito4.getPuntoPosicion().setLongitud(-55.978666374372764);
-		
+
 		puntosCircuito.add(puntoCircuito4);
-		
+
 		PuntoDeRecorridoDto puntoCircuito5 = new PuntoDeRecorridoDto();
 		puntoCircuito5.setPuntoPosicion(new PosicionDto());
 		puntoCircuito5.getPuntoPosicion().setLatitud(-27.26031449215873);
 		puntoCircuito5.getPuntoPosicion().setLongitud(-55.97690938024482);
-		
+
 		puntosCircuito.add(puntoCircuito5);
-		
+
 		PuntoDeRecorridoDto puntoCircuito6 = new PuntoDeRecorridoDto();
 		puntoCircuito6.setPuntoPosicion(new PosicionDto());
 		puntoCircuito6.getPuntoPosicion().setLatitud(-27.260201074629936);
 		puntoCircuito6.getPuntoPosicion().setLongitud(-55.976411786723446);
 
 		puntosCircuito.add(puntoCircuito6);
-		
+
 		PuntoDeRecorridoDto puntoCircuito7 = new PuntoDeRecorridoDto();
 		puntoCircuito7.setPuntoPosicion(new PosicionDto());
 		puntoCircuito7.getPuntoPosicion().setLatitud(-27.25801209367452);
 		puntoCircuito7.getPuntoPosicion().setLongitud(-55.970453423293115);
 
 		puntosCircuito.add(puntoCircuito7);
-		
+
 		PuntoDeRecorridoDto puntoCircuito8 = new PuntoDeRecorridoDto();
 		puntoCircuito8.setPuntoPosicion(new PosicionDto());
 		puntoCircuito8.getPuntoPosicion().setLatitud(-27.257944041762155);
 		puntoCircuito8.getPuntoPosicion().setLongitud(-55.969751688839914);
 
 		puntosCircuito.add(puntoCircuito8);
-		
+
 		PuntoDeRecorridoDto puntoCircuito9 = new PuntoDeRecorridoDto();
 		puntoCircuito9.setPuntoPosicion(new PosicionDto());
 		puntoCircuito9.getPuntoPosicion().setLatitud(-27.257966725725538);
 		puntoCircuito9.getPuntoPosicion().setLongitud(-55.969292371771616);
-		
+
 		puntosCircuito.add(puntoCircuito9);
-		
+
 		PuntoDeRecorridoDto puntoCircuito10 = new PuntoDeRecorridoDto();
 		puntoCircuito10.setPuntoPosicion(new PosicionDto());
 		puntoCircuito10.getPuntoPosicion().setLatitud(-27.25859053324217);
 		puntoCircuito10.getPuntoPosicion().setLongitud(-55.96760820909109);
 
 		puntosCircuito.add(puntoCircuito10);
-		
+
 		PuntoDeRecorridoDto puntoCircuito11 = new PuntoDeRecorridoDto();
 		puntoCircuito11.setPuntoPosicion(new PosicionDto());
 		puntoCircuito11.getPuntoPosicion().setLatitud(-27.29211732521895);
 		puntoCircuito11.getPuntoPosicion().setLongitud(-55.93365369426801);
-		
+
 		puntosCircuito.add(puntoCircuito11);
-		
+
 		PuntoDeRecorridoDto puntoCircuito12 = new PuntoDeRecorridoDto();
 		puntoCircuito12.setPuntoPosicion(new PosicionDto());
 		puntoCircuito12.getPuntoPosicion().setLatitud(-27.293007303588755);
 		puntoCircuito12.getPuntoPosicion().setLongitud(-55.93158866664654);
 
 		puntosCircuito.add(puntoCircuito12);
-		
+
 		PuntoDeRecorridoDto puntoCircuito13 = new PuntoDeRecorridoDto();
 		puntoCircuito13.setPuntoPosicion(new PosicionDto());
 		puntoCircuito13.getPuntoPosicion().setLatitud(-27.291596199144017);
 		puntoCircuito13.getPuntoPosicion().setLongitud(-55.91641809238406);
 
 		puntosCircuito.add(puntoCircuito13);
-		
-		//Puente Ruta 1 Quiteria
+
+		// Puente Ruta 1 Quiteria
 		PuntoDeRecorridoDto puntoCircuito14 = new PuntoDeRecorridoDto();
 		puntoCircuito14.setPuntoPosicion(new PosicionDto());
 		puntoCircuito14.getPuntoPosicion().setLatitud(-27.29197758048552);
 		puntoCircuito14.getPuntoPosicion().setLongitud(-55.91429378287496);
 
 		puntosCircuito.add(puntoCircuito14);
-		
+
 		PuntoDeRecorridoDto puntoCircuito15 = new PuntoDeRecorridoDto();
 		puntoCircuito15.setPuntoPosicion(new PosicionDto());
 		puntoCircuito15.getPuntoPosicion().setLatitud(-27.296690944851655);
 		puntoCircuito15.getPuntoPosicion().setLongitud(-55.90573004662675);
-		
+
 		puntosCircuito.add(puntoCircuito15);
-		
+
 		PuntoDeRecorridoDto puntoCircuito16 = new PuntoDeRecorridoDto();
 		puntoCircuito16.setPuntoPosicion(new PosicionDto());
 		puntoCircuito16.getPuntoPosicion().setLatitud(-27.30208712147181);
 		puntoCircuito16.getPuntoPosicion().setLongitud(-55.89740446981006);
-		
+
 		puntosCircuito.add(puntoCircuito16);
-		
+
 		PuntoDeRecorridoDto puntoCircuito17 = new PuntoDeRecorridoDto();
 		puntoCircuito17.setPuntoPosicion(new PosicionDto());
 		puntoCircuito17.getPuntoPosicion().setLatitud(-27.30490390675379);
 		puntoCircuito17.getPuntoPosicion().setLongitud(-55.894311124265414);
-		
+
 		puntosCircuito.add(puntoCircuito17);
-		
+
 		PuntoDeRecorridoDto puntoParadaRuta1_1 = new PuntoDeRecorridoDto();
 		ParadaDto paradaDto = paradaMap.get("Parada Petrobras");
 		puntoParadaRuta1_1.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_1.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaRuta1_1);
-		
+
 		PuntoDeRecorridoDto puntoParadaRuta1_2 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Hotel City");
 		puntoParadaRuta1_2.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_2.setPuntoPosicion(paradaDto.getPosicion());
 
 		puntosCircuito.add(puntoParadaRuta1_2);
-		
+
 		PuntoDeRecorridoDto puntoParadaRuta1_3 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Zona Uni");
 		puntoParadaRuta1_3.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_3.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaRuta1_3);
-		
+
 		PuntoDeRecorridoDto puntoParadaRuta1_4 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Supermercado La Familia");
 		puntoParadaRuta1_4.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_4.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaRuta1_4);
-		
+
 		PuntoDeRecorridoDto puntoParadaRuta1_5 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Colegio Kennedy");
 		puntoParadaRuta1_5.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_5.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaRuta1_5);
-		
+
 		PuntoDeRecorridoDto puntoCircuito18 = new PuntoDeRecorridoDto();
 		puntoCircuito18.setPuntoPosicion(new PosicionDto());
 		puntoCircuito18.getPuntoPosicion().setLatitud(-27.31366580260424);
 		puntoCircuito18.getPuntoPosicion().setLongitud(-55.87762052625255);
-		
+
 		puntosCircuito.add(puntoCircuito18);
-		
+
 		PuntoDeRecorridoDto puntoCircuito19 = new PuntoDeRecorridoDto();
 		puntoCircuito19.setPuntoPosicion(new PosicionDto());
 		puntoCircuito19.getPuntoPosicion().setLatitud(-27.314833422390926);
 		puntoCircuito19.getPuntoPosicion().setLongitud(-55.87607447616899);
-		
+
 		puntosCircuito.add(puntoCircuito19);
-		
-		//Puente Costanera
+
+		// Puente Costanera
 		PuntoDeRecorridoDto puntoCircuito20 = new PuntoDeRecorridoDto();
 		puntoCircuito20.setPuntoPosicion(new PosicionDto());
 		puntoCircuito20.getPuntoPosicion().setLatitud(-27.316187453488972);
 		puntoCircuito20.getPuntoPosicion().setLongitud(-55.87528488630374);
 
 		puntosCircuito.add(puntoCircuito20);
-		
+
 		PuntoDeRecorridoDto puntoCircuito21 = new PuntoDeRecorridoDto();
 		puntoCircuito21.setPuntoPosicion(new PosicionDto());
 		puntoCircuito21.getPuntoPosicion().setLatitud(-27.321210960696177);
 		puntoCircuito21.getPuntoPosicion().setLongitud(-55.87404252463375);
-		
+
 		puntosCircuito.add(puntoCircuito21);
-		
-		//Rotonda
+
+		// Rotonda
 		PuntoDeRecorridoDto puntoCircuito22 = new PuntoDeRecorridoDto();
 		puntoCircuito22.setPuntoPosicion(new PosicionDto());
 		puntoCircuito22.getPuntoPosicion().setLatitud(-27.32161322388676);
 		puntoCircuito22.getPuntoPosicion().setLongitud(-55.87420817285771);
-		
+
 		puntosCircuito.add(puntoCircuito22);
-		
+
 		PuntoDeRecorridoDto puntoCircuito23 = new PuntoDeRecorridoDto();
 		puntoCircuito23.setPuntoPosicion(new PosicionDto());
 		puntoCircuito23.getPuntoPosicion().setLatitud(-27.322143031734818);
 		puntoCircuito23.getPuntoPosicion().setLongitud(-55.87388791962573);
-		
+
 		puntosCircuito.add(puntoCircuito23);
-		
+
 		PuntoDeRecorridoDto puntoParadaRuta1_6 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Super 6 Costanera");
 		puntoParadaRuta1_6.setParadaId(paradaDto.getId());
 		puntoParadaRuta1_6.setPuntoPosicion(paradaDto.getPosicion());
 
 		puntosCircuito.add(puntoParadaRuta1_6);
-		
+
 		PuntoDeRecorridoDto puntoCircuito24 = new PuntoDeRecorridoDto();
 		puntoCircuito24.setPuntoPosicion(new PosicionDto());
 		puntoCircuito24.getPuntoPosicion().setLatitud(-27.326914443343984);
 		puntoCircuito24.getPuntoPosicion().setLongitud(-55.873217270546064);
-		
+
 		puntosCircuito.add(puntoCircuito24);
 
 		PuntoDeRecorridoDto puntoParadaAvCaballero_1 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Hotel Real");
 		puntoParadaAvCaballero_1.setParadaId(paradaDto.getId());
 		puntoParadaAvCaballero_1.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaAvCaballero_1);
-		
+
 		PuntoDeRecorridoDto puntoCircuito25 = new PuntoDeRecorridoDto();
 		puntoCircuito25.setPuntoPosicion(new PosicionDto());
 		puntoCircuito25.getPuntoPosicion().setLatitud(-27.326640286418417);
 		puntoCircuito25.getPuntoPosicion().setLongitud(-55.870054699268124);
 
 		puntosCircuito.add(puntoCircuito25);
-		
+
 		PuntoDeRecorridoDto puntoCircuito26 = new PuntoDeRecorridoDto();
 		puntoCircuito26.setPuntoPosicion(new PosicionDto());
 		puntoCircuito26.getPuntoPosicion().setLatitud(-27.326691848255166);
 		puntoCircuito26.getPuntoPosicion().setLongitud(-55.86946038247785);
 
 		puntosCircuito.add(puntoCircuito26);
-		
+
 		PuntoDeRecorridoDto puntoParadaAvCaballero_2 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Mundo Mania");
 		puntoParadaAvCaballero_2.setParadaId(paradaDto.getId());
 		puntoParadaAvCaballero_2.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaAvCaballero_2);
-		
+
 		PuntoDeRecorridoDto puntoCircuito27 = new PuntoDeRecorridoDto();
 		puntoCircuito27.setPuntoPosicion(new PosicionDto());
 		puntoCircuito27.getPuntoPosicion().setLatitud(-27.32651241295923);
 		puntoCircuito27.getPuntoPosicion().setLongitud(-55.86694382233417);
-		
+
 		puntosCircuito.add(puntoCircuito27);
-		
+
 		PuntoDeRecorridoDto puntoCircuito28 = new PuntoDeRecorridoDto();
 		puntoCircuito28.setPuntoPosicion(new PosicionDto());
 		puntoCircuito28.getPuntoPosicion().setLatitud(-27.32630113110705);
 		puntoCircuito28.getPuntoPosicion().setLongitud(-55.8653410969685);
-		
+
 		puntosCircuito.add(puntoCircuito28);
-	
+
 		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_1 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Esquina Doña Reina");
 		puntoParadaCarlosAntLopez_1.setParadaId(paradaDto.getId());
 		puntoParadaCarlosAntLopez_1.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaCarlosAntLopez_1);
-		
+
 		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_2 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Hierro Center");
 		puntoParadaCarlosAntLopez_2.setParadaId(paradaDto.getId());
 		puntoParadaCarlosAntLopez_2.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaCarlosAntLopez_2);
-		
+
 		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_3 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Banco Atlas");
 		puntoParadaCarlosAntLopez_3.setParadaId(paradaDto.getId());
 		puntoParadaCarlosAntLopez_3.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaCarlosAntLopez_3);
-		
+
 		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_4 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Colegio Centro");
 		puntoParadaCarlosAntLopez_4.setParadaId(paradaDto.getId());
 		puntoParadaCarlosAntLopez_4.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaCarlosAntLopez_4);
-		
+
 		PuntoDeRecorridoDto puntoParadaCarlosAntLopez_5 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Terminal");
 		puntoParadaCarlosAntLopez_5.setParadaId(paradaDto.getId());
 		puntoParadaCarlosAntLopez_5.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaCarlosAntLopez_5);
-		
+
 		PuntoDeRecorridoDto puntoCircuito29 = new PuntoDeRecorridoDto();
 		puntoCircuito29.setPuntoPosicion(new PosicionDto());
 		puntoCircuito29.getPuntoPosicion().setLatitud(-27.340895094890367);
 		puntoCircuito29.getPuntoPosicion().setLongitud(-55.86373487761778);
-		
+
 		puntosCircuito.add(puntoCircuito29);
-		
+
 		PuntoDeRecorridoDto puntoCircuito30 = new PuntoDeRecorridoDto();
 		puntoCircuito30.setPuntoPosicion(new PosicionDto());
 		puntoCircuito30.getPuntoPosicion().setLatitud(-27.34154946300029);
 		puntoCircuito30.getPuntoPosicion().setLongitud(-55.86406703624476);
-		
+
 		puntosCircuito.add(puntoCircuito30);
-		
+
 		PuntoDeRecorridoDto puntoCircuito31 = new PuntoDeRecorridoDto();
 		puntoCircuito31.setPuntoPosicion(new PosicionDto());
 		puntoCircuito31.getPuntoPosicion().setLatitud(-27.343572046007036);
 		puntoCircuito31.getPuntoPosicion().setLongitud(-55.859460480730995);
-		
+
 		puntosCircuito.add(puntoCircuito31);
-		
+
 		PuntoDeRecorridoDto puntoCircuito32 = new PuntoDeRecorridoDto();
 		puntoCircuito32.setPuntoPosicion(new PosicionDto());
 		puntoCircuito32.getPuntoPosicion().setLatitud(-27.34374657000926);
 		puntoCircuito32.getPuntoPosicion().setLongitud(-55.85921048596473);
-		
+
 		puntosCircuito.add(puntoCircuito32);
-		
+
 		PuntoDeRecorridoDto puntoParadaSgtoReverchon = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Gobernacion");
 		puntoParadaSgtoReverchon.setParadaId(paradaDto.getId());
 		puntoParadaSgtoReverchon.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaSgtoReverchon);
-		
+
 		PuntoDeRecorridoDto puntoCircuito33 = new PuntoDeRecorridoDto();
 		puntoCircuito33.setPuntoPosicion(new PosicionDto());
 		puntoCircuito33.getPuntoPosicion().setLatitud(-27.344304906492386);
 		puntoCircuito33.getPuntoPosicion().setLongitud(-55.85786726061542);
-		
+
 		puntosCircuito.add(puntoCircuito33);
-	
+
 		PuntoDeRecorridoDto puntoCircuito34 = new PuntoDeRecorridoDto();
 		puntoCircuito34.setPuntoPosicion(new PosicionDto());
 		puntoCircuito34.getPuntoPosicion().setLatitud(-27.347349383456507);
 		puntoCircuito34.getPuntoPosicion().setLongitud(-55.85843987998082);
-		
+
 		puntosCircuito.add(puntoCircuito34);
-		
+
 		PuntoDeRecorridoDto puntoCircuito35 = new PuntoDeRecorridoDto();
 		puntoCircuito35.setPuntoPosicion(new PosicionDto());
 		puntoCircuito35.getPuntoPosicion().setLatitud(-27.347604274815417);
 		puntoCircuito35.getPuntoPosicion().setLongitud(-55.85861404143631);
-		
+
 		puntosCircuito.add(puntoCircuito35);
-		
+
 		PuntoDeRecorridoDto puntoCircuito36 = new PuntoDeRecorridoDto();
 		puntoCircuito36.setPuntoPosicion(new PosicionDto());
 		puntoCircuito36.getPuntoPosicion().setLatitud(-27.348567705161834);
 		puntoCircuito36.getPuntoPosicion().setLongitud(-55.858730098715824);
-		
+
 		puntosCircuito.add(puntoCircuito36);
-	
+
 		PuntoDeRecorridoDto puntoCircuito37 = new PuntoDeRecorridoDto();
 		puntoCircuito37.setPuntoPosicion(new PosicionDto());
 		puntoCircuito37.getPuntoPosicion().setLatitud(-27.348616256695458);
 		puntoCircuito37.getPuntoPosicion().setLongitud(-55.85837480140368);
-		
+
 		puntosCircuito.add(puntoCircuito37);
-	
+
 		PuntoDeRecorridoDto puntoParadaZonaCircuito_1 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada La Placita");
 		puntoParadaZonaCircuito_1.setParadaId(paradaDto.getId());
 		puntoParadaZonaCircuito_1.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaZonaCircuito_1);
-		
+
 		PuntoDeRecorridoDto puntoCircuito38 = new PuntoDeRecorridoDto();
 		puntoCircuito38.setPuntoPosicion(new PosicionDto());
 		puntoCircuito38.getPuntoPosicion().setLatitud(-27.35068661320478);
 		puntoCircuito38.getPuntoPosicion().setLongitud(-55.85550118797898);
-		
+
 		puntosCircuito.add(puntoCircuito38);
-		
+
 		PuntoDeRecorridoDto puntoParadaZonaCircuito_2 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Plaza de la amistad");
 		puntoParadaZonaCircuito_2.setParadaId(paradaDto.getId());
 		puntoParadaZonaCircuito_2.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaZonaCircuito_2);
-		
+
 		PuntoDeRecorridoDto puntoCircuito39 = new PuntoDeRecorridoDto();
 		puntoCircuito39.setPuntoPosicion(new PosicionDto());
 		puntoCircuito39.getPuntoPosicion().setLatitud(-27.350745567514448);
 		puntoCircuito39.getPuntoPosicion().setLongitud(-55.84906288833752);
-		
+
 		puntosCircuito.add(puntoCircuito39);
-	
+
 		PuntoDeRecorridoDto puntoCircuito40 = new PuntoDeRecorridoDto();
 		puntoCircuito40.setPuntoPosicion(new PosicionDto());
 		puntoCircuito40.getPuntoPosicion().setLatitud(-27.35369192228204);
 		puntoCircuito40.getPuntoPosicion().setLongitud(-55.84913628714226);
-		
+
 		puntosCircuito.add(puntoCircuito40);
-		
+
 		PuntoDeRecorridoDto puntoCircuito41 = new PuntoDeRecorridoDto();
 		puntoCircuito41.setPuntoPosicion(new PosicionDto());
 		puntoCircuito41.getPuntoPosicion().setLatitud(-27.354091943856798);
 		puntoCircuito41.getPuntoPosicion().setLongitud(-55.84897377864633);
-		
+
 		puntosCircuito.add(puntoCircuito41);
-		
+
 		PuntoDeRecorridoDto puntoCircuito42 = new PuntoDeRecorridoDto();
 		puntoCircuito42.setPuntoPosicion(new PosicionDto());
 		puntoCircuito42.getPuntoPosicion().setLatitud(-27.355160035605508);
 		puntoCircuito42.getPuntoPosicion().setLongitud(-55.8477154985702);
-		
+
 		puntosCircuito.add(puntoCircuito42);
-	
+
 		PuntoDeRecorridoDto puntoCircuito43 = new PuntoDeRecorridoDto();
 		puntoCircuito43.setPuntoPosicion(new PosicionDto());
 		puntoCircuito43.getPuntoPosicion().setLatitud(-27.35548994604027);
 		puntoCircuito43.getPuntoPosicion().setLongitud(-55.84749727287559);
-		
+
 		puntosCircuito.add(puntoCircuito43);
-		
+
 		PuntoDeRecorridoDto puntoParadaZonaCircuito_3 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Circuito");
 		puntoParadaZonaCircuito_3.setParadaId(paradaDto.getId());
 		puntoParadaZonaCircuito_3.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosCircuito.add(puntoParadaZonaCircuito_3);
-		
+
 		dtoRecorridoCircuito.setPuntos(puntosCircuito);
 
 		dtoRecorridoCircuito = recorridoService.saveRecorrido(dtoRecorridoCircuito);
 
 		map.put("Recorrido Circuito", dtoRecorridoCircuito);
-		
-		
-		
 
 		RecorridoDto dtoRecorridoCapitanMiranda = new RecorridoDto();
 		dtoRecorridoCapitanMiranda.setDescripcion("Recorrido desde la terminal hasta Capitan Miranda: "
-				+ "De La Terminal -> P. La Junta -> P. Al Natural "
-				+ "-> P. Optica Gamon -> P. Mundo Mania"
+				+ "De La Terminal -> P. La Junta -> P. Al Natural " + "-> P. Optica Gamon -> P. Mundo Mania"
 				+ "-> P. Carsuplay -> Capitan Miranda.");
 		dtoRecorridoCapitanMiranda.setNombre("Ruta 6 Capitan Miranda");
 		dtoRecorridoCapitanMiranda.setColor(colorMap.get("blue").getNombre());
-		
+
 		List<PuntoDeRecorridoDto> puntosRuta6 = new ArrayList<>();
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_1 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_1.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_1.getPuntoPosicion().setLatitud(-27.34026563342671);
 		puntoCapitanMiranda_1.getPuntoPosicion().setLongitud(-55.864703605825);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_1);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_2 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_2.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_2.getPuntoPosicion().setLatitud(-27.340840325054867);
 		puntoCapitanMiranda_2.getPuntoPosicion().setLongitud(-55.86463981178381);
-	
+
 		puntosRuta6.add(puntoCapitanMiranda_2);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_3 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_3.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_3.getPuntoPosicion().setLatitud(-27.34118885178881);
 		puntoCapitanMiranda_3.getPuntoPosicion().setLongitud(-55.868260240381986);
-	
+
 		puntosRuta6.add(puntoCapitanMiranda_3);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_4 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_4.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_4.getPuntoPosicion().setLatitud(-27.340973205771377);
 		puntoCapitanMiranda_4.getPuntoPosicion().setLongitud(-55.86870025348229);
-	
+
 		puntosRuta6.add(puntoCapitanMiranda_4);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_5 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_5.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_5.getPuntoPosicion().setLatitud(-27.34069016973115);
 		puntoCapitanMiranda_5.getPuntoPosicion().setLongitud(-55.86858266377303);
-	
+
 		puntosRuta6.add(puntoCapitanMiranda_5);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_6 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_6.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_6.getPuntoPosicion().setLatitud(-27.34069016973115);
 		puntoCapitanMiranda_6.getPuntoPosicion().setLongitud(-55.86858266377303);
-	
+
 		puntosRuta6.add(puntoCapitanMiranda_6);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_1 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada La Junta");
 		puntoParadaGralArtigas_1.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_1.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_1);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_7 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_7.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_7.getPuntoPosicion().setLatitud(-27.33847986407693);
 		puntoCapitanMiranda_7.getPuntoPosicion().setLongitud(-55.868902638987464);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_7);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_2 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Esquina Innovadent");
 		puntoParadaGralArtigas_2.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_2.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_2);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_3 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Subida Upap Encarnacion");
 		puntoParadaGralArtigas_3.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_3.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_3);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_8 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_8.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_8.getPuntoPosicion().setLatitud(-27.334271218407018);
 		puntoCapitanMiranda_8.getPuntoPosicion().setLongitud(-55.869289547057214);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_8);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_4 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Al Natural");
 		puntoParadaGralArtigas_4.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_4.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_4);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_5 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada BENGELATO");
 		puntoParadaGralArtigas_5.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_5.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_5);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_6 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Optica Gamon");
 		puntoParadaGralArtigas_6.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_6.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_6);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_9 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_9.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_9.getPuntoPosicion().setLatitud(-27.326636941800903);
 		puntoCapitanMiranda_9.getPuntoPosicion().setLongitud(-55.87010770753962);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_9);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_10 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_10.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_10.getPuntoPosicion().setLatitud(-27.326698816004);
 		puntoCapitanMiranda_10.getPuntoPosicion().setLongitud(-55.869473924399976);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_10);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_11 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_11.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_11.getPuntoPosicion().setLatitud(-27.32660736050076);
 		puntoCapitanMiranda_11.getPuntoPosicion().setLongitud(-55.86858796598658);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_11);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_7 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Mundo Mania");
 		puntoParadaGralArtigas_7.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_7.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_7);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_12 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_12.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_12.getPuntoPosicion().setLatitud(-27.32651867405479);
 		puntoCapitanMiranda_12.getPuntoPosicion().setLongitud(-55.86710217402087);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_12);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_8 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Chiperia Aaron");
 		puntoParadaGralArtigas_8.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_8.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_8);
-		
+
 		PuntoDeRecorridoDto puntoParadaGralArtigas_9 = new PuntoDeRecorridoDto();
 		paradaDto = paradaMap.get("Parada Carsuplay");
 		puntoParadaGralArtigas_9.setParadaId(paradaDto.getId());
 		puntoParadaGralArtigas_9.setPuntoPosicion(paradaDto.getPosicion());
-		
+
 		puntosRuta6.add(puntoParadaGralArtigas_9);
-		
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_13 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_13.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_13.getPuntoPosicion().setLatitud(-27.325936481346805);
 		puntoCapitanMiranda_13.getPuntoPosicion().setLongitud(-55.86096368657);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_13);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_14 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_14.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_14.getPuntoPosicion().setLatitud(-27.325779209833083);
 		puntoCapitanMiranda_14.getPuntoPosicion().setLongitud(-55.859343632321426);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_14);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_15 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_15.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_15.getPuntoPosicion().setLatitud(-27.323469343234258);
 		puntoCapitanMiranda_15.getPuntoPosicion().setLongitud(-55.85701410808214);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_15);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_16 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_16.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_16.getPuntoPosicion().setLatitud(-27.320655039980767);
 		puntoCapitanMiranda_16.getPuntoPosicion().setLongitud(-55.8554450158088);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_16);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_17 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_17.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_17.getPuntoPosicion().setLatitud(-27.320180819286822);
 		puntoCapitanMiranda_17.getPuntoPosicion().setLongitud(-55.85513656177058);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_17);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_18 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_18.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_18.getPuntoPosicion().setLatitud(-27.315972521738363);
 		puntoCapitanMiranda_18.getPuntoPosicion().setLongitud(-55.852780894630186);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_18);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_19 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_19.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_19.getPuntoPosicion().setLatitud(-27.31534728691316);
 		puntoCapitanMiranda_19.getPuntoPosicion().setLongitud(-55.852126811246);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_19);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_20 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_20.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_20.getPuntoPosicion().setLatitud(-27.31502665230044);
 		puntoCapitanMiranda_20.getPuntoPosicion().setLongitud(-55.85159903362103);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_20);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_21 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_21.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_21.getPuntoPosicion().setLatitud(-27.314148910315634);
 		puntoCapitanMiranda_21.getPuntoPosicion().setLongitud(-55.84907291847541);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_21);
-		
+
 		PuntoDeRecorridoDto puntoCapitanMiranda_22 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_22.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_22.getPuntoPosicion().setLatitud(-27.309875635840218);
 		puntoCapitanMiranda_22.getPuntoPosicion().setLongitud(-55.84158874597306);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_22);
 
 		PuntoDeRecorridoDto puntoCapitanMiranda_23 = new PuntoDeRecorridoDto();
 		puntoCapitanMiranda_23.setPuntoPosicion(new PosicionDto());
 		puntoCapitanMiranda_23.getPuntoPosicion().setLatitud(-27.30508390281704);
 		puntoCapitanMiranda_23.getPuntoPosicion().setLongitud(-55.83723450962046);
-		
+
 		puntosRuta6.add(puntoCapitanMiranda_23);
-		
+
 		dtoRecorridoCapitanMiranda.setPuntos(puntosRuta6);
 
 		dtoRecorridoCapitanMiranda = recorridoService.saveRecorrido(dtoRecorridoCapitanMiranda);
 
 		map.put("Recorrido Ruta 6", dtoRecorridoCapitanMiranda);
-		
-	
-		RecorridoDto RecorridoSanIsidro= new RecorridoDto();
-		dtoRecorridoCircuito.setDescripcion("Recorrido San Isidro hasta Circuito: "
-				+ "De San Juan del Paraná -> P. Petrobras -> P. Colegio Kennedy -> P. Super 6 Costanera "
-				+ "-> P. Hotel Real -> P. Doña Reina -> P. Terminal -> P. Gobernación "
-				+ "-> P. La Placita -> P. Plaza de la Amistad -> Circuito.");
-		
+
+		RecorridoDto RecorridoSanIsidro = new RecorridoDto();
+		dtoRecorridoCircuito.setDescripcion("");
+
 		dtoRecorridoCircuito.setNombre("Principal Ruta 1 Circuito");
 		dtoRecorridoCircuito.setColor(colorMap.get("red").getNombre());
-		
-		
-		
-		
-		return map;
-		
-		
 
-		
-		
-		
+		return map;
+
 	}
 
 	private Map<String, RoleDto> insertRoles() {
@@ -830,7 +814,7 @@ public class TestServiceImpl implements ITestService {
 		return map;
 	}
 
-	private Map<String, ParadaDto> insertParadas(Map<String,ZonaDto> mapZonas) {
+	private Map<String, ParadaDto> insertParadas(Map<String, ZonaDto> mapZonas) {
 		Map<String, ParadaDto> map = new HashMap<String, ParadaDto>();
 
 		ParadaDto paradaRuta1_1 = new ParadaDto();
@@ -841,9 +825,9 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_1.getPosicion().setLongitud(-55.89254610085299);
 		paradaRuta1_1.setImage(null);
 		paradaRuta1_1.setZona(mapZonas.get("Zona Ruta 1").getNombre());
-		
+
 		map.put("Parada Petrobras", paradaService.saveParada(paradaRuta1_1));
-		
+
 		ParadaDto paradaRuta1_2 = new ParadaDto();
 		paradaRuta1_2.setNombre("Parada Hotel City");
 		paradaRuta1_2.setDescripcion("Parada ruta 1 frente al hotel City");
@@ -854,7 +838,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_2.setZona(mapZonas.get("Zona Ruta 1").getNombre());
 
 		map.put("Parada Hotel City", paradaService.saveParada(paradaRuta1_2));
-		
+
 		ParadaDto paradaRuta1_3 = new ParadaDto();
 		paradaRuta1_3.setNombre("Parada Zona Uni");
 		paradaRuta1_3.setDescripcion("Parada ruta 1 UNI");
@@ -863,7 +847,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_3.getPosicion().setLongitud(-55.88851370435971);
 		paradaRuta1_3.setImage(null);
 		paradaRuta1_3.setZona(mapZonas.get("Zona Ruta 1").getNombre());
-		
+
 		map.put("Parada Zona Uni", paradaService.saveParada(paradaRuta1_3));
 
 		ParadaDto paradaRuta1_4 = new ParadaDto();
@@ -874,9 +858,9 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_4.getPosicion().setLongitud(-55.88390687216109);
 		paradaRuta1_4.setImage(null);
 		paradaRuta1_4.setZona(mapZonas.get("Zona Ruta 1").getNombre());
-		
+
 		map.put("Parada Supermercado La Familia", paradaService.saveParada(paradaRuta1_4));
-		
+
 		ParadaDto paradaRuta1_5 = new ParadaDto();
 		paradaRuta1_5.setNombre("Parada Colegio Kennedy");
 		paradaRuta1_5.setDescripcion("Parada ruta 1, frente al colegio John F. Kennedy");
@@ -885,7 +869,7 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_5.getPosicion().setLongitud(-55.88072449336672);
 		paradaRuta1_5.setImage(null);
 		paradaRuta1_5.setZona(mapZonas.get("Zona Ruta 1").getNombre());
-		
+
 		map.put("Parada Colegio Kennedy", paradaService.saveParada(paradaRuta1_5));
 
 		ParadaDto paradaRuta1_6 = new ParadaDto();
@@ -896,9 +880,9 @@ public class TestServiceImpl implements ITestService {
 		paradaRuta1_6.getPosicion().setLongitud(-55.873611839255304);
 		paradaRuta1_6.setImage(null);
 		paradaRuta1_6.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Super 6 Costanera", paradaService.saveParada(paradaRuta1_6));
-	
+
 		ParadaDto paradaAvCaballero_1 = new ParadaDto();
 		paradaAvCaballero_1.setNombre("Parada Hotel Real");
 		paradaAvCaballero_1.setDescripcion("Parada Avenida Caballero, frente hotel real");
@@ -907,9 +891,9 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_1.getPosicion().setLongitud(-55.87047722135734);
 		paradaAvCaballero_1.setImage(null);
 		paradaAvCaballero_1.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Hotel Real", paradaService.saveParada(paradaAvCaballero_1));
-		
+
 		ParadaDto paradaAvCaballero_2 = new ParadaDto();
 		paradaAvCaballero_2.setNombre("Parada Mundo Mania");
 		paradaAvCaballero_2.setDescripcion("Parada Avenida Caballero, frente a mundo mania");
@@ -918,9 +902,9 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_2.getPosicion().setLongitud(-55.867412775419176);
 		paradaAvCaballero_2.setImage(null);
 		paradaAvCaballero_2.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Mundo Mania", paradaService.saveParada(paradaAvCaballero_2));
-	
+
 		ParadaDto paradaCarlosAntLopez_1 = new ParadaDto();
 		paradaCarlosAntLopez_1.setNombre("Parada Esquina Doña Reina");
 		paradaCarlosAntLopez_1.setDescripcion("Parada Carlos A. Lopez, esquina doña reina");
@@ -929,9 +913,9 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_1.getPosicion().setLongitud(-55.86524488183438);
 		paradaCarlosAntLopez_1.setImage(null);
 		paradaCarlosAntLopez_1.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Esquina Doña Reina", paradaService.saveParada(paradaCarlosAntLopez_1));
-		
+
 		ParadaDto paradaCarlosAntLopez_2 = new ParadaDto();
 		paradaCarlosAntLopez_2.setNombre("Parada Hierro Center");
 		paradaCarlosAntLopez_2.setDescripcion("Parada Carlos A. Lopez, esquina hierro center");
@@ -940,9 +924,9 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_2.getPosicion().setLongitud(-55.86509726431732);
 		paradaCarlosAntLopez_2.setImage(null);
 		paradaCarlosAntLopez_2.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Hierro Center", paradaService.saveParada(paradaCarlosAntLopez_2));
-		
+
 		ParadaDto paradaCarlosAntLopez_3 = new ParadaDto();
 		paradaCarlosAntLopez_3.setNombre("Parada Banco Atlas");
 		paradaCarlosAntLopez_3.setDescripcion("Parada Carlos A. Lopez, esquina banco atlas");
@@ -951,9 +935,9 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_3.getPosicion().setLongitud(-55.86479042955511);
 		paradaCarlosAntLopez_3.setImage(null);
 		paradaCarlosAntLopez_3.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Banco Atlas", paradaService.saveParada(paradaCarlosAntLopez_3));
-	
+
 		ParadaDto paradaCarlosAntLopez_4 = new ParadaDto();
 		paradaCarlosAntLopez_4.setNombre("Parada Colegio Centro");
 		paradaCarlosAntLopez_4.setDescripcion("Parada Carlos A. Lopez, esquina stargol");
@@ -962,7 +946,7 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_4.getPosicion().setLongitud(-55.864521921736795);
 		paradaCarlosAntLopez_4.setImage(null);
 		paradaCarlosAntLopez_4.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Colegio Centro", paradaService.saveParada(paradaCarlosAntLopez_4));
 
 		ParadaDto paradaCarlosAntLopez_5 = new ParadaDto();
@@ -973,9 +957,9 @@ public class TestServiceImpl implements ITestService {
 		paradaCarlosAntLopez_5.getPosicion().setLongitud(-55.86382006960933);
 		paradaCarlosAntLopez_5.setImage(null);
 		paradaCarlosAntLopez_5.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Terminal", paradaService.saveParada(paradaCarlosAntLopez_5));
-		
+
 		ParadaDto paradaSgtoRevenchon = new ParadaDto();
 		paradaSgtoRevenchon.setNombre("Parada Gobernacion");
 		paradaSgtoRevenchon.setDescripcion("Parada Sgto.Revenchon, costado de la gobernacion");
@@ -984,9 +968,9 @@ public class TestServiceImpl implements ITestService {
 		paradaSgtoRevenchon.getPosicion().setLongitud(-55.85817132115115);
 		paradaSgtoRevenchon.setImage(null);
 		paradaSgtoRevenchon.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Gobernacion", paradaService.saveParada(paradaSgtoRevenchon));
-		
+
 		ParadaDto paradaZonaCircuito_1 = new ParadaDto();
 		paradaZonaCircuito_1.setNombre("Parada La Placita");
 		paradaZonaCircuito_1.setDescripcion("Parada La placita, feria municipal");
@@ -995,9 +979,9 @@ public class TestServiceImpl implements ITestService {
 		paradaZonaCircuito_1.getPosicion().setLongitud(-55.856859907370364);
 		paradaZonaCircuito_1.setImage(null);
 		paradaZonaCircuito_1.setZona(mapZonas.get("Zona Circuito").getNombre());
-		
+
 		map.put("Parada La Placita", paradaService.saveParada(paradaZonaCircuito_1));
-		
+
 		ParadaDto paradaZonaCircuito_2 = new ParadaDto();
 		paradaZonaCircuito_2.setNombre("Parada Plaza de la amistad");
 		paradaZonaCircuito_2.setDescripcion("Parada que queda en la esquina de la plaza de la amistad");
@@ -1006,9 +990,9 @@ public class TestServiceImpl implements ITestService {
 		paradaZonaCircuito_2.getPosicion().setLongitud(-55.85243626062093);
 		paradaZonaCircuito_2.setImage(null);
 		paradaZonaCircuito_2.setZona(mapZonas.get("Zona Circuito").getNombre());
-		
+
 		map.put("Parada Plaza de la amistad", paradaService.saveParada(paradaZonaCircuito_2));
-	
+
 		ParadaDto paradaZonaCircuito_3 = new ParadaDto();
 		paradaZonaCircuito_3.setNombre("Parada Circuito");
 		paradaZonaCircuito_3.setDescripcion("Parada que queda a lado de la rotonda del circuito");
@@ -1017,10 +1001,9 @@ public class TestServiceImpl implements ITestService {
 		paradaZonaCircuito_3.getPosicion().setLongitud(-55.84988382623049);
 		paradaZonaCircuito_3.setImage(null);
 		paradaZonaCircuito_3.setZona(mapZonas.get("Zona Circuito").getNombre());
-		
+
 		map.put("Parada Circuito", paradaService.saveParada(paradaZonaCircuito_3));
-		
-		
+
 		ParadaDto paradaGralArtigas_1 = new ParadaDto();
 		paradaGralArtigas_1.setNombre("Parada La Junta");
 		paradaGralArtigas_1.setDescripcion("Parada que queda frente la junta (cancha deportiva)");
@@ -1029,9 +1012,9 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_1.getPosicion().setLongitud(-55.868826774661265);
 		paradaGralArtigas_1.setImage(null);
 		paradaGralArtigas_1.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada La Junta", paradaService.saveParada(paradaGralArtigas_1));
-		
+
 		ParadaDto paradaGralArtigas_2 = new ParadaDto();
 		paradaGralArtigas_2.setNombre("Parada Esquina Innovadent");
 		paradaGralArtigas_2.setDescripcion("Parada queda enfrente de Innovadent");
@@ -1040,9 +1023,9 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_2.getPosicion().setLongitud(-55.86898229653133);
 		paradaGralArtigas_2.setImage(null);
 		paradaGralArtigas_2.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Esquina Innovadent", paradaService.saveParada(paradaGralArtigas_2));
-		
+
 		ParadaDto paradaGralArtigas_3 = new ParadaDto();
 		paradaGralArtigas_3.setNombre("Parada Subida Upap Encarnacion");
 		paradaGralArtigas_3.setDescripcion("Parada queda subiendo la calle Mor. Wiessen");
@@ -1051,10 +1034,9 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_3.getPosicion().setLongitud(-55.869160577699766);
 		paradaGralArtigas_3.setImage(null);
 		paradaGralArtigas_3.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Subida Upap Encarnacion", paradaService.saveParada(paradaGralArtigas_3));
-		
-	
+
 		ParadaDto paradaGralArtigas_4 = new ParadaDto();
 		paradaGralArtigas_4.setNombre("Parada Al Natural");
 		paradaGralArtigas_4.setDescripcion("Parada entre 14 de mayo y Gral. Artigas");
@@ -1063,9 +1045,9 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_4.getPosicion().setLongitud(-55.86942069214396);
 		paradaGralArtigas_4.setImage(null);
 		paradaGralArtigas_4.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Al Natural", paradaService.saveParada(paradaGralArtigas_4));
-		
+
 		ParadaDto paradaGralArtigas_5 = new ParadaDto();
 		paradaGralArtigas_5.setNombre("Parada BENGELATO");
 		paradaGralArtigas_5.setDescripcion("Parada entre Villarica y Gral. Artigas");
@@ -1074,9 +1056,9 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_5.getPosicion().setLongitud(-55.86966204962195);
 		paradaGralArtigas_5.setImage(null);
 		paradaGralArtigas_5.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada BENGELATO", paradaService.saveParada(paradaGralArtigas_5));
-		
+
 		ParadaDto paradaGralArtigas_6 = new ParadaDto();
 		paradaGralArtigas_6.setNombre("Parada Optica Gamon");
 		paradaGralArtigas_6.setDescripcion("Parada entre Constitucion Nacional y Gral. Artigas");
@@ -1085,9 +1067,9 @@ public class TestServiceImpl implements ITestService {
 		paradaGralArtigas_6.getPosicion().setLongitud(-55.869968126783625);
 		paradaGralArtigas_6.setImage(null);
 		paradaGralArtigas_6.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Optica Gamon", paradaService.saveParada(paradaGralArtigas_6));
-		
+
 		ParadaDto paradaAvCaballero_3 = new ParadaDto();
 		paradaAvCaballero_3.setNombre("Parada Chiperia Aaron");
 		paradaAvCaballero_3.setDescripcion("Parada Avenida Caballero, frente Chiperia Aaron");
@@ -1096,9 +1078,9 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_3.getPosicion().setLongitud(-55.86570601749689);
 		paradaAvCaballero_3.setImage(null);
 		paradaAvCaballero_3.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Chiperia Aaron", paradaService.saveParada(paradaAvCaballero_3));
-		
+
 		ParadaDto paradaAvCaballero_4 = new ParadaDto();
 		paradaAvCaballero_4.setNombre("Parada Carsuplay");
 		paradaAvCaballero_4.setDescripcion("Parada Avenida Caballero, frente carsuplay");
@@ -1107,9 +1089,9 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_4.getPosicion().setLongitud(-55.862803681953004);
 		paradaAvCaballero_4.setImage(null);
 		paradaAvCaballero_4.setZona(mapZonas.get("Zona Centro").getNombre());
-		
+
 		map.put("Parada Carsuplay", paradaService.saveParada(paradaAvCaballero_4));
-		
+
 		return map;
 	}
 
@@ -1133,7 +1115,7 @@ public class TestServiceImpl implements ITestService {
 
 		colectivo_2 = colectivoService.saveColectivo(colectivo_2);
 		map.put("Colectivo11", colectivo_2);
-		
+
 		return map;
 	}
 
@@ -1149,7 +1131,7 @@ public class TestServiceImpl implements ITestService {
 		lineaDto_2.setNumero("11");
 		lineaDto_2 = lineaService.saveLineaColectivo(lineaDto_2);
 		map.put("Linea11", lineaDto_2);
-		
+
 		return map;
 	}
 
@@ -1163,7 +1145,7 @@ public class TestServiceImpl implements ITestService {
 		empresaUrbano.setNumero_telefono("0987654321");
 		empresaUrbano = empresaService.saveEmpresaColectivo(empresaUrbano);
 		map.put("urbano", empresaUrbano);
-		
+
 		EmpresaDeColectivosDto empresaLaEncarnacena = new EmpresaDeColectivosDto();
 		empresaLaEncarnacena.setNombre("Empresa La Encarnacena");
 		empresaLaEncarnacena.setCorreo_electronico("encarnacena@gmail.com");
@@ -1191,31 +1173,36 @@ public class TestServiceImpl implements ITestService {
 		return resultMap;
 
 	}
-	
-	private Map<String, ZonaDto> insertZonas(){
+
+	private Map<String, ZonaDto> insertZonas() {
 		Map<String, ZonaDto> resultMap = new HashMap<>();
-		ZonaDto zonaCentro= new ZonaDto();
+		ZonaDto zonaCentro = new ZonaDto();
 		zonaCentro.setNombre("Zona Centro");
 		zonaCentro.setDescripcion("Ubicacion de la zona centro de Encarnacion");
 		zonaCentro = zonaService.saveZona(zonaCentro);
 		resultMap.put("Zona Centro", zonaCentro);
-		
-		ZonaDto zonaRuta1= new ZonaDto();
+
+		ZonaDto zonaRuta1 = new ZonaDto();
 		zonaRuta1.setNombre("Zona Ruta 1");
 		zonaRuta1.setDescripcion("Ubicacion sobre la Ruta 1 de Encarnacion");
-		zonaRuta1= zonaService.saveZona(zonaRuta1);
+		zonaRuta1 = zonaService.saveZona(zonaRuta1);
 		resultMap.put("Zona Ruta 1", zonaRuta1);
-		
-		ZonaDto zonaCircuito= new ZonaDto();
+
+		ZonaDto zonaCircuito = new ZonaDto();
 		zonaCircuito.setNombre("Zona Circuito");
 		zonaCircuito.setDescripcion("Ubicacion de la zona circuito y alrededores");
 		zonaCircuito = zonaService.saveZona(zonaCircuito);
 		resultMap.put("Zona Circuito", zonaCircuito);
-		
-		
+
 		return resultMap;
 	}
-	
+
+	@Override
+	public void deleteUbicacionColectivo(Integer colectivoId) {
+		// TODO Auto-generated method stub
+
+	}
+
 	/********************** Variables Privadas **********************/
 	@Autowired
 	private IColectivoService colectivoService;
@@ -1240,7 +1227,8 @@ public class TestServiceImpl implements ITestService {
 
 	@Autowired
 	private IColorService colorService;
-	
+
 	@Autowired
 	private IZonaService zonaService;
+
 }

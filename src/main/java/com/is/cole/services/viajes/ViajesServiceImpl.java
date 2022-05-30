@@ -67,6 +67,7 @@ public class ViajesServiceImpl implements IViajesService {
 		Viaje beanObtenido = viajeDao.findByUsuarioId(id);
 		return parseBeanToDtoViaje(beanObtenido);
 	}
+	
 	/********************** Parses **********************/
 
 	//No esta seteado el state todavia
@@ -100,5 +101,7 @@ public class ViajesServiceImpl implements IViajesService {
 	private IColectivoDao colectivoDao;
 	@Autowired
 	private IRecorridoDao recorridoDao;
+	
+
 
 }

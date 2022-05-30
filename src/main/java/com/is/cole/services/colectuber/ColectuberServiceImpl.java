@@ -106,6 +106,13 @@ public class ColectuberServiceImpl implements IColectuberService {
 		return dtos;
 	}
 	
+	@Override
+	@Transactional
+	public void deleteColectivoUbicacion(Integer colectivoId) {
+		ColectivoUbicacion bean = colectivoUbicacionDao.findByColectivoId(colectivoId);
+		
+	}
+	
 	/**
 	 * Se obtiene un chofer por medio del username
 	 */
@@ -331,5 +338,6 @@ public class ColectuberServiceImpl implements IColectuberService {
 	private ILineaColectivosService lineaService;
 	@Autowired
 	private IUsuariosService usuarioService;
+	
 
 }
