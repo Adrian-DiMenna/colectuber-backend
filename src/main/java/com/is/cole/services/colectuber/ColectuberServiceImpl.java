@@ -110,6 +110,7 @@ public class ColectuberServiceImpl implements IColectuberService {
 	@Transactional
 	public void deleteColectivoUbicacion(Integer colectivoId) {
 		ColectivoUbicacion bean = colectivoUbicacionDao.findByColectivoId(colectivoId);
+		colectivoUbicacionDao.deleteById(bean.getId());
 		
 	}
 	
