@@ -763,7 +763,25 @@ public class TestServiceImpl implements ITestService {
 
 		map.put("Recorrido Ruta 6", dtoRecorridoCapitanMiranda);
 		
+	
+		RecorridoDto RecorridoSanIsidro= new RecorridoDto();
+		dtoRecorridoCircuito.setDescripcion("Recorrido San Isidro hasta Circuito: "
+				+ "De San Juan del Paraná -> P. Petrobras -> P. Colegio Kennedy -> P. Super 6 Costanera "
+				+ "-> P. Hotel Real -> P. Doña Reina -> P. Terminal -> P. Gobernación "
+				+ "-> P. La Placita -> P. Plaza de la Amistad -> Circuito.");
+		
+		dtoRecorridoCircuito.setNombre("Principal Ruta 1 Circuito");
+		dtoRecorridoCircuito.setColor(colorMap.get("red").getNombre());
+		
+		
+		
+		
 		return map;
+		
+		
+
+		
+		
 		
 	}
 
