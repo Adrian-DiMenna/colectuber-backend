@@ -781,9 +781,9 @@ public class TestServiceImpl implements ITestService {
 
 		puntosSanIsidro.add(puntoSanIsidro2);
 		
-		paradaDto = paradaMap.get("Parada Chiperia Aaron");
-		puntoParadaGralArtigas_8.setParadaId(paradaDto.getId());
-		puntoParadaGralArtigas_8.setPuntoPosicion(paradaDto.getPosicion());
+		//paradaDto = paradaMap.get("Parada Chiperia Aaron");
+		//puntoParadaGralArtigas_8.setParadaId(paradaDto.getId());
+		//puntoParadaGralArtigas_8.setPuntoPosicion(paradaDto.getPosicion());
 
 		return map;
 
@@ -1114,14 +1114,104 @@ public class TestServiceImpl implements ITestService {
 		
 		ParadaDto paradaSanIsidro_1 = new ParadaDto();
 		paradaSanIsidro_1.setNombre("Parada Esquina Libano");
-		paradaSanIsidro_1.setDescripcion("Parada San Isidro, frente carsuplay");
+		paradaSanIsidro_1.setDescripcion("Parada San Isidro, esquina Libano");
 		paradaSanIsidro_1.setPosicion(new PosicionDto());
-		paradaSanIsidro_1.getPosicion().setLatitud(-27.326081838152955);
-		paradaSanIsidro_1.getPosicion().setLongitud(-55.862803681953004);
+		paradaSanIsidro_1.getPosicion().setLatitud(-27.359723);
+		paradaSanIsidro_1.getPosicion().setLongitud(-55.848178);
 		paradaSanIsidro_1.setImage(null);
-		paradaSanIsidro_1.setZona(mapZonas.get("Zona Centro").getNombre());
+		paradaSanIsidro_1.setZona(mapZonas.get("Zona San Isidro").getNombre());
 
-		map.put("Parada Carsuplay", paradaService.saveParada(paradaSanIsidro_1));
+		map.put("Parada Esquina Libano", paradaService.saveParada(paradaSanIsidro_1));
+		
+		ParadaDto paradaSanIsidro_2 = new ParadaDto();
+		paradaSanIsidro_2.setNombre("Parada Cerca MasTV");
+		paradaSanIsidro_2.setDescripcion("Parada San Isidro, cerca de MasTV");
+		paradaSanIsidro_2.setPosicion(new PosicionDto());
+		paradaSanIsidro_2.getPosicion().setLatitud(-27.366422);
+		paradaSanIsidro_2.getPosicion().setLongitud(-55.843967);
+		paradaSanIsidro_2.setImage(null);
+		paradaSanIsidro_2.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada MasTV", paradaService.saveParada(paradaSanIsidro_2));
+		
+		ParadaDto paradaSanIsidro_3 = new ParadaDto();
+		paradaSanIsidro_3.setNombre("Parada Petrosur");
+		paradaSanIsidro_3.setDescripcion("Parada San Isidro, Petrosur");
+		paradaSanIsidro_3.setPosicion(new PosicionDto());
+		paradaSanIsidro_3.getPosicion().setLatitud(-27.368604);
+		paradaSanIsidro_3.getPosicion().setLongitud(-55.842455);
+		paradaSanIsidro_3.setImage(null);
+		paradaSanIsidro_3.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada Petrosur", paradaService.saveParada(paradaSanIsidro_3));
+		
+		ParadaDto paradaSanIsidro_4 = new ParadaDto();
+		paradaSanIsidro_4.setNombre("Parada Carniceria San Carlos");
+		paradaSanIsidro_4.setDescripcion("Parada San Isidro, frente a la Carniceria San Carlos");
+		paradaSanIsidro_4.setPosicion(new PosicionDto());
+		paradaSanIsidro_4.getPosicion().setLatitud(-27.369496);
+		paradaSanIsidro_4.getPosicion().setLongitud(-55.841112);
+		paradaSanIsidro_4.setImage(null);
+		paradaSanIsidro_4.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada San Carlos", paradaService.saveParada(paradaSanIsidro_4));
+		
+		ParadaDto paradaSanIsidro_5 = new ParadaDto();
+		paradaSanIsidro_5.setNombre("Parada MaxiFarma");
+		paradaSanIsidro_5.setDescripcion("Parada San Isidro, cerca de MaxiFarma");
+		paradaSanIsidro_5.setPosicion(new PosicionDto());
+		paradaSanIsidro_5.getPosicion().setLatitud(-27.371076);
+		paradaSanIsidro_5.getPosicion().setLongitud(-55.837949);
+		paradaSanIsidro_5.setImage(null);
+		paradaSanIsidro_5.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada MaxiFarma", paradaService.saveParada(paradaSanIsidro_5));
+		
+		ParadaDto paradaSanIsidro_6 = new ParadaDto();
+		paradaSanIsidro_6.setNombre("Parada Iglesia San Isidro");
+		paradaSanIsidro_6.setDescripcion("Parada San Isidro, frente a la Iglesia San Isidro");
+		paradaSanIsidro_6.setPosicion(new PosicionDto());
+		paradaSanIsidro_6.getPosicion().setLatitud(-27.371938);
+		paradaSanIsidro_6.getPosicion().setLongitud(-55.834455);
+		paradaSanIsidro_6.setImage(null);
+		paradaSanIsidro_6.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada Iglesia San Isidro", paradaService.saveParada(paradaSanIsidro_6));
+		
+		ParadaDto paradaSanIsidro_7 = new ParadaDto();
+		paradaSanIsidro_7.setNombre("Parada Avenida 9");
+		paradaSanIsidro_7.setDescripcion("Parada San Isidro, sobre la avenida 9");
+		paradaSanIsidro_7.setPosicion(new PosicionDto());
+		paradaSanIsidro_7.getPosicion().setLatitud(-27.373776);
+		paradaSanIsidro_7.getPosicion().setLongitud(-55.834127);
+		paradaSanIsidro_7.setImage(null);
+		paradaSanIsidro_7.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada Avenida 9", paradaService.saveParada(paradaSanIsidro_7));
+		
+		ParadaDto paradaSanIsidro_8 = new ParadaDto();
+		paradaSanIsidro_8.setNombre("Parada Surtidor Matias");
+		paradaSanIsidro_8.setDescripcion("Parada San Isidro, frente a Surtidor Matias");
+		paradaSanIsidro_8.setPosicion(new PosicionDto());
+		paradaSanIsidro_8.getPosicion().setLatitud(-27.377018);
+		paradaSanIsidro_8.getPosicion().setLongitud(-55.832377);
+		paradaSanIsidro_8.setImage(null);
+		paradaSanIsidro_8.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada Surtidor Matias", paradaService.saveParada(paradaSanIsidro_8));
+		
+		ParadaDto paradaSanIsidro_9 = new ParadaDto();
+		paradaSanIsidro_9.setNombre("Parada JOMAI Helados");
+		paradaSanIsidro_9.setDescripcion("Parada San Isidro, al lado de JOMAI Helados");
+		paradaSanIsidro_9.setPosicion(new PosicionDto());
+		paradaSanIsidro_9.getPosicion().setLatitud(-27.375643);
+		paradaSanIsidro_9.getPosicion().setLongitud(-55.833319);
+		paradaSanIsidro_9.setImage(null);
+		paradaSanIsidro_9.setZona(mapZonas.get("Zona San Isidro").getNombre());
+
+		map.put("Parada JOMAI HELADOS", paradaService.saveParada(paradaSanIsidro_9));
+		
+		
 		
 
 		return map;
@@ -1225,16 +1315,16 @@ public class TestServiceImpl implements ITestService {
 		zonaCircuito.setDescripcion("Ubicacion de la zona circuito y alrededores");
 		zonaCircuito = zonaService.saveZona(zonaCircuito);
 		resultMap.put("Zona Circuito", zonaCircuito);
+		
+		ZonaDto zonaSanIsidro = new ZonaDto();
+		zonaSanIsidro.setNombre("Zona San Isidro");
+		zonaSanIsidro.setDescripcion("Ubicacion de la zona San Isidro");
+		zonaSanIsidro = zonaService.saveZona(zonaSanIsidro);
+		resultMap.put("Zona San Isidro", zonaSanIsidro);
 
 		return resultMap;
 	}
-
-	@Override
-	public void deleteUbicacionColectivo(Integer colectivoId) {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 	/********************** Variables Privadas **********************/
 	@Autowired
 	private IColectivoService colectivoService;
