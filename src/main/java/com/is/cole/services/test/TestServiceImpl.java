@@ -760,10 +760,30 @@ public class TestServiceImpl implements ITestService {
 		map.put("Recorrido Ruta 6", dtoRecorridoCapitanMiranda);
 
 		RecorridoDto RecorridoSanIsidro = new RecorridoDto();
-		dtoRecorridoCircuito.setDescripcion("");
+		RecorridoSanIsidro.setDescripcion("");
 
-		dtoRecorridoCircuito.setNombre("Principal Ruta 1 Circuito");
-		dtoRecorridoCircuito.setColor(colorMap.get("red").getNombre());
+		RecorridoSanIsidro.setNombre("Principal Ruta 1 Circuito");
+		RecorridoSanIsidro.setColor(colorMap.get("green").getNombre());
+		
+		List<PuntoDeRecorridoDto> puntosSanIsidro = new ArrayList<>();
+
+		PuntoDeRecorridoDto puntoSanIsidro1 = new PuntoDeRecorridoDto();
+		puntoSanIsidro1.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro1.getPuntoPosicion().setLatitud(-27.358453);
+		puntoSanIsidro1.getPuntoPosicion().setLongitud(-55.849956);
+
+		puntosSanIsidro.add(puntoSanIsidro1);
+		
+		PuntoDeRecorridoDto puntoSanIsidro2 = new PuntoDeRecorridoDto();
+		puntoSanIsidro2.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro2.getPuntoPosicion().setLatitud(-27.358453);
+		puntoSanIsidro2.getPuntoPosicion().setLongitud(-55.849956);
+
+		puntosSanIsidro.add(puntoSanIsidro2);
+		
+		paradaDto = paradaMap.get("Parada Chiperia Aaron");
+		puntoParadaGralArtigas_8.setParadaId(paradaDto.getId());
+		puntoParadaGralArtigas_8.setPuntoPosicion(paradaDto.getPosicion());
 
 		return map;
 
@@ -1091,6 +1111,18 @@ public class TestServiceImpl implements ITestService {
 		paradaAvCaballero_4.setZona(mapZonas.get("Zona Centro").getNombre());
 
 		map.put("Parada Carsuplay", paradaService.saveParada(paradaAvCaballero_4));
+		
+		ParadaDto paradaSanIsidro_1 = new ParadaDto();
+		paradaSanIsidro_1.setNombre("Parada Esquina Libano");
+		paradaSanIsidro_1.setDescripcion("Parada San Isidro, frente carsuplay");
+		paradaSanIsidro_1.setPosicion(new PosicionDto());
+		paradaSanIsidro_1.getPosicion().setLatitud(-27.326081838152955);
+		paradaSanIsidro_1.getPosicion().setLongitud(-55.862803681953004);
+		paradaSanIsidro_1.setImage(null);
+		paradaSanIsidro_1.setZona(mapZonas.get("Zona Centro").getNombre());
+
+		map.put("Parada Carsuplay", paradaService.saveParada(paradaSanIsidro_1));
+		
 
 		return map;
 	}
