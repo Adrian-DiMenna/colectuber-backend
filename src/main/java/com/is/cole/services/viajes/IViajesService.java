@@ -13,7 +13,4 @@ public interface IViajesService{
 	
 	//Funciones especificas
 	public ViajeDto getByChoferIdViaje(Integer id);
-	
-	
-	
 }

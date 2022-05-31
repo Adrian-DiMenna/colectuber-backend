@@ -67,6 +67,7 @@ public class ViajesServiceImpl implements IViajesService {
 		Viaje beanObtenido = viajeDao.findByUsuarioId(id);
 		return parseBeanToDtoViaje(beanObtenido);
 	}
+	
 	/********************** Parses **********************/
 
 	//No esta seteado el state todavia
