@@ -101,7 +101,5 @@ public class ViajesServiceImpl implements IViajesService {
 	private IColectivoDao colectivoDao;
 	@Autowired
 	private IRecorridoDao recorridoDao;
-	
-
 
 }

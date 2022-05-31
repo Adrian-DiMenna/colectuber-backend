@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.is.cole.dtos.Usuarios.UsuarioDto;
 import com.is.cole.dtos.colectuber.ColectivoUbicacionDto;
 import com.is.cole.services.colectuber.IColectuberService;
@@ -49,7 +48,7 @@ public class TestController {
 	@PostMapping("/colectivo_ubicacion")
 	public ResponseEntity<?> postColectivoUbicacion(@RequestBody ColectivoUbicacionDto dto) {
 		try {
-			UsuarioDto user =usuarioService.getUsuario(dto.getChofer_id());
+			UsuarioDto user = usuarioService.getUsuarioByColectivoId(dto.getColectivoId());
 			colectuberService.postColectivoUbicacion(dto, user.getCorreo_electronico());
 			logger.info("Test: Post Colectivo Ubicacion: Exito");
 			return ResponseEntity.status(HttpStatus.OK).build();
@@ -80,8 +79,9 @@ public class TestController {
 	
 	@Autowired
 	private ITestService testService;
-	private Logger logger = LogManager.getLogger(TestController.class.getClass());
+	@Autowired
 	private IColectuberService colectuberService;
+	@Autowired
 	private IUsuariosService usuarioService;
-
+	private Logger logger = LogManager.getLogger(TestController.class.getClass());
 }

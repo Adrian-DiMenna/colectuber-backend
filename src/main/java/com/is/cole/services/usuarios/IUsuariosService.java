@@ -13,6 +13,7 @@ public interface IUsuariosService {
 	public UsuarioDto getUsuario(Integer id);
 	public Result<UsuarioDto> getAllUsuario();
 	public UsuarioDto getUsuarioByCorreo(String correo);
+	public UsuarioDto getUsuarioByColectivoId(Integer id);
 	
 	//Roles
 	public RoleDto saveRole(RoleDto dto);

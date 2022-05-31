@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.is.cole.daos.IRoleDao;
 import com.is.cole.daos.IRolesUsuarioDao;
 import com.is.cole.daos.IUserDao;
+import com.is.cole.daos.IViajeDao;
 import com.is.cole.dtos.Result;
 import com.is.cole.dtos.Usuarios.RoleDto;
 import com.is.cole.dtos.Usuarios.UsuarioDto;
@@ -47,9 +48,16 @@ public class UsuariosServiceImpl implements IUsuariosService {
 	}
 
 	@Override
+	@Transactional
 	public UsuarioDto getUsuarioByCorreo(String correo) {
 		Usuarios bean = userDao.findByCorreo(correo);
 		return parseBeanToDtoUsuario(bean);
+	}
+	@Override
+	@Transactional
+	public UsuarioDto getUsuarioByColectivoId(Integer id) {
+		Usuarios user= viajeDao.findByColectivoId(id).getUsuario();
+		return parseBeanToDtoUsuario(user);
 	}
 
 	@Override
@@ -253,6 +261,8 @@ public class UsuariosServiceImpl implements IUsuariosService {
 	private IRolesUsuarioDao roleUserDao;
 	@Autowired
 	private IUserDao userDao;
+	@Autowired
+	private IViajeDao viajeDao;
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 }
