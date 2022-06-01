@@ -59,7 +59,6 @@ public class TestServiceImpl implements ITestService {
 		viajeCircuito.setColectivo_id(colectivoMap.get("Colectivo23").getId());
 
 		viajeCircuito = viajeService.saveViaje(viajeCircuito);
-
 		viajeMap.put("Viaje Circuito", viajeCircuito);
 
 		ViajeDto viajeRuta6 = new ViajeDto();
@@ -69,8 +68,16 @@ public class TestServiceImpl implements ITestService {
 		viajeRuta6.setColectivo_id(colectivoMap.get("Colectivo11").getId());
 
 		viajeRuta6 = viajeService.saveViaje(viajeRuta6);
-
 		viajeMap.put("Viaje Capitan Miranda", viajeRuta6);
+		
+		ViajeDto viajeSanIsidro = new ViajeDto();
+		viajeSanIsidro.setDestino("San Isidro");
+		viajeSanIsidro.setRecorrido_id(recorridoMap.get("Recorrido San Isidro").getId());
+		viajeSanIsidro.setChofer_id(usuarioMap.get("rosa").getId());
+		viajeSanIsidro.setColectivo_id(colectivoMap.get("Colectivo777").getId());
+
+		viajeSanIsidro = viajeService.saveViaje(viajeSanIsidro);
+		viajeMap.put("Viaje San Isidro", viajeSanIsidro);
 
 		return viajeMap;
 	}
@@ -759,10 +766,11 @@ public class TestServiceImpl implements ITestService {
 
 		map.put("Recorrido Ruta 6", dtoRecorridoCapitanMiranda);
 
+		
 		RecorridoDto RecorridoSanIsidro = new RecorridoDto();
 		RecorridoSanIsidro.setDescripcion("");
 
-		RecorridoSanIsidro.setNombre("Principal Ruta 1 Circuito");
+		RecorridoSanIsidro.setNombre("Recorrido San Isidro");
 		RecorridoSanIsidro.setColor(colorMap.get("green").getNombre());
 		
 		List<PuntoDeRecorridoDto> puntosSanIsidro = new ArrayList<>();
@@ -775,18 +783,297 @@ public class TestServiceImpl implements ITestService {
 		puntosSanIsidro.add(puntoSanIsidro1);
 		
 		PuntoDeRecorridoDto puntoSanIsidro2 = new PuntoDeRecorridoDto();
-		puntoSanIsidro2.setPuntoPosicion(new PosicionDto());
-		puntoSanIsidro2.getPuntoPosicion().setLatitud(-27.358453);
-		puntoSanIsidro2.getPuntoPosicion().setLongitud(-55.849956);
-
+		paradaDto= paradaMap.get("Parada Esquina Libano");
+		puntoSanIsidro2.setParadaId(paradaDto.getId());
+		puntoSanIsidro2.setPuntoPosicion(paradaDto.getPosicion());
+		
 		puntosSanIsidro.add(puntoSanIsidro2);
 		
-		//paradaDto = paradaMap.get("Parada Chiperia Aaron");
-		//puntoParadaGralArtigas_8.setParadaId(paradaDto.getId());
-		//puntoParadaGralArtigas_8.setPuntoPosicion(paradaDto.getPosicion());
+		PuntoDeRecorridoDto puntoSanIsidro3 = new PuntoDeRecorridoDto();
+		puntoSanIsidro3.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro3.getPuntoPosicion().setLatitud(-27.359742);
+		puntoSanIsidro3.getPuntoPosicion().setLongitud(-55.848138);
 
+		puntosSanIsidro.add(puntoSanIsidro3);
+		
+		PuntoDeRecorridoDto puntoSanIsidro4 = new PuntoDeRecorridoDto();
+		puntoSanIsidro4.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro4.getPuntoPosicion().setLatitud(-27.359805);
+		puntoSanIsidro4.getPuntoPosicion().setLongitud(-55.848206);
+
+		puntosSanIsidro.add(puntoSanIsidro4);
+		
+		PuntoDeRecorridoDto puntoSanIsidro5 = new PuntoDeRecorridoDto();
+		puntoSanIsidro5.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro5.getPuntoPosicion().setLatitud(-27.359881);
+		puntoSanIsidro5.getPuntoPosicion().setLongitud(-55.848154);
+
+		puntosSanIsidro.add(puntoSanIsidro5);
+		
+		PuntoDeRecorridoDto puntoSanIsidro6 = new PuntoDeRecorridoDto();
+		puntoSanIsidro6.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro6.getPuntoPosicion().setLatitud(-27.360047);
+		puntoSanIsidro6.getPuntoPosicion().setLongitud(-55.848155);
+
+		puntosSanIsidro.add(puntoSanIsidro6);
+		
+		PuntoDeRecorridoDto puntoSanIsidro7 = new PuntoDeRecorridoDto();
+		puntoSanIsidro7.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro7.getPuntoPosicion().setLatitud(-27.360184);
+		puntoSanIsidro7.getPuntoPosicion().setLongitud(-55.848246);
+
+		puntosSanIsidro.add(puntoSanIsidro7);
+		
+		PuntoDeRecorridoDto puntoSanIsidro8 = new PuntoDeRecorridoDto();
+		puntoSanIsidro8.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro8.getPuntoPosicion().setLatitud(-27.360896);
+		puntoSanIsidro8.getPuntoPosicion().setLongitud(-55.848797);
+
+		puntosSanIsidro.add(puntoSanIsidro8);
+		
+		PuntoDeRecorridoDto puntoSanIsidro9 = new PuntoDeRecorridoDto();
+		puntoSanIsidro9.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro9.getPuntoPosicion().setLatitud(-27.361601);
+		puntoSanIsidro9.getPuntoPosicion().setLongitud(-55.848102);
+
+		puntosSanIsidro.add(puntoSanIsidro9);
+		
+		PuntoDeRecorridoDto puntoSanIsidro10 = new PuntoDeRecorridoDto();
+		puntoSanIsidro10.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro10.getPuntoPosicion().setLatitud(-27.363715);
+		puntoSanIsidro10.getPuntoPosicion().setLongitud(-55.846161);
+
+		puntosSanIsidro.add(puntoSanIsidro10);
+		
+		PuntoDeRecorridoDto puntoSanIsidro11 = new PuntoDeRecorridoDto();
+		puntoSanIsidro11.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro11.getPuntoPosicion().setLatitud(-27.364670);
+		puntoSanIsidro11.getPuntoPosicion().setLongitud(-55.845064);
+
+		puntosSanIsidro.add(puntoSanIsidro11);
+		
+		PuntoDeRecorridoDto puntoSanIsidro12 = new PuntoDeRecorridoDto();
+		puntoSanIsidro12.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro12.getPuntoPosicion().setLatitud(-27.365076);
+		puntoSanIsidro12.getPuntoPosicion().setLongitud(-55.844804);
+
+		puntosSanIsidro.add(puntoSanIsidro12);
+		
+		PuntoDeRecorridoDto puntoSanIsidro13 = new PuntoDeRecorridoDto();
+		puntoSanIsidro13.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro13.getPuntoPosicion().setLatitud(-27.366011);
+		puntoSanIsidro13.getPuntoPosicion().setLongitud(-55.844201);
+
+		puntosSanIsidro.add(puntoSanIsidro13);
+		
+		PuntoDeRecorridoDto puntoSanIsidro14 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada MasTV");
+		puntoSanIsidro14.setParadaId(paradaDto.getId());
+		puntoSanIsidro14.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosSanIsidro.add(puntoSanIsidro14);
+		
+		PuntoDeRecorridoDto puntoSanIsidro15 = new PuntoDeRecorridoDto();
+		puntoSanIsidro15.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro15.getPuntoPosicion().setLatitud(-27.367811);
+		puntoSanIsidro15.getPuntoPosicion().setLongitud(-55.843379);
+
+		puntosSanIsidro.add(puntoSanIsidro15);
+		
+		PuntoDeRecorridoDto puntoSanIsidro16 = new PuntoDeRecorridoDto();
+		puntoSanIsidro16.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro16.getPuntoPosicion().setLatitud(-27.368137);
+		puntoSanIsidro16.getPuntoPosicion().setLongitud(-55.843120);
+
+		puntosSanIsidro.add(puntoSanIsidro16);
+		
+		PuntoDeRecorridoDto puntoSanIsidro17 = new PuntoDeRecorridoDto();
+		puntoSanIsidro17.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro17.getPuntoPosicion().setLatitud(-27.368241);
+		puntoSanIsidro17.getPuntoPosicion().setLongitud(-55.843027);
+
+		puntosSanIsidro.add(puntoSanIsidro17);
+		
+		PuntoDeRecorridoDto puntoSanIsidro18 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada Petrosur");
+		puntoSanIsidro18.setParadaId(paradaDto.getId());
+		puntoSanIsidro18.setPuntoPosicion(paradaDto.getPosicion());
+		
+		puntosSanIsidro.add(puntoSanIsidro18);
+		
+		PuntoDeRecorridoDto puntoSanIsidro19 = new PuntoDeRecorridoDto();
+		puntoSanIsidro19.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro19.getPuntoPosicion().setLatitud(-27.368817);
+		puntoSanIsidro19.getPuntoPosicion().setLongitud(-55.842081);
+
+		puntosSanIsidro.add(puntoSanIsidro19);
+		
+		PuntoDeRecorridoDto puntoSanIsidro20 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada Carniceria San Carlos");
+		puntoSanIsidro20.setParadaId(paradaDto.getId());
+		puntoSanIsidro20.setPuntoPosicion(paradaDto.getPosicion());
+		
+		PuntoDeRecorridoDto puntoSanIsidro21 = new PuntoDeRecorridoDto();
+		puntoSanIsidro21.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro21.getPuntoPosicion().setLatitud(-27.369644);
+		puntoSanIsidro21.getPuntoPosicion().setLongitud(-55.840922);
+
+		puntosSanIsidro.add(puntoSanIsidro21);
+		
+		PuntoDeRecorridoDto puntoSanIsidro22 = new PuntoDeRecorridoDto();
+		puntoSanIsidro22.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro22.getPuntoPosicion().setLatitud(-27.369772);
+		puntoSanIsidro22.getPuntoPosicion().setLongitud(-55.840714);
+
+		puntosSanIsidro.add(puntoSanIsidro22);
+		
+		PuntoDeRecorridoDto puntoSanIsidro23 = new PuntoDeRecorridoDto();
+		puntoSanIsidro23.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro23.getPuntoPosicion().setLatitud(-27.369835);
+		puntoSanIsidro23.getPuntoPosicion().setLongitud(-55.840435);
+
+		puntosSanIsidro.add(puntoSanIsidro23);
+		
+		PuntoDeRecorridoDto puntoSanIsidro24 = new PuntoDeRecorridoDto();
+		puntoSanIsidro24.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro24.getPuntoPosicion().setLatitud(-27.369885);
+		puntoSanIsidro24.getPuntoPosicion().setLongitud(-55.839635);
+
+		puntosSanIsidro.add(puntoSanIsidro24);
+		
+		PuntoDeRecorridoDto puntoSanIsidro25 = new PuntoDeRecorridoDto();
+		puntoSanIsidro25.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro25.getPuntoPosicion().setLatitud(-27.369987);
+		puntoSanIsidro25.getPuntoPosicion().setLongitud(-55.839240);
+
+		puntosSanIsidro.add(puntoSanIsidro25);
+		
+		PuntoDeRecorridoDto puntoSanIsidro26 = new PuntoDeRecorridoDto();
+		puntoSanIsidro26.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro26.getPuntoPosicion().setLatitud(-27.370024);
+		puntoSanIsidro26.getPuntoPosicion().setLongitud(-55.839134);
+
+		puntosSanIsidro.add(puntoSanIsidro26);
+		
+		PuntoDeRecorridoDto puntoSanIsidro27 = new PuntoDeRecorridoDto();
+		puntoSanIsidro27.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro27.getPuntoPosicion().setLatitud(-27.370139);
+		puntoSanIsidro27.getPuntoPosicion().setLongitud(-55.838878);
+
+		puntosSanIsidro.add(puntoSanIsidro27);
+		
+		PuntoDeRecorridoDto puntoSanIsidro28 = new PuntoDeRecorridoDto();
+		puntoSanIsidro28.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro28.getPuntoPosicion().setLatitud(-27.370306);
+		puntoSanIsidro28.getPuntoPosicion().setLongitud(-55.838617);
+
+		puntosSanIsidro.add(puntoSanIsidro28);
+		
+		PuntoDeRecorridoDto puntoSanIsidro29 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada MaxiFarma");
+		puntoSanIsidro29.setParadaId(paradaDto.getId());
+		puntoSanIsidro29.setPuntoPosicion(paradaDto.getPosicion());
+		puntosSanIsidro.add(puntoSanIsidro29);
+		
+		PuntoDeRecorridoDto puntoSanIsidro30 = new PuntoDeRecorridoDto();
+		puntoSanIsidro30.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro30.getPuntoPosicion().setLatitud(-27.371321);
+		puntoSanIsidro30.getPuntoPosicion().setLongitud(-55.837738);
+
+		puntosSanIsidro.add(puntoSanIsidro30);
+		
+		PuntoDeRecorridoDto puntoSanIsidro31 = new PuntoDeRecorridoDto();
+		puntoSanIsidro31.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro31.getPuntoPosicion().setLatitud(-27.371694);
+		puntoSanIsidro31.getPuntoPosicion().setLongitud(-55.837359);
+
+		puntosSanIsidro.add(puntoSanIsidro31);
+		
+		PuntoDeRecorridoDto puntoSanIsidro32 = new PuntoDeRecorridoDto();
+		puntoSanIsidro32.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro32.getPuntoPosicion().setLatitud(-27.371886);
+		puntoSanIsidro32.getPuntoPosicion().setLongitud(-55.837128);
+
+		puntosSanIsidro.add(puntoSanIsidro32);
+		
+		PuntoDeRecorridoDto puntoSanIsidro33 = new PuntoDeRecorridoDto();
+		puntoSanIsidro33.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro33.getPuntoPosicion().setLatitud(-27.372061);
+		puntoSanIsidro33.getPuntoPosicion().setLongitud(-55.836773);
+
+		puntosSanIsidro.add(puntoSanIsidro33);
+		
+		PuntoDeRecorridoDto puntoSanIsidro34 = new PuntoDeRecorridoDto();
+		puntoSanIsidro34.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro34.getPuntoPosicion().setLatitud(-27.372085);
+		puntoSanIsidro34.getPuntoPosicion().setLongitud(-55.836443);
+
+		puntosSanIsidro.add(puntoSanIsidro34);
+		
+		PuntoDeRecorridoDto puntoSanIsidro35 = new PuntoDeRecorridoDto();
+		puntoSanIsidro35.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro35.getPuntoPosicion().setLatitud(-27.371925);
+		puntoSanIsidro35.getPuntoPosicion().setLongitud(-55.835357);
+
+		puntosSanIsidro.add(puntoSanIsidro35);
+		
+		PuntoDeRecorridoDto puntoSanIsidro36 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada Iglesia San Isidro");
+		puntoSanIsidro36.setParadaId(paradaDto.getId());
+		puntoSanIsidro36.setPuntoPosicion(paradaDto.getPosicion());
+		puntosSanIsidro.add(puntoSanIsidro36);
+		
+		PuntoDeRecorridoDto puntoSanIsidro37 = new PuntoDeRecorridoDto();
+		puntoSanIsidro37.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro37.getPuntoPosicion().setLatitud(-27.371938);
+		puntoSanIsidro37.getPuntoPosicion().setLongitud(-55.834377);
+
+		puntosSanIsidro.add(puntoSanIsidro37);
+		
+		PuntoDeRecorridoDto puntoSanIsidro38 = new PuntoDeRecorridoDto();
+		puntoSanIsidro38.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro38.getPuntoPosicion().setLatitud(-27.373182);
+		puntoSanIsidro38.getPuntoPosicion().setLongitud(-55.834355);
+
+		puntosSanIsidro.add(puntoSanIsidro38);
+		
+		PuntoDeRecorridoDto puntoSanIsidro39 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada Avenida 9");
+		puntoSanIsidro39.setParadaId(paradaDto.getId());
+		puntoSanIsidro39.setPuntoPosicion(paradaDto.getPosicion());
+		puntosSanIsidro.add(puntoSanIsidro39);
+		
+		PuntoDeRecorridoDto puntoSanIsidro40 = new PuntoDeRecorridoDto();
+		puntoSanIsidro40.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro40.getPuntoPosicion().setLatitud(-27.374141);
+		puntoSanIsidro40.getPuntoPosicion().setLongitud(-55.834011);
+
+		puntosSanIsidro.add(puntoSanIsidro40);
+		
+		PuntoDeRecorridoDto puntoSanIsidro41 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada JOMAI Helados");
+		puntoSanIsidro41.setParadaId(paradaDto.getId());
+		puntoSanIsidro41.setPuntoPosicion(paradaDto.getPosicion());
+		puntosSanIsidro.add(puntoSanIsidro41);
+		
+		PuntoDeRecorridoDto puntoSanIsidro42 = new PuntoDeRecorridoDto();
+		puntoSanIsidro42.setPuntoPosicion(new PosicionDto());
+		puntoSanIsidro42.getPuntoPosicion().setLatitud(-27.375863);
+		puntoSanIsidro42.getPuntoPosicion().setLongitud(-55.833204);
+
+		puntosSanIsidro.add(puntoSanIsidro42);
+			
+		PuntoDeRecorridoDto puntoSanIsidro43 = new PuntoDeRecorridoDto();
+		paradaDto= paradaMap.get("Parada Surtidor Matias");
+		puntoSanIsidro43.setParadaId(paradaDto.getId());
+		puntoSanIsidro43.setPuntoPosicion(paradaDto.getPosicion());
+		puntosSanIsidro.add(puntoSanIsidro43);
+		
+		RecorridoSanIsidro.setPuntos(puntosSanIsidro);
+		RecorridoSanIsidro = recorridoService.saveRecorrido(RecorridoSanIsidro);
+		map.put("Recorrido San Isidro", RecorridoSanIsidro);
+		
 		return map;
-
 	}
 
 	private Map<String, RoleDto> insertRoles() {
@@ -831,6 +1118,14 @@ public class TestServiceImpl implements ITestService {
 		chofer_2.setPassword("muysecreto");
 		map.put("mariano", usuarioService.saveUsuario(chofer_2));
 		usuarioService.agregarRoleAUsuario(map.get("mariano").getId(), rolMap.get("chofer").getId());
+		
+		UsuarioDto chofer_3 = new UsuarioDto();
+		chofer_3.setNombre("Rosa");
+		chofer_3.setApellido("Mela");
+		chofer_3.setCorreo_electronico("rosa@gmail.com");
+		chofer_3.setPassword("muysecreto");
+		map.put("rosa", usuarioService.saveUsuario(chofer_3));
+		usuarioService.agregarRoleAUsuario(map.get("rosa").getId(), rolMap.get("chofer").getId());
 		return map;
 	}
 
@@ -1209,7 +1504,7 @@ public class TestServiceImpl implements ITestService {
 		paradaSanIsidro_9.setImage(null);
 		paradaSanIsidro_9.setZona(mapZonas.get("Zona San Isidro").getNombre());
 
-		map.put("Parada JOMAI HELADOS", paradaService.saveParada(paradaSanIsidro_9));
+		map.put("Parada JOMAI Helados", paradaService.saveParada(paradaSanIsidro_9));
 		
 		
 		
@@ -1237,6 +1532,14 @@ public class TestServiceImpl implements ITestService {
 
 		colectivo_2 = colectivoService.saveColectivo(colectivo_2);
 		map.put("Colectivo11", colectivo_2);
+		
+		ColectivoDto colectivo_3 = new ColectivoDto();
+		colectivo_3.setEmpresaId(empresaMap.get("urbano").getId());
+		colectivo_3.setLineaId(lineaMap.get("Linea777").getId());
+		colectivo_3.setNumero("21");
+
+		colectivo_3 = colectivoService.saveColectivo(colectivo_3);
+		map.put("Colectivo21", colectivo_3);
 
 		return map;
 	}
@@ -1253,6 +1556,11 @@ public class TestServiceImpl implements ITestService {
 		lineaDto_2.setNumero("11");
 		lineaDto_2 = lineaService.saveLineaColectivo(lineaDto_2);
 		map.put("Linea11", lineaDto_2);
+		
+		LineaDeColectivosDto lineaDto_3 = new LineaDeColectivosDto();
+		lineaDto_3.setNumero("777");
+		lineaDto_3 = lineaService.saveLineaColectivo(lineaDto_3);
+		map.put("Linea777", lineaDto_3);
 
 		return map;
 	}
