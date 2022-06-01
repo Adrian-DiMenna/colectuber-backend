@@ -74,7 +74,7 @@ public class TestServiceImpl implements ITestService {
 		viajeSanIsidro.setDestino("San Isidro");
 		viajeSanIsidro.setRecorrido_id(recorridoMap.get("Recorrido San Isidro").getId());
 		viajeSanIsidro.setChofer_id(usuarioMap.get("rosa").getId());
-		viajeSanIsidro.setColectivo_id(colectivoMap.get("Colectivo777").getId());
+		viajeSanIsidro.setColectivo_id(colectivoMap.get("Colectivo21").getId());
 
 		viajeSanIsidro = viajeService.saveViaje(viajeSanIsidro);
 		viajeMap.put("Viaje San Isidro", viajeSanIsidro);
@@ -768,7 +768,10 @@ public class TestServiceImpl implements ITestService {
 
 		
 		RecorridoDto RecorridoSanIsidro = new RecorridoDto();
-		RecorridoSanIsidro.setDescripcion("");
+		RecorridoSanIsidro.setDescripcion("Recorrido Circuito hasta Barrio San Isidro: \"\r\n"
+				+ "				+ \"De P. Linano -> P. MasTV -> P. Petrosur -> P. Carniceria San Carlos \"\r\n"
+				+ "				+ \"-> P. MaxiFarma -> P. Iglesia San Isidro -> P. Avenida 9 -> P. Jomai Helados \"\r\n"
+				+ "				+ \"-> P. La Surtidor Matias");
 
 		RecorridoSanIsidro.setNombre("Recorrido San Isidro");
 		RecorridoSanIsidro.setColor(colorMap.get("green").getNombre());
@@ -1449,7 +1452,7 @@ public class TestServiceImpl implements ITestService {
 		paradaSanIsidro_4.setImage(null);
 		paradaSanIsidro_4.setZona(mapZonas.get("Zona San Isidro").getNombre());
 
-		map.put("Parada San Carlos", paradaService.saveParada(paradaSanIsidro_4));
+		map.put("Parada Carniceria San Carlos", paradaService.saveParada(paradaSanIsidro_4));
 		
 		ParadaDto paradaSanIsidro_5 = new ParadaDto();
 		paradaSanIsidro_5.setNombre("Parada MaxiFarma");
