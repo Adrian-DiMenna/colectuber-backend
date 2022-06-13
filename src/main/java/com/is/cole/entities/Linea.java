@@ -8,20 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * Entidad para la representacion de las lineas de los colectivos
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name="lineas",uniqueConstraints=@UniqueConstraint(name="uk_numero", columnNames = {"numero"}))
 public class Linea implements BaseBean{
-
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique= true)
-	private Integer id;
-
-	@Column(name="numero")
-	private String numero;
-	
 
 	public Integer getId() {
 		return id;
@@ -39,4 +33,15 @@ public class Linea implements BaseBean{
 		this.numero = numero;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique= true)
+	private Integer id;
+
+	@Column(name="numero")
+	private String numero;
 }

@@ -8,15 +8,7 @@ import com.is.cole.dtos.PosicionDto;
  * @author Colectuber
  */
 public class ColectivoUbicacionDto extends BaseDto{
-	private static final long serialVersionUID = 1L;
-	
-	private PosicionDto posicionColectivo;
-	private Integer colectivoId;
-	private Double indicePorcentaje;
-	private Integer recorrido_id;
-	private Integer chofer_id;
-	private String destino;
-	
+
 	public String getDestino() {
 		return destino;
 	}
@@ -65,6 +57,15 @@ public class ColectivoUbicacionDto extends BaseDto{
 		this.colectivoId = colectivoId;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private PosicionDto posicionColectivo;
+	private Integer colectivoId;
+	private Double indicePorcentaje;
+	private Integer recorrido_id;
+	private Integer chofer_id;
+	private String destino;
 	
 
 }

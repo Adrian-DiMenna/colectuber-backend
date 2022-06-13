@@ -9,27 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Entidad para la representacion de las paradas de los colectivos
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name="paradas")
 public class Parada implements BaseBean{
-	
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique= true)
-	private Integer id;
-	
-	@ManyToOne
-	@JoinColumn(name="zona_id",referencedColumnName = "id")
-	private Zona zona;
-	
-	private String nombre;
-	private String descripcion;
-	private String imagen;
-	private Double latitud;
-	private Double longitud;
-	
 	
 	public Zona getZona() {
 		return zona;
@@ -74,6 +61,22 @@ public class Parada implements BaseBean{
 		this.longitud = longitud;
 	}
 
+	/************************ Variables Privadas ******************************/
 	
+	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique= true)
+	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="zona_id",referencedColumnName = "id")
+	private Zona zona;
+	
+	private String nombre;
+	private String descripcion;
+	private String imagen;
+	private Double latitud;
+	private Double longitud;
 }

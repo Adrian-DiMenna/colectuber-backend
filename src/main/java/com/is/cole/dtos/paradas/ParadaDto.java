@@ -2,18 +2,13 @@ package com.is.cole.dtos.paradas;
 
 import com.is.cole.dtos.BaseDto;
 import com.is.cole.dtos.PosicionDto;
-
+/**
+ * Clase para el envio y recibo del parseo de la entidad parada de colectivos
+ * @author Acer
+ *
+ */
 public class ParadaDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String nombre;
-	private String descripcion;
-	private String image;
-	private PosicionDto posicion;
-	private String zona;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -50,6 +45,16 @@ public class ParadaDto extends BaseDto{
 	public void setZona(String zona) {
 		this.zona = zona;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String nombre;
+	private String descripcion;
+	private String image;
+	private PosicionDto posicion;
+	private String zona;
 	
 	
 }

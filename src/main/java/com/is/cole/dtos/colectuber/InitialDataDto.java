@@ -11,16 +11,6 @@ import com.is.cole.dtos.recorridos.RecorridoDto;
  */
 public class InitialDataDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-
-	private List<ColectuberColectivoDto> colectivos;
-	
-	private List<ParadaDto> paradas;
-	
-	private List<RecorridoDto> recorridos;
-	
-	private List<ColectivoUbicacionDto> colectivoUbicacion;
-	
 	public List<ColectuberColectivoDto> getColectivos() {
 		return colectivos;
 	}
@@ -53,7 +43,16 @@ public class InitialDataDto extends BaseDto{
 		this.colectivoUbicacion = colectivoUbicacion;
 	}
 	
-	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
 
+	private List<ColectuberColectivoDto> colectivos;
+	
+	private List<ParadaDto> paradas;
+	
+	private List<RecorridoDto> recorridos;
+	
+	private List<ColectivoUbicacionDto> colectivoUbicacion;
+	
 	
 }

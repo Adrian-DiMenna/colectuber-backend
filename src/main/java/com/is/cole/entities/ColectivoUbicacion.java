@@ -11,31 +11,14 @@ import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
+/**
+ * Entidad para representar las ubicaciones de los colectivos
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name = "ubicaciones")
 public class ColectivoUbicacion implements BaseBean{
-
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@Column(nullable = false, unique = true)
-	private Integer id;
-	
-	@OneToOne
-	@JoinColumn(name="colectivo_id",referencedColumnName="id")
-	private Colectivo colectivo;
-	
-	private Double latitud;
-	private Double longitud;
-	private Long tiempo;
-	private String destino;
-	
-	@ManyToOne
-	@JoinColumn(name="recorrido_id",referencedColumnName="id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Recorrido recorrido;
-	
-	private double indicePorcentaje;
 
 	public double getIndicePorcentaje() {
 		return indicePorcentaje;
@@ -86,7 +69,29 @@ public class ColectivoUbicacion implements BaseBean{
 		this.destino = destino;
 	}
 	
+	/************************ Variables Privadas ******************************/
 	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@Column(nullable = false, unique = true)
+	private Integer id;
+	
+	@OneToOne
+	@JoinColumn(name="colectivo_id",referencedColumnName="id")
+	private Colectivo colectivo;
+	
+	private Double latitud;
+	private Double longitud;
+	private Long tiempo;
+	private String destino;
+	
+	@ManyToOne
+	@JoinColumn(name="recorrido_id",referencedColumnName="id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Recorrido recorrido;
+	
+	private double indicePorcentaje;
 	
 
 }

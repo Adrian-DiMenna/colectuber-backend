@@ -8,13 +8,6 @@ import com.is.cole.dtos.BaseDto;
  */
 public class UsuarioChoferDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String nombre;
-	private String apellido;
-	private String correo_electronico;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -39,5 +32,13 @@ public class UsuarioChoferDto extends BaseDto{
 	public void setCorreo_electronico(String correo_electronico) {
 		this.correo_electronico = correo_electronico;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String nombre;
+	private String apellido;
+	private String correo_electronico;
 
 }

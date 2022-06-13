@@ -8,26 +8,15 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * Entidad para la representacion de las empresas de colectivos
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name="empresas_colectivos",uniqueConstraints=@UniqueConstraint(name="uk_nombre_correo",
 columnNames = {"nombre","correo"}))
 public class EmpresaDeColectivos implements BaseBean{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique= true)
-	private Integer id;
-	
-	@Column(name="correo")
-	private String correo;
-	
-	@Column(name="nombre")
-	private String nombre;
-	
-	private String direccion;
-	
-	private String num_telefono;
 	
 	public Integer getId() {
 		return id;
@@ -60,6 +49,23 @@ public class EmpresaDeColectivos implements BaseBean{
 		this.correo = correo;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique= true)
+	private Integer id;
+	
+	@Column(name="correo")
+	private String correo;
+	
+	@Column(name="nombre")
+	private String nombre;
+	
+	private String direccion;
+	
+	private String num_telefono;
 	
 	
 

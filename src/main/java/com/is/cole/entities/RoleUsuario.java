@@ -9,24 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Entidad para la relacion entre un usuario y su rol
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name = "rolesUsuario")
 public class RoleUsuario implements BaseBean {
-
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique = true)
-	private Integer id;
-
-	@ManyToOne
-	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
-	private Usuarios usuarios;
-
-	@ManyToOne
-	@JoinColumn(name = "role_id", referencedColumnName = "id")
-	private Roles roles;
 
 	public Integer getId() {
 		return id;
@@ -51,5 +41,21 @@ public class RoleUsuario implements BaseBean {
 	public void setRoles(Roles roles) {
 		this.roles = roles;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Integer id;
+
+	@ManyToOne
+	@JoinColumn(name = "usuario_id", referencedColumnName = "id")
+	private Usuarios usuarios;
+
+	@ManyToOne
+	@JoinColumn(name = "role_id", referencedColumnName = "id")
+	private Roles roles;
 
 }

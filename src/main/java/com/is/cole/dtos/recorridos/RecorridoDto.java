@@ -9,14 +9,7 @@ import com.is.cole.dtos.BaseDto;
  * @author Colectuber
  */
 public class RecorridoDto extends BaseDto {
-	private static final long serialVersionUID = 1L;
-
-	private Integer id;
-	private String nombre;
-	private String descripcion;
-	private List<PuntoDeRecorridoDto> puntos;
-	private String color;
-
+	
 	public Integer getId() {
 		return id;
 	}
@@ -56,5 +49,14 @@ public class RecorridoDto extends BaseDto {
 	public void setColor(String color) {
 		this.color = color;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+	private String nombre;
+	private String descripcion;
+	private List<PuntoDeRecorridoDto> puntos;
+	private String color;
 
 }

@@ -2,12 +2,12 @@ package com.is.cole.dtos.colectivos;
 
 import com.is.cole.dtos.BaseDto;
 
+/**
+ * Clase para el parseo de la entidad Lineas de Colectivos para el envio y recibo
+ * @author Acer
+ *
+ */
 public class LineaDeColectivosDto extends BaseDto{
-
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String numero;
 	
 	public Integer getId() {
 		return id;
@@ -22,4 +22,9 @@ public class LineaDeColectivosDto extends BaseDto{
 		this.numero = numero;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String numero;
 }

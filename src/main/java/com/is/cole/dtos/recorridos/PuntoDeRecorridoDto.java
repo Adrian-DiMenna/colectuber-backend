@@ -9,12 +9,6 @@ import com.is.cole.dtos.PosicionDto;
  */
 public class PuntoDeRecorridoDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-
-	private Integer id;
-	private Integer paradaId;
-	private PosicionDto puntoPosicion;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -34,7 +28,11 @@ public class PuntoDeRecorridoDto extends BaseDto{
 		this.puntoPosicion = puntoPosicion;
 	}
 	
-	
-	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+
+	private Integer id;
+	private Integer paradaId;
+	private PosicionDto puntoPosicion;
 	
 }

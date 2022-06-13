@@ -20,26 +20,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name = "recorridos")
 public class Recorrido implements BaseBean {
 	
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique = true)
-	private Integer id;
-
-	@OneToOne
-	@JoinColumn(name = "puntos_id", referencedColumnName = "id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private PuntoDeRecorrido punto_inicial;
-
-	@OneToOne
-	@JoinColumn(name = "color_id", referencedColumnName = "id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Color color;
-
-	private String nombre;
-	private String descripcion;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -79,5 +59,25 @@ public class Recorrido implements BaseBean {
 	public void setColor(Color color) {
 		this.color = color;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Integer id;
+
+	@OneToOne
+	@JoinColumn(name = "puntos_id", referencedColumnName = "id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private PuntoDeRecorrido punto_inicial;
+
+	@OneToOne
+	@JoinColumn(name = "color_id", referencedColumnName = "id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Color color;
+
+	private String nombre;
+	private String descripcion;
 }
