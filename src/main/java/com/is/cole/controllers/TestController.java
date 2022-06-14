@@ -45,6 +45,12 @@ public class TestController {
 
 	}
 	
+	/**
+	 * Postea la ubicacion de un colectivo sin la necesidad de autenticarse	
+	 * @PostMapping("/colectivo_ubicacion")
+	 * @param dto
+	 * @return
+	 */
 	@PostMapping("/colectivo_ubicacion")
 	public ResponseEntity<?> postColectivoUbicacion(@RequestBody ColectivoUbicacionDto dto) {
 		try {
@@ -61,6 +67,11 @@ public class TestController {
 		}
 	}
 	
+	/**
+	 * Elimina la ubicacion de un colectivo solamente con el id del mismo
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/colectivo_ubicacion/{id}")
 	public ResponseEntity<?> deleteColectivoUbicacion(@PathVariable("id") Integer id ) {
 		try {

@@ -23,7 +23,8 @@ public class UsuariosServiceImpl implements IUsuariosService {
 	/********************************* Usuarios *******************************/
 
 	/**
-	 * 
+	 * Se guarda un usuario (Sirve tanto para crear uno nuevo,
+	 * como tambien para actualizar uno anterior)
 	 */
 	@Override
 	@Transactional
@@ -33,26 +34,41 @@ public class UsuariosServiceImpl implements IUsuariosService {
 		Usuarios beanGuardado = usuarioDao.save(bean);
 		return parseBeanToDtoUsuario(beanGuardado);
 	}
-
+	
+	/**
+	 * Se elimina un usuario por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteUsuario(Integer id) {
 		usuarioDao.deleteById(id);
 	}
-
+	
+	/**
+	 * Se obtiene un usuario por medio de su id
+	 */
 	@Override
 	@Transactional
 	public UsuarioDto getUsuario(Integer id) {
 		Usuarios beanObtenido = usuarioDao.getById(id);
 		return parseBeanToDtoUsuario(beanObtenido);
 	}
-
+	
+	/**
+	 * Se obtiene un usuario por medio de su correo
+	 */
 	@Override
 	@Transactional
 	public UsuarioDto getUsuarioByCorreo(String correo) {
 		Usuarios bean = userDao.findByCorreo(correo);
 		return parseBeanToDtoUsuario(bean);
 	}
+	
+	/**
+	 * Se obtiene un usuario por medio de un colectivo id
+	 * esto es posible mediante la relacion entre ellos en 
+	 * la entidad Viaje
+	 */
 	@Override
 	@Transactional
 	public UsuarioDto getUsuarioByColectivoId(Integer id) {
@@ -60,6 +76,9 @@ public class UsuariosServiceImpl implements IUsuariosService {
 		return parseBeanToDtoUsuario(user);
 	}
 
+	/**
+	 * Obtener todos los usuarios
+	 */
 	@Override
 	@Transactional
 	public Result<UsuarioDto> getAllUsuario() {
@@ -72,7 +91,11 @@ public class UsuariosServiceImpl implements IUsuariosService {
 	}
 
 	/***************************** Roles ****************************************/
-
+	
+	/**
+	 * Se guarda un role (sirve tanto para crear uno nuevo, como tambien
+	 * para actualizar uno anterior)
+	 */
 	@Override
 	@Transactional
 	public RoleDto saveRole(RoleDto dto) {
@@ -80,20 +103,29 @@ public class UsuariosServiceImpl implements IUsuariosService {
 		Roles guardarRole = roleDao.save(role);
 		return parseBeanToDtoRole(guardarRole);
 	}
-
+	
+	/**
+	 * Se obtiene un role por medio de su id
+	 */
 	@Override
 	@Transactional
 	public RoleDto getRole(Integer id) {
 		Roles bean = roleDao.getById(id);
 		return parseBeanToDtoRole(bean);
 	}
-
+	
+	/**
+	 * Se elimina un role por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteRole(Integer id) {
 		roleDao.deleteById(id);
 	}
-
+	
+	/**
+	 * Se obtiene todos los roles
+	 */
 	@Override
 	@Transactional
 	public Result<RoleDto> getAllRole() {

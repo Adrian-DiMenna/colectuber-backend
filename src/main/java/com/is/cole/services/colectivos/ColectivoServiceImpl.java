@@ -16,7 +16,11 @@ import com.is.cole.entities.Colectivo;
 public class ColectivoServiceImpl implements IColectivoService {
 
 	// Metodos
-
+	
+	/**
+	 * Metodo para guardar un colectivo (Sirve tanto para crear uno nuevo)
+	 * como para actualizarlo
+	 */
 	@Override
 	@Transactional
 	public ColectivoDto saveColectivo(ColectivoDto dto) {
@@ -24,6 +28,9 @@ public class ColectivoServiceImpl implements IColectivoService {
 		return parseBeanToDtoColectivo(beanGuardado);
 	}
 
+	/**
+	 * Metodo para obtener un colectivo por medio de su id
+	 */
 	@Override
 	@Transactional
 	public ColectivoDto getColectivo(Integer id) {
@@ -31,13 +38,19 @@ public class ColectivoServiceImpl implements IColectivoService {
 		return parseBeanToDtoColectivo(beanObtenido);
 	}
 
+	/**
+	 * Metodo para eliminar un colectivo por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteColectivo(Integer id) {
 		colectivoDao.deleteById(id);
 
 	}
-
+	
+	/**
+	 * Metodo para obtener todos los colectivos
+	 */
 	@Override
 	@Transactional
 	public Result<ColectivoDto> getAllColectivo() {

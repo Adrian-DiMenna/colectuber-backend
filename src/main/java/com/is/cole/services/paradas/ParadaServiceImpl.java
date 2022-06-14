@@ -14,7 +14,11 @@ import java.util.List;
 
 @Service
 public class ParadaServiceImpl implements IParadaService {
-
+	
+	/**
+	 * Se guarda una parada de colectivos (Sirve tanto para crear uno nuevo,
+	 * como tambien para actualizar uno anterior)
+	 */
 	@Override
 	@Transactional
 	public ParadaDto saveParada(ParadaDto dto) {
@@ -22,7 +26,10 @@ public class ParadaServiceImpl implements IParadaService {
 		Parada beanGuardado = paradaDao.save(bean);
 		return parseBeanToDto(beanGuardado);
 	}
-
+	
+	/**
+	 * Se obtiene todas las paradas de colectivos
+	 */
 	@Override
 	@Transactional
 	public Result<ParadaDto> getAllParadas() {
@@ -33,14 +40,20 @@ public class ParadaServiceImpl implements IParadaService {
 		result.setResult(list);
 		return result;
 	}
-
+	
+	/**
+	 * Se obtiene una parada de colectivos por medio de su id
+	 */
 	@Override
 	@Transactional
 	public ParadaDto getParadaById(Integer id) {
 		Parada beanObtenido = paradaDao.getById(id);
 		return parseBeanToDto(beanObtenido);
 	}
-
+	
+	/**
+	 * Se elimina una parada de colectivos por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteById(Integer id) {

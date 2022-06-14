@@ -7,6 +7,11 @@ import com.is.cole.entities.Zona;
 
 @Repository
 public interface IZonaDao extends JpaRepository<Zona, Integer>{
-
+	
+	/**
+	 * Obtener una zona por medio de su nombre
+	 * @param nombre
+	 * @return
+	 */
 	public Zona findByNombre(String nombre);
 }

@@ -39,7 +39,10 @@ import com.is.cole.services.zonas.IZonaService;
  * @author Colectuber
  */
 public class TestServiceImpl implements ITestService {
-
+	
+	/**
+	 * Metodo para insertar todos los datos por default al sistema
+	 */
 	@Override
 	@Transactional
 	public void insertTestValues() {
@@ -47,7 +50,14 @@ public class TestServiceImpl implements ITestService {
 				insertColectivo(insertEmpresaColectivo(), insertLinea()), insertUsuarios(insertRoles()));
 
 	}
-
+	
+	/**
+	 * Metodo para insertar los viajes de colectivos por default al sistema
+	 * @param recorridoMap
+	 * @param colectivoMap
+	 * @param usuarioMap
+	 * @return
+	 */
 	private Map<String, ViajeDto> insertViaje(Map<String, RecorridoDto> recorridoMap,
 			Map<String, ColectivoDto> colectivoMap, Map<String, UsuarioDto> usuarioMap) {
 		Map<String, ViajeDto> viajeMap = new HashMap<>();
@@ -81,7 +91,13 @@ public class TestServiceImpl implements ITestService {
 
 		return viajeMap;
 	}
-
+	
+	/**
+	 * Metodo para insertar los recorridos de colectivos por default al sistema
+	 * @param paradaMap
+	 * @param colorMap
+	 * @return
+	 */
 	private Map<String, RecorridoDto> insertRecorrido(Map<String, ParadaDto> paradaMap,
 			Map<String, ColorDto> colorMap) {
 
@@ -1078,7 +1094,11 @@ public class TestServiceImpl implements ITestService {
 		
 		return map;
 	}
-
+	
+	/**
+	 * Metodo para insertar los roles por default al sistema
+	 * @return
+	 */
 	private Map<String, RoleDto> insertRoles() {
 		Map<String, RoleDto> map = new HashMap<String, RoleDto>();
 
@@ -1095,6 +1115,12 @@ public class TestServiceImpl implements ITestService {
 		return map;
 	}
 
+	/**
+	 * Metodo para insertar los usuarios por default al sistema y asignarle sus roles 
+	 * correspondientes
+	 * @param rolMap
+	 * @return
+	 */
 	private Map<String, UsuarioDto> insertUsuarios(Map<String, RoleDto> rolMap) {
 		Map<String, UsuarioDto> map = new HashMap<String, UsuarioDto>();
 
@@ -1131,7 +1157,12 @@ public class TestServiceImpl implements ITestService {
 		usuarioService.agregarRoleAUsuario(map.get("rosa").getId(), rolMap.get("chofer").getId());
 		return map;
 	}
-
+	
+	/**
+	 * Metodo para insertar las paradas por defecto al sistema
+	 * @param mapZonas
+	 * @return
+	 */
 	private Map<String, ParadaDto> insertParadas(Map<String, ZonaDto> mapZonas) {
 		Map<String, ParadaDto> map = new HashMap<String, ParadaDto>();
 
@@ -1514,7 +1545,13 @@ public class TestServiceImpl implements ITestService {
 
 		return map;
 	}
-
+	
+	/**
+	 * Metodo para insertar los colectivos por defecto al sistema
+	 * @param empresaMap
+	 * @param lineaMap
+	 * @return
+	 */
 	private Map<String, ColectivoDto> insertColectivo(Map<String, EmpresaDeColectivosDto> empresaMap,
 			Map<String, LineaDeColectivosDto> lineaMap) {
 
@@ -1546,7 +1583,11 @@ public class TestServiceImpl implements ITestService {
 
 		return map;
 	}
-
+	
+	/**
+	 * Metodo para insertar las lineas de colectivos por defecto al sistema
+	 * @return
+	 */
 	private Map<String, LineaDeColectivosDto> insertLinea() {
 		Map<String, LineaDeColectivosDto> map = new HashMap<>();
 
@@ -1567,7 +1608,11 @@ public class TestServiceImpl implements ITestService {
 
 		return map;
 	}
-
+	
+	/**
+	 * Metodo para insertar las empresas de colectivos por defecto al sistema
+	 * @return
+	 */
 	private Map<String, EmpresaDeColectivosDto> insertEmpresaColectivo() {
 		Map<String, EmpresaDeColectivosDto> map = new HashMap<>();
 
@@ -1589,7 +1634,11 @@ public class TestServiceImpl implements ITestService {
 
 		return map;
 	}
-
+	
+	/**
+	 * Metodo para insertar los colores por defecto al sistema
+	 * @return
+	 */
 	private Map<String, ColorDto> insertColor() {
 
 		Map<String, ColorDto> resultMap = new HashMap<>();
@@ -1606,7 +1655,11 @@ public class TestServiceImpl implements ITestService {
 		return resultMap;
 
 	}
-
+	
+	/**
+	 * Metodo para insertar las zonas de paradas por defecto al sisteam
+	 * @return
+	 */
 	private Map<String, ZonaDto> insertZonas() {
 		Map<String, ZonaDto> resultMap = new HashMap<>();
 		ZonaDto zonaCentro = new ZonaDto();

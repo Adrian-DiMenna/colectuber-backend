@@ -9,6 +9,13 @@ import com.is.cole.entities.RoleUsuario;
 
 @Repository
 public interface IRolesUsuarioDao extends JpaRepository<RoleUsuario, Integer> {
+	
+	/**
+	 * Obtener un RoleUsuario por medio del id del role 
+	 * @param usuarioId
+	 * @param roleId
+	 * @return
+	 */
 	@Query("SELECT u FROM RoleUsuario u WHERE u.usuarios.id = ?1 AND u.roles.id = ?2")
 	public RoleUsuario findByUsuarioIdRoleId(Integer usuarioId, Integer roleId);
 	
