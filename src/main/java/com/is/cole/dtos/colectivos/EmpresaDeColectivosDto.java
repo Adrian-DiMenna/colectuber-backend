@@ -2,16 +2,12 @@ package com.is.cole.dtos.colectivos;
 
 import com.is.cole.dtos.BaseDto;
 
+/**
+ * Clase para el parceo de la entidad Empresas de colectivos para el envio y recibo
+ * @author Colectuber
+ *
+ */
 public class EmpresaDeColectivosDto extends BaseDto{
-
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String nombre;
-	private String direccion;
-	private String numero_telefono;
-	private String correo_electronico;
-	
 	
 	public Integer getId() {
 		return id;
@@ -44,6 +40,13 @@ public class EmpresaDeColectivosDto extends BaseDto{
 		this.correo_electronico = correo_electronico;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
 	
+	private Integer id;
+	private String nombre;
+	private String direccion;
+	private String numero_telefono;
+	private String correo_electronico;
 	
 }

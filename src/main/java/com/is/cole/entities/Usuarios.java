@@ -8,24 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * Entidad para la representacion de los usuarios
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name = "usuarios",uniqueConstraints=@UniqueConstraint(name="uk_correo", columnNames = {"correo"}))
 public class Usuarios implements BaseBean {
-	
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique = true)
-	private Integer id;
-	
-	private String nombre;
-	
-	private String apellido;
-	
-	private String correo;
-	
-	private String password;
 	
 	public String getNombre() {
 		return nombre;
@@ -67,6 +57,22 @@ public class Usuarios implements BaseBean {
 		this.id = id;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Integer id;
+	
+	private String nombre;
+	
+	private String apellido;
+	
+	private String correo;
+	
+	private String password;
 
 	
 }

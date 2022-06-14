@@ -23,33 +23,6 @@ import org.hibernate.annotations.OnDeleteAction;
 		@UniqueConstraint(name="uk_colectivo",columnNames = {"colectivo_id"})
 })
 public class Viaje implements BaseBean{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	
-	@OneToOne
-	@JoinColumn(name="usuario_id",referencedColumnName="id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Usuarios usuario;
-	
-	@OneToOne
-	@JoinColumn(name="colectivo_id",referencedColumnName="id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Colectivo colectivo;
-	
-	@ManyToOne
-	@JoinColumn(name="recorrido_id",referencedColumnName="id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private Recorrido recorrido;
-	
-	private String destino;
-	
-	private Long last_update;
-	
-	private Boolean terminado;
-
 	
 	public Integer getId() {
 		return id;
@@ -107,6 +80,33 @@ public class Viaje implements BaseBean{
 		this.terminado = terminado;
 	}
 	
+	/************************ Variables Privadas ******************************/
 	
-
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	
+	@OneToOne
+	@JoinColumn(name="usuario_id",referencedColumnName="id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Usuarios usuario;
+	
+	@OneToOne
+	@JoinColumn(name="colectivo_id",referencedColumnName="id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Colectivo colectivo;
+	
+	@ManyToOne
+	@JoinColumn(name="recorrido_id",referencedColumnName="id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Recorrido recorrido;
+	
+	private String destino;
+	
+	private Long last_update;
+	
+	private Boolean terminado;
+	
 }

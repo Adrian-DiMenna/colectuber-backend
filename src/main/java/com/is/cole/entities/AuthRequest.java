@@ -13,9 +13,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class AuthRequest {
 
-	private String userName;
-	private String password;
-
 	public String getUserName() {
 		return userName;
 	}
@@ -31,5 +28,10 @@ public class AuthRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private String userName;
+	private String password;
+
 
 }

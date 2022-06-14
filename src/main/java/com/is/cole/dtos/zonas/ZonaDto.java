@@ -7,12 +7,6 @@ import com.is.cole.dtos.BaseDto;
  * @author Colectuber
  */
 public class ZonaDto extends BaseDto{
-
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String nombre;
-	private String descripcion;
 	
 	public Integer getId() {
 		return id;
@@ -33,4 +27,10 @@ public class ZonaDto extends BaseDto{
 		this.descripcion = descripcion;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String nombre;
+	private String descripcion;
 }

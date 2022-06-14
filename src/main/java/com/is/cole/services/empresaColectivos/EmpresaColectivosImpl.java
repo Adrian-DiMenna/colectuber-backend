@@ -16,27 +16,40 @@ public class EmpresaColectivosImpl implements IEmpresaColectivosService {
 
 	// Metodos
 
+	/**
+	 * Se guarda una empresa de colectivo (Sirve tanto como para crear uno 
+	 * nuevo y para actualizar uno anterior)
+	 */
 	@Override
 	@Transactional
 	public EmpresaDeColectivosDto saveEmpresaColectivo(EmpresaDeColectivosDto dto) {
 		EmpresaDeColectivos bean = parseDtoToBeanEmpresaColectivo(dto);
 		return parseBeanToDtoEmpresaColectivo(empresaDao.save(bean));
 	}
-
+	
+	/**
+	 * Se obtiene una empresa de colectivo por medio de su id
+	 */
 	@Override
 	@Transactional
 	public EmpresaDeColectivosDto getEmpresaColectivo(Integer empresaId) {
 		EmpresaDeColectivos beanObtenido = empresaDao.getById(empresaId);
 		return parseBeanToDtoEmpresaColectivo(beanObtenido);
 	}
-
+	
+	/**
+	 * Se elimina una empresa de colectivo por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteEmpresaColectivo(Integer empresaId) {
 		empresaDao.deleteById(empresaId);
 
 	}
-
+	
+	/**
+	 * Se obtiene todas las empresas de colectivos
+	 */
 	@Override
 	@Transactional
 	public Result<EmpresaDeColectivosDto> getAllEmpresaColectivo() {

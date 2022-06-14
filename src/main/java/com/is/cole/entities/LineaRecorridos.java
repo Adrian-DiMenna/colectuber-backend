@@ -9,23 +9,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+/**
+ * Entidad para la representar la relacion entre una linea de colectivos y un recorrido
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name="lineas_recorridos")
 public class LineaRecorridos implements BaseBean{
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique= true)
-	private Integer id;
-	
-	@ManyToOne
-	@JoinColumn(name="linea_id",referencedColumnName="id")
-	private Linea linea;
-	
-	@ManyToOne
-	@JoinColumn(name="recorrido_id",referencedColumnName="id")
-	private Recorrido recorrido;
 
 	public Integer getId() {
 		return id;
@@ -51,6 +42,21 @@ public class LineaRecorridos implements BaseBean{
 		this.recorrido = recorrido;
 	}
 	
+	/************************ Variables Privadas ******************************/
 	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique= true)
+	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="linea_id",referencedColumnName="id")
+	private Linea linea;
+	
+	@ManyToOne
+	@JoinColumn(name="recorrido_id",referencedColumnName="id")
+	private Recorrido recorrido;
 	
 }

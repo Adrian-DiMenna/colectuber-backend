@@ -10,11 +10,6 @@ import com.is.cole.dtos.recorridos.RecorridoDto;
  */
 public class InitialViajeDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-	
-	private ColectivoDto colectivo;
-	private RecorridoDto recorrido;
-	
 	public ColectivoDto getColectivo() {
 		return colectivo;
 	}
@@ -28,6 +23,10 @@ public class InitialViajeDto extends BaseDto{
 		this.recorrido = recorrido;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
 	
+	private ColectivoDto colectivo;
+	private RecorridoDto recorrido;
 	
 }

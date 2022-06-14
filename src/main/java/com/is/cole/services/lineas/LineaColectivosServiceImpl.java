@@ -14,7 +14,11 @@ import com.is.cole.entities.Linea;
 public class LineaColectivosServiceImpl implements ILineaColectivosService {
 
 	// Metodos
-
+	
+	/**
+	 * Se guarda una linea de colectivos (Sirve tanto para crear uno nuevo,
+	 * como tambien para actualizar uno anterior)
+	 */
 	@Override
 	@Transactional
 	public LineaDeColectivosDto saveLineaColectivo(LineaDeColectivosDto dto) {
@@ -23,20 +27,29 @@ public class LineaColectivosServiceImpl implements ILineaColectivosService {
 		return parseBeanToDtoLineaColectivo(beanGuardado);
 
 	}
-
+	
+	/**
+	 * Se obtiene una linea de colectivo por medio de su id
+	 */
 	@Override
 	@Transactional
 	public LineaDeColectivosDto getLineaColectivo(Integer lineaId) {
 		Linea beanObtenido = lineaDao.getById(lineaId);
 		return parseBeanToDtoLineaColectivo(beanObtenido);
 	}
-
+	
+	/**
+	 * Se elimina una linea de colectivo por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteLineaColectivo(Integer lineaId) {
 		lineaDao.deleteById(lineaId);
 	}
-
+	
+	/**
+	 * Se obtiene todas las lineas de colectivos
+	 */
 	@Override
 	@Transactional
 	public Result<LineaDeColectivosDto> getAllLineaColectivo() {

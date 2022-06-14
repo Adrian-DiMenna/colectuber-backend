@@ -4,16 +4,12 @@ import java.util.List;
 
 import com.is.cole.dtos.BaseDto;
 
+/**
+ * Clase para el parseo de la entidad usuario
+ * @author Acer
+ *
+ */
 public class UsuarioDto extends BaseDto {
-
-	private static final long serialVersionUID = 1L;
-
-	private Integer id;
-	private String nombre;
-	private String apellido;
-	private String correo_electronico;
-	private String password;
-	private List<RoleDto> roleList;
 
 	public List<RoleDto> getRoleList() {
 		return roleList;
@@ -62,5 +58,14 @@ public class UsuarioDto extends BaseDto {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
 
+	private Integer id;
+	private String nombre;
+	private String apellido;
+	private String correo_electronico;
+	private String password;
+	private List<RoleDto> roleList;
 }

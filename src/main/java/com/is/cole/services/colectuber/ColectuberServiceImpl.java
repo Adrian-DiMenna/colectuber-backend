@@ -106,6 +106,9 @@ public class ColectuberServiceImpl implements IColectuberService {
 		return dtos;
 	}
 	
+	/**
+	 * Elimina la ubicacion de un colectivo
+	 */
 	@Override
 	@Transactional
 	public void deleteColectivoUbicacion(Integer colectivoId) {
@@ -273,7 +276,12 @@ public class ColectuberServiceImpl implements IColectuberService {
 
 	
 	/********************************Parses**************************************************/
-  
+	
+	/**
+	 * Convertimos un Colectivo Ubicacion DTO a un colectivo ubicacion entidad
+	 * @param dto
+	 * @return
+	 */
 	private ColectivoUbicacion parseDtoToBeanColectivoUbicacion(ColectivoUbicacionDto dto) {
 		ColectivoUbicacion ubi = new ColectivoUbicacion();
 		ubi.setId(dto.getColectivoId());
@@ -288,6 +296,11 @@ public class ColectuberServiceImpl implements IColectuberService {
 		return ubi;
 	}
 
+	/**
+	 * Convertimos un Colectivos Ubicacion Entidad a un Colectivo Ubicacion DTO
+	 * @param bean
+	 * @return
+	 */
 	private ColectivoUbicacionDto parseBeanToDtoColectivoUbicacion(ColectivoUbicacion bean) {
 
 		ColectivoUbicacionDto dto = new ColectivoUbicacionDto();
@@ -304,7 +317,12 @@ public class ColectuberServiceImpl implements IColectuberService {
 		dto.setRecorrido_id(bean.getRecorrido().getId());
 		return dto;
 	}
-
+	
+	/**
+	 * Convertimos un Colectuber Colectivo Entidad a un Colectuber Colectivo DTO
+	 * @param dto
+	 * @return
+	 */
 	private ColectuberColectivoDto parseColectivoDtoToDtoColectuberDto(ColectivoDto dto) {
 
 		ColectuberColectivoDto newDto = new ColectuberColectivoDto();

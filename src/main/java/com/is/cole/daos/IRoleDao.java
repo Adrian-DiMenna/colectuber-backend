@@ -7,6 +7,12 @@ import com.is.cole.entities.Roles;
 
 @Repository
 public interface IRoleDao extends JpaRepository<Roles, Integer> {
+	
+	/**
+	 * Funcion para obtener un rol por medio de su nombre
+	 * @param key
+	 * @return
+	 */
 	@Query("SELECT u FROM Roles u WHERE u.nombre = ?1")
 	public Roles findByName(String key);
 	

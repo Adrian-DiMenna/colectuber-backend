@@ -10,10 +10,41 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+/**
+ * Entidad para la representacion de los colectivos
+ * @author Acer
+ *
+ */
 @Entity
 @Table(name = "colectivos",uniqueConstraints =@UniqueConstraint(name="uk_numero",columnNames = {"numero_colectivo"}))
 public class Colectivo implements BaseBean{
 
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public EmpresaDeColectivos getEmpresaColectivo() {
+		return empresaColectivo;
+	}
+	public void setEmpresaColectivo(EmpresaDeColectivos empresaColectivo) {
+		this.empresaColectivo = empresaColectivo;
+	}
+	public Linea getLineaColectivo() {
+		return lineaColectivo;
+	}
+	public void setLineaColectivo(Linea lineaColectivo) {
+		this.lineaColectivo = lineaColectivo;
+	}
+	public String getNumeroColectivo() {
+		return numeroColectivo;
+	}
+	public void setNumeroColectivo(String numeroColectivo) {
+		this.numeroColectivo = numeroColectivo;
+	}
+	
+	/************************ Variables Privadas ******************************/
 	private static final long serialVersionUID = 1L;
 	
 	@Id
@@ -31,48 +62,6 @@ public class Colectivo implements BaseBean{
 	
 	@Column(name="numero_colectivo")
 	private String numeroColectivo;
-	
-	
-	public Integer getId() {
-		return id;
-	}
-
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-
-	public EmpresaDeColectivos getEmpresaColectivo() {
-		return empresaColectivo;
-	}
-
-
-	public void setEmpresaColectivo(EmpresaDeColectivos empresaColectivo) {
-		this.empresaColectivo = empresaColectivo;
-	}
-
-
-	public Linea getLineaColectivo() {
-		return lineaColectivo;
-	}
-
-
-	public void setLineaColectivo(Linea lineaColectivo) {
-		this.lineaColectivo = lineaColectivo;
-	}
-
-
-	public String getNumeroColectivo() {
-		return numeroColectivo;
-	}
-
-
-	public void setNumeroColectivo(String numeroColectivo) {
-		this.numeroColectivo = numeroColectivo;
-	}
-	
-
 	
 	
 	

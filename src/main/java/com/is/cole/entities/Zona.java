@@ -18,14 +18,6 @@ import javax.persistence.UniqueConstraint;
 })
 public class Zona implements BaseBean{
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
-	private String nombre;
-	private String descripcion;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -44,4 +36,14 @@ public class Zona implements BaseBean{
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Integer id;
+	private String nombre;
+	private String descripcion;
 }

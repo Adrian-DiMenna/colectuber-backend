@@ -22,25 +22,6 @@ import org.hibernate.annotations.OnDeleteAction;
 @Table(name="puntos_recorrido")
 public class PuntoDeRecorrido implements BaseBean{
 
-	private static final long serialVersionUID = 1L;
-	
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique= true)
-	private Integer id;
-	
-	@ManyToOne
-	@JoinColumn(name="parada_id",referencedColumnName="id")
-	private Parada parada;
-	
-	@OneToOne
-	@JoinColumn(name="sig_punto_id",referencedColumnName="id")
-	@OnDelete(action = OnDeleteAction.CASCADE)
-	private PuntoDeRecorrido sig_punto;
-	
-	private Double latitud;
-	private Double longitud;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -71,5 +52,26 @@ public class PuntoDeRecorrido implements BaseBean{
 	public void setLongitud(Double longitud) {
 		this.longitud = longitud;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	
+	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique= true)
+	private Integer id;
+	
+	@ManyToOne
+	@JoinColumn(name="parada_id",referencedColumnName="id")
+	private Parada parada;
+	
+	@OneToOne
+	@JoinColumn(name="sig_punto_id",referencedColumnName="id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private PuntoDeRecorrido sig_punto;
+	
+	private Double latitud;
+	private Double longitud;
 	
 }

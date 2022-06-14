@@ -1,16 +1,13 @@
 package com.is.cole.dtos.colectivos;
 
 import com.is.cole.dtos.BaseDto;
-
+/**
+ * La entidad colectivo con los atributos parceados para el envio y recibo al front-end
+ * @author Colectuber
+ *
+ */
 public class ColectivoDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private Integer empresaId;
-	private Integer lineaId;
-	private String numero;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -36,6 +33,13 @@ public class ColectivoDto extends BaseDto{
 		this.numero = numero;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private Integer empresaId;
+	private Integer lineaId;
+	private String numero;
 	
 	
 

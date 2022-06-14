@@ -7,19 +7,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/**
+ * Entidad para la representacion de los colores de los recorridos
+ * @author Colectuber
+ *
+ */
 @Entity
 @Table(name = "colores")
 public class Color implements BaseBean {
-
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(nullable = false, unique = true)
-	private Integer id;
-
-	@Column(nullable = false, unique = true)
-	private String nombre;
 
 	public Integer getId() {
 		return id;
@@ -36,5 +31,16 @@ public class Color implements BaseBean {
 	public void setNombre(String color) {
 		this.nombre = color;
 	}
+	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(nullable = false, unique = true)
+	private Integer id;
+
+	@Column(nullable = false, unique = true)
+	private String nombre;
+	
 }

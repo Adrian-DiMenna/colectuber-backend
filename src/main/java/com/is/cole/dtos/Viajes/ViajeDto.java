@@ -8,15 +8,6 @@ import com.is.cole.dtos.BaseDto;
  */
 public class ViajeDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private Integer chofer_id;
-	private Integer colectivo_id;
-	private Integer recorrido_id;
-	private String destino;
-	private Integer estado;
-
 	public Integer getId() {
 		return id;
 	}
@@ -65,6 +56,15 @@ public class ViajeDto extends BaseDto{
 		this.estado = estado;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private Integer chofer_id;
+	private Integer colectivo_id;
+	private Integer recorrido_id;
+	private String destino;
+	private Integer estado;
 	
 
 }

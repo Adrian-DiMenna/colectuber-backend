@@ -15,7 +15,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 /**
  * Codigo utilizado del tutorial: https://www.youtube.com/watch?v=rBNOc4ymd1E
  * @author tutorial
- * Servicio para la manipulacion de los tokens para la authentication and authorization
+ * Servicio para la manipulacion de los tokens para la autenticacion and autorizacion
  */
 @Service
 public class JwtUtil {

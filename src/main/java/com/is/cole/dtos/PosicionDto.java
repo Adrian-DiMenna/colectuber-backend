@@ -5,10 +5,6 @@ package com.is.cole.dtos;
  * @author Colectuber
  */
 public class PosicionDto extends BaseDto{
-	private static final long serialVersionUID = 1L;
-	
-	private double latitud;
-	private double longitud;
 	
 	public double getLatitud() {
 		return latitud;
@@ -23,6 +19,11 @@ public class PosicionDto extends BaseDto{
 		this.longitud = longitud;
 	}
 	
+	/************************ Variables Privadas ******************************/
+	private static final long serialVersionUID = 1L;
+	
+	private double latitud;
+	private double longitud;
 	
 	
 	

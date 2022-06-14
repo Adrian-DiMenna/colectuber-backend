@@ -15,7 +15,10 @@ import com.is.cole.entities.Color;
 
 @Service
 public class ColorServiceImpl implements IColorService {
-
+	
+	/**
+	 * Se guarda un color (Sirve tanto para actualizar y crear uno nuevo)
+	 */
 	@Override
 	@Transactional
 	public ColorDto saveColor(ColorDto dto) {
@@ -23,7 +26,10 @@ public class ColorServiceImpl implements IColorService {
 		Color beanGuardado = colorDao.save(bean);
 		return parseBeanToDto(beanGuardado);
 	}
-
+	
+	/**
+	 * Se obtiene todos los colores 
+	 */
 	@Override
 	@Transactional
 	public Result<ColorDto> getAllColors() {
@@ -35,21 +41,30 @@ public class ColorServiceImpl implements IColorService {
 		result.setResult(list);
 		return result;
 	}
-
+	
+	/**
+	 * Se obtiene un color por medio de su id
+	 */
 	@Override
 	@Transactional
 	public ColorDto getColorById(Integer id) {
 		Color beanObtenido = colorDao.getById(id);
 		return parseBeanToDto(beanObtenido);
 	}
-
+	
+	/**
+	 * Se obtiene un color por medio de su nombre
+	 */
 	@Override
 	@Transactional
 	public ColorDto getByNombre(String nombre) {
 		Color beanObtenido = colorDao.findByNombre(nombre);
 		return parseBeanToDto(beanObtenido);
 	}
-
+	
+	/**
+	 * Se elimina un color por medio de su id
+	 */
 	@Override
 	@Transactional
 	public void deleteById(Integer id) {

@@ -70,8 +70,12 @@ public class ViajesServiceImpl implements IViajesService {
 	
 	/********************** Parses **********************/
 
-	//No esta seteado el state todavia
 	
+	/**
+	 * Se convierte un viaje entidad a un viaje dto
+	 * @param bean
+	 * @return
+	 */
 	private ViajeDto parseBeanToDtoViaje(Viaje bean) {
 		ViajeDto dto = new ViajeDto();
 		dto.setId(bean.getId());
@@ -82,6 +86,11 @@ public class ViajesServiceImpl implements IViajesService {
 		return dto;
 	}
 	
+	/**
+	 * Se convierte un viaje dto a un viaje entidad
+	 * @param dto
+	 * @return
+	 */
 	private Viaje parseDtoToBeanViaje(ViajeDto dto) {
 		Viaje bean = new Viaje();
 		bean.setColectivo(colectivoDao.getById(dto.getColectivo_id()));

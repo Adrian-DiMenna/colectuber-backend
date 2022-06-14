@@ -8,14 +8,6 @@ import com.is.cole.dtos.BaseDto;
  */
 public class ColectuberColectivoDto extends BaseDto{
 
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String empresa;
-	private String linea;
-	private String numero;
-	
-	
 	public Integer getId() {
 		return id;
 	}
@@ -40,7 +32,14 @@ public class ColectuberColectivoDto extends BaseDto{
 	public void setNumero(String numero) {
 		this.numero = numero;
 	}
-
+	
+	
+	private static final long serialVersionUID = 1L;
+	
+	private Integer id;
+	private String empresa;
+	private String linea;
+	private String numero;
 	
 	
 	
